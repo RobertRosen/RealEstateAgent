@@ -9,13 +9,11 @@ namespace RealEstateAgent
     {
         private int estateID;
         private Address address;
+        private Person person;
 
         public int EstateID
         {
-            get 
-            { 
-                return estateID; 
-            }
+            get { return estateID; }
             set 
             { 
                 if(value > 0)
@@ -25,14 +23,14 @@ namespace RealEstateAgent
 
         public Address Address
         {
-            get 
-            { 
-                return address; 
-            }
-            set
-            {
-                address = value;
-            }
+            get { return address; }
+            set { address = value; }
+        }
+
+        public Person Person
+        {
+            get { return person; }
+            set { person = value; }
         }
     }
 }

@@ -18,5 +18,7 @@ namespace RealEstateAgent
             get; 
             set; 
         }
+
+        Person Person { get; set; }
     }
 }
