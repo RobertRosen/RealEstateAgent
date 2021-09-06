@@ -7,5 +7,6 @@ namespace RealEstateAgent
 {
     public interface IEstate
     {
+
     }
 }
