@@ -7,6 +7,16 @@ namespace RealEstateAgent
 {
     public interface IEstate
     {
+        int EstateID 
+        { 
+            get; 
+            set; 
+        }
 
+        Address Address 
+        { 
+            get; 
+            set; 
+        }
     }
 }
