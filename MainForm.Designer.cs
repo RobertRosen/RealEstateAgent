@@ -49,12 +49,12 @@ namespace RealEstateAgent
             this.button1 = new System.Windows.Forms.Button();
             this.lblPayment = new System.Windows.Forms.Label();
             this.lblImage = new System.Windows.Forms.Label();
-            this.txtboxID = new System.Windows.Forms.TextBox();
             this.lblID = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblCountry = new System.Windows.Forms.Label();
             this.lblCity = new System.Windows.Forms.Label();
             this.lblAddress = new System.Windows.Forms.Label();
+            this.lblPresentID = new System.Windows.Forms.Label();
             this.pnlRegister.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tblRegister)).BeginInit();
             this.pnlInfo.SuspendLayout();
@@ -176,13 +176,13 @@ namespace RealEstateAgent
             // 
             // pnlEstateInfo
             // 
+            this.pnlEstateInfo.Controls.Add(this.lblPresentID);
             this.pnlEstateInfo.Controls.Add(this.radioButton3);
             this.pnlEstateInfo.Controls.Add(this.radioButton2);
             this.pnlEstateInfo.Controls.Add(this.radioButton1);
             this.pnlEstateInfo.Controls.Add(this.button1);
             this.pnlEstateInfo.Controls.Add(this.lblPayment);
             this.pnlEstateInfo.Controls.Add(this.lblImage);
-            this.pnlEstateInfo.Controls.Add(this.txtboxID);
             this.pnlEstateInfo.Controls.Add(this.lblID);
             this.pnlEstateInfo.Controls.Add(this.label1);
             this.pnlEstateInfo.Location = new System.Drawing.Point(0, 0);
@@ -193,6 +193,7 @@ namespace RealEstateAgent
             // radioButton3
             // 
             this.radioButton3.AutoSize = true;
+            this.radioButton3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.radioButton3.Location = new System.Drawing.Point(187, 128);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(94, 19);
@@ -204,6 +205,7 @@ namespace RealEstateAgent
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
+            this.radioButton2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.radioButton2.Location = new System.Drawing.Point(187, 103);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(94, 19);
@@ -215,6 +217,7 @@ namespace RealEstateAgent
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
+            this.radioButton1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.radioButton1.Location = new System.Drawing.Point(187, 78);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(94, 19);
@@ -225,6 +228,7 @@ namespace RealEstateAgent
             // 
             // button1
             // 
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button1.Location = new System.Drawing.Point(67, 40);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(94, 23);
@@ -235,6 +239,7 @@ namespace RealEstateAgent
             // lblPayment
             // 
             this.lblPayment.AutoSize = true;
+            this.lblPayment.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblPayment.Location = new System.Drawing.Point(188, 44);
             this.lblPayment.Name = "lblPayment";
             this.lblPayment.Size = new System.Drawing.Size(54, 15);
@@ -244,22 +249,17 @@ namespace RealEstateAgent
             // lblImage
             // 
             this.lblImage.AutoSize = true;
+            this.lblImage.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblImage.Location = new System.Drawing.Point(20, 44);
             this.lblImage.Name = "lblImage";
             this.lblImage.Size = new System.Drawing.Size(40, 15);
             this.lblImage.TabIndex = 3;
             this.lblImage.Text = "Image";
             // 
-            // txtboxID
-            // 
-            this.txtboxID.Location = new System.Drawing.Point(188, 3);
-            this.txtboxID.Name = "txtboxID";
-            this.txtboxID.Size = new System.Drawing.Size(65, 23);
-            this.txtboxID.TabIndex = 2;
-            // 
             // lblID
             // 
             this.lblID.AutoSize = true;
+            this.lblID.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblID.Location = new System.Drawing.Point(164, 6);
             this.lblID.Name = "lblID";
             this.lblID.Size = new System.Drawing.Size(18, 15);
@@ -270,6 +270,7 @@ namespace RealEstateAgent
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(20, 6);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(104, 15);
@@ -305,6 +306,16 @@ namespace RealEstateAgent
             this.lblAddress.Text = "Address";
             this.lblAddress.Click += new System.EventHandler(this.lblAddress_Click);
             // 
+            // lblPresentID
+            // 
+            this.lblPresentID.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblPresentID.Location = new System.Drawing.Point(189, 6);
+            this.lblPresentID.Name = "lblPresentID";
+            this.lblPresentID.Size = new System.Drawing.Size(65, 15);
+            this.lblPresentID.TabIndex = 9;
+            this.lblPresentID.Text = "#";
+            this.lblPresentID.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -312,9 +323,10 @@ namespace RealEstateAgent
             this.ClientSize = new System.Drawing.Size(1149, 630);
             this.Controls.Add(this.pnlInfo);
             this.Controls.Add(this.pnlRegister);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Real Estate Agent";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.pnlRegister.ResumeLayout(false);
             this.pnlRegister.PerformLayout();
@@ -354,7 +366,7 @@ namespace RealEstateAgent
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label lblPayment;
         private System.Windows.Forms.Label lblImage;
-        private System.Windows.Forms.TextBox txtboxID;
+        private System.Windows.Forms.Label lblPresentID;
     }
 }
 
