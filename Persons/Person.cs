@@ -13,14 +13,16 @@ namespace RealEstateAgent
         public String Name
         {
             get { return name; }
-
-            set { name = value; }
+            set 
+            { 
+                if (!string.IsNullOrEmpty(value))
+                    name = value; 
+            }
         }
 
         public Address Address
         {
             get { return address; }
-
             set { address = value; }
         }
     }
