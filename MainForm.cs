@@ -51,5 +51,30 @@ namespace RealEstateAgent
         {
 
         }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblBuyer_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblImage_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pnlRegister_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
