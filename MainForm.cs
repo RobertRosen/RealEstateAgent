@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace RealEstateAgent
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
         }
@@ -38,6 +38,16 @@ namespace RealEstateAgent
         }
 
         private void lblID_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pnlInfo_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
         {
 
         }
