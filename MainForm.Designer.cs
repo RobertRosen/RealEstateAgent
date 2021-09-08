@@ -59,6 +59,7 @@ namespace RealEstateAgent
             this.lblImage = new System.Windows.Forms.Label();
             this.btnConfirm = new System.Windows.Forms.Button();
             this.pnlSeller = new System.Windows.Forms.Panel();
+            this.bxSellerCountry = new System.Windows.Forms.ComboBox();
             this.txtSellerFName = new System.Windows.Forms.TextBox();
             this.lblSellerFName = new System.Windows.Forms.Label();
             this.txtSellerLName = new System.Windows.Forms.TextBox();
@@ -72,6 +73,7 @@ namespace RealEstateAgent
             this.lblSellerStreet = new System.Windows.Forms.Label();
             this.lblSellerCountry = new System.Windows.Forms.Label();
             this.pnlBuyer = new System.Windows.Forms.Panel();
+            this.bxBuyerCountry = new System.Windows.Forms.ComboBox();
             this.txtBuyerFName = new System.Windows.Forms.TextBox();
             this.lblBuyerFName = new System.Windows.Forms.Label();
             this.txtBuyerLName = new System.Windows.Forms.TextBox();
@@ -85,6 +87,7 @@ namespace RealEstateAgent
             this.lblBuyerStreet = new System.Windows.Forms.Label();
             this.lblBuyerCountry = new System.Windows.Forms.Label();
             this.pnlEstateInfo = new System.Windows.Forms.Panel();
+            this.bxEstateCountry = new System.Windows.Forms.ComboBox();
             this.txtEstateZip = new System.Windows.Forms.TextBox();
             this.txtEstateStreet = new System.Windows.Forms.TextBox();
             this.txtEstateCity = new System.Windows.Forms.TextBox();
@@ -95,9 +98,6 @@ namespace RealEstateAgent
             this.lblEstateCountry = new System.Windows.Forms.Label();
             this.lblID = new System.Windows.Forms.Label();
             this.lblEstate = new System.Windows.Forms.Label();
-            this.bxEstateCountry = new System.Windows.Forms.ComboBox();
-            this.bxSellerCountry = new System.Windows.Forms.ComboBox();
-            this.bxBuyerCountry = new System.Windows.Forms.ComboBox();
             this.pnlRegister.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tblRegister)).BeginInit();
             this.pnlInfo.SuspendLayout();
@@ -124,7 +124,6 @@ namespace RealEstateAgent
             this.pnlRegister.Name = "pnlRegister";
             this.pnlRegister.Size = new System.Drawing.Size(668, 958);
             this.pnlRegister.TabIndex = 0;
-            this.pnlRegister.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlRegister_Paint);
             // 
             // btnAdd
             // 
@@ -191,7 +190,6 @@ namespace RealEstateAgent
             this.tblRegister.RowTemplate.Height = 25;
             this.tblRegister.Size = new System.Drawing.Size(622, 640);
             this.tblRegister.TabIndex = 2;
-            this.tblRegister.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // clmID
             // 
@@ -272,7 +270,6 @@ namespace RealEstateAgent
             this.pnlInfo.Name = "pnlInfo";
             this.pnlInfo.Size = new System.Drawing.Size(902, 958);
             this.pnlInfo.TabIndex = 1;
-            this.pnlInfo.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlInfo_Paint);
             // 
             // btnCancel
             // 
@@ -404,7 +401,6 @@ namespace RealEstateAgent
             this.lblImage.Size = new System.Drawing.Size(58, 23);
             this.lblImage.TabIndex = 3;
             this.lblImage.Text = "Image";
-            this.lblImage.Click += new System.EventHandler(this.lblImage_Click);
             // 
             // btnConfirm
             // 
@@ -436,6 +432,15 @@ namespace RealEstateAgent
             this.pnlSeller.Name = "pnlSeller";
             this.pnlSeller.Size = new System.Drawing.Size(420, 302);
             this.pnlSeller.TabIndex = 8;
+            // 
+            // bxSellerCountry
+            // 
+            this.bxSellerCountry.FormattingEnabled = true;
+            this.bxSellerCountry.Location = new System.Drawing.Point(159, 185);
+            this.bxSellerCountry.Name = "bxSellerCountry";
+            this.bxSellerCountry.Size = new System.Drawing.Size(234, 31);
+            this.bxSellerCountry.TabIndex = 26;
+            this.bxSellerCountry.Text = "Select...";
             // 
             // txtSellerFName
             // 
@@ -570,7 +575,15 @@ namespace RealEstateAgent
             this.pnlBuyer.Name = "pnlBuyer";
             this.pnlBuyer.Size = new System.Drawing.Size(420, 302);
             this.pnlBuyer.TabIndex = 7;
-            this.pnlBuyer.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // bxBuyerCountry
+            // 
+            this.bxBuyerCountry.FormattingEnabled = true;
+            this.bxBuyerCountry.Location = new System.Drawing.Point(166, 184);
+            this.bxBuyerCountry.Name = "bxBuyerCountry";
+            this.bxBuyerCountry.Size = new System.Drawing.Size(234, 31);
+            this.bxBuyerCountry.TabIndex = 28;
+            this.bxBuyerCountry.Text = "Select...";
             // 
             // txtBuyerFName
             // 
@@ -628,7 +641,6 @@ namespace RealEstateAgent
             this.lblBuyer.Size = new System.Drawing.Size(54, 23);
             this.lblBuyer.TabIndex = 6;
             this.lblBuyer.Text = "Buyer";
-            this.lblBuyer.Click += new System.EventHandler(this.lblBuyer_Click);
             // 
             // lblBuyerLName
             // 
@@ -704,6 +716,15 @@ namespace RealEstateAgent
             this.pnlEstateInfo.Name = "pnlEstateInfo";
             this.pnlEstateInfo.Size = new System.Drawing.Size(420, 263);
             this.pnlEstateInfo.TabIndex = 3;
+            // 
+            // bxEstateCountry
+            // 
+            this.bxEstateCountry.FormattingEnabled = true;
+            this.bxEstateCountry.Location = new System.Drawing.Point(160, 138);
+            this.bxEstateCountry.Name = "bxEstateCountry";
+            this.bxEstateCountry.Size = new System.Drawing.Size(234, 31);
+            this.bxEstateCountry.TabIndex = 14;
+            this.bxEstateCountry.Text = "Select...";
             // 
             // txtEstateZip
             // 
@@ -790,7 +811,6 @@ namespace RealEstateAgent
             this.lblID.Size = new System.Drawing.Size(27, 23);
             this.lblID.TabIndex = 1;
             this.lblID.Text = "ID";
-            this.lblID.Click += new System.EventHandler(this.lblID_Click);
             // 
             // lblEstate
             // 
@@ -802,34 +822,6 @@ namespace RealEstateAgent
             this.lblEstate.Size = new System.Drawing.Size(56, 23);
             this.lblEstate.TabIndex = 0;
             this.lblEstate.Text = "Estate";
-            this.lblEstate.Click += new System.EventHandler(this.label1_Click_1);
-            // 
-            // bxEstateCountry
-            // 
-            this.bxEstateCountry.FormattingEnabled = true;
-            this.bxEstateCountry.Location = new System.Drawing.Point(160, 138);
-            this.bxEstateCountry.Name = "bxEstateCountry";
-            this.bxEstateCountry.Size = new System.Drawing.Size(234, 31);
-            this.bxEstateCountry.TabIndex = 14;
-            this.bxEstateCountry.Text = "Select...";
-            // 
-            // bxSellerCountry
-            // 
-            this.bxSellerCountry.FormattingEnabled = true;
-            this.bxSellerCountry.Location = new System.Drawing.Point(159, 185);
-            this.bxSellerCountry.Name = "bxSellerCountry";
-            this.bxSellerCountry.Size = new System.Drawing.Size(234, 31);
-            this.bxSellerCountry.TabIndex = 26;
-            this.bxSellerCountry.Text = "Select...";
-            // 
-            // bxBuyerCountry
-            // 
-            this.bxBuyerCountry.FormattingEnabled = true;
-            this.bxBuyerCountry.Location = new System.Drawing.Point(166, 184);
-            this.bxBuyerCountry.Name = "bxBuyerCountry";
-            this.bxBuyerCountry.Size = new System.Drawing.Size(234, 31);
-            this.bxBuyerCountry.TabIndex = 28;
-            this.bxBuyerCountry.Text = "Select...";
             // 
             // MainForm
             // 
@@ -844,7 +836,6 @@ namespace RealEstateAgent
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Real Estate Agent";
-            this.Load += new System.EventHandler(this.MainForm_Load);
             this.pnlRegister.ResumeLayout(false);
             this.pnlRegister.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tblRegister)).EndInit();
