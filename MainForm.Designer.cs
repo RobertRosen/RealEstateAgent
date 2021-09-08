@@ -59,13 +59,12 @@ namespace RealEstateAgent
             this.lblImage = new System.Windows.Forms.Label();
             this.btnConfirm = new System.Windows.Forms.Button();
             this.pnlSeller = new System.Windows.Forms.Panel();
-            this.textBox15 = new System.Windows.Forms.TextBox();
+            this.txtSellerFName = new System.Windows.Forms.TextBox();
             this.lblSellerFName = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.txtSellerLName = new System.Windows.Forms.TextBox();
+            this.txtSellerZip = new System.Windows.Forms.TextBox();
+            this.txtSellerStreet = new System.Windows.Forms.TextBox();
+            this.txtSellerCity = new System.Windows.Forms.TextBox();
             this.lblSeller = new System.Windows.Forms.Label();
             this.lblSellerLName = new System.Windows.Forms.Label();
             this.lblSellerZip = new System.Windows.Forms.Label();
@@ -73,13 +72,12 @@ namespace RealEstateAgent
             this.lblSellerStreet = new System.Windows.Forms.Label();
             this.lblSellerCountry = new System.Windows.Forms.Label();
             this.pnlBuyer = new System.Windows.Forms.Panel();
-            this.textBox16 = new System.Windows.Forms.TextBox();
+            this.txtBuyerFName = new System.Windows.Forms.TextBox();
             this.lblBuyerFName = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.txtBuyerLName = new System.Windows.Forms.TextBox();
+            this.txtBuyerZip = new System.Windows.Forms.TextBox();
+            this.txtBuyerStreet = new System.Windows.Forms.TextBox();
+            this.txtBuyerCity = new System.Windows.Forms.TextBox();
             this.lblBuyer = new System.Windows.Forms.Label();
             this.lblBuyerLName = new System.Windows.Forms.Label();
             this.lblBuyerZip = new System.Windows.Forms.Label();
@@ -87,10 +85,9 @@ namespace RealEstateAgent
             this.lblBuyerStreet = new System.Windows.Forms.Label();
             this.lblBuyerCountry = new System.Windows.Forms.Label();
             this.pnlEstateInfo = new System.Windows.Forms.Panel();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtEstateZip = new System.Windows.Forms.TextBox();
+            this.txtEstateStreet = new System.Windows.Forms.TextBox();
+            this.txtEstateCity = new System.Windows.Forms.TextBox();
             this.lblPresentID = new System.Windows.Forms.Label();
             this.lblEstateZip = new System.Windows.Forms.Label();
             this.lblEstateCity = new System.Windows.Forms.Label();
@@ -98,6 +95,9 @@ namespace RealEstateAgent
             this.lblEstateCountry = new System.Windows.Forms.Label();
             this.lblID = new System.Windows.Forms.Label();
             this.lblEstate = new System.Windows.Forms.Label();
+            this.bxEstateCountry = new System.Windows.Forms.ComboBox();
+            this.bxSellerCountry = new System.Windows.Forms.ComboBox();
+            this.bxBuyerCountry = new System.Windows.Forms.ComboBox();
             this.pnlRegister.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tblRegister)).BeginInit();
             this.pnlInfo.SuspendLayout();
@@ -418,13 +418,13 @@ namespace RealEstateAgent
             // pnlSeller
             // 
             this.pnlSeller.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlSeller.Controls.Add(this.textBox15);
+            this.pnlSeller.Controls.Add(this.bxSellerCountry);
+            this.pnlSeller.Controls.Add(this.txtSellerFName);
             this.pnlSeller.Controls.Add(this.lblSellerFName);
-            this.pnlSeller.Controls.Add(this.textBox10);
-            this.pnlSeller.Controls.Add(this.textBox11);
-            this.pnlSeller.Controls.Add(this.textBox12);
-            this.pnlSeller.Controls.Add(this.textBox13);
-            this.pnlSeller.Controls.Add(this.textBox14);
+            this.pnlSeller.Controls.Add(this.txtSellerLName);
+            this.pnlSeller.Controls.Add(this.txtSellerZip);
+            this.pnlSeller.Controls.Add(this.txtSellerStreet);
+            this.pnlSeller.Controls.Add(this.txtSellerCity);
             this.pnlSeller.Controls.Add(this.lblSeller);
             this.pnlSeller.Controls.Add(this.lblSellerLName);
             this.pnlSeller.Controls.Add(this.lblSellerZip);
@@ -437,12 +437,12 @@ namespace RealEstateAgent
             this.pnlSeller.Size = new System.Drawing.Size(420, 302);
             this.pnlSeller.TabIndex = 8;
             // 
-            // textBox15
+            // txtSellerFName
             // 
-            this.textBox15.Location = new System.Drawing.Point(160, 73);
-            this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(233, 30);
-            this.textBox15.TabIndex = 25;
+            this.txtSellerFName.Location = new System.Drawing.Point(160, 73);
+            this.txtSellerFName.Name = "txtSellerFName";
+            this.txtSellerFName.Size = new System.Drawing.Size(233, 30);
+            this.txtSellerFName.TabIndex = 25;
             // 
             // lblSellerFName
             // 
@@ -455,40 +455,33 @@ namespace RealEstateAgent
             this.lblSellerFName.TabIndex = 24;
             this.lblSellerFName.Text = "First Name";
             // 
-            // textBox10
+            // txtSellerLName
             // 
-            this.textBox10.Location = new System.Drawing.Point(160, 109);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(233, 30);
-            this.textBox10.TabIndex = 23;
+            this.txtSellerLName.Location = new System.Drawing.Point(160, 109);
+            this.txtSellerLName.Name = "txtSellerLName";
+            this.txtSellerLName.Size = new System.Drawing.Size(233, 30);
+            this.txtSellerLName.TabIndex = 23;
             // 
-            // textBox11
+            // txtSellerZip
             // 
-            this.textBox11.Location = new System.Drawing.Point(160, 257);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(233, 30);
-            this.textBox11.TabIndex = 22;
+            this.txtSellerZip.Location = new System.Drawing.Point(160, 257);
+            this.txtSellerZip.Name = "txtSellerZip";
+            this.txtSellerZip.Size = new System.Drawing.Size(233, 30);
+            this.txtSellerZip.TabIndex = 22;
             // 
-            // textBox12
+            // txtSellerStreet
             // 
-            this.textBox12.Location = new System.Drawing.Point(160, 221);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(233, 30);
-            this.textBox12.TabIndex = 21;
+            this.txtSellerStreet.Location = new System.Drawing.Point(160, 221);
+            this.txtSellerStreet.Name = "txtSellerStreet";
+            this.txtSellerStreet.Size = new System.Drawing.Size(233, 30);
+            this.txtSellerStreet.TabIndex = 21;
             // 
-            // textBox13
+            // txtSellerCity
             // 
-            this.textBox13.Location = new System.Drawing.Point(160, 185);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(233, 30);
-            this.textBox13.TabIndex = 20;
-            // 
-            // textBox14
-            // 
-            this.textBox14.Location = new System.Drawing.Point(160, 149);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(233, 30);
-            this.textBox14.TabIndex = 19;
+            this.txtSellerCity.Location = new System.Drawing.Point(160, 149);
+            this.txtSellerCity.Name = "txtSellerCity";
+            this.txtSellerCity.Size = new System.Drawing.Size(233, 30);
+            this.txtSellerCity.TabIndex = 19;
             // 
             // lblSeller
             // 
@@ -559,13 +552,13 @@ namespace RealEstateAgent
             // pnlBuyer
             // 
             this.pnlBuyer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlBuyer.Controls.Add(this.textBox16);
+            this.pnlBuyer.Controls.Add(this.bxBuyerCountry);
+            this.pnlBuyer.Controls.Add(this.txtBuyerFName);
             this.pnlBuyer.Controls.Add(this.lblBuyerFName);
-            this.pnlBuyer.Controls.Add(this.textBox9);
-            this.pnlBuyer.Controls.Add(this.textBox5);
-            this.pnlBuyer.Controls.Add(this.textBox6);
-            this.pnlBuyer.Controls.Add(this.textBox7);
-            this.pnlBuyer.Controls.Add(this.textBox8);
+            this.pnlBuyer.Controls.Add(this.txtBuyerLName);
+            this.pnlBuyer.Controls.Add(this.txtBuyerZip);
+            this.pnlBuyer.Controls.Add(this.txtBuyerStreet);
+            this.pnlBuyer.Controls.Add(this.txtBuyerCity);
             this.pnlBuyer.Controls.Add(this.lblBuyer);
             this.pnlBuyer.Controls.Add(this.lblBuyerLName);
             this.pnlBuyer.Controls.Add(this.lblBuyerZip);
@@ -579,12 +572,12 @@ namespace RealEstateAgent
             this.pnlBuyer.TabIndex = 7;
             this.pnlBuyer.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
-            // textBox16
+            // txtBuyerFName
             // 
-            this.textBox16.Location = new System.Drawing.Point(166, 70);
-            this.textBox16.Name = "textBox16";
-            this.textBox16.Size = new System.Drawing.Size(233, 30);
-            this.textBox16.TabIndex = 27;
+            this.txtBuyerFName.Location = new System.Drawing.Point(166, 70);
+            this.txtBuyerFName.Name = "txtBuyerFName";
+            this.txtBuyerFName.Size = new System.Drawing.Size(233, 30);
+            this.txtBuyerFName.TabIndex = 27;
             // 
             // lblBuyerFName
             // 
@@ -597,40 +590,33 @@ namespace RealEstateAgent
             this.lblBuyerFName.TabIndex = 26;
             this.lblBuyerFName.Text = "First Name";
             // 
-            // textBox9
+            // txtBuyerLName
             // 
-            this.textBox9.Location = new System.Drawing.Point(166, 109);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(233, 30);
-            this.textBox9.TabIndex = 18;
+            this.txtBuyerLName.Location = new System.Drawing.Point(166, 109);
+            this.txtBuyerLName.Name = "txtBuyerLName";
+            this.txtBuyerLName.Size = new System.Drawing.Size(233, 30);
+            this.txtBuyerLName.TabIndex = 18;
             // 
-            // textBox5
+            // txtBuyerZip
             // 
-            this.textBox5.Location = new System.Drawing.Point(166, 257);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(233, 30);
-            this.textBox5.TabIndex = 17;
+            this.txtBuyerZip.Location = new System.Drawing.Point(166, 257);
+            this.txtBuyerZip.Name = "txtBuyerZip";
+            this.txtBuyerZip.Size = new System.Drawing.Size(233, 30);
+            this.txtBuyerZip.TabIndex = 17;
             // 
-            // textBox6
+            // txtBuyerStreet
             // 
-            this.textBox6.Location = new System.Drawing.Point(166, 221);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(233, 30);
-            this.textBox6.TabIndex = 16;
+            this.txtBuyerStreet.Location = new System.Drawing.Point(166, 221);
+            this.txtBuyerStreet.Name = "txtBuyerStreet";
+            this.txtBuyerStreet.Size = new System.Drawing.Size(233, 30);
+            this.txtBuyerStreet.TabIndex = 16;
             // 
-            // textBox7
+            // txtBuyerCity
             // 
-            this.textBox7.Location = new System.Drawing.Point(166, 185);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(233, 30);
-            this.textBox7.TabIndex = 15;
-            // 
-            // textBox8
-            // 
-            this.textBox8.Location = new System.Drawing.Point(166, 149);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(233, 30);
-            this.textBox8.TabIndex = 14;
+            this.txtBuyerCity.Location = new System.Drawing.Point(166, 149);
+            this.txtBuyerCity.Name = "txtBuyerCity";
+            this.txtBuyerCity.Size = new System.Drawing.Size(233, 30);
+            this.txtBuyerCity.TabIndex = 14;
             // 
             // lblBuyer
             // 
@@ -702,10 +688,10 @@ namespace RealEstateAgent
             // pnlEstateInfo
             // 
             this.pnlEstateInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlEstateInfo.Controls.Add(this.textBox4);
-            this.pnlEstateInfo.Controls.Add(this.textBox3);
-            this.pnlEstateInfo.Controls.Add(this.textBox2);
-            this.pnlEstateInfo.Controls.Add(this.textBox1);
+            this.pnlEstateInfo.Controls.Add(this.bxEstateCountry);
+            this.pnlEstateInfo.Controls.Add(this.txtEstateZip);
+            this.pnlEstateInfo.Controls.Add(this.txtEstateStreet);
+            this.pnlEstateInfo.Controls.Add(this.txtEstateCity);
             this.pnlEstateInfo.Controls.Add(this.lblPresentID);
             this.pnlEstateInfo.Controls.Add(this.lblEstateZip);
             this.pnlEstateInfo.Controls.Add(this.lblEstateCity);
@@ -719,33 +705,26 @@ namespace RealEstateAgent
             this.pnlEstateInfo.Size = new System.Drawing.Size(420, 263);
             this.pnlEstateInfo.TabIndex = 3;
             // 
-            // textBox4
+            // txtEstateZip
             // 
-            this.textBox4.Location = new System.Drawing.Point(160, 211);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(233, 30);
-            this.textBox4.TabIndex = 13;
+            this.txtEstateZip.Location = new System.Drawing.Point(160, 211);
+            this.txtEstateZip.Name = "txtEstateZip";
+            this.txtEstateZip.Size = new System.Drawing.Size(233, 30);
+            this.txtEstateZip.TabIndex = 13;
             // 
-            // textBox3
+            // txtEstateStreet
             // 
-            this.textBox3.Location = new System.Drawing.Point(160, 175);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(233, 30);
-            this.textBox3.TabIndex = 12;
+            this.txtEstateStreet.Location = new System.Drawing.Point(160, 175);
+            this.txtEstateStreet.Name = "txtEstateStreet";
+            this.txtEstateStreet.Size = new System.Drawing.Size(233, 30);
+            this.txtEstateStreet.TabIndex = 12;
             // 
-            // textBox2
+            // txtEstateCity
             // 
-            this.textBox2.Location = new System.Drawing.Point(160, 139);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(233, 30);
-            this.textBox2.TabIndex = 11;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(160, 103);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(233, 30);
-            this.textBox1.TabIndex = 10;
+            this.txtEstateCity.Location = new System.Drawing.Point(160, 103);
+            this.txtEstateCity.Name = "txtEstateCity";
+            this.txtEstateCity.Size = new System.Drawing.Size(233, 30);
+            this.txtEstateCity.TabIndex = 10;
             // 
             // lblPresentID
             // 
@@ -825,6 +804,33 @@ namespace RealEstateAgent
             this.lblEstate.Text = "Estate";
             this.lblEstate.Click += new System.EventHandler(this.label1_Click_1);
             // 
+            // bxEstateCountry
+            // 
+            this.bxEstateCountry.FormattingEnabled = true;
+            this.bxEstateCountry.Location = new System.Drawing.Point(160, 138);
+            this.bxEstateCountry.Name = "bxEstateCountry";
+            this.bxEstateCountry.Size = new System.Drawing.Size(234, 31);
+            this.bxEstateCountry.TabIndex = 14;
+            this.bxEstateCountry.Text = "Select...";
+            // 
+            // bxSellerCountry
+            // 
+            this.bxSellerCountry.FormattingEnabled = true;
+            this.bxSellerCountry.Location = new System.Drawing.Point(159, 185);
+            this.bxSellerCountry.Name = "bxSellerCountry";
+            this.bxSellerCountry.Size = new System.Drawing.Size(234, 31);
+            this.bxSellerCountry.TabIndex = 26;
+            this.bxSellerCountry.Text = "Select...";
+            // 
+            // bxBuyerCountry
+            // 
+            this.bxBuyerCountry.FormattingEnabled = true;
+            this.bxBuyerCountry.Location = new System.Drawing.Point(166, 184);
+            this.bxBuyerCountry.Name = "bxBuyerCountry";
+            this.bxBuyerCountry.Size = new System.Drawing.Size(234, 31);
+            this.bxBuyerCountry.TabIndex = 28;
+            this.bxBuyerCountry.Text = "Select...";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
@@ -897,23 +903,20 @@ namespace RealEstateAgent
         private System.Windows.Forms.DataGridViewTextBoxColumn colBuyer;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPayment;
         private System.Windows.Forms.Button btnConfirm;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.TextBox textBox13;
-        private System.Windows.Forms.TextBox textBox14;
-        private System.Windows.Forms.TextBox textBox15;
+        private System.Windows.Forms.TextBox txtBuyerLName;
+        private System.Windows.Forms.TextBox txtBuyerZip;
+        private System.Windows.Forms.TextBox txtBuyerStreet;
+        private System.Windows.Forms.TextBox txtBuyerCity;
+        private System.Windows.Forms.TextBox txtEstateZip;
+        private System.Windows.Forms.TextBox txtEstateStreet;
+        private System.Windows.Forms.TextBox txtEstateCity;
+        private System.Windows.Forms.TextBox txtSellerLName;
+        private System.Windows.Forms.TextBox txtSellerZip;
+        private System.Windows.Forms.TextBox txtSellerStreet;
+        private System.Windows.Forms.TextBox txtSellerCity;
+        private System.Windows.Forms.TextBox txtSellerFName;
         private System.Windows.Forms.Label lblSellerFName;
-        private System.Windows.Forms.TextBox textBox16;
+        private System.Windows.Forms.TextBox txtBuyerFName;
         private System.Windows.Forms.Label lblBuyerFName;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblRegister;
@@ -929,6 +932,9 @@ namespace RealEstateAgent
         private System.Windows.Forms.Label lblPayment;
         private System.Windows.Forms.Button btnBrowseImg;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.ComboBox bxSellerCountry;
+        private System.Windows.Forms.ComboBox bxBuyerCountry;
+        private System.Windows.Forms.ComboBox bxEstateCountry;
     }
 }
 
