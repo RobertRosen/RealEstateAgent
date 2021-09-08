@@ -48,9 +48,6 @@ namespace RealEstateAgent
             this.btnCancel = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblPaymentMethod = new System.Windows.Forms.Label();
-            this.rbtnPP = new System.Windows.Forms.RadioButton();
-            this.rbtnWU = new System.Windows.Forms.RadioButton();
-            this.rbtnBank = new System.Windows.Forms.RadioButton();
             this.lblPayment = new System.Windows.Forms.Label();
             this.lblInfo = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -98,6 +95,9 @@ namespace RealEstateAgent
             this.lblEstateCountry = new System.Windows.Forms.Label();
             this.lblID = new System.Windows.Forms.Label();
             this.lblEstate = new System.Windows.Forms.Label();
+            this.lblLegalForm = new System.Windows.Forms.Label();
+            this.bxLegalForm = new System.Windows.Forms.ComboBox();
+            this.bxPaymentMethod = new System.Windows.Forms.ComboBox();
             this.pnlRegister.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tblRegister)).BeginInit();
             this.pnlInfo.SuspendLayout();
@@ -283,63 +283,22 @@ namespace RealEstateAgent
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.bxPaymentMethod);
             this.panel2.Controls.Add(this.lblPaymentMethod);
-            this.panel2.Controls.Add(this.rbtnPP);
-            this.panel2.Controls.Add(this.rbtnWU);
-            this.panel2.Controls.Add(this.rbtnBank);
             this.panel2.Controls.Add(this.lblPayment);
-            this.panel2.Location = new System.Drawing.Point(18, 351);
+            this.panel2.Location = new System.Drawing.Point(18, 393);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(420, 184);
+            this.panel2.Size = new System.Drawing.Size(420, 142);
             this.panel2.TabIndex = 12;
             // 
             // lblPaymentMethod
             // 
             this.lblPaymentMethod.AutoSize = true;
-            this.lblPaymentMethod.Location = new System.Drawing.Point(11, 64);
+            this.lblPaymentMethod.Location = new System.Drawing.Point(11, 43);
             this.lblPaymentMethod.Name = "lblPaymentMethod";
             this.lblPaymentMethod.Size = new System.Drawing.Size(71, 23);
             this.lblPaymentMethod.TabIndex = 13;
             this.lblPaymentMethod.Text = "Method";
-            // 
-            // rbtnPP
-            // 
-            this.rbtnPP.AutoSize = true;
-            this.rbtnPP.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.rbtnPP.Location = new System.Drawing.Point(158, 132);
-            this.rbtnPP.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.rbtnPP.Name = "rbtnPP";
-            this.rbtnPP.Size = new System.Drawing.Size(71, 24);
-            this.rbtnPP.TabIndex = 12;
-            this.rbtnPP.TabStop = true;
-            this.rbtnPP.Text = "PayPal";
-            this.rbtnPP.UseVisualStyleBackColor = true;
-            // 
-            // rbtnWU
-            // 
-            this.rbtnWU.AutoSize = true;
-            this.rbtnWU.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.rbtnWU.Location = new System.Drawing.Point(158, 98);
-            this.rbtnWU.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.rbtnWU.Name = "rbtnWU";
-            this.rbtnWU.Size = new System.Drawing.Size(126, 24);
-            this.rbtnWU.TabIndex = 11;
-            this.rbtnWU.TabStop = true;
-            this.rbtnWU.Text = "Western Union";
-            this.rbtnWU.UseVisualStyleBackColor = true;
-            // 
-            // rbtnBank
-            // 
-            this.rbtnBank.AutoSize = true;
-            this.rbtnBank.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.rbtnBank.Location = new System.Drawing.Point(158, 64);
-            this.rbtnBank.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.rbtnBank.Name = "rbtnBank";
-            this.rbtnBank.Size = new System.Drawing.Size(62, 24);
-            this.rbtnBank.TabIndex = 10;
-            this.rbtnBank.TabStop = true;
-            this.rbtnBank.Text = "Bank";
-            this.rbtnBank.UseVisualStyleBackColor = true;
             // 
             // lblPayment
             // 
@@ -700,6 +659,8 @@ namespace RealEstateAgent
             // pnlEstateInfo
             // 
             this.pnlEstateInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlEstateInfo.Controls.Add(this.bxLegalForm);
+            this.pnlEstateInfo.Controls.Add(this.lblLegalForm);
             this.pnlEstateInfo.Controls.Add(this.bxEstateCountry);
             this.pnlEstateInfo.Controls.Add(this.txtEstateZip);
             this.pnlEstateInfo.Controls.Add(this.txtEstateStreet);
@@ -714,13 +675,13 @@ namespace RealEstateAgent
             this.pnlEstateInfo.Location = new System.Drawing.Point(18, 63);
             this.pnlEstateInfo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlEstateInfo.Name = "pnlEstateInfo";
-            this.pnlEstateInfo.Size = new System.Drawing.Size(420, 263);
+            this.pnlEstateInfo.Size = new System.Drawing.Size(420, 311);
             this.pnlEstateInfo.TabIndex = 3;
             // 
             // bxEstateCountry
             // 
             this.bxEstateCountry.FormattingEnabled = true;
-            this.bxEstateCountry.Location = new System.Drawing.Point(160, 138);
+            this.bxEstateCountry.Location = new System.Drawing.Point(159, 192);
             this.bxEstateCountry.Name = "bxEstateCountry";
             this.bxEstateCountry.Size = new System.Drawing.Size(234, 31);
             this.bxEstateCountry.TabIndex = 14;
@@ -728,21 +689,21 @@ namespace RealEstateAgent
             // 
             // txtEstateZip
             // 
-            this.txtEstateZip.Location = new System.Drawing.Point(160, 211);
+            this.txtEstateZip.Location = new System.Drawing.Point(159, 265);
             this.txtEstateZip.Name = "txtEstateZip";
             this.txtEstateZip.Size = new System.Drawing.Size(233, 30);
             this.txtEstateZip.TabIndex = 13;
             // 
             // txtEstateStreet
             // 
-            this.txtEstateStreet.Location = new System.Drawing.Point(160, 175);
+            this.txtEstateStreet.Location = new System.Drawing.Point(159, 229);
             this.txtEstateStreet.Name = "txtEstateStreet";
             this.txtEstateStreet.Size = new System.Drawing.Size(233, 30);
             this.txtEstateStreet.TabIndex = 12;
             // 
             // txtEstateCity
             // 
-            this.txtEstateCity.Location = new System.Drawing.Point(160, 103);
+            this.txtEstateCity.Location = new System.Drawing.Point(159, 157);
             this.txtEstateCity.Name = "txtEstateCity";
             this.txtEstateCity.Size = new System.Drawing.Size(233, 30);
             this.txtEstateCity.TabIndex = 10;
@@ -761,7 +722,7 @@ namespace RealEstateAgent
             // 
             this.lblEstateZip.AutoSize = true;
             this.lblEstateZip.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblEstateZip.Location = new System.Drawing.Point(14, 211);
+            this.lblEstateZip.Location = new System.Drawing.Point(13, 265);
             this.lblEstateZip.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEstateZip.Name = "lblEstateZip";
             this.lblEstateZip.Size = new System.Drawing.Size(79, 23);
@@ -772,7 +733,7 @@ namespace RealEstateAgent
             // 
             this.lblEstateCity.AutoSize = true;
             this.lblEstateCity.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblEstateCity.Location = new System.Drawing.Point(12, 103);
+            this.lblEstateCity.Location = new System.Drawing.Point(11, 157);
             this.lblEstateCity.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEstateCity.Name = "lblEstateCity";
             this.lblEstateCity.Size = new System.Drawing.Size(40, 23);
@@ -783,7 +744,7 @@ namespace RealEstateAgent
             // 
             this.lblEstateStreet.AutoSize = true;
             this.lblEstateStreet.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblEstateStreet.Location = new System.Drawing.Point(14, 175);
+            this.lblEstateStreet.Location = new System.Drawing.Point(13, 229);
             this.lblEstateStreet.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEstateStreet.Name = "lblEstateStreet";
             this.lblEstateStreet.Size = new System.Drawing.Size(55, 23);
@@ -794,7 +755,7 @@ namespace RealEstateAgent
             // 
             this.lblEstateCountry.AutoSize = true;
             this.lblEstateCountry.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblEstateCountry.Location = new System.Drawing.Point(12, 139);
+            this.lblEstateCountry.Location = new System.Drawing.Point(11, 193);
             this.lblEstateCountry.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEstateCountry.Name = "lblEstateCountry";
             this.lblEstateCountry.Size = new System.Drawing.Size(73, 23);
@@ -822,6 +783,33 @@ namespace RealEstateAgent
             this.lblEstate.Size = new System.Drawing.Size(56, 23);
             this.lblEstate.TabIndex = 0;
             this.lblEstate.Text = "Estate";
+            // 
+            // lblLegalForm
+            // 
+            this.lblLegalForm.AutoSize = true;
+            this.lblLegalForm.Location = new System.Drawing.Point(11, 104);
+            this.lblLegalForm.Name = "lblLegalForm";
+            this.lblLegalForm.Size = new System.Drawing.Size(95, 23);
+            this.lblLegalForm.TabIndex = 15;
+            this.lblLegalForm.Text = "Legal Form";
+            // 
+            // bxLegalForm
+            // 
+            this.bxLegalForm.FormattingEnabled = true;
+            this.bxLegalForm.Location = new System.Drawing.Point(159, 104);
+            this.bxLegalForm.Name = "bxLegalForm";
+            this.bxLegalForm.Size = new System.Drawing.Size(234, 31);
+            this.bxLegalForm.TabIndex = 16;
+            this.bxLegalForm.Text = "Select...";
+            // 
+            // bxPaymentMethod
+            // 
+            this.bxPaymentMethod.FormattingEnabled = true;
+            this.bxPaymentMethod.Location = new System.Drawing.Point(158, 43);
+            this.bxPaymentMethod.Name = "bxPaymentMethod";
+            this.bxPaymentMethod.Size = new System.Drawing.Size(234, 31);
+            this.bxPaymentMethod.TabIndex = 17;
+            this.bxPaymentMethod.Text = "Select...";
             // 
             // MainForm
             // 
@@ -917,15 +905,15 @@ namespace RealEstateAgent
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lblPaymentMethod;
-        private System.Windows.Forms.RadioButton rbtnPP;
-        private System.Windows.Forms.RadioButton rbtnWU;
-        private System.Windows.Forms.RadioButton rbtnBank;
         private System.Windows.Forms.Label lblPayment;
         private System.Windows.Forms.Button btnBrowseImg;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ComboBox bxSellerCountry;
         private System.Windows.Forms.ComboBox bxBuyerCountry;
         private System.Windows.Forms.ComboBox bxEstateCountry;
+        private System.Windows.Forms.ComboBox bxPaymentMethod;
+        private System.Windows.Forms.ComboBox bxLegalForm;
+        private System.Windows.Forms.Label lblLegalForm;
     }
 }
 
