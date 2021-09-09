@@ -19,6 +19,7 @@ namespace RealEstateAgent
     /// </summary>
     public partial class MainForm : Form
     {
+        private EstateManager estateManager = new EstateManager(this);
         public MainForm()
         {
             InitializeComponent();
@@ -46,6 +47,7 @@ namespace RealEstateAgent
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            ReadEstateAdd();
             //Read Input
             bool ok = ReadInput();
         }
@@ -97,6 +99,12 @@ namespace RealEstateAgent
         private void ReadEstateAdd()
         {
             EstateType enumEstateType = (EstateType)bxEstateType.SelectedItem;
+            estateManager.CreateEstate(enumEstateType);
+        }
+        
+        public void SetEstateID(int ID)
+        {
+            lblPresentID.Text = ID.ToString();
         }
     }
 }
