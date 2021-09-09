@@ -90,6 +90,8 @@ namespace RealEstateAgent
         private void ReadPaymentInfo()
         {
             PaymentMethods enumPayment = (PaymentMethods)bxPaymentMethod.SelectedItem;
+            String strAmount = bxPaymentMethod.Text;
+            String strComment = bxPaymentMethod.Text;
         }
 
         private void ReadEstateAdd()
