@@ -6,6 +6,6 @@ using System.Text;
 namespace RealEstateAgent
 {
     public abstract class Residental : Estate
-    {
+    { 
     }
 }

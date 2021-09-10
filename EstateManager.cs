@@ -19,6 +19,7 @@ namespace RealEstateAgent
                 case EstateType.Apartment:
                     {
                         estate = new Apartment();
+                        //TODO. Get legalform. Type casting? 
                         break;
                     }
                 case EstateType.School:
@@ -62,6 +63,17 @@ namespace RealEstateAgent
             }
 
             return lstEstates;
+        }
+
+        public void SetAddress(Address address)
+        {
+            estate.Address = address;
+        }
+
+        public void SetEstateInfo(Address address, LegalForm legalForm)
+        {
+            estate.Address = address;
+            
         }
     }
 }

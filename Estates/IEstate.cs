@@ -7,18 +7,8 @@ namespace RealEstateAgent
 {
     public interface IEstate
     {
-        int EstateID 
-        { 
-            get; 
-            set; 
-        }
-
-        Address Address 
-        { 
-            get; 
-            set; 
-        }
-
+        int EstateID { get; set; }
+        Address Address { get; set; }
         Person Person { get; set; }
     }
 }

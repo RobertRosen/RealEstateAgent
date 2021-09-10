@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="RealEstateAgent.Apartment">
-    <Position X="10.25" Y="8" Width="1.5" />
+    <Position X="10.75" Y="8.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
       <FileName>Estates\Apartment.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="RealEstateAgent.Villa">
-    <Position X="13.5" Y="8" Width="1.5" />
+    <Position X="12.75" Y="8.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Estates\Villa.cs</FileName>
@@ -31,7 +31,7 @@
   <Class Name="RealEstateAgent.Estate">
     <Position X="6" Y="2.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAAAAAAAAQAAAAAAAAAAAAAAAIAAAACAAAABACAAAA=</HashCode>
+      <HashCode>AIAAAAAAAAQAAAAEAAAAAAAAAAIAAAACAAAABACAAAA=</HashCode>
       <FileName>Estates\Estate.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.627" />
@@ -58,7 +58,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="RealEstateAgent.Townhouse">
-    <Position X="13.5" Y="9.5" Width="1.5" />
+    <Position X="12.75" Y="9.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Estates\Townhouse.cs</FileName>
@@ -83,20 +83,6 @@
     <TypeIdentifier>
       <HashCode>AAAAAQAAAAAAAAAIAAAACAAAAAIAAgADAAIAAAAAAAA=</HashCode>
       <FileName>Address.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="RealEstateAgent.Rental">
-    <Position X="9.25" Y="9.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Estates\Rental.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="RealEstateAgent.Tenement">
-    <Position X="11.25" Y="9.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Estates\Tenement.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="RealEstateAgent.Person">

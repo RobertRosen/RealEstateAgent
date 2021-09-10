@@ -32,5 +32,10 @@ namespace RealEstateAgent
             get { return person; }
             set { person = value; }
         }
+
+        public override string ToString()
+        {
+            return estateID + " " + address.Street + " " + address.ZipCode + " " + address.City + " " + address.Country;
+        }
     }
 }

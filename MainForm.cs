@@ -52,14 +52,12 @@ namespace RealEstateAgent
             ReadEstateAdd();
 
             ClearFields();
- 
-            bool ok = ReadInput();
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             EnabledInfoFields(false);
-
+            ReadEstateInfo();
             // Add estate to Register.
             List<IEstate> lstEstates = estateManager.AddEstateToRegister();
             lstbxRegister.Items.Clear();
@@ -74,21 +72,23 @@ namespace RealEstateAgent
             ClearFields();
         }
 
-        private bool ReadInput()
-        {
-            bool ok = true;
-            //ReadEstateInfo();
-
-            return ok;
-        }
-
         private void ReadEstateInfo()
         {
+
             LegalForm enumLegalForm = (LegalForm)bxLegalForm.SelectedItem;
+
             Countries enumCountry = (Countries)bxEstateCountry.SelectedItem;
             String strCity = txtEstateCity.Text;
             String strStreet = txtEstateStreet.Text;
             String strZipCode = txtEstateZip.Text;
+
+            Address address = new Address();
+            address.Country = enumCountry;
+            address.City = strCity;
+            address.Street = strStreet;
+            address.ZipCode = strZipCode;
+
+            estateManager.SetAddress(address);
         }
 
         private void ReadSellerInfo()
