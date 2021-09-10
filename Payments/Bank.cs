@@ -21,5 +21,13 @@ namespace RealEstateAgent
             get { return accountNumber; }
             set { accountNumber = value; }
         }
+
+        public override string ToString()
+        {
+            return String.Format("{0} Name({1}) AccountNumber({2})",
+                base.ToString(),    // 0
+                name,               // 1
+                accountNumber);     // 2
+        }
     }
 }

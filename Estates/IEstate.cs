@@ -9,6 +9,8 @@ namespace RealEstateAgent
     {
         int EstateID { get; set; }
         Address Address { get; set; }
-        Person Person { get; set; }
+        Person Buyer { get; set; }
+        Person Seller { get; set; }
+        Payment Payment { get; set; }
     }
 }

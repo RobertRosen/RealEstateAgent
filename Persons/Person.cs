@@ -7,7 +7,7 @@ namespace RealEstateAgent
 {
     public class Person
     {
-        private String name;
+        private string name;
         private Address address;
 
         public String Name
@@ -24,6 +24,13 @@ namespace RealEstateAgent
         {
             get { return address; }
             set { address = value; }
+        }
+
+        public override string ToString()
+        {
+            return String.Format("Name({0}) Address({1})",
+                name,       // 0
+                address);   // 1
         }
     }
 }

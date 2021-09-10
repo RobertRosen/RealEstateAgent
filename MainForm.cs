@@ -58,6 +58,9 @@ namespace RealEstateAgent
         {
             EnabledInfoFields(false);
             ReadEstateInfo();
+            ReadBuyerInfo();
+            ReadSellerInfo();
+            ReadPaymentInfo();
             // Add estate to Register.
             List<IEstate> lstEstates = estateManager.AddEstateToRegister();
             lstbxRegister.Items.Clear();
@@ -88,7 +91,7 @@ namespace RealEstateAgent
             address.Street = strStreet;
             address.ZipCode = strZipCode;
 
-            estateManager.SetAddress(address);
+            estateManager.SetEstateInfo(address, enumLegalForm);
         }
 
         private void ReadSellerInfo()
@@ -99,6 +102,14 @@ namespace RealEstateAgent
             String strCity = txtSellerCity.Text;
             String strStreet = txtSellerStreet.Text;
             String strZipCode = txtSellerZip.Text;
+
+            Address address = new Address();
+            address.Country = enumCountry;
+            address.City = strCity;
+            address.Street = strStreet;
+            address.ZipCode = strZipCode;
+
+            estateManager.SetSellerInfo(address, strFName+" "+strLName);
         }
 
         private void ReadBuyerInfo()
@@ -109,13 +120,23 @@ namespace RealEstateAgent
             String strCity = txtBuyerCity.Text;
             String strStreet = txtBuyerStreet.Text;
             String strZipCode = txtBuyerZip.Text;
+
+            Address address = new Address();
+            address.Country = enumCountry;
+            address.City = strCity;
+            address.Street = strStreet;
+            address.ZipCode = strZipCode;
+
+            estateManager.SetBuyerInfo(address, strFName + " " + strLName);
         }
 
         private void ReadPaymentInfo()
         {
             PaymentMethods enumPayment = (PaymentMethods)bxPaymentMethod.SelectedItem;
-            String strAmount = bxPaymentMethod.Text;
-            String strComment = bxPaymentMethod.Text;
+            String amount = txtAmount.Text;
+            String comment = txtComment.Text;
+
+            estateManager.SetPaymentInfo(enumPayment, amount, comment);
         }
 
         private void ReadEstateAdd()
@@ -176,16 +197,20 @@ namespace RealEstateAgent
             func = (controls) =>
             {
                 foreach (Control control in controls)
+                {
                     if (control is TextBox)
+                    {
                         (control as TextBox).Clear();
-                    else
-                        func(control.Controls);
-
-                foreach (Control control in controls)
-                    if (control is ComboBox)
+                    }
+                    else if (control is ComboBox)
+                    {
                         (control as ComboBox).SelectedIndex = -1;
+                    }
                     else
+                    {
                         func(control.Controls);
+                    }
+                }
             };
 
             func(Controls);

@@ -9,7 +9,9 @@ namespace RealEstateAgent
     {
         private int estateID;
         private Address address;
-        private Person person;
+        private Person buyer;
+        private Person seller;
+        private Payment payment;
 
         public int EstateID
         {
@@ -27,15 +29,32 @@ namespace RealEstateAgent
             set { address = value; }
         }
 
-        public Person Person
+        public Person Buyer
         {
-            get { return person; }
-            set { person = value; }
+            get { return buyer; }
+            set { buyer = value; }
+        }
+        
+        public Person Seller
+        {
+            get { return seller; }
+            set { seller = value; }
+        }
+
+        public Payment Payment
+        {
+            get { return payment; }
+            set { payment = value; }
         }
 
         public override string ToString()
         {
-            return estateID + " " + address.Street + " " + address.ZipCode + " " + address.City + " " + address.Country;
+            return String.Format("ID({0}) - ADDRESS({1}) - BUYER({2}) - SELLER({3}) - PAYMENT({4})",
+                estateID,   // 0
+                address,    // 1
+                buyer,      // 2
+                seller,     // 3
+                payment);   // 4
         }
     }
 }

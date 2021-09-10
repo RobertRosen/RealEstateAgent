@@ -39,5 +39,14 @@ namespace RealEstateAgent
 
             set { country = value; }
         }
+
+        public override string ToString()
+        {
+            return String.Format("Street({0}) ZipCode({1}) City({2}) Country({3})",
+                street,     // 0
+                zipCode,    // 1
+                city,       // 2
+                country);   // 3
+        }
     }
 }

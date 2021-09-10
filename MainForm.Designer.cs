@@ -30,6 +30,7 @@ namespace RealEstateAgent
         private void InitializeComponent()
         {
             this.pnlRegister = new System.Windows.Forms.Panel();
+            this.lstbxRegister = new System.Windows.Forms.ListBox();
             this.pnlAddEstate = new System.Windows.Forms.Panel();
             this.lblAddEstate = new System.Windows.Forms.Label();
             this.lblEstateType = new System.Windows.Forms.Label();
@@ -96,7 +97,6 @@ namespace RealEstateAgent
             this.lblEstateCountry = new System.Windows.Forms.Label();
             this.lblID = new System.Windows.Forms.Label();
             this.lblEstate = new System.Windows.Forms.Label();
-            this.lstbxRegister = new System.Windows.Forms.ListBox();
             this.pnlRegister.SuspendLayout();
             this.pnlAddEstate.SuspendLayout();
             this.pnlInfo.SuspendLayout();
@@ -120,6 +120,16 @@ namespace RealEstateAgent
             this.pnlRegister.Name = "pnlRegister";
             this.pnlRegister.Size = new System.Drawing.Size(668, 958);
             this.pnlRegister.TabIndex = 0;
+            // 
+            // lstbxRegister
+            // 
+            this.lstbxRegister.FormattingEnabled = true;
+            this.lstbxRegister.HorizontalScrollbar = true;
+            this.lstbxRegister.ItemHeight = 23;
+            this.lstbxRegister.Location = new System.Drawing.Point(12, 59);
+            this.lstbxRegister.Name = "lstbxRegister";
+            this.lstbxRegister.Size = new System.Drawing.Size(625, 648);
+            this.lstbxRegister.TabIndex = 9;
             // 
             // pnlAddEstate
             // 
@@ -686,7 +696,7 @@ namespace RealEstateAgent
             // lblLegalForm
             // 
             this.lblLegalForm.AutoSize = true;
-            this.lblLegalForm.Location = new System.Drawing.Point(8, 91);
+            this.lblLegalForm.Location = new System.Drawing.Point(10, 91);
             this.lblLegalForm.Name = "lblLegalForm";
             this.lblLegalForm.Size = new System.Drawing.Size(95, 23);
             this.lblLegalForm.TabIndex = 15;
@@ -797,15 +807,6 @@ namespace RealEstateAgent
             this.lblEstate.Size = new System.Drawing.Size(56, 23);
             this.lblEstate.TabIndex = 0;
             this.lblEstate.Text = "Estate";
-            // 
-            // lstbxRegister
-            // 
-            this.lstbxRegister.FormattingEnabled = true;
-            this.lstbxRegister.ItemHeight = 23;
-            this.lstbxRegister.Location = new System.Drawing.Point(12, 59);
-            this.lstbxRegister.Name = "lstbxRegister";
-            this.lstbxRegister.Size = new System.Drawing.Size(625, 648);
-            this.lstbxRegister.TabIndex = 9;
             // 
             // MainForm
             // 

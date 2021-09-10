@@ -21,5 +21,12 @@ namespace RealEstateAgent
             get { return comment; }
             set { comment = value; }
         }
+
+        public override string ToString()
+        {
+            return String.Format("PAYMENT(Amount({0}) Comment({1}))",
+                amount,     // 0
+                comment);   // 1
+        }
     }
 }

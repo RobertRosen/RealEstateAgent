@@ -3,7 +3,7 @@
   <Class Name="RealEstateAgent.Apartment">
     <Position X="10.75" Y="8.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <HashCode>AAAAIAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
       <FileName>Estates\Apartment.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -29,9 +29,9 @@
     </TypeIdentifier>
   </Class>
   <Class Name="RealEstateAgent.Estate">
-    <Position X="6" Y="2.25" Width="1.5" />
+    <Position X="6" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAAAAAAAAQAAAAEAAAAAAAAAAIAAAACAAAABACAAAA=</HashCode>
+      <HashCode>AAAIAAAAAAQAABAEAAAQAAAAAAIAAAACAAAABAAACAA=</HashCode>
       <FileName>Estates\Estate.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.627" />
@@ -46,7 +46,7 @@
   <Class Name="RealEstateAgent.Residental">
     <Position X="11.75" Y="6.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Estates\Residental.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -81,14 +81,14 @@
   <Class Name="RealEstateAgent.Address">
     <Position X="4" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAQAAAAAAAAAIAAAACAAAAAIAAgADAAIAAAAAAAA=</HashCode>
+      <HashCode>AAAAAQAAAAAAAAAMAAAACAAAAAIAAgADAAIAAAAAAAA=</HashCode>
       <FileName>Address.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="RealEstateAgent.Person">
     <Position X="1.75" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAIEAAACAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAQAAAIEAAACAAAAAAAAAAA=</HashCode>
       <FileName>Persons\Person.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -109,35 +109,35 @@
   <Class Name="RealEstateAgent.Payment">
     <Position X="10.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAEAAAAAAAAAAAAAACAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAAAEAAAAAAAEAAAAAACAAAAAgAAAAAAAAAAAAAA=</HashCode>
       <FileName>Payments\Payment.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="RealEstateAgent.Bank">
-    <Position X="8.5" Y="2.75" Width="1.5" />
+    <Position X="8.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>IAAAAAAAAAAAAAAAAAAACAQAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>IAAAAAAAAAAAAAAEAAAACAQAAAAEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Payments\Bank.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="RealEstateAgent.WesternUnion">
-    <Position X="10.5" Y="2.75" Width="1.5" />
+    <Position X="10.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACAAAAAgAAAAAAQAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAACAAAAAkAAAAAAQAAAAEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Payments\WesternUnion.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="RealEstateAgent.PayPal">
-    <Position X="12.75" Y="2.75" Width="1.5" />
+    <Position X="12.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAACAAAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Payments\PayPal.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Interface Name="RealEstateAgent.IEstate">
     <Position X="6" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAABAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAAAAAACAAAABAAACAA=</HashCode>
       <FileName>Estates\IEstate.cs</FileName>
     </TypeIdentifier>
   </Interface>

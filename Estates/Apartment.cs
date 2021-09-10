@@ -14,5 +14,12 @@ namespace RealEstateAgent
             get { return legalForm; }
             set { legalForm = value; }
         }
+
+        public override string ToString()
+        {
+            return String.Format("{0} , LEGALFORM: {1}", 
+                base.ToString(),        // 0
+                LegalForm.ToString());  // 1
+        }
     }
 }

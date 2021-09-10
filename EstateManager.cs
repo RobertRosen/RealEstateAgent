@@ -19,7 +19,6 @@ namespace RealEstateAgent
                 case EstateType.Apartment:
                     {
                         estate = new Apartment();
-                        //TODO. Get legalform. Type casting? 
                         break;
                     }
                 case EstateType.School:
@@ -65,15 +64,64 @@ namespace RealEstateAgent
             return lstEstates;
         }
 
-        public void SetAddress(Address address)
-        {
-            estate.Address = address;
-        }
-
         public void SetEstateInfo(Address address, LegalForm legalForm)
         {
+            if (estate.GetType() == typeof(Apartment))
+            {
+                ((Apartment)estate).LegalForm = legalForm;
+            }
+
             estate.Address = address;
-            
+        }
+        
+        public void SetBuyerInfo(Address address, string name)
+        {
+            estate.Buyer = new Buyer();
+            ((Buyer)estate.Buyer).Name = name;
+            ((Buyer)estate.Buyer).Address = address;
+        }
+
+        public void SetSellerInfo(Address address, string name)
+        {
+            estate.Seller = new Seller();
+            ((Seller)estate.Seller).Name = name;
+            ((Seller)estate.Seller).Address = address;
+        }
+
+         public void SetPaymentInfo(PaymentMethods paymentMethod, string amount, string comment)
+        {
+
+            Payment payment = null;
+
+            switch (paymentMethod)
+            {
+                case PaymentMethods.Bank:
+                    {
+                        payment = new Bank();
+                        ((Bank)payment).Name = "Hardcoded Name";
+                        ((Bank)payment).Accountnumber = "123456789-0";
+                        break;
+                    }
+                case PaymentMethods.Western_Union:
+                    {
+                        payment = new WesternUnion();
+                        ((WesternUnion)payment).Name = "Hardcoded Name";
+                        ((WesternUnion)payment).Email = "hardcoded@email.com";
+                        break;
+                    }
+                case PaymentMethods.PayPal:
+                    {
+                        payment = new PayPal();
+                        ((PayPal)payment).Email = "hardcoded@email.com";
+                        break;
+                    }
+                default: break;
+            }
+
+            payment.Amount = Convert.ToDouble(amount);
+            payment.Comment = comment;
+
+            estate.Payment = payment;
         }
     }
 }
