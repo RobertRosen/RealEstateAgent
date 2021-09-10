@@ -19,7 +19,7 @@ namespace RealEstateAgent
     /// </summary>
     public partial class MainForm : Form
     {
-        private EstateManager estateManager = new EstateManager(this);
+        private EstateManager estateManager = new EstateManager();
         public MainForm()
         {
             InitializeComponent();
@@ -43,19 +43,41 @@ namespace RealEstateAgent
             bxLegalForm.SelectedIndex = -1;
             bxPaymentMethod.SelectedIndex = -1;
             bxEstateType.SelectedIndex = -1;
+
+            EnabledInfoFields(false);
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             ReadEstateAdd();
-            //Read Input
+
+            ClearFields();
+ 
             bool ok = ReadInput();
+        }
+
+        private void btnConfirm_Click(object sender, EventArgs e)
+        {
+            EnabledInfoFields(false);
+
+            // Add estate to Register.
+            List<IEstate> lstEstates = estateManager.AddEstateToRegister();
+            lstbxRegister.Items.Clear();
+            lstbxRegister.Items.AddRange(lstEstates.ToArray());
+            
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            EnabledInfoFields(false);
+
+            ClearFields();
         }
 
         private bool ReadInput()
         {
             bool ok = true;
-            ReadEstateInfo();
+            //ReadEstateInfo();
 
             return ok;
         }
@@ -99,12 +121,74 @@ namespace RealEstateAgent
         private void ReadEstateAdd()
         {
             EstateType enumEstateType = (EstateType)bxEstateType.SelectedItem;
-            estateManager.CreateEstate(enumEstateType);
+            IEstate estate = estateManager.CreateEstate(enumEstateType);
+
+            lblShowEstateID.Text = estate.EstateID.ToString();
+
+            EnabledInfoFields(true);
         }
-        
-        public void SetEstateID(int ID)
+
+        private bool EnabledInfoFields(bool inEnabled)
         {
-            lblPresentID.Text = ID.ToString();
+            bool enabled = inEnabled;
+
+            txtAmount.Enabled = enabled;
+            txtBuyerCity.Enabled = enabled;
+            txtBuyerFName.Enabled = enabled;
+            txtBuyerLName.Enabled = enabled;
+            txtBuyerStreet.Enabled = enabled;
+            txtBuyerZip.Enabled = enabled;
+            txtComment.Enabled = enabled;
+            txtEstateCity.Enabled = enabled;
+            txtEstateStreet.Enabled = enabled;
+            txtEstateZip.Enabled = enabled;
+            txtSellerCity.Enabled = enabled;
+            txtSellerFName.Enabled = enabled;
+            txtSellerLName.Enabled = enabled;
+            txtSellerStreet.Enabled = enabled;
+            txtSellerZip.Enabled = enabled;
+
+            bxBuyerCountry.Enabled = enabled;
+            bxEstateCountry.Enabled = enabled;
+            bxLegalForm.Enabled = enabled;
+            bxPaymentMethod.Enabled = enabled;
+            bxSellerCountry.Enabled = enabled;
+
+            btnConfirm.Enabled = enabled;
+            btnCancel.Enabled = enabled;
+            btnBrowseImg.Enabled = enabled;
+
+            bxEstateType.Enabled = !enabled;
+
+            btnAdd.Enabled = !enabled;
+            btnChange.Enabled = !enabled;
+            btnDelete.Enabled = !enabled;
+            
+            lstbxRegister.Enabled = !enabled;
+
+            return enabled;
+        }
+
+        private void ClearFields()
+        {
+            Action<Control.ControlCollection> func = null;
+
+            func = (controls) =>
+            {
+                foreach (Control control in controls)
+                    if (control is TextBox)
+                        (control as TextBox).Clear();
+                    else
+                        func(control.Controls);
+
+                foreach (Control control in controls)
+                    if (control is ComboBox)
+                        (control as ComboBox).SelectedIndex = -1;
+                    else
+                        func(control.Controls);
+            };
+
+            func(Controls);
         }
     }
 }

@@ -38,16 +38,13 @@ namespace RealEstateAgent
             this.lblRegister = new System.Windows.Forms.Label();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnChange = new System.Windows.Forms.Button();
-            this.tblRegister = new System.Windows.Forms.DataGridView();
-            this.clmID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSeller = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colBuyer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPayment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlInfo = new System.Windows.Forms.Panel();
             this.btnCancel = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txtComment = new System.Windows.Forms.TextBox();
+            this.lblComment = new System.Windows.Forms.Label();
+            this.txtAmount = new System.Windows.Forms.TextBox();
+            this.lblAmount = new System.Windows.Forms.Label();
             this.bxPaymentMethod = new System.Windows.Forms.ComboBox();
             this.lblPaymentMethod = new System.Windows.Forms.Label();
             this.lblPayment = new System.Windows.Forms.Label();
@@ -92,20 +89,16 @@ namespace RealEstateAgent
             this.txtEstateZip = new System.Windows.Forms.TextBox();
             this.txtEstateStreet = new System.Windows.Forms.TextBox();
             this.txtEstateCity = new System.Windows.Forms.TextBox();
-            this.lblPresentID = new System.Windows.Forms.Label();
+            this.lblShowEstateID = new System.Windows.Forms.Label();
             this.lblEstateZip = new System.Windows.Forms.Label();
             this.lblEstateCity = new System.Windows.Forms.Label();
             this.lblEstateStreet = new System.Windows.Forms.Label();
             this.lblEstateCountry = new System.Windows.Forms.Label();
             this.lblID = new System.Windows.Forms.Label();
             this.lblEstate = new System.Windows.Forms.Label();
-            this.lblAmount = new System.Windows.Forms.Label();
-            this.txtAmount = new System.Windows.Forms.TextBox();
-            this.txtComment = new System.Windows.Forms.TextBox();
-            this.lblComment = new System.Windows.Forms.Label();
+            this.lstbxRegister = new System.Windows.Forms.ListBox();
             this.pnlRegister.SuspendLayout();
             this.pnlAddEstate.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tblRegister)).BeginInit();
             this.pnlInfo.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -117,11 +110,11 @@ namespace RealEstateAgent
             // pnlRegister
             // 
             this.pnlRegister.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlRegister.Controls.Add(this.lstbxRegister);
             this.pnlRegister.Controls.Add(this.pnlAddEstate);
             this.pnlRegister.Controls.Add(this.lblRegister);
             this.pnlRegister.Controls.Add(this.btnDelete);
             this.pnlRegister.Controls.Add(this.btnChange);
-            this.pnlRegister.Controls.Add(this.tblRegister);
             this.pnlRegister.Location = new System.Drawing.Point(4, 5);
             this.pnlRegister.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlRegister.Name = "pnlRegister";
@@ -210,66 +203,6 @@ namespace RealEstateAgent
             this.btnChange.Text = "Change";
             this.btnChange.UseVisualStyleBackColor = true;
             // 
-            // tblRegister
-            // 
-            this.tblRegister.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tblRegister.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.clmID,
-            this.colType,
-            this.colAddress,
-            this.colSeller,
-            this.colBuyer,
-            this.colPayment});
-            this.tblRegister.Location = new System.Drawing.Point(15, 63);
-            this.tblRegister.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tblRegister.Name = "tblRegister";
-            this.tblRegister.RowHeadersWidth = 51;
-            this.tblRegister.RowTemplate.Height = 25;
-            this.tblRegister.Size = new System.Drawing.Size(622, 640);
-            this.tblRegister.TabIndex = 2;
-            // 
-            // clmID
-            // 
-            this.clmID.HeaderText = "ID";
-            this.clmID.MinimumWidth = 6;
-            this.clmID.Name = "clmID";
-            this.clmID.Width = 75;
-            // 
-            // colType
-            // 
-            this.colType.HeaderText = "Type";
-            this.colType.MinimumWidth = 6;
-            this.colType.Name = "colType";
-            this.colType.Width = 125;
-            // 
-            // colAddress
-            // 
-            this.colAddress.HeaderText = "Address";
-            this.colAddress.MinimumWidth = 6;
-            this.colAddress.Name = "colAddress";
-            this.colAddress.Width = 125;
-            // 
-            // colSeller
-            // 
-            this.colSeller.HeaderText = "Seller";
-            this.colSeller.MinimumWidth = 6;
-            this.colSeller.Name = "colSeller";
-            this.colSeller.Width = 125;
-            // 
-            // colBuyer
-            // 
-            this.colBuyer.HeaderText = "Buyer";
-            this.colBuyer.MinimumWidth = 6;
-            this.colBuyer.Name = "colBuyer";
-            this.colBuyer.Width = 125;
-            // 
-            // colPayment
-            // 
-            this.colPayment.HeaderText = "Payment";
-            this.colPayment.MinimumWidth = 6;
-            this.colPayment.Name = "colPayment";
-            this.colPayment.Width = 125;
-            // 
             // pnlInfo
             // 
             this.pnlInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -295,6 +228,7 @@ namespace RealEstateAgent
             this.btnCancel.TabIndex = 13;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // panel2
             // 
@@ -310,6 +244,38 @@ namespace RealEstateAgent
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(420, 204);
             this.panel2.TabIndex = 12;
+            // 
+            // txtComment
+            // 
+            this.txtComment.Location = new System.Drawing.Point(159, 125);
+            this.txtComment.Name = "txtComment";
+            this.txtComment.Size = new System.Drawing.Size(233, 30);
+            this.txtComment.TabIndex = 21;
+            // 
+            // lblComment
+            // 
+            this.lblComment.AutoSize = true;
+            this.lblComment.Location = new System.Drawing.Point(13, 125);
+            this.lblComment.Name = "lblComment";
+            this.lblComment.Size = new System.Drawing.Size(86, 23);
+            this.lblComment.TabIndex = 20;
+            this.lblComment.Text = "Comment";
+            // 
+            // txtAmount
+            // 
+            this.txtAmount.Location = new System.Drawing.Point(160, 89);
+            this.txtAmount.Name = "txtAmount";
+            this.txtAmount.Size = new System.Drawing.Size(233, 30);
+            this.txtAmount.TabIndex = 19;
+            // 
+            // lblAmount
+            // 
+            this.lblAmount.AutoSize = true;
+            this.lblAmount.Location = new System.Drawing.Point(13, 92);
+            this.lblAmount.Name = "lblAmount";
+            this.lblAmount.Size = new System.Drawing.Size(72, 23);
+            this.lblAmount.TabIndex = 18;
+            this.lblAmount.Text = "Amount";
             // 
             // bxPaymentMethod
             // 
@@ -398,6 +364,7 @@ namespace RealEstateAgent
             this.btnConfirm.TabIndex = 9;
             this.btnConfirm.Text = "Confirm";
             this.btnConfirm.UseVisualStyleBackColor = true;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // pnlSeller
             // 
@@ -694,7 +661,7 @@ namespace RealEstateAgent
             this.pnlEstateInfo.Controls.Add(this.txtEstateZip);
             this.pnlEstateInfo.Controls.Add(this.txtEstateStreet);
             this.pnlEstateInfo.Controls.Add(this.txtEstateCity);
-            this.pnlEstateInfo.Controls.Add(this.lblPresentID);
+            this.pnlEstateInfo.Controls.Add(this.lblShowEstateID);
             this.pnlEstateInfo.Controls.Add(this.lblEstateZip);
             this.pnlEstateInfo.Controls.Add(this.lblEstateCity);
             this.pnlEstateInfo.Controls.Add(this.lblEstateStreet);
@@ -755,15 +722,15 @@ namespace RealEstateAgent
             this.txtEstateCity.Size = new System.Drawing.Size(233, 30);
             this.txtEstateCity.TabIndex = 10;
             // 
-            // lblPresentID
+            // lblShowEstateID
             // 
-            this.lblPresentID.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblPresentID.Location = new System.Drawing.Point(159, 50);
-            this.lblPresentID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblPresentID.Name = "lblPresentID";
-            this.lblPresentID.Size = new System.Drawing.Size(233, 30);
-            this.lblPresentID.TabIndex = 9;
-            this.lblPresentID.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblShowEstateID.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblShowEstateID.Location = new System.Drawing.Point(159, 50);
+            this.lblShowEstateID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblShowEstateID.Name = "lblShowEstateID";
+            this.lblShowEstateID.Size = new System.Drawing.Size(233, 30);
+            this.lblShowEstateID.TabIndex = 9;
+            this.lblShowEstateID.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblEstateZip
             // 
@@ -831,37 +798,14 @@ namespace RealEstateAgent
             this.lblEstate.TabIndex = 0;
             this.lblEstate.Text = "Estate";
             // 
-            // lblAmount
+            // lstbxRegister
             // 
-            this.lblAmount.AutoSize = true;
-            this.lblAmount.Location = new System.Drawing.Point(13, 92);
-            this.lblAmount.Name = "lblAmount";
-            this.lblAmount.Size = new System.Drawing.Size(72, 23);
-            this.lblAmount.TabIndex = 18;
-            this.lblAmount.Text = "Amount";
-            // 
-            // txtAmount
-            // 
-            this.txtAmount.Location = new System.Drawing.Point(160, 89);
-            this.txtAmount.Name = "txtAmount";
-            this.txtAmount.Size = new System.Drawing.Size(233, 30);
-            this.txtAmount.TabIndex = 19;
-            // 
-            // txtComment
-            // 
-            this.txtComment.Location = new System.Drawing.Point(159, 125);
-            this.txtComment.Name = "txtComment";
-            this.txtComment.Size = new System.Drawing.Size(233, 30);
-            this.txtComment.TabIndex = 21;
-            // 
-            // lblComment
-            // 
-            this.lblComment.AutoSize = true;
-            this.lblComment.Location = new System.Drawing.Point(13, 125);
-            this.lblComment.Name = "lblComment";
-            this.lblComment.Size = new System.Drawing.Size(86, 23);
-            this.lblComment.TabIndex = 20;
-            this.lblComment.Text = "Comment";
+            this.lstbxRegister.FormattingEnabled = true;
+            this.lstbxRegister.ItemHeight = 23;
+            this.lstbxRegister.Location = new System.Drawing.Point(12, 59);
+            this.lstbxRegister.Name = "lstbxRegister";
+            this.lstbxRegister.Size = new System.Drawing.Size(625, 648);
+            this.lstbxRegister.TabIndex = 9;
             // 
             // MainForm
             // 
@@ -880,7 +824,6 @@ namespace RealEstateAgent
             this.pnlRegister.PerformLayout();
             this.pnlAddEstate.ResumeLayout(false);
             this.pnlAddEstate.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tblRegister)).EndInit();
             this.pnlInfo.ResumeLayout(false);
             this.pnlInfo.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -900,7 +843,6 @@ namespace RealEstateAgent
         #endregion
 
         private System.Windows.Forms.Panel pnlRegister;
-        private System.Windows.Forms.DataGridView tblRegister;
         private System.Windows.Forms.ComboBox bxEstateType;
         private System.Windows.Forms.Label lblEstateType;
         private System.Windows.Forms.Button btnDelete;
@@ -912,7 +854,7 @@ namespace RealEstateAgent
         private System.Windows.Forms.Label lblEstateCity;
         private System.Windows.Forms.Label lblID;
         private System.Windows.Forms.Label lblImage;
-        private System.Windows.Forms.Label lblPresentID;
+        private System.Windows.Forms.Label lblShowEstateID;
         private System.Windows.Forms.Panel pnlBuyer;
         private System.Windows.Forms.Label lblBuyerLName;
         private System.Windows.Forms.Label lblBuyerZip;
@@ -929,12 +871,6 @@ namespace RealEstateAgent
         private System.Windows.Forms.Label lblSellerCity;
         private System.Windows.Forms.Label lblSellerStreet;
         private System.Windows.Forms.Label lblSellerCountry;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colAddress;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colSeller;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colBuyer;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colPayment;
         private System.Windows.Forms.Button btnConfirm;
         private System.Windows.Forms.TextBox txtBuyerLName;
         private System.Windows.Forms.TextBox txtBuyerZip;
@@ -973,6 +909,7 @@ namespace RealEstateAgent
         private System.Windows.Forms.Label lblComment;
         private System.Windows.Forms.TextBox txtAmount;
         private System.Windows.Forms.Label lblAmount;
+        private System.Windows.Forms.ListBox lstbxRegister;
     }
 }
 

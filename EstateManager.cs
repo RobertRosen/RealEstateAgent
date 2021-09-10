@@ -8,18 +8,12 @@ namespace RealEstateAgent
 {
     class EstateManager
     {
-        private List<IEstate> estates = new List<IEstate>();
-        private MainForm mainForm;
+        private IEstate estate = null;
+        private List<IEstate> lstEstates = new List<IEstate>();
 
-        public EstateManager(MainForm mainForm)
+        public IEstate CreateEstate(EstateType estateType)
         {
-            this.mainForm = mainForm;
-        }
-
-        public void CreateEstate(EstateType estateType)
-        {
-            IEstate estate = null;
-
+            //Dynamic binding.
             switch (estateType)
             {
                 case EstateType.Apartment:
@@ -54,12 +48,20 @@ namespace RealEstateAgent
                     }
                 default: break;
             }
+           
+            estate.EstateID = lstEstates.Count;
+
+            return estate;
+        }
+
+        public List<IEstate> AddEstateToRegister()
+        {
             if (estate != null)
             {
-                estates.Add(estate);
+                lstEstates.Add(estate);
             }
-            estate.EstateID = estates.Count;
-           
+
+            return lstEstates;
         }
     }
 }
