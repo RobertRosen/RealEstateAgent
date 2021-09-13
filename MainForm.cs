@@ -50,8 +50,9 @@ namespace RealEstateAgent
         private void btnAdd_Click(object sender, EventArgs e)
         {
             ReadEstateAdd();
-
             ClearFields();
+
+            testValues();
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
@@ -64,20 +65,17 @@ namespace RealEstateAgent
             // Add estate to Register.
             List<IEstate> lstEstates = estateManager.AddEstateToRegister();
             lstbxRegister.Items.Clear();
-            lstbxRegister.Items.AddRange(lstEstates.ToArray());
-            
+            lstbxRegister.Items.AddRange(lstEstates.ToArray());   
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             EnabledInfoFields(false);
-
             ClearFields();
         }
 
         private void ReadEstateInfo()
         {
-
             LegalForm enumLegalForm = (LegalForm)bxLegalForm.SelectedItem;
 
             Countries enumCountry = (Countries)bxEstateCountry.SelectedItem;
@@ -214,6 +212,29 @@ namespace RealEstateAgent
             };
 
             func(Controls);
+        }
+
+        private void btnChange_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            int selIndex = lstbxRegister.SelectedIndex;
+            lstbxRegister.Items.RemoveAt(selIndex);
+            estateManager.DeleteFromRegister(selIndex);
+        }
+
+        private void testValues()
+        {
+            bxEstateCountry.SelectedIndex = 0;
+            bxSellerCountry.SelectedIndex = 0;
+            bxBuyerCountry.SelectedIndex = 0;
+            bxLegalForm.SelectedIndex = 0;
+            bxPaymentMethod.SelectedIndex = 0;
+            bxEstateType.SelectedIndex = 0;
+            txtAmount.Text = "1";
         }
     }
 }

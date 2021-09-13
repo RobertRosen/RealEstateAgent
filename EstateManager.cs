@@ -10,6 +10,7 @@ namespace RealEstateAgent
     {
         private IEstate estate = null;
         private List<IEstate> lstEstates = new List<IEstate>();
+        private int estateIDCounter = 0;
 
         public IEstate CreateEstate(EstateType estateType)
         {
@@ -49,7 +50,7 @@ namespace RealEstateAgent
                 default: break;
             }
            
-            estate.EstateID = lstEstates.Count;
+            estate.EstateID = estateIDCounter + 1;
 
             return estate;
         }
@@ -59,38 +60,38 @@ namespace RealEstateAgent
             if (estate != null)
             {
                 lstEstates.Add(estate);
+                estateIDCounter++;
             }
 
             return lstEstates;
         }
 
-        public void SetEstateInfo(Address address, LegalForm legalForm)
+        public void SetEstateInfo(Address estateAddress, LegalForm legalForm)
         {
             if (estate.GetType() == typeof(Apartment))
             {
                 ((Apartment)estate).LegalForm = legalForm;
             }
 
-            estate.Address = address;
+            estate.Address = estateAddress;
         }
         
-        public void SetBuyerInfo(Address address, string name)
+        public void SetBuyerInfo(Address buyerAddress, string name)
         {
             estate.Buyer = new Buyer();
             ((Buyer)estate.Buyer).Name = name;
-            ((Buyer)estate.Buyer).Address = address;
+            ((Buyer)estate.Buyer).Address = buyerAddress;
         }
 
-        public void SetSellerInfo(Address address, string name)
+        public void SetSellerInfo(Address sellerAddress, string name)
         {
             estate.Seller = new Seller();
             ((Seller)estate.Seller).Name = name;
-            ((Seller)estate.Seller).Address = address;
+            ((Seller)estate.Seller).Address = sellerAddress;
         }
 
          public void SetPaymentInfo(PaymentMethods paymentMethod, string amount, string comment)
         {
-
             Payment payment = null;
 
             switch (paymentMethod)
@@ -122,6 +123,11 @@ namespace RealEstateAgent
             payment.Comment = comment;
 
             estate.Payment = payment;
+        }
+
+        public void DeleteFromRegister(int index)
+        {
+            lstEstates.RemoveAt(index);
         }
     }
 }

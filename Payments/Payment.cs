@@ -7,6 +7,7 @@ namespace RealEstateAgent
 {
     public class Payment
     {
+        private PaymentMethods method;
         private double amount;
         private String comment;
 
@@ -24,9 +25,10 @@ namespace RealEstateAgent
 
         public override string ToString()
         {
-            return String.Format("PAYMENT(Amount({0}) Comment({1}))",
-                amount,     // 0
-                comment);   // 1
+            return String.Format("PAYMENT(Method({0}) Amount({1}) Comment({2}))",
+                method,     // 0
+                amount,     // 1
+                comment);   // 2
         }
     }
 }

@@ -202,6 +202,7 @@ namespace RealEstateAgent
             this.btnDelete.TabIndex = 4;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnChange
             // 
@@ -212,6 +213,7 @@ namespace RealEstateAgent
             this.btnChange.TabIndex = 3;
             this.btnChange.Text = "Change";
             this.btnChange.UseVisualStyleBackColor = true;
+            this.btnChange.Click += new System.EventHandler(this.btnChange_Click);
             // 
             // pnlInfo
             // 
