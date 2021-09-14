@@ -266,5 +266,10 @@ namespace RealEstateAgent
             txtAmount.Text = selItem.Payment.Amount.ToString();
 
         }
+
+        private void btnBrowseImg_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
