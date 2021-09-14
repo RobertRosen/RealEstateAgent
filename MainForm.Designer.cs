@@ -30,6 +30,7 @@ namespace RealEstateAgent
         private void InitializeComponent()
         {
             this.pnlRegister = new System.Windows.Forms.Panel();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.lstbxRegister = new System.Windows.Forms.ListBox();
             this.pnlAddEstate = new System.Windows.Forms.Panel();
             this.lblAddEstate = new System.Windows.Forms.Label();
@@ -38,9 +39,9 @@ namespace RealEstateAgent
             this.bxEstateType = new System.Windows.Forms.ComboBox();
             this.lblRegister = new System.Windows.Forms.Label();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.btnConfirm = new System.Windows.Forms.Button();
             this.btnChange = new System.Windows.Forms.Button();
             this.pnlInfo = new System.Windows.Forms.Panel();
-            this.btnCancel = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtComment = new System.Windows.Forms.TextBox();
             this.lblComment = new System.Windows.Forms.Label();
@@ -54,7 +55,6 @@ namespace RealEstateAgent
             this.btnBrowseImg = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblImage = new System.Windows.Forms.Label();
-            this.btnConfirm = new System.Windows.Forms.Button();
             this.pnlSeller = new System.Windows.Forms.Panel();
             this.bxSellerCountry = new System.Windows.Forms.ComboBox();
             this.txtSellerFName = new System.Windows.Forms.TextBox();
@@ -123,6 +123,17 @@ namespace RealEstateAgent
             this.pnlRegister.Name = "pnlRegister";
             this.pnlRegister.Size = new System.Drawing.Size(530, 790);
             this.pnlRegister.TabIndex = 0;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnCancel.Location = new System.Drawing.Point(250, 719);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(151, 55);
+            this.btnCancel.TabIndex = 13;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // lstbxRegister
             // 
@@ -215,6 +226,17 @@ namespace RealEstateAgent
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
+            // btnConfirm
+            // 
+            this.btnConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnConfirm.Location = new System.Drawing.Point(71, 721);
+            this.btnConfirm.Name = "btnConfirm";
+            this.btnConfirm.Size = new System.Drawing.Size(141, 55);
+            this.btnConfirm.TabIndex = 9;
+            this.btnConfirm.Text = "Confirm";
+            this.btnConfirm.UseVisualStyleBackColor = true;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
+            // 
             // btnChange
             // 
             this.btnChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -242,17 +264,6 @@ namespace RealEstateAgent
             this.pnlInfo.Name = "pnlInfo";
             this.pnlInfo.Size = new System.Drawing.Size(821, 790);
             this.pnlInfo.TabIndex = 1;
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnCancel.Location = new System.Drawing.Point(250, 719);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(151, 55);
-            this.btnCancel.TabIndex = 13;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // panel2
             // 
@@ -362,7 +373,7 @@ namespace RealEstateAgent
             // btnBrowseImg
             // 
             this.btnBrowseImg.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnBrowseImg.Location = new System.Drawing.Point(139, 367);
+            this.btnBrowseImg.Location = new System.Drawing.Point(147, 386);
             this.btnBrowseImg.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnBrowseImg.Name = "btnBrowseImg";
             this.btnBrowseImg.Size = new System.Drawing.Size(134, 36);
@@ -377,7 +388,7 @@ namespace RealEstateAgent
             this.panel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.panel3.Location = new System.Drawing.Point(16, 59);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(383, 292);
+            this.panel3.Size = new System.Drawing.Size(383, 319);
             this.panel3.TabIndex = 6;
             // 
             // lblImage
@@ -390,17 +401,6 @@ namespace RealEstateAgent
             this.lblImage.Size = new System.Drawing.Size(45, 16);
             this.lblImage.TabIndex = 3;
             this.lblImage.Text = "Image";
-            // 
-            // btnConfirm
-            // 
-            this.btnConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnConfirm.Location = new System.Drawing.Point(71, 721);
-            this.btnConfirm.Name = "btnConfirm";
-            this.btnConfirm.Size = new System.Drawing.Size(141, 55);
-            this.btnConfirm.TabIndex = 9;
-            this.btnConfirm.Text = "Confirm";
-            this.btnConfirm.UseVisualStyleBackColor = true;
-            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // pnlSeller
             // 

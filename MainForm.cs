@@ -65,7 +65,7 @@ namespace RealEstateAgent
             // Add estate to Register.
             List<IEstate> lstEstates = estateManager.AddEstateToRegister();
             lstbxRegister.Items.Clear();
-            lstbxRegister.Items.AddRange(lstEstates.ToArray());   
+            lstbxRegister.Items.AddRange(lstEstates.ToArray());
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -76,8 +76,6 @@ namespace RealEstateAgent
 
         private void ReadEstateInfo()
         {
-            LegalForm enumLegalForm = (LegalForm)bxLegalForm.SelectedItem;
-
             Countries enumCountry = (Countries)bxEstateCountry.SelectedItem;
             String strCity = txtEstateCity.Text;
             String strStreet = txtEstateStreet.Text;
@@ -89,7 +87,18 @@ namespace RealEstateAgent
             address.Street = strStreet;
             address.ZipCode = strZipCode;
 
-            estateManager.SetEstateInfo(address, enumLegalForm);
+            int selIndex = lstbxRegister.SelectedIndex;
+            if ((selIndex > -1) && (lstbxRegister.SelectedItem.GetType() == typeof(Apartment)))
+            {
+                bxLegalForm.Show();
+                LegalForm enumLegalForm = (LegalForm)bxLegalForm.SelectedItem;
+                estateManager.SetEstateInfo(address, enumLegalForm);
+            }
+            else
+            {
+                bxLegalForm.Hide();
+                estateManager.SetEstateInfo(address);
+            }
         }
 
         private void ReadSellerInfo()
@@ -107,7 +116,7 @@ namespace RealEstateAgent
             address.Street = strStreet;
             address.ZipCode = strZipCode;
 
-            estateManager.SetSellerInfo(address, strFName+" "+strLName);
+            estateManager.SetSellerInfo(address, strFName, strLName);
         }
 
         private void ReadBuyerInfo()
@@ -125,7 +134,7 @@ namespace RealEstateAgent
             address.Street = strStreet;
             address.ZipCode = strZipCode;
 
-            estateManager.SetBuyerInfo(address, strFName + " " + strLName);
+            estateManager.SetBuyerInfo(address, strFName, strLName);
         }
 
         private void ReadPaymentInfo()
@@ -139,6 +148,16 @@ namespace RealEstateAgent
 
         private void ReadEstateAdd()
         {
+            //int selIndex = lstbxRegister.SelectedIndex;
+            //if (bxEstateType.SelectedItem.GetType() == typeof(Apartment))
+            //{
+            //    bxLegalForm.Show();
+            //}
+            //else
+            //{
+            //    bxLegalForm.Hide();
+            //}
+
             EstateType enumEstateType = (EstateType)bxEstateType.SelectedItem;
             IEstate estate = estateManager.CreateEstate(enumEstateType);
 
@@ -182,7 +201,7 @@ namespace RealEstateAgent
             btnAdd.Enabled = !enabled;
             btnChange.Enabled = !enabled;
             btnDelete.Enabled = !enabled;
-            
+
             lstbxRegister.Enabled = !enabled;
 
             return enabled;
@@ -238,33 +257,68 @@ namespace RealEstateAgent
             bxBuyerCountry.SelectedIndex = 0;
             bxLegalForm.SelectedIndex = 0;
             bxPaymentMethod.SelectedIndex = 0;
+
             txtAmount.Text = "1";
+            txtComment.Text = "Hej";
+
+            txtEstateCity.Text = "Malmö";
+            txtEstateStreet.Text = "HEJVägen";
+            txtEstateZip.Text = "12345";
+
+            txtSellerFName.Text = "Joakim";
+            txtSellerLName.Text = "Tell";
+            txtSellerCity.Text = "Skurup";
+            txtSellerStreet.Text = "Byvägen 1234";
+            txtSellerZip.Text = "09876";
+
+            txtBuyerFName.Text = "Farid";
+            txtBuyerLName.Text = "Farid";
+            txtBuyerCity.Text = "SKURUP";
+            txtBuyerStreet.Text = "Dåvägen 2";
+            txtBuyerZip.Text = "54321";
         }
 
         private void lstbxRegister_SelectedIndexChanged(object sender, EventArgs e)
         {
             int selIndex = lstbxRegister.SelectedIndex;
-            IEstate selItem = (IEstate)lstbxRegister.SelectedItem;
-
-            if (selItem.GetType() == typeof(Apartment))
+            if (selIndex > -1)
             {
-                bxLegalForm.SelectedItem = ((Apartment)selItem).LegalForm;
+                IEstate selItem = (IEstate)lstbxRegister.SelectedItem;
+
+                if (selItem.GetType() == typeof(Apartment))
+                {
+                    bxLegalForm.SelectedItem = ((Apartment)selItem).LegalForm;
+                }
+                else
+                {
+                    bxLegalForm.SelectedIndex = -1;
+                }
+
+                lblShowEstateID.Text = selItem.EstateID.ToString();
+
+                txtEstateCity.Text = selItem.Address.City;
+                bxEstateCountry.SelectedItem = selItem.Address.Country;
+                txtEstateStreet.Text = selItem.Address.Street;
+                txtEstateZip.Text = selItem.Address.ZipCode;
+
+                bxPaymentMethod.SelectedItem = selItem.Payment.Method;
+                txtAmount.Text = selItem.Payment.Amount.ToString();
+                txtComment.Text = selItem.Payment.Comment;
+
+                txtSellerFName.Text = selItem.Seller.FirstName;
+                txtSellerLName.Text = selItem.Seller.LastName;
+                txtSellerCity.Text = selItem.Seller.Address.City;
+                bxSellerCountry.SelectedItem = selItem.Seller.Address.Country;
+                txtSellerStreet.Text = selItem.Seller.Address.Street;
+                txtSellerZip.Text = selItem.Seller.Address.ZipCode;
+
+                txtBuyerFName.Text = selItem.Buyer.FirstName;
+                txtBuyerLName.Text = selItem.Buyer.LastName;
+                txtBuyerCity.Text = selItem.Buyer.Address.City;
+                bxBuyerCountry.SelectedItem = selItem.Buyer.Address.Country;
+                txtBuyerStreet.Text = selItem.Buyer.Address.Street;
+                txtBuyerZip.Text = selItem.Buyer.Address.ZipCode;
             }
-            else
-            {
-                bxLegalForm.SelectedIndex = -1;
-            }
-
-            lblShowEstateID.Text = selItem.EstateID.ToString();
-
-            txtEstateCity.Text = selItem.Address.City;
-            bxEstateCountry.SelectedItem = selItem.Address.Country;
-            txtEstateStreet.Text = selItem.Address.Street;
-            txtEstateZip.Text = selItem.Address.ZipCode;
-
-            bxPaymentMethod.SelectedItem = selItem.Payment.Method;
-            txtAmount.Text = selItem.Payment.Amount.ToString();
-
         }
 
         private void btnBrowseImg_Click(object sender, EventArgs e)

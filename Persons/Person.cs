@@ -7,16 +7,27 @@ namespace RealEstateAgent
 {
     public class Person
     {
-        private string name;
+        private string firstName;
+        private string lastName;
         private Address address;
 
-        public String Name
+        public String FirstName
         {
-            get { return name; }
+            get { return firstName; }
             set 
             { 
                 if (!string.IsNullOrEmpty(value))
-                    name = value; 
+                    firstName = value; 
+            }
+        }
+
+        public String LastName
+        {
+            get { return lastName; }
+            set
+            {
+                if (!string.IsNullOrEmpty(value))
+                    lastName = value;
             }
         }
 
@@ -28,9 +39,10 @@ namespace RealEstateAgent
 
         public override string ToString()
         {
-            return String.Format("Name({0}) Address({1})",
-                name,       // 0
-                address);   // 1
+            return String.Format("Name({0} {1}) Address({2})",
+                firstName,  // 0
+                lastName,   // 1
+                address);   // 2
         }
     }
 }

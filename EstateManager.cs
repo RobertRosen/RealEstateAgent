@@ -68,25 +68,27 @@ namespace RealEstateAgent
 
         public void SetEstateInfo(Address estateAddress, LegalForm legalForm)
         {
-            if (estate.GetType() == typeof(Apartment))
-            {
-                ((Apartment)estate).LegalForm = legalForm;
-            }
-
             estate.Address = estateAddress;
         }
-        
-        public void SetBuyerInfo(Address buyerAddress, string name)
+
+        public void SetEstateInfo(Address estateAddress)
+        {
+            estate.Address = estateAddress;
+        }
+
+        public void SetBuyerInfo(Address buyerAddress, string firstName, string lastName)
         {
             estate.Buyer = new Buyer();
-            ((Buyer)estate.Buyer).Name = name;
+            ((Buyer)estate.Buyer).FirstName = firstName;
+            ((Buyer)estate.Buyer).LastName = lastName;
             ((Buyer)estate.Buyer).Address = buyerAddress;
         }
 
-        public void SetSellerInfo(Address sellerAddress, string name)
+        public void SetSellerInfo(Address sellerAddress, string firstName, string lastName)
         {
             estate.Seller = new Seller();
-            ((Seller)estate.Seller).Name = name;
+            ((Seller)estate.Seller).FirstName = firstName;
+            ((Seller)estate.Seller).LastName = lastName;
             ((Seller)estate.Seller).Address = sellerAddress;
         }
 
