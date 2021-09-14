@@ -13,8 +13,8 @@ namespace RealEstateAgent
 {
     public partial class MainForm : Form
     {
-        private IEstate estate = null;
         private List<IEstate> lstEstates = new List<IEstate>();
+        private IEstate estate = null;
         private int estateIDCounter = 0;
 
         public MainForm()
@@ -52,6 +52,24 @@ namespace RealEstateAgent
                 bxLegalForm.Hide();
         }
 
+        private IEstate AddEstateToRegister()
+        {
+            if (estate != null)
+            {
+                for (int i = 0; i<lstEstates.Count; i++)
+                {
+                    if (lstEstates[i].EstateID == estate.EstateID)
+                    {
+                        lstEstates[i] = estate;
+                        return estate;
+                    }
+                }
+                lstEstates.Add(estate);
+                estateIDCounter++;
+            }
+            return estate;
+        }
+
         private void ReadEstateInfo()
         {
             Countries enumCountry = (Countries)bxEstateCountry.SelectedItem;
@@ -70,6 +88,7 @@ namespace RealEstateAgent
             {
                 bxLegalForm.Show();
                 LegalForm enumLegalForm = (LegalForm)bxLegalForm.SelectedItem;
+                ((Apartment)estate).LegalForm = enumLegalForm;
             }
             else bxLegalForm.Hide();
 
@@ -254,16 +273,13 @@ namespace RealEstateAgent
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             EnableInfoFields(false);
+
             ReadEstateInfo();
             ReadBuyerInfo();
             ReadSellerInfo();
             ReadPaymentInfo();
 
-            if (estate != null)
-            {
-                lstEstates.Add(estate);
-                estateIDCounter++;
-            }
+            AddEstateToRegister();
             lstbxRegister.Items.Clear();
             lstbxRegister.Items.AddRange(lstEstates.ToArray());
         }
@@ -294,11 +310,18 @@ namespace RealEstateAgent
             if (selIndex > -1)
             {
                 IEstate selItem = (IEstate)lstbxRegister.SelectedItem;
+                estate = selItem;
 
                 if (selItem.GetType() == typeof(Apartment))
+                {
                     bxLegalForm.SelectedItem = ((Apartment)selItem).LegalForm;
+                    ShowApartmentComponents(true);
+                }
                 else
+                {
                     bxLegalForm.SelectedIndex = -1;
+                    ShowApartmentComponents(false);
+                }
 
                 lblShowEstateID.Text = selItem.EstateID.ToString();
 

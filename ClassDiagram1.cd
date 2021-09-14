@@ -35,9 +35,9 @@
       <FileName>Estates\Estate.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
+      <Field Name="address" />
       <Field Name="buyer" />
       <Field Name="seller" />
-      <Field Name="address" />
       <Field Name="payment" />
     </ShowAsAssociation>
     <Lollipop Position="0.627" />
@@ -92,9 +92,9 @@
     </TypeIdentifier>
   </Class>
   <Class Name="RealEstateAgent.Person">
-    <Position X="1.25" Y="2.25" Width="1.5" />
+    <Position X="1.25" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAEAAAAAAQAAAIEAAACAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAEAAAABAAAAEAAAAAAAAAAIAAAACAAAACAAAAAg=</HashCode>
       <FileName>Persons\Person.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -118,7 +118,7 @@
   <Class Name="RealEstateAgent.Payment">
     <Position X="10.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAEAAAAACAEAAAAAACAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAAAEAAAAACAEAAAgAACAAAAAgAAAAAAAAAAAAAA=</HashCode>
       <FileName>Payments\Payment.cs</FileName>
     </TypeIdentifier>
   </Class>
