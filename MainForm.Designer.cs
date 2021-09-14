@@ -380,7 +380,6 @@ namespace RealEstateAgent
             this.btnBrowseImg.TabIndex = 8;
             this.btnBrowseImg.Text = "Browse";
             this.btnBrowseImg.UseVisualStyleBackColor = true;
-            this.btnBrowseImg.Click += new System.EventHandler(this.btnBrowseImg_Click);
             // 
             // panel3
             // 

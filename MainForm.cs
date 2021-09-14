@@ -11,20 +11,15 @@ using System.Diagnostics;
 
 namespace RealEstateAgent
 {
-    /// <summary>
-    /// MVC
-    /// 1. The form is the view. It sends commands to the model, raises events which the controller can subscribe to, and subscribes to events from the model.
-    /// 2. The controller is a class that subscribes to the view's events and sends commands to the view and to the model.
-    /// 3. The model raises events that the view subscribes to.
-    /// </summary>
     public partial class MainForm : Form
     {
-        private EstateManager estateManager = new EstateManager();
+        private IEstate estate = null;
+        private List<IEstate> lstEstates = new List<IEstate>();
+        private int estateIDCounter = 0;
+
         public MainForm()
         {
             InitializeComponent();
-
-            //Our Code
             InitializeGUI();
         }
 
@@ -44,34 +39,17 @@ namespace RealEstateAgent
             bxPaymentMethod.SelectedIndex = -1;
             bxEstateType.SelectedIndex = -1;
 
-            EnabledInfoFields(false);
+            ShowApartmentComponents(false); // Show Legal form...
+
+            EnableInfoFields(false);
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private void ShowApartmentComponents(bool show)
         {
-            ClearFields();
-            ReadEstateAdd();
-
-            testValues();
-        }
-
-        private void btnConfirm_Click(object sender, EventArgs e)
-        {
-            EnabledInfoFields(false);
-            ReadEstateInfo();
-            ReadBuyerInfo();
-            ReadSellerInfo();
-            ReadPaymentInfo();
-            // Add estate to Register.
-            List<IEstate> lstEstates = estateManager.AddEstateToRegister();
-            lstbxRegister.Items.Clear();
-            lstbxRegister.Items.AddRange(lstEstates.ToArray());
-        }
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            EnabledInfoFields(false);
-            ClearFields();
+            if (show)
+                bxLegalForm.Show();
+            else
+                bxLegalForm.Hide();
         }
 
         private void ReadEstateInfo()
@@ -92,13 +70,10 @@ namespace RealEstateAgent
             {
                 bxLegalForm.Show();
                 LegalForm enumLegalForm = (LegalForm)bxLegalForm.SelectedItem;
-                estateManager.SetEstateInfo(address, enumLegalForm);
             }
-            else
-            {
-                bxLegalForm.Hide();
-                estateManager.SetEstateInfo(address);
-            }
+            else bxLegalForm.Hide();
+
+            estate.Address = address;
         }
 
         private void ReadSellerInfo()
@@ -116,7 +91,10 @@ namespace RealEstateAgent
             address.Street = strStreet;
             address.ZipCode = strZipCode;
 
-            estateManager.SetSellerInfo(address, strFName, strLName);
+            estate.Seller = new Seller();
+            ((Seller)estate.Seller).FirstName = strFName;
+            ((Seller)estate.Seller).LastName = strLName;
+            ((Seller)estate.Seller).Address = address;
         }
 
         private void ReadBuyerInfo()
@@ -134,7 +112,10 @@ namespace RealEstateAgent
             address.Street = strStreet;
             address.ZipCode = strZipCode;
 
-            estateManager.SetBuyerInfo(address, strFName, strLName);
+            estate.Buyer = new Buyer();
+            ((Buyer)estate.Buyer).FirstName = strFName;
+            ((Buyer)estate.Buyer).LastName = strLName;
+            ((Buyer)estate.Buyer).Address = address;
         }
 
         private void ReadPaymentInfo()
@@ -143,33 +124,66 @@ namespace RealEstateAgent
             String amount = txtAmount.Text;
             String comment = txtComment.Text;
 
-            estateManager.SetPaymentInfo(enumPayment, amount, comment);
+            Payment payment = null;
+            switch (enumPayment)
+            {
+                case PaymentMethods.Bank:
+                    {
+                        payment = new Bank();
+                        ((Bank)payment).Name = "Hardcoded Name";
+                        ((Bank)payment).Accountnumber = "123456789-0";
+                        break;
+                    }
+                case PaymentMethods.Western_Union:
+                    {
+                        payment = new WesternUnion();
+                        ((WesternUnion)payment).Name = "Hardcoded Name";
+                        ((WesternUnion)payment).Email = "hardcoded@email.com";
+                        break;
+                    }
+                case PaymentMethods.PayPal:
+                    {
+                        payment = new PayPal();
+                        ((PayPal)payment).Email = "hardcoded@email.com";
+                        break;
+                    }
+                default: break;
+            }
+
+            payment.Amount = Convert.ToDouble(amount);
+            payment.Comment = comment;
+
+            estate.Payment = payment;
         }
 
-        private void ReadEstateAdd()
+        private void ReadEstateTypeToAdd()
         {
-            //int selIndex = lstbxRegister.SelectedIndex;
-            //if (bxEstateType.SelectedItem.GetType() == typeof(Apartment))
-            //{
-            //    bxLegalForm.Show();
-            //}
-            //else
-            //{
-            //    bxLegalForm.Hide();
-            //}
-
             EstateType enumEstateType = (EstateType)bxEstateType.SelectedItem;
-            IEstate estate = estateManager.CreateEstate(enumEstateType);
+
+            if (enumEstateType is EstateType.Apartment)
+                ShowApartmentComponents(true);
+            else
+                ShowApartmentComponents(false);
+
+            IEstate estate = CreateEstate(enumEstateType);
+            estate.EstateID = estateIDCounter + 1;
 
             lblShowEstateID.Text = estate.EstateID.ToString();
-
-            EnabledInfoFields(true);
         }
 
-        private bool EnabledInfoFields(bool inEnabled)
+        public IEstate CreateEstate(EstateType estateType) => estateType switch
         {
-            bool enabled = inEnabled;
+            EstateType.Apartment    => estate = new Apartment(),
+            EstateType.School       => estate = new School(),
+            EstateType.Store        => estate = new Store(),
+            EstateType.University   => estate = new University(),
+            EstateType.Villa        => estate = new Villa(),
+            EstateType.Warehouse    => estate = new Warehouse(),
+            _                       => throw new ArgumentException(message: "Invalid enum value", paramName: nameof(estateType))
+        };
 
+        private void EnableInfoFields(bool enabled)
+        {
             txtAmount.Enabled = enabled;
             txtBuyerCity.Enabled = enabled;
             txtBuyerFName.Enabled = enabled;
@@ -186,6 +200,7 @@ namespace RealEstateAgent
             txtSellerStreet.Enabled = enabled;
             txtSellerZip.Enabled = enabled;
 
+            bxEstateType.Enabled = !enabled;
             bxBuyerCountry.Enabled = enabled;
             bxEstateCountry.Enabled = enabled;
             bxLegalForm.Enabled = enabled;
@@ -195,16 +210,11 @@ namespace RealEstateAgent
             btnConfirm.Enabled = enabled;
             btnCancel.Enabled = enabled;
             btnBrowseImg.Enabled = enabled;
-
-            bxEstateType.Enabled = !enabled;
-
             btnAdd.Enabled = !enabled;
             btnChange.Enabled = !enabled;
             btnDelete.Enabled = !enabled;
 
             lstbxRegister.Enabled = !enabled;
-
-            return enabled;
         }
 
         private void ClearFields()
@@ -224,58 +234,58 @@ namespace RealEstateAgent
                 foreach (Control control in controls)
                 {
                     if (control is TextBox)
-                    {
                         (control as TextBox).Clear();
-                    }
                     else
-                    {
                         func(control.Controls);
-                    }
                 }
             };
-
             func(Controls);
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            ClearFields();
+            ReadEstateTypeToAdd();
+            EnableInfoFields(true);
+
+            testValues();
+        }
+
+        private void btnConfirm_Click(object sender, EventArgs e)
+        {
+            EnableInfoFields(false);
+            ReadEstateInfo();
+            ReadBuyerInfo();
+            ReadSellerInfo();
+            ReadPaymentInfo();
+
+            if (estate != null)
+            {
+                lstEstates.Add(estate);
+                estateIDCounter++;
+            }
+            lstbxRegister.Items.Clear();
+            lstbxRegister.Items.AddRange(lstEstates.ToArray());
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            ShowApartmentComponents(false);
+            EnableInfoFields(false);
+            ClearFields();
         }
 
         private void btnChange_Click(object sender, EventArgs e)
         {
-            EnabledInfoFields(true);
+            EnableInfoFields(true);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             int selIndex = lstbxRegister.SelectedIndex;
             lstbxRegister.Items.RemoveAt(selIndex);
-            estateManager.DeleteFromRegister(selIndex);
+            lstEstates.RemoveAt(selIndex);
             ClearFields();
-        }
-
-        private void testValues()
-        {
-            bxEstateCountry.SelectedIndex = 0;
-            bxSellerCountry.SelectedIndex = 0;
-            bxBuyerCountry.SelectedIndex = 0;
-            bxLegalForm.SelectedIndex = 0;
-            bxPaymentMethod.SelectedIndex = 0;
-
-            txtAmount.Text = "1";
-            txtComment.Text = "Hej";
-
-            txtEstateCity.Text = "Malmö";
-            txtEstateStreet.Text = "HEJVägen";
-            txtEstateZip.Text = "12345";
-
-            txtSellerFName.Text = "Joakim";
-            txtSellerLName.Text = "Tell";
-            txtSellerCity.Text = "Skurup";
-            txtSellerStreet.Text = "Byvägen 1234";
-            txtSellerZip.Text = "09876";
-
-            txtBuyerFName.Text = "Farid";
-            txtBuyerLName.Text = "Farid";
-            txtBuyerCity.Text = "SKURUP";
-            txtBuyerStreet.Text = "Dåvägen 2";
-            txtBuyerZip.Text = "54321";
         }
 
         private void lstbxRegister_SelectedIndexChanged(object sender, EventArgs e)
@@ -286,13 +296,9 @@ namespace RealEstateAgent
                 IEstate selItem = (IEstate)lstbxRegister.SelectedItem;
 
                 if (selItem.GetType() == typeof(Apartment))
-                {
                     bxLegalForm.SelectedItem = ((Apartment)selItem).LegalForm;
-                }
                 else
-                {
                     bxLegalForm.SelectedIndex = -1;
-                }
 
                 lblShowEstateID.Text = selItem.EstateID.ToString();
 
@@ -321,9 +327,32 @@ namespace RealEstateAgent
             }
         }
 
-        private void btnBrowseImg_Click(object sender, EventArgs e)
+        private void testValues()
         {
+            bxEstateCountry.SelectedIndex = 0;
+            bxSellerCountry.SelectedIndex = 0;
+            bxBuyerCountry.SelectedIndex = 0;
+            //bxLegalForm.SelectedIndex = 0;
+            bxPaymentMethod.SelectedIndex = 0;
 
+            txtAmount.Text = "1";
+            txtComment.Text = "Hej";
+
+            txtEstateCity.Text = "Malmö";
+            txtEstateStreet.Text = "HEJVägen";
+            txtEstateZip.Text = "12345";
+
+            txtSellerFName.Text = "Joakim";
+            txtSellerLName.Text = "Tell";
+            txtSellerCity.Text = "Skurup";
+            txtSellerStreet.Text = "Byvägen 1234";
+            txtSellerZip.Text = "09876";
+
+            txtBuyerFName.Text = "Farid";
+            txtBuyerLName.Text = "Farid";
+            txtBuyerCity.Text = "SKURUP";
+            txtBuyerStreet.Text = "Dåvägen 2";
+            txtBuyerZip.Text = "54321";
         }
     }
 }
