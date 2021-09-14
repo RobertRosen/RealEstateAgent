@@ -130,6 +130,7 @@ namespace RealEstateAgent
             this.lstbxRegister.Name = "lstbxRegister";
             this.lstbxRegister.Size = new System.Drawing.Size(625, 648);
             this.lstbxRegister.TabIndex = 9;
+            this.lstbxRegister.SelectedIndexChanged += new System.EventHandler(this.lstbxRegister_SelectedIndexChanged);
             // 
             // pnlAddEstate
             // 

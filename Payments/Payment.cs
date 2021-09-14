@@ -23,6 +23,12 @@ namespace RealEstateAgent
             set { comment = value; }
         }
 
+        public PaymentMethods Method
+        {
+            get { return method; }
+            set { method = value; }
+        }
+
         public override string ToString()
         {
             return String.Format("PAYMENT(Method({0}) Amount({1}) Comment({2}))",

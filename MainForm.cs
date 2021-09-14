@@ -49,8 +49,8 @@ namespace RealEstateAgent
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            ReadEstateAdd();
             ClearFields();
+            ReadEstateAdd();
 
             testValues();
         }
@@ -190,6 +190,14 @@ namespace RealEstateAgent
 
         private void ClearFields()
         {
+            lblShowEstateID.ResetText();
+
+            bxEstateCountry.SelectedIndex = -1;
+            bxSellerCountry.SelectedIndex = -1;
+            bxBuyerCountry.SelectedIndex = -1;
+            bxLegalForm.SelectedIndex = -1;
+            bxPaymentMethod.SelectedIndex = -1;
+
             Action<Control.ControlCollection> func = null;
 
             func = (controls) =>
@@ -199,10 +207,6 @@ namespace RealEstateAgent
                     if (control is TextBox)
                     {
                         (control as TextBox).Clear();
-                    }
-                    else if (control is ComboBox)
-                    {
-                        (control as ComboBox).SelectedIndex = -1;
                     }
                     else
                     {
@@ -216,7 +220,7 @@ namespace RealEstateAgent
 
         private void btnChange_Click(object sender, EventArgs e)
         {
-
+            EnabledInfoFields(true);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -224,6 +228,7 @@ namespace RealEstateAgent
             int selIndex = lstbxRegister.SelectedIndex;
             lstbxRegister.Items.RemoveAt(selIndex);
             estateManager.DeleteFromRegister(selIndex);
+            ClearFields();
         }
 
         private void testValues()
@@ -233,8 +238,33 @@ namespace RealEstateAgent
             bxBuyerCountry.SelectedIndex = 0;
             bxLegalForm.SelectedIndex = 0;
             bxPaymentMethod.SelectedIndex = 0;
-            bxEstateType.SelectedIndex = 0;
             txtAmount.Text = "1";
+        }
+
+        private void lstbxRegister_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selIndex = lstbxRegister.SelectedIndex;
+            IEstate selItem = (IEstate)lstbxRegister.SelectedItem;
+
+            if (selItem.GetType() == typeof(Apartment))
+            {
+                bxLegalForm.SelectedItem = ((Apartment)selItem).LegalForm;
+            }
+            else
+            {
+                bxLegalForm.SelectedIndex = -1;
+            }
+
+            lblShowEstateID.Text = selItem.EstateID.ToString();
+
+            txtEstateCity.Text = selItem.Address.City;
+            bxEstateCountry.SelectedItem = selItem.Address.Country;
+            txtEstateStreet.Text = selItem.Address.Street;
+            txtEstateZip.Text = selItem.Address.ZipCode;
+
+            bxPaymentMethod.SelectedItem = selItem.Payment.Method;
+            txtAmount.Text = selItem.Payment.Amount.ToString();
+
         }
     }
 }
