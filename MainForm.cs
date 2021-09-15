@@ -282,7 +282,7 @@ namespace RealEstateAgent
             ReadEstateTypeToAdd();
             EnableInfoFields(true);
 
-            //  testValues();
+            testValues();
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
@@ -403,78 +403,59 @@ namespace RealEstateAgent
             txtBuyerZip.Text = "54321";
         }
 
+        private void SetOtherLabels(string lbl1, string lbl2, string lbl3)
+        {
+            lblOther1.Text = lbl1;
+            lblOther2.Text = lbl2;
+            lblOther3.Text = lbl3;
+        }
+
         private void SetOtherInfo(EstateType estateType)
         {
             switch (estateType)
             {
                 case EstateType.Rental:
                     {
-                        lblOther1.Text = "Square meters";
-                        lblOther2.Text = "Floor number";
-                        lblOther3.Text = "Contract months";
-
+                        SetOtherLabels("Square meters", "Floor number", "Contract months");
                         break;
                     }
                 case EstateType.School:
                     {
-                        lblOther1.Text = "Number of cafeterias";
-                        lblOther2.Text = "Number of classrooms";
-                        lblOther3.Text = "Suitable school level";
-
+                        SetOtherLabels("Number of cafeterias", "Number of classrooms", "Suitable school level");
                         break;
                     }
                 case EstateType.Store:
                     {
-                        lblOther1.Text = "Storage square meters";
-                        lblOther2.Text = "Suitable business";
-                        lblOther3.Text = "";
-
+                        SetOtherLabels("Storage square meters", "Suitable business", "");
                         break;
                     }
                 case EstateType.Tenement:
                     {
-                        lblOther1.Text = "Square meters";
-                        lblOther2.Text = "Floor number";
-                        lblOther3.Text = "Tenant owner association name";
-
+                        SetOtherLabels("Square meters", "Floor number", "Tenant owner association name");
                         break;
                     }
                 case EstateType.Townhouse:
                     {
-                        lblOther1.Text = "Square meters";
-                        lblOther2.Text = "Garden square meters";
-                        lblOther3.Text = "Number of connected villas";
-
+                        SetOtherLabels("Square meters", "Garden square meters", "Number of connected villas");
                         break;
                     }
                 case EstateType.University:
                     {
-                        lblOther1.Text = "Number of cafeterias";
-                        lblOther2.Text = "Number of classrooms";
-                        lblOther3.Text = "Number of lecture halls";
-
+                        SetOtherLabels("Number of cafeterias", "Number of classrooms", "Number of lecture halls");
                         break;
                     }
                 case EstateType.Villa:
                     {
-                        lblOther1.Text = "Square meters";
-                        lblOther2.Text = "Garden square meters";
-                        lblOther3.Text = "";
-
+                        SetOtherLabels("Square meters", "Garden square meters", "");
                         break;
                     }
                 case EstateType.Warehouse:
                     {
-                        lblOther1.Text = "Storage square meters";
-                        lblOther2.Text = "Number of loading docks";
-                        lblOther3.Text = "";
-
+                        SetOtherLabels("Storage square meters", "Number of loading docks", "");
                         break;
                     }
                 default: break;
             }
-
         }
-
     }
 }
