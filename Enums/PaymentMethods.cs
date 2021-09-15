@@ -9,6 +9,6 @@ using System.Threading.Tasks;
     public enum PaymentMethods
     {
         Bank,
-        Western_Union,
-        PayPal
+        PayPal,
+        Western_Union
     }

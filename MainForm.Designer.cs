@@ -42,7 +42,15 @@ namespace RealEstateAgent
             this.btnConfirm = new System.Windows.Forms.Button();
             this.btnChange = new System.Windows.Forms.Button();
             this.pnlInfo = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.pnlSpecifics = new System.Windows.Forms.Panel();
+            this.txtOther1 = new System.Windows.Forms.TextBox();
+            this.txtOther3 = new System.Windows.Forms.TextBox();
+            this.lblOther3 = new System.Windows.Forms.Label();
+            this.txtOther2 = new System.Windows.Forms.TextBox();
+            this.lblOther2 = new System.Windows.Forms.Label();
+            this.lblOther1 = new System.Windows.Forms.Label();
+            this.lblSpecifics = new System.Windows.Forms.Label();
+            this.pnlPayment = new System.Windows.Forms.Panel();
             this.txtComment = new System.Windows.Forms.TextBox();
             this.lblComment = new System.Windows.Forms.Label();
             this.txtAmount = new System.Windows.Forms.TextBox();
@@ -100,7 +108,8 @@ namespace RealEstateAgent
             this.pnlRegister.SuspendLayout();
             this.pnlAddEstate.SuspendLayout();
             this.pnlInfo.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.pnlSpecifics.SuspendLayout();
+            this.pnlPayment.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctbxEstateImage)).BeginInit();
             this.pnlSeller.SuspendLayout();
@@ -208,7 +217,7 @@ namespace RealEstateAgent
             // 
             this.lblRegister.AutoSize = true;
             this.lblRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblRegister.Location = new System.Drawing.Point(235, 19);
+            this.lblRegister.Location = new System.Drawing.Point(12, 19);
             this.lblRegister.Name = "lblRegister";
             this.lblRegister.Size = new System.Drawing.Size(62, 13);
             this.lblRegister.TabIndex = 6;
@@ -252,7 +261,8 @@ namespace RealEstateAgent
             // pnlInfo
             // 
             this.pnlInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlInfo.Controls.Add(this.panel2);
+            this.pnlInfo.Controls.Add(this.pnlSpecifics);
+            this.pnlInfo.Controls.Add(this.pnlPayment);
             this.pnlInfo.Controls.Add(this.lblInfo);
             this.pnlInfo.Controls.Add(this.panel1);
             this.pnlInfo.Controls.Add(this.pnlSeller);
@@ -262,24 +272,98 @@ namespace RealEstateAgent
             this.pnlInfo.Location = new System.Drawing.Point(542, 5);
             this.pnlInfo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlInfo.Name = "pnlInfo";
-            this.pnlInfo.Size = new System.Drawing.Size(821, 790);
+            this.pnlInfo.Size = new System.Drawing.Size(750, 790);
             this.pnlInfo.TabIndex = 1;
             // 
-            // panel2
+            // pnlSpecifics
             // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.txtComment);
-            this.panel2.Controls.Add(this.lblComment);
-            this.panel2.Controls.Add(this.txtAmount);
-            this.panel2.Controls.Add(this.lblAmount);
-            this.panel2.Controls.Add(this.bxPaymentMethod);
-            this.panel2.Controls.Add(this.lblPaymentMethod);
-            this.panel2.Controls.Add(this.lblPayment);
-            this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.panel2.Location = new System.Drawing.Point(18, 338);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(350, 164);
-            this.panel2.TabIndex = 12;
+            this.pnlSpecifics.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlSpecifics.Controls.Add(this.txtOther1);
+            this.pnlSpecifics.Controls.Add(this.txtOther3);
+            this.pnlSpecifics.Controls.Add(this.lblOther3);
+            this.pnlSpecifics.Controls.Add(this.txtOther2);
+            this.pnlSpecifics.Controls.Add(this.lblOther2);
+            this.pnlSpecifics.Controls.Add(this.lblOther1);
+            this.pnlSpecifics.Controls.Add(this.lblSpecifics);
+            this.pnlSpecifics.Location = new System.Drawing.Point(387, 338);
+            this.pnlSpecifics.Name = "pnlSpecifics";
+            this.pnlSpecifics.Size = new System.Drawing.Size(350, 164);
+            this.pnlSpecifics.TabIndex = 13;
+            // 
+            // txtOther1
+            // 
+            this.txtOther1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtOther1.Location = new System.Drawing.Point(138, 54);
+            this.txtOther1.Name = "txtOther1";
+            this.txtOther1.Size = new System.Drawing.Size(202, 19);
+            this.txtOther1.TabIndex = 28;
+            // 
+            // txtOther3
+            // 
+            this.txtOther3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtOther3.Location = new System.Drawing.Point(138, 126);
+            this.txtOther3.Name = "txtOther3";
+            this.txtOther3.Size = new System.Drawing.Size(202, 19);
+            this.txtOther3.TabIndex = 27;
+            // 
+            // lblOther3
+            // 
+            this.lblOther3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblOther3.Location = new System.Drawing.Point(18, 126);
+            this.lblOther3.Name = "lblOther3";
+            this.lblOther3.Size = new System.Drawing.Size(114, 36);
+            this.lblOther3.TabIndex = 26;
+            // 
+            // txtOther2
+            // 
+            this.txtOther2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtOther2.Location = new System.Drawing.Point(139, 90);
+            this.txtOther2.Name = "txtOther2";
+            this.txtOther2.Size = new System.Drawing.Size(202, 19);
+            this.txtOther2.TabIndex = 25;
+            // 
+            // lblOther2
+            // 
+            this.lblOther2.AutoSize = true;
+            this.lblOther2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblOther2.Location = new System.Drawing.Point(18, 93);
+            this.lblOther2.Name = "lblOther2";
+            this.lblOther2.Size = new System.Drawing.Size(0, 13);
+            this.lblOther2.TabIndex = 24;
+            // 
+            // lblOther1
+            // 
+            this.lblOther1.AutoSize = true;
+            this.lblOther1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblOther1.Location = new System.Drawing.Point(18, 53);
+            this.lblOther1.Name = "lblOther1";
+            this.lblOther1.Size = new System.Drawing.Size(0, 13);
+            this.lblOther1.TabIndex = 22;
+            // 
+            // lblSpecifics
+            // 
+            this.lblSpecifics.AutoSize = true;
+            this.lblSpecifics.Location = new System.Drawing.Point(15, 8);
+            this.lblSpecifics.Name = "lblSpecifics";
+            this.lblSpecifics.Size = new System.Drawing.Size(36, 13);
+            this.lblSpecifics.TabIndex = 0;
+            this.lblSpecifics.Text = "Other ";
+            // 
+            // pnlPayment
+            // 
+            this.pnlPayment.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlPayment.Controls.Add(this.txtComment);
+            this.pnlPayment.Controls.Add(this.lblComment);
+            this.pnlPayment.Controls.Add(this.txtAmount);
+            this.pnlPayment.Controls.Add(this.lblAmount);
+            this.pnlPayment.Controls.Add(this.bxPaymentMethod);
+            this.pnlPayment.Controls.Add(this.lblPaymentMethod);
+            this.pnlPayment.Controls.Add(this.lblPayment);
+            this.pnlPayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.pnlPayment.Location = new System.Drawing.Point(18, 338);
+            this.pnlPayment.Name = "pnlPayment";
+            this.pnlPayment.Size = new System.Drawing.Size(350, 164);
+            this.pnlPayment.TabIndex = 12;
             // 
             // txtComment
             // 
@@ -352,7 +436,7 @@ namespace RealEstateAgent
             // 
             this.lblInfo.AutoSize = true;
             this.lblInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblInfo.Location = new System.Drawing.Point(409, 19);
+            this.lblInfo.Location = new System.Drawing.Point(18, 19);
             this.lblInfo.Name = "lblInfo";
             this.lblInfo.Size = new System.Drawing.Size(82, 13);
             this.lblInfo.TabIndex = 11;
@@ -367,14 +451,14 @@ namespace RealEstateAgent
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.panel1.Location = new System.Drawing.Point(387, 63);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(420, 439);
+            this.panel1.Size = new System.Drawing.Size(350, 267);
             this.panel1.TabIndex = 10;
             // 
             // pctbxEstateImage
             // 
-            this.pctbxEstateImage.Location = new System.Drawing.Point(46, 50);
+            this.pctbxEstateImage.Location = new System.Drawing.Point(18, 34);
             this.pctbxEstateImage.Name = "pctbxEstateImage";
-            this.pctbxEstateImage.Size = new System.Drawing.Size(328, 328);
+            this.pctbxEstateImage.Size = new System.Drawing.Size(215, 215);
             this.pctbxEstateImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pctbxEstateImage.TabIndex = 9;
             this.pctbxEstateImage.TabStop = false;
@@ -382,10 +466,10 @@ namespace RealEstateAgent
             // btnBrowseImg
             // 
             this.btnBrowseImg.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnBrowseImg.Location = new System.Drawing.Point(147, 386);
+            this.btnBrowseImg.Location = new System.Drawing.Point(240, 213);
             this.btnBrowseImg.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnBrowseImg.Name = "btnBrowseImg";
-            this.btnBrowseImg.Size = new System.Drawing.Size(134, 36);
+            this.btnBrowseImg.Size = new System.Drawing.Size(100, 36);
             this.btnBrowseImg.TabIndex = 8;
             this.btnBrowseImg.Text = "Browse";
             this.btnBrowseImg.UseVisualStyleBackColor = true;
@@ -572,7 +656,7 @@ namespace RealEstateAgent
             this.pnlBuyer.Location = new System.Drawing.Point(387, 508);
             this.pnlBuyer.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pnlBuyer.Name = "pnlBuyer";
-            this.pnlBuyer.Size = new System.Drawing.Size(327, 271);
+            this.pnlBuyer.Size = new System.Drawing.Size(350, 271);
             this.pnlBuyer.TabIndex = 7;
             // 
             // bxBuyerCountry
@@ -860,7 +944,7 @@ namespace RealEstateAgent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1369, 800);
+            this.ClientSize = new System.Drawing.Size(1296, 800);
             this.Controls.Add(this.pnlInfo);
             this.Controls.Add(this.pnlRegister);
             this.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -875,8 +959,10 @@ namespace RealEstateAgent
             this.pnlAddEstate.PerformLayout();
             this.pnlInfo.ResumeLayout(false);
             this.pnlInfo.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.pnlSpecifics.ResumeLayout(false);
+            this.pnlSpecifics.PerformLayout();
+            this.pnlPayment.ResumeLayout(false);
+            this.pnlPayment.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctbxEstateImage)).EndInit();
@@ -942,7 +1028,7 @@ namespace RealEstateAgent
         private System.Windows.Forms.Label lblInfo;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel pnlPayment;
         private System.Windows.Forms.Label lblPaymentMethod;
         private System.Windows.Forms.Label lblPayment;
         private System.Windows.Forms.Button btnBrowseImg;
@@ -960,6 +1046,14 @@ namespace RealEstateAgent
         private System.Windows.Forms.Label lblAmount;
         private System.Windows.Forms.ListBox lstbxRegister;
         private System.Windows.Forms.PictureBox pctbxEstateImage;
+        private System.Windows.Forms.Panel pnlSpecifics;
+        private System.Windows.Forms.Label lblSpecifics;
+        private System.Windows.Forms.TextBox txtOther1;
+        private System.Windows.Forms.TextBox txtOther3;
+        private System.Windows.Forms.Label lblOther3;
+        private System.Windows.Forms.TextBox txtOther2;
+        private System.Windows.Forms.Label lblOther2;
+        private System.Windows.Forms.Label lblOther1;
     }
 }
 

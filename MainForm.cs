@@ -56,7 +56,7 @@ namespace RealEstateAgent
         {
             if (estate != null)
             {
-                for (int i = 0; i<lstEstates.Count; i++)
+                for (int i = 0; i < lstEstates.Count; i++)
                 {
                     if (lstEstates[i].EstateID == estate.EstateID)
                     {
@@ -98,7 +98,7 @@ namespace RealEstateAgent
         private void ReadImageInfo()
         {
             estate.Image = pctbxEstateImage.Image;
-            
+
         }
 
         private void ReadSellerInfo()
@@ -185,12 +185,8 @@ namespace RealEstateAgent
         {
             EstateType enumEstateType = (EstateType)bxEstateType.SelectedItem;
 
-            if (enumEstateType is EstateType.Apartment)
-                ShowApartmentComponents(true);
-            else
-                ShowApartmentComponents(false);
-
             IEstate estate = CreateEstate(enumEstateType);
+            SetOtherInfo(enumEstateType);
             estate.EstateID = estateIDCounter + 1;
 
             lblShowEstateID.Text = estate.EstateID.ToString();
@@ -198,13 +194,15 @@ namespace RealEstateAgent
 
         public IEstate CreateEstate(EstateType estateType) => estateType switch
         {
-            EstateType.Apartment    => estate = new Apartment(),
-            EstateType.School       => estate = new School(),
-            EstateType.Store        => estate = new Store(),
-            EstateType.University   => estate = new University(),
-            EstateType.Villa        => estate = new Villa(),
-            EstateType.Warehouse    => estate = new Warehouse(),
-            _                       => throw new ArgumentException(message: "Invalid enum value", paramName: nameof(estateType))
+            EstateType.Rental => estate = new Rental(),
+            EstateType.School => estate = new School(),
+            EstateType.Store => estate = new Store(),
+            EstateType.Tenement => estate = new Tenement(),
+            EstateType.Townhouse => estate = new Townhouse(),
+            EstateType.University => estate = new University(),
+            EstateType.Villa => estate = new Villa(),
+            EstateType.Warehouse => estate = new Warehouse(),
+            _ => throw new ArgumentException(message: "Invalid enum value", paramName: nameof(estateType))
         };
 
         private void EnableInfoFields(bool enabled)
@@ -238,6 +236,10 @@ namespace RealEstateAgent
             btnAdd.Enabled = !enabled;
             btnChange.Enabled = !enabled;
             btnDelete.Enabled = !enabled;
+
+            txtOther1.Enabled = enabled;
+            txtOther2.Enabled = enabled;
+            txtOther3.Enabled = enabled;
 
             lstbxRegister.Enabled = !enabled;
         }
@@ -280,7 +282,7 @@ namespace RealEstateAgent
             ReadEstateTypeToAdd();
             EnableInfoFields(true);
 
-          //  testValues();
+            //  testValues();
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
@@ -401,6 +403,78 @@ namespace RealEstateAgent
             txtBuyerZip.Text = "54321";
         }
 
-      
+        private void SetOtherInfo(EstateType estateType)
+        {
+            switch (estateType)
+            {
+                case EstateType.Rental:
+                    {
+                        lblOther1.Text = "Square meters";
+                        lblOther2.Text = "Floor number";
+                        lblOther3.Text = "Contract months";
+
+                        break;
+                    }
+                case EstateType.School:
+                    {
+                        lblOther1.Text = "Number of cafeterias";
+                        lblOther2.Text = "Number of classrooms";
+                        lblOther3.Text = "Suitable school level";
+
+                        break;
+                    }
+                case EstateType.Store:
+                    {
+                        lblOther1.Text = "Storage square meters";
+                        lblOther2.Text = "Suitable business";
+                        lblOther3.Text = "";
+
+                        break;
+                    }
+                case EstateType.Tenement:
+                    {
+                        lblOther1.Text = "Square meters";
+                        lblOther2.Text = "Floor number";
+                        lblOther3.Text = "Tenant owner association name";
+
+                        break;
+                    }
+                case EstateType.Townhouse:
+                    {
+                        lblOther1.Text = "Square meters";
+                        lblOther2.Text = "Garden square meters";
+                        lblOther3.Text = "Number of connected villas";
+
+                        break;
+                    }
+                case EstateType.University:
+                    {
+                        lblOther1.Text = "Number of cafeterias";
+                        lblOther2.Text = "Number of classrooms";
+                        lblOther3.Text = "Number of lecture halls";
+
+                        break;
+                    }
+                case EstateType.Villa:
+                    {
+                        lblOther1.Text = "Square meters";
+                        lblOther2.Text = "Garden square meters";
+                        lblOther3.Text = "";
+
+                        break;
+                    }
+                case EstateType.Warehouse:
+                    {
+                        lblOther1.Text = "Storage square meters";
+                        lblOther2.Text = "Number of loading docks";
+                        lblOther3.Text = "";
+
+                        break;
+                    }
+                default: break;
+            }
+
+        }
+
     }
 }

@@ -7,12 +7,12 @@ namespace RealEstateAgent
 {
     public class Warehouse : Commercial
     {
-        private bool hasLoadingDock;
+        private int numberOfLoadingDocks;
 
-        public bool HasLoadingDock
+        public int NumberOfLoadingDocks
         {
-            get { return hasLoadingDock; }
-            set { hasLoadingDock = value; }
+            get { return numberOfLoadingDocks; }
+            set { numberOfLoadingDocks = value; }
         }
     }
 }

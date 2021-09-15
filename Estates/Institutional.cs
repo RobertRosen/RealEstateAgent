@@ -7,13 +7,13 @@ namespace RealEstateAgent
 {
     public abstract class Institutional : Estate
     {
-        private bool hasCafeteria;
+        private int numberOfCafeterias;
         private int numberOfClassrooms;
 
-        public bool HasCafeteria
+        public int NumberOfCafeterias
         {
-            get { return hasCafeteria; }
-            set { hasCafeteria = value; }
+            get { return numberOfCafeterias; }
+            set { numberOfCafeterias = value; }
         }
 
         public int NumberOfClassrooms

@@ -7,12 +7,12 @@ namespace RealEstateAgent
 {
     public class School : Institutional
     {
-        private bool hasGymnasium;
+        private string suitableLevel;
 
-        public bool HasGymnasium
+        public string SuitableLevel
         {
-            get { return hasGymnasium; }
-            set { hasGymnasium = value; }
+            get { return suitableLevel; }
+            set { suitableLevel = value; }
         }
     }
 }

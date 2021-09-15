@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 public enum LegalForm
 {
     Ownership,
-    Tenement,
-    Rental
+    Rental,
+    Tenement
 }
  

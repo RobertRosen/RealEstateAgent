@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 
     public enum EstateType
     {
-        Apartment,
+        Rental,
         School,
         Store,
+        Tenement,
+        Townhouse,
         University,
         Villa,
         Warehouse
-
     }
 
