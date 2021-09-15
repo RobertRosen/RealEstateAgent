@@ -31,14 +31,14 @@ namespace RealEstateAgent
         {
             this.pnlRegister = new System.Windows.Forms.Panel();
             this.lstbxRegister = new System.Windows.Forms.ListBox();
+            this.lblRegister = new System.Windows.Forms.Label();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnChange = new System.Windows.Forms.Button();
             this.pnlAddEstate = new System.Windows.Forms.Panel();
             this.lblAddEstate = new System.Windows.Forms.Label();
             this.lblEstateType = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.bxEstateType = new System.Windows.Forms.ComboBox();
-            this.lblRegister = new System.Windows.Forms.Label();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnChange = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnConfirm = new System.Windows.Forms.Button();
             this.pnlInfo = new System.Windows.Forms.Panel();
@@ -128,7 +128,7 @@ namespace RealEstateAgent
             this.pnlRegister.Location = new System.Drawing.Point(4, 5);
             this.pnlRegister.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlRegister.Name = "pnlRegister";
-            this.pnlRegister.Size = new System.Drawing.Size(530, 660);
+            this.pnlRegister.Size = new System.Drawing.Size(530, 611);
             this.pnlRegister.TabIndex = 0;
             // 
             // lstbxRegister
@@ -139,66 +139,9 @@ namespace RealEstateAgent
             this.lstbxRegister.ItemHeight = 16;
             this.lstbxRegister.Location = new System.Drawing.Point(12, 61);
             this.lstbxRegister.Name = "lstbxRegister";
-            this.lstbxRegister.Size = new System.Drawing.Size(505, 532);
+            this.lstbxRegister.Size = new System.Drawing.Size(505, 484);
             this.lstbxRegister.TabIndex = 9;
             this.lstbxRegister.SelectedIndexChanged += new System.EventHandler(this.lstbxRegister_SelectedIndexChanged);
-            // 
-            // pnlAddEstate
-            // 
-            this.pnlAddEstate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlAddEstate.Controls.Add(this.lblAddEstate);
-            this.pnlAddEstate.Controls.Add(this.lblEstateType);
-            this.pnlAddEstate.Controls.Add(this.btnAdd);
-            this.pnlAddEstate.Controls.Add(this.bxEstateType);
-            this.pnlAddEstate.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.pnlAddEstate.Location = new System.Drawing.Point(4, 673);
-            this.pnlAddEstate.Name = "pnlAddEstate";
-            this.pnlAddEstate.Size = new System.Drawing.Size(531, 150);
-            this.pnlAddEstate.TabIndex = 8;
-            // 
-            // lblAddEstate
-            // 
-            this.lblAddEstate.AutoSize = true;
-            this.lblAddEstate.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblAddEstate.Location = new System.Drawing.Point(17, 13);
-            this.lblAddEstate.Name = "lblAddEstate";
-            this.lblAddEstate.Size = new System.Drawing.Size(100, 16);
-            this.lblAddEstate.TabIndex = 8;
-            this.lblAddEstate.Text = "Add new Estate";
-            // 
-            // lblEstateType
-            // 
-            this.lblEstateType.AutoSize = true;
-            this.lblEstateType.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblEstateType.Location = new System.Drawing.Point(17, 53);
-            this.lblEstateType.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblEstateType.Name = "lblEstateType";
-            this.lblEstateType.Size = new System.Drawing.Size(74, 16);
-            this.lblEstateType.TabIndex = 0;
-            this.lblEstateType.Text = "Estate type";
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnAdd.Location = new System.Drawing.Point(12, 94);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(100, 36);
-            this.btnAdd.TabIndex = 7;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // bxEstateType
-            // 
-            this.bxEstateType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.bxEstateType.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.bxEstateType.FormattingEnabled = true;
-            this.bxEstateType.Location = new System.Drawing.Point(180, 45);
-            this.bxEstateType.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.bxEstateType.Name = "bxEstateType";
-            this.bxEstateType.Size = new System.Drawing.Size(172, 24);
-            this.bxEstateType.TabIndex = 1;
             // 
             // lblRegister
             // 
@@ -213,7 +156,7 @@ namespace RealEstateAgent
             // btnDelete
             // 
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnDelete.Location = new System.Drawing.Point(120, 605);
+            this.btnDelete.Location = new System.Drawing.Point(120, 560);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(100, 36);
@@ -225,7 +168,7 @@ namespace RealEstateAgent
             // btnChange
             // 
             this.btnChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnChange.Location = new System.Drawing.Point(12, 605);
+            this.btnChange.Location = new System.Drawing.Point(12, 560);
             this.btnChange.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnChange.Name = "btnChange";
             this.btnChange.Size = new System.Drawing.Size(100, 36);
@@ -234,10 +177,67 @@ namespace RealEstateAgent
             this.btnChange.UseVisualStyleBackColor = true;
             this.btnChange.Click += new System.EventHandler(this.btnChange_Click);
             // 
+            // pnlAddEstate
+            // 
+            this.pnlAddEstate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlAddEstate.Controls.Add(this.lblAddEstate);
+            this.pnlAddEstate.Controls.Add(this.lblEstateType);
+            this.pnlAddEstate.Controls.Add(this.btnAdd);
+            this.pnlAddEstate.Controls.Add(this.bxEstateType);
+            this.pnlAddEstate.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.pnlAddEstate.Location = new System.Drawing.Point(4, 622);
+            this.pnlAddEstate.Name = "pnlAddEstate";
+            this.pnlAddEstate.Size = new System.Drawing.Size(531, 144);
+            this.pnlAddEstate.TabIndex = 8;
+            // 
+            // lblAddEstate
+            // 
+            this.lblAddEstate.AutoSize = true;
+            this.lblAddEstate.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblAddEstate.Location = new System.Drawing.Point(12, 21);
+            this.lblAddEstate.Name = "lblAddEstate";
+            this.lblAddEstate.Size = new System.Drawing.Size(100, 16);
+            this.lblAddEstate.TabIndex = 8;
+            this.lblAddEstate.Text = "Add new Estate";
+            // 
+            // lblEstateType
+            // 
+            this.lblEstateType.AutoSize = true;
+            this.lblEstateType.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblEstateType.Location = new System.Drawing.Point(12, 61);
+            this.lblEstateType.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblEstateType.Name = "lblEstateType";
+            this.lblEstateType.Size = new System.Drawing.Size(74, 16);
+            this.lblEstateType.TabIndex = 0;
+            this.lblEstateType.Text = "Estate type";
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnAdd.Location = new System.Drawing.Point(12, 97);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(100, 36);
+            this.btnAdd.TabIndex = 7;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // bxEstateType
+            // 
+            this.bxEstateType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.bxEstateType.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.bxEstateType.FormattingEnabled = true;
+            this.bxEstateType.Location = new System.Drawing.Point(175, 53);
+            this.bxEstateType.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.bxEstateType.Name = "bxEstateType";
+            this.bxEstateType.Size = new System.Drawing.Size(172, 24);
+            this.bxEstateType.TabIndex = 1;
+            // 
             // btnCancel
             // 
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnCancel.Location = new System.Drawing.Point(138, 762);
+            this.btnCancel.Location = new System.Drawing.Point(124, 716);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(100, 36);
             this.btnCancel.TabIndex = 13;
@@ -248,7 +248,7 @@ namespace RealEstateAgent
             // btnConfirm
             // 
             this.btnConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnConfirm.Location = new System.Drawing.Point(18, 762);
+            this.btnConfirm.Location = new System.Drawing.Point(18, 716);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(100, 36);
             this.btnConfirm.TabIndex = 9;
@@ -272,7 +272,7 @@ namespace RealEstateAgent
             this.pnlInfo.Location = new System.Drawing.Point(542, 5);
             this.pnlInfo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlInfo.Name = "pnlInfo";
-            this.pnlInfo.Size = new System.Drawing.Size(750, 818);
+            this.pnlInfo.Size = new System.Drawing.Size(750, 761);
             this.pnlInfo.TabIndex = 1;
             // 
             // pnlSpecifics
@@ -287,7 +287,7 @@ namespace RealEstateAgent
             this.pnlSpecifics.Controls.Add(this.lblSpecifics);
             this.pnlSpecifics.Location = new System.Drawing.Point(18, 290);
             this.pnlSpecifics.Name = "pnlSpecifics";
-            this.pnlSpecifics.Size = new System.Drawing.Size(350, 211);
+            this.pnlSpecifics.Size = new System.Drawing.Size(350, 185);
             this.pnlSpecifics.TabIndex = 13;
             // 
             // txtOther1
@@ -361,9 +361,9 @@ namespace RealEstateAgent
             this.pnlPayment.Controls.Add(this.lblPaymentMethod);
             this.pnlPayment.Controls.Add(this.lblPayment);
             this.pnlPayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.pnlPayment.Location = new System.Drawing.Point(387, 363);
+            this.pnlPayment.Location = new System.Drawing.Point(387, 336);
             this.pnlPayment.Name = "pnlPayment";
-            this.pnlPayment.Size = new System.Drawing.Size(350, 138);
+            this.pnlPayment.Size = new System.Drawing.Size(350, 139);
             this.pnlPayment.TabIndex = 12;
             // 
             // txtComment
@@ -504,7 +504,7 @@ namespace RealEstateAgent
             this.pnlSeller.Controls.Add(this.lblSellerStreet);
             this.pnlSeller.Controls.Add(this.lblSellerCountry);
             this.pnlSeller.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.pnlSeller.Location = new System.Drawing.Point(18, 511);
+            this.pnlSeller.Location = new System.Drawing.Point(18, 481);
             this.pnlSeller.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pnlSeller.Name = "pnlSeller";
             this.pnlSeller.Size = new System.Drawing.Size(350, 226);
@@ -654,7 +654,7 @@ namespace RealEstateAgent
             this.pnlBuyer.Controls.Add(this.lblBuyerStreet);
             this.pnlBuyer.Controls.Add(this.lblBuyerCountry);
             this.pnlBuyer.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.pnlBuyer.Location = new System.Drawing.Point(387, 508);
+            this.pnlBuyer.Location = new System.Drawing.Point(387, 481);
             this.pnlBuyer.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pnlBuyer.Name = "pnlBuyer";
             this.pnlBuyer.Size = new System.Drawing.Size(350, 229);
@@ -945,7 +945,7 @@ namespace RealEstateAgent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1296, 826);
+            this.ClientSize = new System.Drawing.Size(1296, 770);
             this.Controls.Add(this.pnlInfo);
             this.Controls.Add(this.pnlAddEstate);
             this.Controls.Add(this.pnlRegister);
