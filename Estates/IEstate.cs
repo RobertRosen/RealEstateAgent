@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Drawing;
 
 namespace RealEstateAgent
 {
@@ -12,5 +13,7 @@ namespace RealEstateAgent
         Person Buyer { get; set; }
         Person Seller { get; set; }
         Payment Payment { get; set; }
+        LegalForm LegalForm { get; set; }
+        Image Image { get; set; }
     }
 }

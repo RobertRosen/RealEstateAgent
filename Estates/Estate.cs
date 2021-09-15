@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Drawing;
 
 namespace RealEstateAgent
 {
@@ -13,6 +14,7 @@ namespace RealEstateAgent
         private Person seller;
         private Payment payment;
         private LegalForm legalForm;
+        private Image image;
 
         public int EstateID
         {
@@ -52,6 +54,12 @@ namespace RealEstateAgent
         {
             get { return legalForm; }
             set { legalForm = value; }
+        }
+
+        public Image Image
+        {
+            get { return image; }
+            set { image = value; }
         }
 
         public override string ToString()

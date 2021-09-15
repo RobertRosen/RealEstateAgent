@@ -95,6 +95,12 @@ namespace RealEstateAgent
             estate.Address = address;
         }
 
+        private void ReadImageInfo()
+        {
+            estate.Image = pctbxEstateImage.Image;
+            
+        }
+
         private void ReadSellerInfo()
         {
             Countries enumCountry = (Countries)bxSellerCountry.SelectedItem;
@@ -246,19 +252,26 @@ namespace RealEstateAgent
             bxLegalForm.SelectedIndex = -1;
             bxPaymentMethod.SelectedIndex = -1;
 
-            Action<Control.ControlCollection> func = null;
+            pctbxEstateImage.Image = null;
 
-            func = (controls) =>
-            {
-                foreach (Control control in controls)
-                {
-                    if (control is TextBox)
-                        (control as TextBox).Clear();
-                    else
-                        func(control.Controls);
-                }
-            };
-            func(Controls);
+            txtAmount.Clear();
+            txtComment.Clear();
+
+            txtEstateCity.Clear();
+            txtEstateStreet.Clear();
+            txtEstateZip.Clear();
+
+            txtSellerFName.Clear();
+            txtSellerLName.Clear();
+            txtSellerCity.Clear();
+            txtSellerStreet.Clear();
+            txtSellerZip.Clear();
+
+            txtBuyerFName.Clear();
+            txtBuyerLName.Clear();
+            txtBuyerCity.Clear();
+            txtBuyerStreet.Clear();
+            txtBuyerZip.Clear();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -267,7 +280,7 @@ namespace RealEstateAgent
             ReadEstateTypeToAdd();
             EnableInfoFields(true);
 
-            testValues();
+          //  testValues();
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
@@ -278,6 +291,7 @@ namespace RealEstateAgent
             ReadBuyerInfo();
             ReadSellerInfo();
             ReadPaymentInfo();
+            ReadImageInfo();
 
             AddEstateToRegister();
             lstbxRegister.Items.Clear();
@@ -347,7 +361,16 @@ namespace RealEstateAgent
                 bxBuyerCountry.SelectedItem = selItem.Buyer.Address.Country;
                 txtBuyerStreet.Text = selItem.Buyer.Address.Street;
                 txtBuyerZip.Text = selItem.Buyer.Address.ZipCode;
+
+                pctbxEstateImage.Image = selItem.Image;
             }
+        }
+
+        private void btnBrowseImg_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.ShowDialog();
+            pctbxEstateImage.Image = new Bitmap(openFile.FileName);
         }
 
         private void testValues()
@@ -377,5 +400,7 @@ namespace RealEstateAgent
             txtBuyerStreet.Text = "Dåvägen 2";
             txtBuyerZip.Text = "54321";
         }
+
+      
     }
 }
