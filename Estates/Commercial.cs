@@ -7,5 +7,6 @@ namespace RealEstateAgent
 {
     public abstract class Commercial : Estate
     {
+       
     }
 }

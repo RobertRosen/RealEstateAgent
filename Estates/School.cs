@@ -7,5 +7,12 @@ namespace RealEstateAgent
 {
     public class School : Institutional
     {
+        private bool hasGymnasium;
+
+        public bool HasGymnasium
+        {
+            get { return hasGymnasium; }
+            set { hasGymnasium = value; }
+        }
     }
 }
