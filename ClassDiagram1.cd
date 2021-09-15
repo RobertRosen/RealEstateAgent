@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="RealEstateAgent.Apartment">
-    <Position X="10.75" Y="8.25" Width="1.5" />
+    <Position X="10" Y="8.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAIAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Estates\Apartment.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="RealEstateAgent.Villa">
-    <Position X="12.75" Y="8.25" Width="1.5" />
+    <Position X="13.25" Y="8.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Estates\Villa.cs</FileName>
@@ -31,7 +31,7 @@
   <Class Name="RealEstateAgent.Estate">
     <Position X="6" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAIAAAAAAQAABAEAIAQAACAAAIAAAACAAAABAAACAA=</HashCode>
+      <HashCode>AAAIIAAAAAQAABAEAIAQAACAAAIAAAACAAAABAAACCA=</HashCode>
       <FileName>Estates\Estate.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -52,7 +52,7 @@
   <Class Name="RealEstateAgent.Residental">
     <Position X="11.75" Y="6.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Estates\Residental.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -64,7 +64,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="RealEstateAgent.Townhouse">
-    <Position X="12.75" Y="9.5" Width="1.5" />
+    <Position X="13.25" Y="11" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Estates\Townhouse.cs</FileName>
@@ -141,6 +141,20 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAACAAAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Payments\PayPal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RealEstateAgent.Rental">
+    <Position X="9" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Rental.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RealEstateAgent.Tenement">
+    <Position X="11" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Tenement.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Interface Name="RealEstateAgent.IEstate">

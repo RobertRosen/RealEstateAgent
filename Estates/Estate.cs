@@ -12,6 +12,7 @@ namespace RealEstateAgent
         private Person buyer;
         private Person seller;
         private Payment payment;
+        private LegalForm legalForm;
 
         public int EstateID
         {
@@ -47,14 +48,21 @@ namespace RealEstateAgent
             set { payment = value; }
         }
 
+        public LegalForm LegalForm
+        {
+            get { return legalForm; }
+            set { legalForm = value; }
+        }
+
         public override string ToString()
         {
-            return String.Format("ID({0}) - ADDRESS({1}) - BUYER({2}) - SELLER({3}) - PAYMENT({4})",
-                estateID,   // 0
-                address,    // 1
-                buyer,      // 2
-                seller,     // 3
-                payment);   // 4
+            return String.Format("ID({0}) - ADDRESS({1}) - BUYER({2}) - SELLER({3}) - PAYMENT({4}) - LEGALFORM: {5}",
+                estateID,               // 0
+                address,                // 1
+                buyer,                  // 2
+                seller,                 // 3
+                payment,                // 4
+                legalForm.ToString());  // 5
         }
     }
 }
