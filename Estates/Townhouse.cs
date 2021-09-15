@@ -7,5 +7,12 @@ namespace RealEstateAgent
 {
     public class Townhouse : Villa
     {
+        private int numberOfConnectedVillas;
+
+        public int NumberOfConnectedVillas
+        {
+            get { return numberOfConnectedVillas; }
+            set { numberOfConnectedVillas = value; }
+        }
     }
 }

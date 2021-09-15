@@ -7,5 +7,12 @@ namespace RealEstateAgent
 {
     public class Apartment : Residental
     {
+        private int floor;
+
+        public int Floor
+        {
+            get { return floor; }
+            set { floor = value; }
+        }
     }
 }

@@ -7,5 +7,12 @@ namespace RealEstateAgent
 {
     public class Store : Commercial
     {
+        private string suitableBusiness;
+
+        public string SuitableBusiness
+        {
+            get { return suitableBusiness; }
+            set { suitableBusiness = value; }
+        }
     }
 }

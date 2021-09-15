@@ -7,5 +7,12 @@ namespace RealEstateAgent
 {
     public class Villa : Residental
     {
+        private int gardenSquareMeters;
+
+        public int GardenSquareMeters
+        {
+            get { return gardenSquareMeters; }
+            set { gardenSquareMeters = value; }
+        }
     }
 }

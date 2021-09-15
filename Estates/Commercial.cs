@@ -7,6 +7,12 @@ namespace RealEstateAgent
 {
     public abstract class Commercial : Estate
     {
-       
+        private bool hasOfficeSpace;
+
+        public bool HasOfficeSpace
+        {
+            get { return hasOfficeSpace; }
+            set { hasOfficeSpace = value; }
+        }
     }
 }
