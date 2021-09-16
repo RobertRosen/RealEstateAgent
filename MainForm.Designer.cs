@@ -371,9 +371,9 @@ namespace RealEstateAgent
             this.pnlPayment.Controls.Add(this.lblPaymentMethod);
             this.pnlPayment.Controls.Add(this.lblPayment);
             this.pnlPayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.pnlPayment.Location = new System.Drawing.Point(387, 336);
+            this.pnlPayment.Location = new System.Drawing.Point(387, 290);
             this.pnlPayment.Name = "pnlPayment";
-            this.pnlPayment.Size = new System.Drawing.Size(350, 174);
+            this.pnlPayment.Size = new System.Drawing.Size(350, 185);
             this.pnlPayment.TabIndex = 12;
             // 
             // txtPaySpecific1
@@ -462,14 +462,14 @@ namespace RealEstateAgent
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.panel1.Location = new System.Drawing.Point(387, 63);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(350, 267);
+            this.panel1.Size = new System.Drawing.Size(350, 219);
             this.panel1.TabIndex = 10;
             // 
             // pctbxEstateImage
             // 
             this.pctbxEstateImage.Location = new System.Drawing.Point(15, 37);
             this.pctbxEstateImage.Name = "pctbxEstateImage";
-            this.pctbxEstateImage.Size = new System.Drawing.Size(215, 215);
+            this.pctbxEstateImage.Size = new System.Drawing.Size(195, 167);
             this.pctbxEstateImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pctbxEstateImage.TabIndex = 9;
             this.pctbxEstateImage.TabStop = false;
@@ -477,7 +477,7 @@ namespace RealEstateAgent
             // btnBrowseImg
             // 
             this.btnBrowseImg.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnBrowseImg.Location = new System.Drawing.Point(240, 216);
+            this.btnBrowseImg.Location = new System.Drawing.Point(235, 168);
             this.btnBrowseImg.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnBrowseImg.Name = "btnBrowseImg";
             this.btnBrowseImg.Size = new System.Drawing.Size(100, 36);
@@ -664,7 +664,7 @@ namespace RealEstateAgent
             this.pnlBuyer.Controls.Add(this.lblBuyerStreet);
             this.pnlBuyer.Controls.Add(this.lblBuyerCountry);
             this.pnlBuyer.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.pnlBuyer.Location = new System.Drawing.Point(387, 521);
+            this.pnlBuyer.Location = new System.Drawing.Point(387, 478);
             this.pnlBuyer.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pnlBuyer.Name = "pnlBuyer";
             this.pnlBuyer.Size = new System.Drawing.Size(350, 229);
