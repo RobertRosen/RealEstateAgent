@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Joakim Tell & Robert Rosencrantz
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +11,7 @@ namespace RealEstateAgent
     {
         private string suitableLevel;
 
+        ///Property
         public string SuitableLevel
         {
             get { return suitableLevel; }

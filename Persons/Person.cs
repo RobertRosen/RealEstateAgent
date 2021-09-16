@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Joakim Tell & Robert Rosencrantz
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +13,7 @@ namespace RealEstateAgent
         private string lastName;
         private Address address;
 
+        ///Properties
         public String FirstName
         {
             get { return firstName; }

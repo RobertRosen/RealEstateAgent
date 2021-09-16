@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Joakim Tell & Robert Rosencrantz
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +14,7 @@ namespace RealEstateAgent
         private String city;
         private Countries country;
 
+        ///Properties
         public String Street
         {
             get { return street; }

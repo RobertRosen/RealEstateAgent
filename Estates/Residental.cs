@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Joakim Tell & Robert Rosencrantz
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,12 +11,16 @@ namespace RealEstateAgent
     {
         private int squareMeter;
 
+        ///Property
         public int SquareMeter
         {
             get { return squareMeter; }
             set { squareMeter = value; }
         }
 
+        ///Summary
+        ///
+        ///Summary
         public override bool acceptPayment(PaymentMethods paymentMethod)
         {
             foreach(PaymentMethods payMet in Enum.GetValues(typeof(PaymentMethods))){

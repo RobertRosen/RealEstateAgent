@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Joakim Tell & Robert Rosencrantz
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -58,8 +60,8 @@ namespace RealEstateAgent
             }
             return estate;
         }
-
-        private void ReadEstateTypeToAdd()
+        //Ändrade To -> and
+        private void ReadEstateTypeAndAdd()
         {
             EstateType enumEstateType = (EstateType)bxEstateType.SelectedItem;
             estate = CreateEstateDynamic(enumEstateType);
@@ -360,6 +362,9 @@ namespace RealEstateAgent
             txtSpecific3.Clear();
         }
 
+        ///Summary
+        /// Gets the info about the chosen estate from the register and puts the info on the fields to be read.
+        ///Summary
         private void SetEstateCommonInfo()
         {
             lblShowEstateID.Text = estate.EstateID.ToString();
@@ -392,6 +397,9 @@ namespace RealEstateAgent
             lblSpecific3.Text = lbl3;
         }
 
+        ///Summary
+        ///The wanted information changes based on the estatetype
+        ///Summary
         private void SetEstateSpecificComponents(EstateType estateType)
         {
             switch (estateType)

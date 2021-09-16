@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Joakim Tell & Robert Rosencrantz
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,6 +18,7 @@ namespace RealEstateAgent
         private LegalForm legalForm;
         private Image image;
 
+        ///Properties
         public int EstateID
         {
             get { return estateID; }
