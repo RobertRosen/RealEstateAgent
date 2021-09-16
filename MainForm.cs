@@ -360,7 +360,32 @@ namespace RealEstateAgent
             txtSpecific3.Clear();
         }
 
-        private void SetSpecificLabels(string lbl1, string lbl2, string lbl3)
+        private void SetEstateCommonInfo()
+        {
+            lblShowEstateID.Text = estate.EstateID.ToString();
+            bxLegalForm.SelectedItem = estate.LegalForm;
+            txtEstateCity.Text = estate.Address.City;
+            bxEstateCountry.SelectedItem = estate.Address.Country;
+            txtEstateStreet.Text = estate.Address.Street;
+            txtEstateZip.Text = estate.Address.ZipCode;
+            bxPaymentMethod.SelectedItem = estate.Payment.Method;
+            txtAmount.Text = estate.Payment.Amount.ToString();
+            txtSellerFName.Text = estate.Seller.FirstName;
+            txtSellerLName.Text = estate.Seller.LastName;
+            txtSellerCity.Text = estate.Seller.Address.City;
+            bxSellerCountry.SelectedItem = estate.Seller.Address.Country;
+            txtSellerStreet.Text = estate.Seller.Address.Street;
+            txtSellerZip.Text = estate.Seller.Address.ZipCode;
+            txtBuyerFName.Text = estate.Buyer.FirstName;
+            txtBuyerLName.Text = estate.Buyer.LastName;
+            txtBuyerCity.Text = estate.Buyer.Address.City;
+            bxBuyerCountry.SelectedItem = estate.Buyer.Address.Country;
+            txtBuyerStreet.Text = estate.Buyer.Address.Street;
+            txtBuyerZip.Text = estate.Buyer.Address.ZipCode;
+            pctbxEstateImage.Image = estate.Image;
+        }
+
+        private void SetEstateSpecificLabels(string lbl1, string lbl2, string lbl3)
         {
             lblSpecific1.Text = lbl1;
             lblSpecific2.Text = lbl2;
@@ -373,49 +398,49 @@ namespace RealEstateAgent
             {
                 case EstateType.Rental:
                     {
-                        SetSpecificLabels("Area (m²)", "Floor number", "Contract months");
+                        SetEstateSpecificLabels("Area (m²)", "Floor number", "Contract months");
                         txtSpecific3.Visible = true;
                         break;
                     }
                 case EstateType.School:
                     {
-                        SetSpecificLabels("Number of cafeterias", "Number of classrooms", "Suitable school level");
+                        SetEstateSpecificLabels("Number of cafeterias", "Number of classrooms", "Suitable school level");
                         txtSpecific3.Visible = true;
                         break;
                     }
                 case EstateType.Store:
                     {
-                        SetSpecificLabels("Storage space (m²)", "Suitable business", "");
+                        SetEstateSpecificLabels("Storage space (m²)", "Suitable business", "");
                         txtSpecific3.Visible = false;
                         break;
                     }
                 case EstateType.Tenement:
                     {
-                        SetSpecificLabels("Area (m²)", "Floor number", "Tenants association");
+                        SetEstateSpecificLabels("Area (m²)", "Floor number", "Tenants association");
                         txtSpecific3.Visible = true;
                         break;
                     }
                 case EstateType.Townhouse:
                     {
-                        SetSpecificLabels("Area (m²)", "Garden area (m²)", "Number of connected villas");
+                        SetEstateSpecificLabels("Area (m²)", "Garden area (m²)", "Number of connected villas");
                         txtSpecific3.Visible = true;
                         break;
                     }
                 case EstateType.University:
                     {
-                        SetSpecificLabels("Number of cafeterias", "Number of classrooms", "Number of lecture halls");
+                        SetEstateSpecificLabels("Number of cafeterias", "Number of classrooms", "Number of lecture halls");
                         txtSpecific3.Visible = true;
                         break;
                     }
                 case EstateType.Villa:
                     {
-                        SetSpecificLabels("Area (m²)", "Garden area (m²)", "");
+                        SetEstateSpecificLabels("Area (m²)", "Garden area (m²)", "");
                         txtSpecific3.Visible = false;
                         break;
                     }
                 case EstateType.Warehouse:
                     {
-                        SetSpecificLabels("Storage space (m²)", "Number of loading docks", "");
+                        SetEstateSpecificLabels("Storage space (m²)", "Number of loading docks", "");
                         txtSpecific3.Visible = false;
                         break;
                     }
@@ -423,7 +448,7 @@ namespace RealEstateAgent
             }
         }
 
-        private void SetEstateSpecificInfoTexts(IEstate estate)
+        private void SetEstateSpecificInfo()
         {
             if (estate.GetType() == typeof(Rental))
             {
@@ -527,7 +552,7 @@ namespace RealEstateAgent
             }
         }
 
-        private void SetPaymentSpecificInfoTexts(IEstate estate)
+        private void SetPaymentSpecificInfo()
         {
             if (estate.Payment.GetType() == typeof(Bank))
             {
@@ -637,38 +662,10 @@ namespace RealEstateAgent
             int selIndex = lstbxRegister.SelectedIndex;
             if (selIndex > -1)
             {
-                IEstate selItem = (IEstate)lstbxRegister.SelectedItem;
-                estate = selItem;
-
-                lblShowEstateID.Text = selItem.EstateID.ToString();
-                bxLegalForm.SelectedItem = selItem.LegalForm;
-
-                txtEstateCity.Text = selItem.Address.City;
-                bxEstateCountry.SelectedItem = selItem.Address.Country;
-                txtEstateStreet.Text = selItem.Address.Street;
-                txtEstateZip.Text = selItem.Address.ZipCode;
-
-                bxPaymentMethod.SelectedItem = selItem.Payment.Method;
-                txtAmount.Text = selItem.Payment.Amount.ToString();
-
-                txtSellerFName.Text = selItem.Seller.FirstName;
-                txtSellerLName.Text = selItem.Seller.LastName;
-                txtSellerCity.Text = selItem.Seller.Address.City;
-                bxSellerCountry.SelectedItem = selItem.Seller.Address.Country;
-                txtSellerStreet.Text = selItem.Seller.Address.Street;
-                txtSellerZip.Text = selItem.Seller.Address.ZipCode;
-
-                txtBuyerFName.Text = selItem.Buyer.FirstName;
-                txtBuyerLName.Text = selItem.Buyer.LastName;
-                txtBuyerCity.Text = selItem.Buyer.Address.City;
-                bxBuyerCountry.SelectedItem = selItem.Buyer.Address.Country;
-                txtBuyerStreet.Text = selItem.Buyer.Address.Street;
-                txtBuyerZip.Text = selItem.Buyer.Address.ZipCode;
-
-                pctbxEstateImage.Image = selItem.Image;
-
-                SetEstateSpecificInfoTexts(selItem);
-                SetPaymentSpecificInfoTexts(selItem);
+                estate = (IEstate)lstbxRegister.SelectedItem;
+                SetEstateCommonInfo();
+                SetEstateSpecificInfo();
+                SetPaymentSpecificInfo();
             }
         }
 
