@@ -40,6 +40,7 @@ namespace RealEstateAgent
             bxEstateType.SelectedIndex = -1;
 
             EnableInfoFields(false);
+            EnableButtons(false);
         }
 
         private IEstate AddEstateToRegister()
@@ -172,7 +173,6 @@ namespace RealEstateAgent
         private void ReadEstateTypeToAdd()
         {
             EstateType enumEstateType = (EstateType)bxEstateType.SelectedItem;
-
             IEstate estate = CreateEstate(enumEstateType);
             SetOtherInfo(enumEstateType);
             estate.EstateID = estateIDCounter + 1;
@@ -218,18 +218,23 @@ namespace RealEstateAgent
             bxPaymentMethod.Enabled = enabled;
             bxSellerCountry.Enabled = enabled;
 
-            btnConfirm.Enabled = enabled;
-            btnCancel.Enabled = enabled;
             btnBrowseImg.Enabled = enabled;
-            btnAdd.Enabled = !enabled;
-            btnChange.Enabled = !enabled;
-            btnDelete.Enabled = !enabled;
 
             txtOther1.Enabled = enabled;
             txtOther2.Enabled = enabled;
             txtOther3.Enabled = enabled;
 
             lstbxRegister.Enabled = !enabled;
+        }
+
+        private void EnableButtons(bool enabled)
+        {
+            btnConfirm.Enabled = !enabled;
+            btnCancel.Enabled = !enabled;
+
+            btnAdd.Enabled = enabled;
+            btnChange.Enabled = enabled;
+            btnDelete.Enabled = enabled;
         }
 
         private void ClearFields()
@@ -269,13 +274,17 @@ namespace RealEstateAgent
             ClearFields();
             ReadEstateTypeToAdd();
             EnableInfoFields(true);
+            EnableButtons(false);
 
             testValues();
+
+            lstbxRegister.SelectedIndex = -1;
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             EnableInfoFields(false);
+            EnableButtons(true);
 
             ReadEstateInfo();
             ReadBuyerInfo();
@@ -286,17 +295,22 @@ namespace RealEstateAgent
             AddEstateToRegister();
             lstbxRegister.Items.Clear();
             lstbxRegister.Items.AddRange(lstEstates.ToArray());
+
+            lstbxRegister.SelectedItem = estate;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             EnableInfoFields(false);
+            EnableButtons(true);
+
             ClearFields();
         }
 
         private void btnChange_Click(object sender, EventArgs e)
         {
             EnableInfoFields(true);
+            EnableButtons(false);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -447,11 +461,11 @@ namespace RealEstateAgent
 
         private void SetOtherInfoLabels(IEstate estate)
         {
-            if(estate.GetType() == typeof(Rental))
+            if (estate.GetType() == typeof(Rental))
             {
                 SetOtherInfo(EstateType.Rental);
-            } 
-            else if(estate.GetType() == typeof(School))
+            }
+            else if (estate.GetType() == typeof(School))
             {
                 SetOtherInfo(EstateType.School);
             }
@@ -478,10 +492,22 @@ namespace RealEstateAgent
             else if (estate.GetType() == typeof(Warehouse))
             {
                 SetOtherInfo(EstateType.Warehouse);
-            } 
+            }
             else
             {
                 //Handle this...
+            }
+        }
+
+        private void bxEstateType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (bxEstateType.SelectedIndex > -1)
+            {
+                btnAdd.Enabled = true;
+            }
+            else
+            {
+                btnAdd.Enabled = false;
             }
         }
     }

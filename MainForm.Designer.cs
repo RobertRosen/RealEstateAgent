@@ -213,6 +213,7 @@ namespace RealEstateAgent
             // 
             // btnAdd
             // 
+            this.btnAdd.Enabled = false;
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnAdd.Location = new System.Drawing.Point(12, 97);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -233,6 +234,7 @@ namespace RealEstateAgent
             this.bxEstateType.Name = "bxEstateType";
             this.bxEstateType.Size = new System.Drawing.Size(172, 24);
             this.bxEstateType.TabIndex = 1;
+            this.bxEstateType.SelectedIndexChanged += new System.EventHandler(this.bxEstateType_SelectedIndexChanged);
             // 
             // btnCancel
             // 
