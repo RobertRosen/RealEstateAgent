@@ -592,7 +592,7 @@ namespace RealEstateAgent
         private void btnAdd_Click(object sender, EventArgs e)
         {
             ClearFields();
-            ReadEstateTypeToAdd();
+            ReadEstateTypeAndAdd();
             EnableInfoFields(true);
             EnableButtons(false);
 
