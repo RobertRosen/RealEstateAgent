@@ -31,16 +31,14 @@ namespace RealEstateAgent
             bxLegalForm.DataSource = Enum.GetValues(typeof(LegalForm));
             bxPaymentMethod.DataSource = Enum.GetValues(typeof(PaymentMethods));
             bxEstateType.DataSource = Enum.GetValues(typeof(EstateType));
-
             bxEstateCountry.SelectedIndex = -1;
             bxSellerCountry.SelectedIndex = -1;
             bxBuyerCountry.SelectedIndex = -1;
             bxLegalForm.SelectedIndex = -1;
             bxPaymentMethod.SelectedIndex = -1;
-            bxEstateType.SelectedIndex = -1;
+            bxEstateType.SelectedIndex = 0;
 
             EnableInfoFields(false);
-            //EnableButtons(false);
         }
 
         private IEstate AddEstateToRegister()
@@ -61,11 +59,21 @@ namespace RealEstateAgent
             return estate;
         }
 
+        private void ReadEstateTypeToAdd()
+        {
+            EstateType enumEstateType = (EstateType)bxEstateType.SelectedItem;
+            estate = CreateEstateDynamic(enumEstateType);
+            SetEstateSpecificComponents(enumEstateType);
+            estate.EstateID = estateIDCounter + 1;
+
+            lblShowEstateID.Text = estate.EstateID.ToString();
+        }
+
         private bool ReadEstateInfo()
         {
             bool inputOk;
 
-            if(bxLegalForm.SelectedIndex > -1 && bxLegalForm.SelectedIndex > -1)
+            if (bxLegalForm.SelectedIndex > -1 && bxLegalForm.SelectedIndex > -1)
             {
                 LegalForm legalForm = (LegalForm)bxLegalForm.SelectedItem;
                 Countries enumCountry = (Countries)bxEstateCountry.SelectedItem;
@@ -89,6 +97,81 @@ namespace RealEstateAgent
             {
                 inputOk = false;
             }
+            return inputOk;
+        }
+
+        private void ReadImageInfo()
+        {
+            estate.Image = pctbxEstateImage.Image;
+        }
+
+        private void ReadSellerInfo()
+        {
+            Countries enumCountry = (Countries)bxSellerCountry.SelectedItem;
+            String strFName = txtSellerFName.Text;
+            String strLName = txtSellerLName.Text;
+            String strCity = txtSellerCity.Text;
+            String strStreet = txtSellerStreet.Text;
+            String strZipCode = txtSellerZip.Text;
+
+            Address address = new Address();
+            address.Country = enumCountry;
+            address.City = strCity;
+            address.Street = strStreet;
+            address.ZipCode = strZipCode;
+
+            estate.Seller = new Seller();
+            ((Seller)estate.Seller).FirstName = strFName;
+            ((Seller)estate.Seller).LastName = strLName;
+            ((Seller)estate.Seller).Address = address;
+        }
+
+        private void ReadBuyerInfo()
+        {
+            Countries enumCountry = (Countries)bxBuyerCountry.SelectedItem;
+            String strFName = txtBuyerFName.Text;
+            String strLName = txtBuyerLName.Text;
+            String strCity = txtBuyerCity.Text;
+            String strStreet = txtBuyerStreet.Text;
+            String strZipCode = txtBuyerZip.Text;
+
+            Address address = new Address();
+            address.Country = enumCountry;
+            address.City = strCity;
+            address.Street = strStreet;
+            address.ZipCode = strZipCode;
+
+            estate.Buyer = new Buyer();
+            ((Buyer)estate.Buyer).FirstName = strFName;
+            ((Buyer)estate.Buyer).LastName = strLName;
+            ((Buyer)estate.Buyer).Address = address;
+        }
+
+        private bool ReadPaymentInfo()
+        {
+            bool inputOk;
+
+            if (bxPaymentMethod.SelectedIndex > -1)
+            {
+                PaymentMethods enumPayment = (PaymentMethods)bxPaymentMethod.SelectedItem;
+                CreatePaymentDynamic(enumPayment);
+
+                if (int.TryParse(txtAmount.Text, out int amount))
+                {
+                    estate.Payment.Amount = amount;
+
+                    inputOk = true;
+                }
+                else
+                {
+                    inputOk = false;
+                }
+            }
+            else
+            {
+                inputOk = false;
+            }
+
             return inputOk;
         }
 
@@ -149,121 +232,32 @@ namespace RealEstateAgent
             }
         }
 
-        private void ReadImageInfo()
+        private void ReadPaymentSpecificInfo()
         {
-            estate.Image = pctbxEstateImage.Image;
-        }
+            string str1 = txtPaySpecific1.Text;
+            string str2 = txtPaySpecific2.Text;
 
-        private void ReadSellerInfo()
-        {
-            Countries enumCountry = (Countries)bxSellerCountry.SelectedItem;
-            String strFName = txtSellerFName.Text;
-            String strLName = txtSellerLName.Text;
-            String strCity = txtSellerCity.Text;
-            String strStreet = txtSellerStreet.Text;
-            String strZipCode = txtSellerZip.Text;
-
-            Address address = new Address();
-            address.Country = enumCountry;
-            address.City = strCity;
-            address.Street = strStreet;
-            address.ZipCode = strZipCode;
-
-            estate.Seller = new Seller();
-            ((Seller)estate.Seller).FirstName = strFName;
-            ((Seller)estate.Seller).LastName = strLName;
-            ((Seller)estate.Seller).Address = address;
-        }
-
-        private void ReadBuyerInfo()
-        {
-            Countries enumCountry = (Countries)bxBuyerCountry.SelectedItem;
-            String strFName = txtBuyerFName.Text;
-            String strLName = txtBuyerLName.Text;
-            String strCity = txtBuyerCity.Text;
-            String strStreet = txtBuyerStreet.Text;
-            String strZipCode = txtBuyerZip.Text;
-
-            Address address = new Address();
-            address.Country = enumCountry;
-            address.City = strCity;
-            address.Street = strStreet;
-            address.ZipCode = strZipCode;
-
-            estate.Buyer = new Buyer();
-            ((Buyer)estate.Buyer).FirstName = strFName;
-            ((Buyer)estate.Buyer).LastName = strLName;
-            ((Buyer)estate.Buyer).Address = address;
-        }
-
-        private bool ReadPaymentInfo()
-        {
-            bool inputOk;
-
-            if (bxPaymentMethod.SelectedIndex > -1)
+            if (estate.Payment.GetType() == typeof(Bank))
             {
-                PaymentMethods enumPayment = (PaymentMethods)bxPaymentMethod.SelectedItem;
-                String comment = txtPaySpecific1.Text;
-
-                Payment payment = null;
-                switch (enumPayment)
-                {
-                    case PaymentMethods.Bank:
-                        {
-                            payment = new Bank();
-                            ((Bank)payment).Name = "Hardcoded Name";
-                            ((Bank)payment).Accountnumber = "123456789-0";
-                            break;
-                        }
-                    case PaymentMethods.Western_Union:
-                        {
-                            payment = new WesternUnion();
-                            ((WesternUnion)payment).Name = "Hardcoded Name";
-                            ((WesternUnion)payment).Email = "hardcoded@email.com";
-                            break;
-                        }
-                    case PaymentMethods.PayPal:
-                        {
-                            payment = new PayPal();
-                            ((PayPal)payment).Email = "hardcoded@email.com";
-                            break;
-                        }
-                    default: break;
-                }
-
-                int amount;
-                if (int.TryParse(txtAmount.Text, out amount))
-                {
-                    payment.Amount = amount;
-
-                    inputOk = true;
-                }
-                else
-                {
-                    inputOk = false;
-                }
-                payment.Comment = comment;
-                estate.Payment = payment;
+                ((Bank)estate.Payment).Accountnumber = str1;
+                ((Bank)estate.Payment).Name = str2;
+            }
+            else if (estate.Payment.GetType() == typeof(WesternUnion))
+            {
+                ((WesternUnion)estate.Payment).Email = str1;
+                ((WesternUnion)estate.Payment).Name = str2;
+            }
+            else if (estate.Payment.GetType() == typeof(PayPal))
+            {
+                ((PayPal)estate.Payment).Email = str1;
             }
             else
             {
-                inputOk = false;
+                //Handle this...
             }
-
-            return inputOk;
         }
 
-        private void ReadEstateTypeToAdd()
-        {
-            EstateType enumEstateType = (EstateType)bxEstateType.SelectedItem;
-            estate = CreateEstate(enumEstateType);
-            SetSpecificInfo(enumEstateType);
-            estate.EstateID = estateIDCounter + 1;
-
-            lblShowEstateID.Text = estate.EstateID.ToString();
-        }
-
-        public IEstate CreateEstate(EstateType estateType) => estateType switch
+        public IEstate CreateEstateDynamic(EstateType estateType) => estateType switch
         {
             EstateType.Rental => estate = new Rental(),
             EstateType.School => estate = new School(),
@@ -276,6 +270,14 @@ namespace RealEstateAgent
             _ => throw new ArgumentException(message: "Invalid enum value", paramName: nameof(estateType))
         };
 
+        public Payment CreatePaymentDynamic(PaymentMethods paymentMethod) => paymentMethod switch
+        {
+            PaymentMethods.Bank => estate.Payment = new Bank(),
+            PaymentMethods.PayPal => estate.Payment = new PayPal(),
+            PaymentMethods.Western_Union => estate.Payment = new WesternUnion(),
+            _ => throw new ArgumentException(message: "Invalid enum value", paramName: nameof(paymentMethod))
+        };
+
         private void EnableInfoFields(bool enabled)
         {
             txtAmount.Enabled = enabled;
@@ -285,6 +287,7 @@ namespace RealEstateAgent
             txtBuyerStreet.Enabled = enabled;
             txtBuyerZip.Enabled = enabled;
             txtPaySpecific1.Enabled = enabled;
+            txtPaySpecific2.Enabled = enabled;
             txtEstateCity.Enabled = enabled;
             txtEstateStreet.Enabled = enabled;
             txtEstateZip.Enabled = enabled;
@@ -334,6 +337,7 @@ namespace RealEstateAgent
 
             txtAmount.Clear();
             txtPaySpecific1.Clear();
+            txtPaySpecific2.Clear();
 
             txtEstateCity.Clear();
             txtEstateStreet.Clear();
@@ -363,7 +367,7 @@ namespace RealEstateAgent
             lblSpecific3.Text = lbl3;
         }
 
-        private void SetSpecificInfo(EstateType estateType)
+        private void SetEstateSpecificComponents(EstateType estateType)
         {
             switch (estateType)
             {
@@ -419,11 +423,11 @@ namespace RealEstateAgent
             }
         }
 
-        private void SetSpecificInfoText(IEstate estate)
+        private void SetEstateSpecificInfoTexts(IEstate estate)
         {
             if (estate.GetType() == typeof(Rental))
             {
-                SetSpecificInfo(EstateType.Rental);
+                SetEstateSpecificComponents(EstateType.Rental);
                 txtSpecific1.Text = ((Rental)estate).SquareMeter.ToString();
                 txtSpecific2.Text = ((Rental)estate).Floor.ToString();
                 txtSpecific3.Text = ((Rental)estate).ContractMonths.ToString();
@@ -431,7 +435,7 @@ namespace RealEstateAgent
             }
             else if (estate.GetType() == typeof(School))
             {
-                SetSpecificInfo(EstateType.School);
+                SetEstateSpecificComponents(EstateType.School);
                 txtSpecific1.Text = ((School)estate).NumberOfCafeterias.ToString();
                 txtSpecific2.Text = ((School)estate).NumberOfClassrooms.ToString();
                 txtSpecific3.Text = ((School)estate).SuitableLevel.ToString();
@@ -439,7 +443,7 @@ namespace RealEstateAgent
             }
             else if (estate.GetType() == typeof(Store))
             {
-                SetSpecificInfo(EstateType.Store);
+                SetEstateSpecificComponents(EstateType.Store);
                 txtSpecific1.Text = ((Store)estate).StorageSquareMeters.ToString();
                 txtSpecific2.Text = ((Store)estate).SuitableBusiness.ToString();
                 txtSpecific3.Text = "";
@@ -447,7 +451,7 @@ namespace RealEstateAgent
             }
             else if (estate.GetType() == typeof(Tenement))
             {
-                SetSpecificInfo(EstateType.Tenement);
+                SetEstateSpecificComponents(EstateType.Tenement);
                 txtSpecific1.Text = ((Tenement)estate).SquareMeter.ToString();
                 txtSpecific2.Text = ((Tenement)estate).Floor.ToString();
                 txtSpecific3.Text = ((Tenement)estate).TenantOwnersAssociationName.ToString();
@@ -455,7 +459,7 @@ namespace RealEstateAgent
             }
             else if (estate.GetType() == typeof(Townhouse))
             {
-                SetSpecificInfo(EstateType.Townhouse);
+                SetEstateSpecificComponents(EstateType.Townhouse);
                 txtSpecific1.Text = ((Townhouse)estate).SquareMeter.ToString();
                 txtSpecific2.Text = ((Townhouse)estate).GardenSquareMeters.ToString();
                 txtSpecific3.Text = ((Townhouse)estate).NumberOfConnectedVillas.ToString();
@@ -463,7 +467,7 @@ namespace RealEstateAgent
             }
             else if (estate.GetType() == typeof(University))
             {
-                SetSpecificInfo(EstateType.University);
+                SetEstateSpecificComponents(EstateType.University);
                 txtSpecific1.Text = ((University)estate).NumberOfCafeterias.ToString();
                 txtSpecific2.Text = ((University)estate).NumberOfClassrooms.ToString();
                 txtSpecific3.Text = ((University)estate).NumberOfLectureHalls.ToString();
@@ -471,7 +475,7 @@ namespace RealEstateAgent
             }
             else if (estate.GetType() == typeof(Villa))
             {
-                SetSpecificInfo(EstateType.Villa);
+                SetEstateSpecificComponents(EstateType.Villa);
                 txtSpecific1.Text = ((Villa)estate).SquareMeter.ToString();
                 txtSpecific2.Text = ((Villa)estate).GardenSquareMeters.ToString();
                 txtSpecific3.Text = "";
@@ -479,11 +483,72 @@ namespace RealEstateAgent
             }
             else if (estate.GetType() == typeof(Warehouse))
             {
-                SetSpecificInfo(EstateType.Warehouse);
+                SetEstateSpecificComponents(EstateType.Warehouse);
                 txtSpecific1.Text = ((Warehouse)estate).StorageSquareMeters.ToString();
                 txtSpecific2.Text = ((Warehouse)estate).NumberOfLoadingDocks.ToString();
                 txtSpecific3.Text = "";
                 bxEstateType.SelectedItem = EstateType.Warehouse;
+            }
+            else
+            {
+                //Handle this...
+            }
+        }
+
+        private void SetPaymentSpecificComponents(PaymentMethods enumPayment)
+        {
+            switch (enumPayment)
+            {
+                case PaymentMethods.Bank:
+                    {
+                        lblPaySpecific1.Text = "Account number";
+                        lblPaySpecific2.Text = "Name";
+                        lblPaySpecific2.Visible = true;
+                        txtPaySpecific2.Visible = true;
+                        break;
+                    }
+                case PaymentMethods.Western_Union:
+                    {
+                        lblPaySpecific1.Text = "e-mail";
+                        lblPaySpecific2.Text = "Name";
+                        lblPaySpecific2.Visible = true;
+                        txtPaySpecific2.Visible = true;
+                        break;
+                    }
+                case PaymentMethods.PayPal:
+                    {
+                        lblPaySpecific1.Text = "e-mail";
+                        lblPaySpecific2.Text = "";
+                        lblPaySpecific2.Visible = false;
+                        txtPaySpecific2.Visible = false;
+                        break;
+                    }
+                default: break;
+            }
+        }
+
+        private void SetPaymentSpecificInfoTexts(IEstate estate)
+        {
+            if (estate.Payment.GetType() == typeof(Bank))
+            {
+                SetPaymentSpecificComponents(PaymentMethods.Bank);
+                txtPaySpecific1.Text = ((Bank)estate.Payment).Accountnumber;
+                txtPaySpecific2.Text = ((Bank)estate.Payment).Name;
+                bxPaymentMethod.SelectedItem = PaymentMethods.Bank;
+            }
+            else if (estate.Payment.GetType() == typeof(WesternUnion))
+            {
+                SetPaymentSpecificComponents(PaymentMethods.Western_Union);
+                txtPaySpecific1.Text = ((WesternUnion)estate.Payment).Email;
+                txtPaySpecific2.Text = ((WesternUnion)estate.Payment).Name;
+                bxPaymentMethod.SelectedItem = PaymentMethods.Western_Union;
+            }
+            else if (estate.Payment.GetType() == typeof(PayPal))
+            {
+                SetPaymentSpecificComponents(PaymentMethods.PayPal);
+                txtPaySpecific1.Text = ((PayPal)estate.Payment).Email;
+                txtPaySpecific2.Text = "";
+                bxPaymentMethod.SelectedItem = PaymentMethods.PayPal;
             }
             else
             {
@@ -515,6 +580,7 @@ namespace RealEstateAgent
             inputOk = ReadPaymentInfo();
             ReadImageInfo();
             ReadSpecificInfo();
+            ReadPaymentSpecificInfo();
 
             if (inputOk)
             {
@@ -539,17 +605,24 @@ namespace RealEstateAgent
 
         private void btnChange_Click(object sender, EventArgs e)
         {
-            EnableInfoFields(true);
-            EnableButtons(false);
+            if (lstbxRegister.Items.Count > 0)
+            {
+                EnableInfoFields(true);
+                EnableButtons(false);
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             int selIndex = lstbxRegister.SelectedIndex;
-            lstbxRegister.Items.RemoveAt(selIndex);
-            lstEstates.RemoveAt(selIndex);
-            ClearFields();
-            lstbxRegister.SelectedIndex = 0;
+            if (selIndex > -1)
+            {
+                lstbxRegister.Items.RemoveAt(selIndex);
+                lstEstates.RemoveAt(selIndex);
+                ClearFields();
+                if(lstbxRegister.Items.Count > 0)
+                    lstbxRegister.SelectedIndex = 0;
+            }
         }
 
         private void btnBrowseImg_Click(object sender, EventArgs e)
@@ -577,7 +650,6 @@ namespace RealEstateAgent
 
                 bxPaymentMethod.SelectedItem = selItem.Payment.Method;
                 txtAmount.Text = selItem.Payment.Amount.ToString();
-                txtPaySpecific1.Text = selItem.Payment.Comment;
 
                 txtSellerFName.Text = selItem.Seller.FirstName;
                 txtSellerLName.Text = selItem.Seller.LastName;
@@ -595,7 +667,8 @@ namespace RealEstateAgent
 
                 pctbxEstateImage.Image = selItem.Image;
 
-                SetSpecificInfoText(selItem);
+                SetEstateSpecificInfoTexts(selItem);
+                SetPaymentSpecificInfoTexts(selItem);
             }
         }
 
@@ -611,6 +684,12 @@ namespace RealEstateAgent
             }
         }
 
+        private void bxPaymentMethod_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            PaymentMethods enumPayment = (PaymentMethods)bxPaymentMethod.SelectedItem;
+            SetPaymentSpecificComponents(enumPayment);
+        }
+
         private void testValues()
         {
             bxEstateCountry.SelectedIndex = 0;
@@ -620,7 +699,12 @@ namespace RealEstateAgent
             bxPaymentMethod.SelectedIndex = 0;
 
             txtAmount.Text = "1";
-            txtPaySpecific1.Text = "Hej";
+            txtPaySpecific1.Text = "1";
+            txtPaySpecific2.Text = "1";
+
+            txtSpecific1.Text = "1";
+            txtSpecific2.Text = "1";
+            txtSpecific3.Text = "1";
 
             txtEstateCity.Text = "Malmö";
             txtEstateStreet.Text = "HEJVägen";
@@ -637,31 +721,6 @@ namespace RealEstateAgent
             txtBuyerCity.Text = "SKURUP";
             txtBuyerStreet.Text = "Dåvägen 2";
             txtBuyerZip.Text = "54321";
-
-            //switch (enumPayment)
-            //{
-            //    case PaymentMethods.Bank:
-            //        {
-                       
-            //            ((Bank)payment).Name = "Hardcoded Name";
-            //            ((Bank)payment).Accountnumber = "123456789-0";
-            //            break;
-            //        }
-            //    case PaymentMethods.Western_Union:
-            //        {
-            //            payment = new WesternUnion();
-            //            ((WesternUnion)payment).Name = "Hardcoded Name";
-            //            ((WesternUnion)payment).Email = "hardcoded@email.com";
-            //            break;
-            //        }
-            //    case PaymentMethods.PayPal:
-            //        {
-            //            payment = new PayPal();
-            //            ((PayPal)payment).Email = "hardcoded@email.com";
-            //            break;
-            //        }
-            //    default: break;
-            //}
         }
     }
 }

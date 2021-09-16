@@ -51,6 +51,8 @@ namespace RealEstateAgent
             this.lblSpecific1 = new System.Windows.Forms.Label();
             this.lblSpecifics = new System.Windows.Forms.Label();
             this.pnlPayment = new System.Windows.Forms.Panel();
+            this.lblPaySpecific2 = new System.Windows.Forms.Label();
+            this.txtPaySpecific2 = new System.Windows.Forms.TextBox();
             this.txtPaySpecific1 = new System.Windows.Forms.TextBox();
             this.lblPaySpecific1 = new System.Windows.Forms.Label();
             this.txtAmount = new System.Windows.Forms.TextBox();
@@ -105,8 +107,6 @@ namespace RealEstateAgent
             this.txtEstateCity = new System.Windows.Forms.TextBox();
             this.lblShowEstateID = new System.Windows.Forms.Label();
             this.lblEstate = new System.Windows.Forms.Label();
-            this.txtPaySpecific2 = new System.Windows.Forms.TextBox();
-            this.lblPaySpecific2 = new System.Windows.Forms.Label();
             this.pnlRegister.SuspendLayout();
             this.pnlAddEstate.SuspendLayout();
             this.pnlInfo.SuspendLayout();
@@ -376,6 +376,22 @@ namespace RealEstateAgent
             this.pnlPayment.Size = new System.Drawing.Size(350, 185);
             this.pnlPayment.TabIndex = 12;
             // 
+            // lblPaySpecific2
+            // 
+            this.lblPaySpecific2.AutoSize = true;
+            this.lblPaySpecific2.Location = new System.Drawing.Point(13, 131);
+            this.lblPaySpecific2.Name = "lblPaySpecific2";
+            this.lblPaySpecific2.Size = new System.Drawing.Size(100, 16);
+            this.lblPaySpecific2.TabIndex = 23;
+            this.lblPaySpecific2.Text = "lblPaySpecific2";
+            // 
+            // txtPaySpecific2
+            // 
+            this.txtPaySpecific2.Location = new System.Drawing.Point(134, 131);
+            this.txtPaySpecific2.Name = "txtPaySpecific2";
+            this.txtPaySpecific2.Size = new System.Drawing.Size(202, 22);
+            this.txtPaySpecific2.TabIndex = 22;
+            // 
             // txtPaySpecific1
             // 
             this.txtPaySpecific1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -421,6 +437,7 @@ namespace RealEstateAgent
             this.bxPaymentMethod.Name = "bxPaymentMethod";
             this.bxPaymentMethod.Size = new System.Drawing.Size(201, 24);
             this.bxPaymentMethod.TabIndex = 17;
+            this.bxPaymentMethod.SelectionChangeCommitted += new System.EventHandler(this.bxPaymentMethod_SelectionChangeCommitted);
             // 
             // lblPaymentMethod
             // 
@@ -950,22 +967,6 @@ namespace RealEstateAgent
             this.lblEstate.Size = new System.Drawing.Size(45, 16);
             this.lblEstate.TabIndex = 0;
             this.lblEstate.Text = "Estate";
-            // 
-            // txtPaySpecific2
-            // 
-            this.txtPaySpecific2.Location = new System.Drawing.Point(134, 131);
-            this.txtPaySpecific2.Name = "txtPaySpecific2";
-            this.txtPaySpecific2.Size = new System.Drawing.Size(202, 22);
-            this.txtPaySpecific2.TabIndex = 22;
-            // 
-            // lblPaySpecific2
-            // 
-            this.lblPaySpecific2.AutoSize = true;
-            this.lblPaySpecific2.Location = new System.Drawing.Point(11, 131);
-            this.lblPaySpecific2.Name = "lblPaySpecific2";
-            this.lblPaySpecific2.Size = new System.Drawing.Size(100, 16);
-            this.lblPaySpecific2.TabIndex = 23;
-            this.lblPaySpecific2.Text = "lblPaySpecific2";
             // 
             // MainForm
             // 
