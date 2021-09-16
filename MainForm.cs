@@ -39,17 +39,7 @@ namespace RealEstateAgent
             bxPaymentMethod.SelectedIndex = -1;
             bxEstateType.SelectedIndex = -1;
 
-            ShowApartmentComponents(false); // Show Legal form...
-
             EnableInfoFields(false);
-        }
-
-        private void ShowApartmentComponents(bool show)
-        {
-            if (show)
-                bxLegalForm.Show();
-            else
-                bxLegalForm.Hide();
         }
 
         private IEstate AddEstateToRegister()
@@ -72,6 +62,8 @@ namespace RealEstateAgent
 
         private void ReadEstateInfo()
         {
+            LegalForm legalForm = (LegalForm)bxLegalForm.SelectedItem;
+
             Countries enumCountry = (Countries)bxEstateCountry.SelectedItem;
             String strCity = txtEstateCity.Text;
             String strStreet = txtEstateStreet.Text;
@@ -83,22 +75,18 @@ namespace RealEstateAgent
             address.Street = strStreet;
             address.ZipCode = strZipCode;
 
-            int selIndex = lstbxRegister.SelectedIndex;
-            if ((selIndex > -1) && (lstbxRegister.SelectedItem.GetType() == typeof(Apartment)))
-            {
-                bxLegalForm.Show();
-                LegalForm enumLegalForm = (LegalForm)bxLegalForm.SelectedItem;
-                ((Apartment)estate).LegalForm = enumLegalForm;
-            }
-            else bxLegalForm.Hide();
-
+            estate.LegalForm = legalForm;
             estate.Address = address;
+        }
+
+        private void ReadOtherInfo()
+        {
+
         }
 
         private void ReadImageInfo()
         {
             estate.Image = pctbxEstateImage.Image;
-
         }
 
         private void ReadSellerInfo()
@@ -302,7 +290,6 @@ namespace RealEstateAgent
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            ShowApartmentComponents(false);
             EnableInfoFields(false);
             ClearFields();
         }
@@ -328,18 +315,8 @@ namespace RealEstateAgent
                 IEstate selItem = (IEstate)lstbxRegister.SelectedItem;
                 estate = selItem;
 
-                if (selItem.GetType() == typeof(Apartment))
-                {
-                    bxLegalForm.SelectedItem = ((Apartment)selItem).LegalForm;
-                    ShowApartmentComponents(true);
-                }
-                else
-                {
-                    bxLegalForm.SelectedIndex = -1;
-                    ShowApartmentComponents(false);
-                }
-
                 lblShowEstateID.Text = selItem.EstateID.ToString();
+                bxLegalForm.SelectedItem = selItem.LegalForm;
 
                 txtEstateCity.Text = selItem.Address.City;
                 bxEstateCountry.SelectedItem = selItem.Address.Country;
@@ -365,6 +342,8 @@ namespace RealEstateAgent
                 txtBuyerZip.Text = selItem.Buyer.Address.ZipCode;
 
                 pctbxEstateImage.Image = selItem.Image;
+
+                SetOtherInfoLabels(selItem);
             }
         }
 
@@ -380,7 +359,7 @@ namespace RealEstateAgent
             bxEstateCountry.SelectedIndex = 0;
             bxSellerCountry.SelectedIndex = 0;
             bxBuyerCountry.SelectedIndex = 0;
-            //bxLegalForm.SelectedIndex = 0;
+            bxLegalForm.SelectedIndex = 0;
             bxPaymentMethod.SelectedIndex = 0;
 
             txtAmount.Text = "1";
@@ -416,45 +395,93 @@ namespace RealEstateAgent
             {
                 case EstateType.Rental:
                     {
-                        SetOtherLabels("Square meters", "Floor number", "Contract months");
+                        SetOtherLabels("Area (m²)", "Floor number", "Contract months");
+                        txtOther3.Visible = true;
                         break;
                     }
                 case EstateType.School:
                     {
                         SetOtherLabels("Number of cafeterias", "Number of classrooms", "Suitable school level");
+                        txtOther3.Visible = true;
                         break;
                     }
                 case EstateType.Store:
                     {
-                        SetOtherLabels("Storage square meters", "Suitable business", "");
+                        SetOtherLabels("Storage space (m²)", "Suitable business", "");
+                        txtOther3.Visible = false;
                         break;
                     }
                 case EstateType.Tenement:
                     {
-                        SetOtherLabels("Square meters", "Floor number", "Tenant owner association name");
+                        SetOtherLabels("Area (m²)", "Floor number", "Tenants association");
+                        txtOther3.Visible = true;
                         break;
                     }
                 case EstateType.Townhouse:
                     {
-                        SetOtherLabels("Square meters", "Garden square meters", "Number of connected villas");
+                        SetOtherLabels("Area (m²)", "Garden area (m²)", "Number of connected villas");
+                        txtOther3.Visible = true;
                         break;
                     }
                 case EstateType.University:
                     {
                         SetOtherLabels("Number of cafeterias", "Number of classrooms", "Number of lecture halls");
+                        txtOther3.Visible = true;
                         break;
                     }
                 case EstateType.Villa:
                     {
-                        SetOtherLabels("Square meters", "Garden square meters", "");
+                        SetOtherLabels("Area (m²)", "Garden area (m²)", "");
+                        txtOther3.Visible = false;
                         break;
                     }
                 case EstateType.Warehouse:
                     {
-                        SetOtherLabels("Storage square meters", "Number of loading docks", "");
+                        SetOtherLabels("Storage space (m²)", "Number of loading docks", "");
+                        txtOther3.Visible = false;
                         break;
                     }
                 default: break;
+            }
+        }
+
+        private void SetOtherInfoLabels(IEstate estate)
+        {
+            if(estate.GetType() == typeof(Rental))
+            {
+                SetOtherInfo(EstateType.Rental);
+            } 
+            else if(estate.GetType() == typeof(School))
+            {
+                SetOtherInfo(EstateType.School);
+            }
+            else if (estate.GetType() == typeof(Store))
+            {
+                SetOtherInfo(EstateType.Store);
+            }
+            else if (estate.GetType() == typeof(Tenement))
+            {
+                SetOtherInfo(EstateType.Tenement);
+            }
+            else if (estate.GetType() == typeof(Townhouse))
+            {
+                SetOtherInfo(EstateType.Townhouse);
+            }
+            else if (estate.GetType() == typeof(University))
+            {
+                SetOtherInfo(EstateType.University);
+            }
+            else if (estate.GetType() == typeof(Villa))
+            {
+                SetOtherInfo(EstateType.Villa);
+            }
+            else if (estate.GetType() == typeof(Warehouse))
+            {
+                SetOtherInfo(EstateType.Warehouse);
+            } 
+            else
+            {
+                //Handle this...
             }
         }
     }
