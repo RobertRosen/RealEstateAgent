@@ -21,5 +21,10 @@ namespace RealEstateAgent
             get { return numberOfClassrooms; }
             set { numberOfClassrooms = value; }
         }
+
+        public override bool acceptPayment(PaymentMethods paymentMethod)
+        {
+            return paymentMethod == PaymentMethods.Bank;
+        }
     }
 }

@@ -14,5 +14,10 @@ namespace RealEstateAgent
             get { return storageSquareMeters; }
             set { storageSquareMeters = value; }
         }
+
+        public override bool acceptPayment(PaymentMethods paymentMethod)
+        {
+            return paymentMethod != PaymentMethods.PayPal;
+        }
     }
 }

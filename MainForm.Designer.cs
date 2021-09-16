@@ -43,12 +43,12 @@ namespace RealEstateAgent
             this.btnConfirm = new System.Windows.Forms.Button();
             this.pnlInfo = new System.Windows.Forms.Panel();
             this.pnlSpecifics = new System.Windows.Forms.Panel();
-            this.txtOther1 = new System.Windows.Forms.TextBox();
-            this.txtOther3 = new System.Windows.Forms.TextBox();
-            this.lblOther3 = new System.Windows.Forms.Label();
-            this.txtOther2 = new System.Windows.Forms.TextBox();
-            this.lblOther2 = new System.Windows.Forms.Label();
-            this.lblOther1 = new System.Windows.Forms.Label();
+            this.txtSpecific1 = new System.Windows.Forms.TextBox();
+            this.txtSpecific3 = new System.Windows.Forms.TextBox();
+            this.lblSpecific3 = new System.Windows.Forms.Label();
+            this.txtSpecific2 = new System.Windows.Forms.TextBox();
+            this.lblSpecific2 = new System.Windows.Forms.Label();
+            this.lblSpecific1 = new System.Windows.Forms.Label();
             this.lblSpecifics = new System.Windows.Forms.Label();
             this.pnlPayment = new System.Windows.Forms.Panel();
             this.txtComment = new System.Windows.Forms.TextBox();
@@ -280,68 +280,68 @@ namespace RealEstateAgent
             // pnlSpecifics
             // 
             this.pnlSpecifics.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlSpecifics.Controls.Add(this.txtOther1);
-            this.pnlSpecifics.Controls.Add(this.txtOther3);
-            this.pnlSpecifics.Controls.Add(this.lblOther3);
-            this.pnlSpecifics.Controls.Add(this.txtOther2);
-            this.pnlSpecifics.Controls.Add(this.lblOther2);
-            this.pnlSpecifics.Controls.Add(this.lblOther1);
+            this.pnlSpecifics.Controls.Add(this.txtSpecific1);
+            this.pnlSpecifics.Controls.Add(this.txtSpecific3);
+            this.pnlSpecifics.Controls.Add(this.lblSpecific3);
+            this.pnlSpecifics.Controls.Add(this.txtSpecific2);
+            this.pnlSpecifics.Controls.Add(this.lblSpecific2);
+            this.pnlSpecifics.Controls.Add(this.lblSpecific1);
             this.pnlSpecifics.Controls.Add(this.lblSpecifics);
             this.pnlSpecifics.Location = new System.Drawing.Point(18, 290);
             this.pnlSpecifics.Name = "pnlSpecifics";
             this.pnlSpecifics.Size = new System.Drawing.Size(350, 185);
             this.pnlSpecifics.TabIndex = 13;
             // 
-            // txtOther1
+            // txtSpecific1
             // 
-            this.txtOther1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtOther1.Location = new System.Drawing.Point(135, 44);
-            this.txtOther1.Name = "txtOther1";
-            this.txtOther1.Size = new System.Drawing.Size(202, 22);
-            this.txtOther1.TabIndex = 28;
+            this.txtSpecific1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtSpecific1.Location = new System.Drawing.Point(135, 44);
+            this.txtSpecific1.Name = "txtSpecific1";
+            this.txtSpecific1.Size = new System.Drawing.Size(202, 22);
+            this.txtSpecific1.TabIndex = 28;
             // 
-            // txtOther3
+            // txtSpecific3
             // 
-            this.txtOther3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtOther3.Location = new System.Drawing.Point(135, 120);
-            this.txtOther3.Name = "txtOther3";
-            this.txtOther3.Size = new System.Drawing.Size(202, 22);
-            this.txtOther3.TabIndex = 27;
+            this.txtSpecific3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtSpecific3.Location = new System.Drawing.Point(135, 120);
+            this.txtSpecific3.Name = "txtSpecific3";
+            this.txtSpecific3.Size = new System.Drawing.Size(202, 22);
+            this.txtSpecific3.TabIndex = 27;
             // 
-            // lblOther3
+            // lblSpecific3
             // 
-            this.lblOther3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblOther3.Location = new System.Drawing.Point(15, 120);
-            this.lblOther3.Name = "lblOther3";
-            this.lblOther3.Size = new System.Drawing.Size(114, 36);
-            this.lblOther3.TabIndex = 26;
-            this.lblOther3.Text = "lbl3 test test test test";
+            this.lblSpecific3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblSpecific3.Location = new System.Drawing.Point(15, 120);
+            this.lblSpecific3.Name = "lblSpecific3";
+            this.lblSpecific3.Size = new System.Drawing.Size(114, 36);
+            this.lblSpecific3.TabIndex = 26;
+            this.lblSpecific3.Text = "lbl3 test test test test";
             // 
-            // txtOther2
+            // txtSpecific2
             // 
-            this.txtOther2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtOther2.Location = new System.Drawing.Point(135, 82);
-            this.txtOther2.Name = "txtOther2";
-            this.txtOther2.Size = new System.Drawing.Size(202, 22);
-            this.txtOther2.TabIndex = 25;
+            this.txtSpecific2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtSpecific2.Location = new System.Drawing.Point(135, 82);
+            this.txtSpecific2.Name = "txtSpecific2";
+            this.txtSpecific2.Size = new System.Drawing.Size(202, 22);
+            this.txtSpecific2.TabIndex = 25;
             // 
-            // lblOther2
+            // lblSpecific2
             // 
-            this.lblOther2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblOther2.Location = new System.Drawing.Point(15, 82);
-            this.lblOther2.Name = "lblOther2";
-            this.lblOther2.Size = new System.Drawing.Size(114, 33);
-            this.lblOther2.TabIndex = 24;
-            this.lblOther2.Text = "lbl2 test test test test";
+            this.lblSpecific2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblSpecific2.Location = new System.Drawing.Point(15, 82);
+            this.lblSpecific2.Name = "lblSpecific2";
+            this.lblSpecific2.Size = new System.Drawing.Size(114, 33);
+            this.lblSpecific2.TabIndex = 24;
+            this.lblSpecific2.Text = "lbl2 test test test test";
             // 
-            // lblOther1
+            // lblSpecific1
             // 
-            this.lblOther1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblOther1.Location = new System.Drawing.Point(15, 44);
-            this.lblOther1.Name = "lblOther1";
-            this.lblOther1.Size = new System.Drawing.Size(114, 33);
-            this.lblOther1.TabIndex = 22;
-            this.lblOther1.Text = "lbl1 test test test  test test";
+            this.lblSpecific1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblSpecific1.Location = new System.Drawing.Point(15, 44);
+            this.lblSpecific1.Name = "lblSpecific1";
+            this.lblSpecific1.Size = new System.Drawing.Size(114, 33);
+            this.lblSpecific1.TabIndex = 22;
+            this.lblSpecific1.Text = "lbl1 test test test  test test";
             // 
             // lblSpecifics
             // 
@@ -1052,12 +1052,12 @@ namespace RealEstateAgent
         private System.Windows.Forms.PictureBox pctbxEstateImage;
         private System.Windows.Forms.Panel pnlSpecifics;
         private System.Windows.Forms.Label lblSpecifics;
-        private System.Windows.Forms.TextBox txtOther1;
-        private System.Windows.Forms.TextBox txtOther3;
-        private System.Windows.Forms.Label lblOther3;
-        private System.Windows.Forms.TextBox txtOther2;
-        private System.Windows.Forms.Label lblOther2;
-        private System.Windows.Forms.Label lblOther1;
+        private System.Windows.Forms.TextBox txtSpecific1;
+        private System.Windows.Forms.TextBox txtSpecific3;
+        private System.Windows.Forms.Label lblSpecific3;
+        private System.Windows.Forms.TextBox txtSpecific2;
+        private System.Windows.Forms.Label lblSpecific2;
+        private System.Windows.Forms.Label lblSpecific1;
     }
 }
 

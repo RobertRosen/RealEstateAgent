@@ -14,5 +14,16 @@ namespace RealEstateAgent
             get { return squareMeter; }
             set { squareMeter = value; }
         }
+
+        public override bool acceptPayment(PaymentMethods paymentMethod)
+        {
+            foreach(PaymentMethods payMet in Enum.GetValues(typeof(PaymentMethods))){
+                if(paymentMethod == payMet)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

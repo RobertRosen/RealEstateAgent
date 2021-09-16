@@ -62,6 +62,8 @@ namespace RealEstateAgent
             set { image = value; }
         }
 
+        public abstract bool acceptPayment(PaymentMethods paymentMethod);
+
         public override string ToString()
         {
             return String.Format("ID({0}) - ADDRESS({1}) - BUYER({2}) - SELLER({3}) - PAYMENT({4}) - LEGALFORM: {5}",
