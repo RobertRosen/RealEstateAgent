@@ -25,6 +25,11 @@ namespace RealEstateAgent
             set { numberOfClassrooms = value; }
         }
 
+        /// <summary>
+        /// Check if selected payment method is acceptable for the type of estate.
+        /// </summary>
+        /// <param name="paymentMethod"></param>
+        /// <returns>true if payment method is accepted.</returns>
         public override bool acceptPayment(PaymentMethods paymentMethod)
         {
             return paymentMethod == PaymentMethods.Bank;

@@ -11,7 +11,9 @@ namespace RealEstateAgent
     {
         private int floor;
 
-        ///Property
+        /// <summary>
+        /// Property.
+        /// </summary>
         public int Floor
         {
             get { return floor; }

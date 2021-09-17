@@ -60,7 +60,7 @@ namespace RealEstateAgent
             }
             return estate;
         }
-        //Ändrade To -> and
+        
         private void ReadEstateTypeAndAdd()
         {
             EstateType enumEstateType = (EstateType)bxEstateType.SelectedItem;
@@ -398,7 +398,7 @@ namespace RealEstateAgent
         }
 
         ///Summary
-        ///The wanted information changes based on the estatetype
+        ///The wanted information changes based on the estatetype.
         ///Summary
         private void SetEstateSpecificComponents(EstateType estateType)
         {
@@ -624,7 +624,7 @@ namespace RealEstateAgent
             }
             else
             {
-                MessageBox.Show("Fill alla boxes vhat så");
+                MessageBox.Show("Fill all info.");
             }
         }
 

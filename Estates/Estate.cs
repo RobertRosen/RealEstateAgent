@@ -18,7 +18,9 @@ namespace RealEstateAgent
         private LegalForm legalForm;
         private Image image;
 
-        ///Properties
+        /// <summary>
+        /// Properties.
+        /// </summary>
         public int EstateID
         {
             get { return estateID; }
@@ -65,6 +67,11 @@ namespace RealEstateAgent
             set { image = value; }
         }
 
+        /// <summary>
+        /// Check if selected payment method is acceptable for the type of estate.
+        /// </summary>
+        /// <param name="paymentMethod"></param>
+        /// <returns>true if payment method is accepted.</returns>
         public abstract bool acceptPayment(PaymentMethods paymentMethod);
 
         public override string ToString()
