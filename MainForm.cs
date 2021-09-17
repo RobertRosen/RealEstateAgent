@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.IO;
 
 namespace RealEstateAgent
 {
@@ -662,7 +663,16 @@ namespace RealEstateAgent
         {
             OpenFileDialog openFile = new OpenFileDialog();
             openFile.ShowDialog();
-            pctbxEstateImage.Image = new Bitmap(openFile.FileName);
+            Bitmap bitmap = null;
+            try
+            {
+                bitmap = new Bitmap(openFile.FileName);
+            }
+            catch (Exception ex)
+            {
+                // Cancel ok.
+            }
+            pctbxEstateImage.Image = bitmap;
         }
 
         private void lstbxRegister_SelectedIndexChanged(object sender, EventArgs e)
@@ -697,35 +707,35 @@ namespace RealEstateAgent
 
         private void testValues()
         {
-            bxEstateCountry.SelectedIndex = 0;
-            bxSellerCountry.SelectedIndex = 0;
-            bxBuyerCountry.SelectedIndex = 0;
-            bxLegalForm.SelectedIndex = 0;
+            bxEstateCountry.SelectedItem = Countries.Sverige;
+            bxSellerCountry.SelectedItem = Countries.Sverige;
+            bxBuyerCountry.SelectedItem = Countries.Sverige;
+            bxLegalForm.SelectedItem = LegalForm.Ownership;
             bxPaymentMethod.SelectedIndex = 0;
 
-            txtAmount.Text = "1";
-            txtPaySpecific1.Text = "1";
-            txtPaySpecific2.Text = "1";
+            txtAmount.Text = "2000000";
+            txtPaySpecific1.Text = "100";
+            txtPaySpecific2.Text = "200";
 
-            txtSpecific1.Text = "1";
-            txtSpecific2.Text = "1";
-            txtSpecific3.Text = "1";
+            txtSpecific1.Text = "100";
+            txtSpecific2.Text = "200";
+            txtSpecific3.Text = "300";
 
             txtEstateCity.Text = "Malmö";
-            txtEstateStreet.Text = "HEJVägen";
-            txtEstateZip.Text = "12345";
+            txtEstateStreet.Text = "Trelleborgsgatan 10a";
+            txtEstateZip.Text = "21435";
 
             txtSellerFName.Text = "Joakim";
             txtSellerLName.Text = "Tell";
             txtSellerCity.Text = "Skurup";
-            txtSellerStreet.Text = "Byvägen 1234";
-            txtSellerZip.Text = "09876";
+            txtSellerStreet.Text = "Hylteskogsvägen 1";
+            txtSellerZip.Text = "25034";
 
-            txtBuyerFName.Text = "Farid";
-            txtBuyerLName.Text = "Farid";
-            txtBuyerCity.Text = "SKURUP";
-            txtBuyerStreet.Text = "Dåvägen 2";
-            txtBuyerZip.Text = "54321";
+            txtBuyerFName.Text = "Robert";
+            txtBuyerLName.Text = "Rosencrantz";
+            txtBuyerCity.Text = "Malmö";
+            txtBuyerStreet.Text = "Trelleborgsgatan 8a";
+            txtBuyerZip.Text = "21435";
         }
     }
 }

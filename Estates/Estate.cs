@@ -76,13 +76,14 @@ namespace RealEstateAgent
 
         public override string ToString()
         {
-            return String.Format("{0} - {1} - {2} - {3} - {4} - {5}",
+            return String.Format("{0} - {1} - {2} - {3} - {4} - {5} - {6}",
                 estateID,               // 0
-                address,                // 1
-                buyer.LastName,         // 2
-                seller.LastName,        // 3
-                payment.Method,         // 4
-                legalForm.ToString());  // 5
+                this.GetType().Name,    // 1
+                address,                // 2
+                buyer.LastName,         // 3
+                seller.LastName,        // 4
+                payment.Method,         // 5
+                legalForm.ToString());  // 6
         }
     }
 }
