@@ -61,7 +61,28 @@ namespace RealEstateAgent
             }
             return estate;
         }
-        
+
+        public IEstate CreateEstateDynamic(EstateType estateType) => estateType switch
+        {
+            EstateType.Rental => estate = new Rental(),
+            EstateType.School => estate = new School(),
+            EstateType.Store => estate = new Store(),
+            EstateType.Tenement => estate = new Tenement(),
+            EstateType.Townhouse => estate = new Townhouse(),
+            EstateType.University => estate = new University(),
+            EstateType.Villa => estate = new Villa(),
+            EstateType.Warehouse => estate = new Warehouse(),
+            _ => throw new ArgumentException(message: "Invalid enum value", paramName: nameof(estateType))
+        };
+
+        public Payment CreatePaymentDynamic(PaymentMethods paymentMethod) => paymentMethod switch
+        {
+            PaymentMethods.Bank => estate.Payment = new Bank(),
+            PaymentMethods.PayPal => estate.Payment = new PayPal(),
+            PaymentMethods.Western_Union => estate.Payment = new WesternUnion(),
+            _ => throw new ArgumentException(message: "Invalid enum value", paramName: nameof(paymentMethod))
+        };
+
         private void ReadEstateTypeAndAdd()
         {
             EstateType enumEstateType = (EstateType)bxEstateType.SelectedItem;
@@ -184,6 +205,8 @@ namespace RealEstateAgent
             string str2 = txtSpecific2.Text;
             string str3 = txtSpecific3.Text;
 
+            bool inputOk;
+
             if (estate.GetType() == typeof(Rental))
             {
                 ((Rental)estate).SquareMeter = Convert.ToInt32(str1);
@@ -259,27 +282,6 @@ namespace RealEstateAgent
                 //Handle this...
             }
         }
-
-        public IEstate CreateEstateDynamic(EstateType estateType) => estateType switch
-        {
-            EstateType.Rental => estate = new Rental(),
-            EstateType.School => estate = new School(),
-            EstateType.Store => estate = new Store(),
-            EstateType.Tenement => estate = new Tenement(),
-            EstateType.Townhouse => estate = new Townhouse(),
-            EstateType.University => estate = new University(),
-            EstateType.Villa => estate = new Villa(),
-            EstateType.Warehouse => estate = new Warehouse(),
-            _ => throw new ArgumentException(message: "Invalid enum value", paramName: nameof(estateType))
-        };
-
-        public Payment CreatePaymentDynamic(PaymentMethods paymentMethod) => paymentMethod switch
-        {
-            PaymentMethods.Bank => estate.Payment = new Bank(),
-            PaymentMethods.PayPal => estate.Payment = new PayPal(),
-            PaymentMethods.Western_Union => estate.Payment = new WesternUnion(),
-            _ => throw new ArgumentException(message: "Invalid enum value", paramName: nameof(paymentMethod))
-        };
 
         private void EnableInfoFields(bool enabled)
         {
@@ -654,7 +656,7 @@ namespace RealEstateAgent
                 lstbxRegister.Items.RemoveAt(selIndex);
                 lstEstates.RemoveAt(selIndex);
                 ClearFields();
-                if(lstbxRegister.Items.Count > 0)
+                if (lstbxRegister.Items.Count > 0)
                     lstbxRegister.SelectedIndex = 0;
             }
         }
