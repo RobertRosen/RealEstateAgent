@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace RealEstateAgent
 {
-    class EstateManager
+    class EstateManager : ListManager<Estate>
     {
+
     }
 }
