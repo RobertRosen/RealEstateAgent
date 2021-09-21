@@ -20,10 +20,13 @@ namespace RealEstateAgent
         private IEstate estate = null;
         private int estateIDCounter = 0;
 
+        private EstateManager estateManager;
+
         public MainForm()
         {
             InitializeComponent();
             InitializeGUI();
+            estateManager = new EstateManager();
         }
 
         private void InitializeGUI()

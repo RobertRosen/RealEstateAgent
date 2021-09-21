@@ -8,6 +8,7 @@ namespace RealEstateAgent
 {
     class EstateManager : ListManager<Estate>
     {
-
+        // No code necessary.
+        // ListManagers methods are directly used.
     }
 }
