@@ -12,7 +12,7 @@ namespace RealEstateAgent
 
         public ListManager()
         {
-            list = new List<T>;
+            list = new List<T>();
         }
         public int Count => throw new NotImplementedException();
 
