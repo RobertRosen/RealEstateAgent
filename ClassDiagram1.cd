@@ -174,7 +174,7 @@
   <Class Name="RealEstateAgent.ListManager&lt;T&gt;" Collapsed="true">
     <Position X="11.25" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CAIACgAAABACAAAgAAAAEAQIAAIAAAAAAAAAQAAAAIA=</HashCode>
+      <HashCode>CAIACgAAABACAAAgBAAAEAQIAAIAAAAAAAAAQAAAAIA=</HashCode>
       <FileName>ListManager.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -193,7 +193,7 @@
       <FileName>Estates\IEstate.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="RealEstateAgent.IListManager&lt;T&gt;" Collapsed="true">
+  <Interface Name="RealEstateAgent.IListManager&lt;T&gt;">
     <Position X="13.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>CAIACAAAABACAAAgAAAAEAQIAAIAAAAAAAAAQAAAAIA=</HashCode>

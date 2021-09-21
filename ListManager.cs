@@ -9,12 +9,18 @@ namespace RealEstateAgent
     class ListManager<T> : IListManager<T>
     {
         private List<T> list;
+        private int count;
 
         public ListManager()
         {
             list = new List<T>();
         }
-        public int Count => throw new NotImplementedException();
+
+        // Properties
+        public int Count
+        {
+            get { return count; }
+        }
 
         /// <summary>
         /// Add a new object to the list.
@@ -23,8 +29,20 @@ namespace RealEstateAgent
         /// <returns></returns>
         public bool Add(T aType)
         {
-            // Add a new object to the list.
-            throw new NotImplementedException();
+            bool success;
+
+            if (aType != null)
+            {
+                list.Add(aType);
+                count++;
+                success = true;
+            }
+            else
+            {
+                success = false;
+            }
+
+            return success;
         }
 
         public bool BinaryDeSerialize(string fileName)
@@ -45,7 +63,20 @@ namespace RealEstateAgent
         /// <returns></returns>
         public bool ChangeAt(T aType, int anIndex)
         {
-            // Replace (change) an object in a position with a new object.
+            bool success;
+
+            if (aType != null)
+            {
+                list.Add(aType);
+                count++;
+                success = true;
+            }
+            else
+            {
+                success = false;
+            }
+
+            return success;
             throw new NotImplementedException();
         }
 
@@ -66,8 +97,20 @@ namespace RealEstateAgent
         /// <returns></returns>
         public bool DeleteAt(int anIndex)
         {
-            // Remove an object from the list at a certain position.
-            throw new NotImplementedException();
+            bool success;
+
+            if (anIndex > -1)
+            {
+                list.RemoveAt(anIndex);
+                count--;
+                success = true;
+            }
+            else
+            {
+                success = false;
+            }
+
+            return success;
         }
 
         /// <summary>
@@ -88,9 +131,14 @@ namespace RealEstateAgent
         /// <returns></returns>
         public string[] ToStringArray()
         {
-            // Return an array of strings where every string is represents the object 
-            // (calling the ToString() of the object). 
-            throw new NotImplementedException();
+            string[] stringArray = null;
+
+            for(int i = 0; i < list.Count; i++)
+            {
+                stringArray[i] = list.ElementAt(i).ToString();
+            }
+
+            return stringArray;
         }
 
         public List<string> ToStringList()

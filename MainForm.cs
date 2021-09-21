@@ -16,9 +16,9 @@ namespace RealEstateAgent
 {
     public partial class MainForm : Form
     {
-        private List<IEstate> lstEstates = new List<IEstate>();
+        //private List<IEstate> lstEstates = new List<IEstate>();
         private IEstate estate = null;
-        private int estateIDCounter = 0;
+        //private int estateIDCounter = 0;
 
         private EstateManager estateManager;
 
@@ -47,23 +47,23 @@ namespace RealEstateAgent
             EnableInfoFields(false);
         }
 
-        private IEstate AddEstateToRegister()
-        {
-            if (estate != null)
-            {
-                for (int i = 0; i < lstEstates.Count; i++)
-                {
-                    if (lstEstates[i].EstateID == estate.EstateID)
-                    {
-                        lstEstates[i] = estate;
-                        return estate;
-                    }
-                }
-                lstEstates.Add(estate);
-                estateIDCounter++;
-            }
-            return estate;
-        }
+        //private IEstate AddEstateToRegister()
+        //{
+        //    if (estate != null)
+        //    {
+        //        for (int i = 0; i < lstEstates.Count; i++)
+        //        {
+        //            if (lstEstates[i].EstateID == estate.EstateID)
+        //            {
+        //                lstEstates[i] = estate;
+        //                return estate;
+        //            }
+        //        }
+        //        lstEstates.Add(estate);
+        //        estateIDCounter++;
+        //    }
+        //    return estate;
+        //}
 
         public IEstate CreateEstateDynamic(EstateType estateType) => estateType switch
         {
@@ -91,7 +91,7 @@ namespace RealEstateAgent
             EstateType enumEstateType = (EstateType)bxEstateType.SelectedItem;
             estate = CreateEstateDynamic(enumEstateType);
             SetEstateSpecificComponents(enumEstateType);
-            estate.EstateID = estateIDCounter + 1;
+            //estate.EstateID = estateIDCounter + 1;
 
             lblShowEstateID.Text = estate.EstateID.ToString();
         }
@@ -609,6 +609,8 @@ namespace RealEstateAgent
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
+            string confirmType;
+
             EnableInfoFields(false);
             EnableButtons(true);
 
@@ -623,9 +625,13 @@ namespace RealEstateAgent
 
             if (inputOk)
             {
-                AddEstateToRegister();
-                lstbxRegister.Items.Clear();
-                lstbxRegister.Items.AddRange(lstEstates.ToArray());
+                //AddEstateToRegister();
+                if(confirmType.Equals("Add"))
+                    estateManager.Add(estate);
+                else if (confirmType.Equals("Change"))
+                    lstbxRegister.Items.Clear();
+                //lstbxRegister.Items.AddRange(lstEstates.ToArray());
+                lstbxRegister.Items.AddRange(estateManager.ToStringArray());
                 lstbxRegister.SelectedItem = estate;
             }
             else
@@ -644,11 +650,23 @@ namespace RealEstateAgent
 
         private void btnChange_Click(object sender, EventArgs e)
         {
-            if (lstbxRegister.Items.Count > 0)
+            int selIndex = lstbxRegister.SelectedIndex;
+            if (selIndex > -1)
             {
-                EnableInfoFields(true);
-                EnableButtons(false);
+                estateManager.ChangeAt(estate, selIndex);
+                ClearFields();
+                if (lstbxRegister.Items.Count > 0)
+                {
+                    lstbxRegister.SelectedIndex = 0;
+                    EnableInfoFields(true);
+                    EnableButtons(false);
+                }
             }
+            //if (lstbxRegister.Items.Count > 0)
+            //{
+            //    EnableInfoFields(true);
+            //    EnableButtons(false);
+            //}
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -657,7 +675,8 @@ namespace RealEstateAgent
             if (selIndex > -1)
             {
                 lstbxRegister.Items.RemoveAt(selIndex);
-                lstEstates.RemoveAt(selIndex);
+                //lstEstates.RemoveAt(selIndex);
+                estateManager.DeleteAt(selIndex);
                 ClearFields();
                 if (lstbxRegister.Items.Count > 0)
                     lstbxRegister.SelectedIndex = 0;
