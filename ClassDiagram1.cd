@@ -118,7 +118,7 @@
   <Class Name="RealEstateAgent.Buyer" Collapsed="true">
     <Position X="0.75" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
       <FileName>Persons\Buyer.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -171,11 +171,33 @@
       <FileName>Estates\Tenement.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="RealEstateAgent.ListManager&lt;T&gt;" Collapsed="true">
+    <Position X="11.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAIACgAAABACAAAgAAAAEAQIAAIAAAAAAAAAQAAAAIA=</HashCode>
+      <FileName>ListManager.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="RealEstateAgent.EstateManager" Collapsed="true">
+    <Position X="9.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EstateManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Interface Name="RealEstateAgent.IEstate" Collapsed="true">
     <Position X="6" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAIAAAAAAAAAAAAIAQAAAAAAAAABACAAAABAAACAA=</HashCode>
       <FileName>Estates\IEstate.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="RealEstateAgent.IListManager&lt;T&gt;" Collapsed="true">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAIACAAAABACAAAgAAAAEAQIAAIAAAAAAAAAQAAAAIA=</HashCode>
+      <FileName>IListManager.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Font Name="Segoe UI" Size="9" />
