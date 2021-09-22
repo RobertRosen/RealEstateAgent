@@ -605,18 +605,8 @@ namespace RealEstateAgent
             EnableInfoFields(false);
             EnableButtons(true);
 
-            // Read and controll if user input is valid.
-            // TODO: Do controlls of input!
-            bool inputOk;
-            inputOk = ReadEstateInfo();
-            ReadBuyerInfo();
-            ReadSellerInfo();
-            inputOk = ReadPaymentInfo();
-            ReadImageInfo();
-            ReadSpecificInfo();
-            ReadPaymentSpecificInfo();
-
-            if (inputOk)
+            DialogResult confirmResult = MessageBox.Show("Are you sure?", "Confirm dialog", MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
             {
                 if (selIndex > -1) // Change an existing estate, if any is selected from register.
                 {
@@ -632,8 +622,20 @@ namespace RealEstateAgent
                 else // Add a new estate, if no estate is selected in register.
                 {
                     estate = CreateEstateDynamic(enumEstateType);
+                    lblShowEstateID.Text = estate.EstateID.ToString();
+                    // Read and controll if user input is valid.
+                    // TODO: Do controlls of input!
+                    bool inputOk;
+                    inputOk = ReadEstateInfo();
+                    ReadBuyerInfo();
+                    ReadSellerInfo();
+                    inputOk = ReadPaymentInfo();
+                    ReadImageInfo();
+                    ReadSpecificInfo();
+                    ReadPaymentSpecificInfo();
+
                     estateManager.Add(estate);
-                }           
+                }
 
                 // Update items visible in register and select added/changed estate.
                 lstbxRegister.Items.Clear();
@@ -642,58 +644,16 @@ namespace RealEstateAgent
             }
             else
             {
-                MessageBox.Show("Fill all info.");
+                // Return to editing current estate.
             }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            //EnableInfoFields(false);
-            //EnableButtons(true);
-
-            //ClearFields();
-        }
-
-        private void ConfirmEstate()
-        {
+            // Update GUI.
             EnableInfoFields(false);
             EnableButtons(true);
-
-            bool inputOk;
-            inputOk = ReadEstateInfo();
-            ReadBuyerInfo();
-            ReadSellerInfo();
-            inputOk = ReadPaymentInfo();
-            ReadImageInfo();
-            ReadSpecificInfo();
-            ReadPaymentSpecificInfo();
-
-            var confirmResult = MessageBox.Show("Confirm?", "Confirm ", MessageBoxButtons.OKCancel);
-            if (confirmResult == DialogResult.OK)
-            {
-                
-
-                if (inputOk)
-                {
-                    //AddEstateToRegister();
-                    estateManager.Add(estate);
-
-                    lstbxRegister.Items.Clear();
-                    //lstbxRegister.Items.AddRange(lstEstates.ToArray());
-                    lstbxRegister.Items.AddRange(estateManager.ToStringArray());
-                    lstbxRegister.SelectedItem = estate;
-                }
-                else
-                {
-                    MessageBox.Show("Fill all info.");
-                }
-            }
-            else
-            {
-                EnableInfoFields(false);
-                EnableButtons(true);
-                ClearFields();
-            }
+            ClearFields();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -703,13 +663,11 @@ namespace RealEstateAgent
             lstbxRegister.SelectedIndex = -1; //Deselect from register.
 
             ClearFields();
-            //ReadEstateTypeAndAdd();
-            //EstateType enumEstateType = (EstateType)bxEstateType.SelectedItem;
-            //estate = CreateEstateDynamic(enumEstateType);
-            //SetEstateSpecificComponents(enumEstateType);
-            //estate.EstateID = estateIDCounter + 1;
 
-            lblShowEstateID.Text = estate.EstateID.ToString();
+            EstateType enumEstateType = (EstateType)bxEstateType.SelectedItem;
+
+            //TODO: Fix id counter
+            //estate.EstateID = estateIDCounter + 1;
 
             EnableInfoFields(true);
             EnableButtons(false);
