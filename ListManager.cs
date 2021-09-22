@@ -65,10 +65,9 @@ namespace RealEstateAgent
         {
             bool success;
 
-            if (aType != null)
+            if (aType != null && anIndex > -1)
             {
-                list.Add(aType);
-                count++;
+                list[anIndex] = aType;
                 success = true;
             }
             else
@@ -77,17 +76,35 @@ namespace RealEstateAgent
             }
 
             return success;
-            throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Control that a given index is >= 0 and less than the number of items in 
+        /// the collection.
+        /// </summary>
+        /// <returns>True if successful, false otherwise.</returns>
         public bool CheckIndex(int index)
         {
-            throw new NotImplementedException();
+            bool indexOk;
+
+            if (index >= 0 && index < Count)
+            {
+                indexOk = true;
+            }
+            else
+            {
+                indexOk = false;
+            }
+
+            return indexOk;
         }
 
+        /// <summary>
+        /// Deletes all object of the collection and set the collection to null.
+        /// </summary>
         public void DeleteAll()
         {
-            throw new NotImplementedException();
+            list.Clear();
         }
 
         /// <summary>
@@ -97,9 +114,9 @@ namespace RealEstateAgent
         /// <returns></returns>
         public bool DeleteAt(int anIndex)
         {
-            bool success;
+            bool success = CheckIndex(anIndex);
 
-            if (anIndex > -1)
+            if (success)
             {
                 list.RemoveAt(anIndex);
                 count--;
@@ -120,8 +137,18 @@ namespace RealEstateAgent
         /// <returns></returns>
         public T GetAt(int anIndex)
         {
-            // Return an object from a certain position in the list.
-            throw new NotImplementedException();
+            T obj;
+            bool indexOk = CheckIndex(anIndex);
+
+            if (indexOk)
+            {
+                obj = list[anIndex];
+            }
+            else
+            {
+                obj = default(T);
+            }
+            return obj;
         }
 
         /// <summary>
@@ -143,7 +170,14 @@ namespace RealEstateAgent
 
         public List<string> ToStringList()
         {
-            throw new NotImplementedException();
+            List<string> stringList = null;
+
+            for (int i = 0; i < list.Count; i++)
+            {
+                stringList[i] = list.ElementAt(i).ToString();
+            }
+
+            return stringList;
         }
 
         public bool XMLSerialize(string fileName)

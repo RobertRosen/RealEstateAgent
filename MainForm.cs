@@ -86,15 +86,15 @@ namespace RealEstateAgent
             _ => throw new ArgumentException(message: "Invalid enum value", paramName: nameof(paymentMethod))
         };
 
-        private void ReadEstateTypeAndAdd()
-        {
-            EstateType enumEstateType = (EstateType)bxEstateType.SelectedItem;
-            estate = CreateEstateDynamic(enumEstateType);
-            SetEstateSpecificComponents(enumEstateType);
-            //estate.EstateID = estateIDCounter + 1;
+        //private void ReadEstateTypeAndAdd()
+        //{
+        //    EstateType enumEstateType = (EstateType)bxEstateType.SelectedItem;
+        //    estate = CreateEstateDynamic(enumEstateType);
+        //    SetEstateSpecificComponents(enumEstateType);
+        //    //estate.EstateID = estateIDCounter + 1;
 
-            lblShowEstateID.Text = estate.EstateID.ToString();
-        }
+        //    lblShowEstateID.Text = estate.EstateID.ToString();
+        //}
 
         private bool ReadEstateInfo()
         {
@@ -406,7 +406,7 @@ namespace RealEstateAgent
         ///Summary
         ///The wanted information changes based on the estatetype.
         ///Summary
-        private void SetEstateSpecificComponents(EstateType estateType)
+        private void SetEstateSpecificComponentsDynamically(EstateType estateType)
         {
             switch (estateType)
             {
@@ -466,7 +466,7 @@ namespace RealEstateAgent
         {
             if (estate.GetType() == typeof(Rental))
             {
-                SetEstateSpecificComponents(EstateType.Rental);
+                SetEstateSpecificComponentsDynamically(EstateType.Rental);
                 txtSpecific1.Text = ((Rental)estate).SquareMeter.ToString();
                 txtSpecific2.Text = ((Rental)estate).Floor.ToString();
                 txtSpecific3.Text = ((Rental)estate).ContractMonths.ToString();
@@ -474,7 +474,7 @@ namespace RealEstateAgent
             }
             else if (estate.GetType() == typeof(School))
             {
-                SetEstateSpecificComponents(EstateType.School);
+                SetEstateSpecificComponentsDynamically(EstateType.School);
                 txtSpecific1.Text = ((School)estate).NumberOfCafeterias.ToString();
                 txtSpecific2.Text = ((School)estate).NumberOfClassrooms.ToString();
                 txtSpecific3.Text = ((School)estate).SuitableLevel.ToString();
@@ -482,7 +482,7 @@ namespace RealEstateAgent
             }
             else if (estate.GetType() == typeof(Store))
             {
-                SetEstateSpecificComponents(EstateType.Store);
+                SetEstateSpecificComponentsDynamically(EstateType.Store);
                 txtSpecific1.Text = ((Store)estate).StorageSquareMeters.ToString();
                 txtSpecific2.Text = ((Store)estate).SuitableBusiness.ToString();
                 txtSpecific3.Text = "";
@@ -490,7 +490,7 @@ namespace RealEstateAgent
             }
             else if (estate.GetType() == typeof(Tenement))
             {
-                SetEstateSpecificComponents(EstateType.Tenement);
+                SetEstateSpecificComponentsDynamically(EstateType.Tenement);
                 txtSpecific1.Text = ((Tenement)estate).SquareMeter.ToString();
                 txtSpecific2.Text = ((Tenement)estate).Floor.ToString();
                 txtSpecific3.Text = ((Tenement)estate).TenantOwnersAssociationName.ToString();
@@ -498,7 +498,7 @@ namespace RealEstateAgent
             }
             else if (estate.GetType() == typeof(Townhouse))
             {
-                SetEstateSpecificComponents(EstateType.Townhouse);
+                SetEstateSpecificComponentsDynamically(EstateType.Townhouse);
                 txtSpecific1.Text = ((Townhouse)estate).SquareMeter.ToString();
                 txtSpecific2.Text = ((Townhouse)estate).GardenSquareMeters.ToString();
                 txtSpecific3.Text = ((Townhouse)estate).NumberOfConnectedVillas.ToString();
@@ -506,7 +506,7 @@ namespace RealEstateAgent
             }
             else if (estate.GetType() == typeof(University))
             {
-                SetEstateSpecificComponents(EstateType.University);
+                SetEstateSpecificComponentsDynamically(EstateType.University);
                 txtSpecific1.Text = ((University)estate).NumberOfCafeterias.ToString();
                 txtSpecific2.Text = ((University)estate).NumberOfClassrooms.ToString();
                 txtSpecific3.Text = ((University)estate).NumberOfLectureHalls.ToString();
@@ -514,7 +514,7 @@ namespace RealEstateAgent
             }
             else if (estate.GetType() == typeof(Villa))
             {
-                SetEstateSpecificComponents(EstateType.Villa);
+                SetEstateSpecificComponentsDynamically(EstateType.Villa);
                 txtSpecific1.Text = ((Villa)estate).SquareMeter.ToString();
                 txtSpecific2.Text = ((Villa)estate).GardenSquareMeters.ToString();
                 txtSpecific3.Text = "";
@@ -522,7 +522,7 @@ namespace RealEstateAgent
             }
             else if (estate.GetType() == typeof(Warehouse))
             {
-                SetEstateSpecificComponents(EstateType.Warehouse);
+                SetEstateSpecificComponentsDynamically(EstateType.Warehouse);
                 txtSpecific1.Text = ((Warehouse)estate).StorageSquareMeters.ToString();
                 txtSpecific2.Text = ((Warehouse)estate).NumberOfLoadingDocks.ToString();
                 txtSpecific3.Text = "";
@@ -595,22 +595,67 @@ namespace RealEstateAgent
             }
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            ClearFields();
-            ReadEstateTypeAndAdd();
-            EnableInfoFields(true);
-            EnableButtons(false);
-
-            testValues();
-
-            lstbxRegister.SelectedIndex = -1;
-        }
-
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            string confirmType;
+            EstateType enumEstateType = (EstateType)bxEstateType.SelectedItem;
+            int selIndex = lstbxRegister.SelectedIndex;
 
+            // Update GUI. 
+            SetEstateSpecificComponentsDynamically(enumEstateType);
+            EnableInfoFields(false);
+            EnableButtons(true);
+
+            // Read and controll if user input is valid.
+            // TODO: Do controlls of input!
+            bool inputOk;
+            inputOk = ReadEstateInfo();
+            ReadBuyerInfo();
+            ReadSellerInfo();
+            inputOk = ReadPaymentInfo();
+            ReadImageInfo();
+            ReadSpecificInfo();
+            ReadPaymentSpecificInfo();
+
+            if (inputOk)
+            {
+                if (selIndex > -1) // Change an existing estate, if any is selected from register.
+                {
+                    estateManager.ChangeAt(estate, selIndex);
+                    ClearFields();
+                    if (lstbxRegister.Items.Count > 0)
+                    {
+                        lstbxRegister.SelectedIndex = 0;
+                        EnableInfoFields(true);
+                        EnableButtons(false);
+                    }
+                }
+                else // Add a new estate, if no estate is selected in register.
+                {
+                    estate = CreateEstateDynamic(enumEstateType);
+                    estateManager.Add(estate);
+                }           
+
+                // Update items visible in register and select added/changed estate.
+                lstbxRegister.Items.Clear();
+                lstbxRegister.Items.AddRange(estateManager.ToStringArray());
+                lstbxRegister.SelectedItem = estate;
+            }
+            else
+            {
+                MessageBox.Show("Fill all info.");
+            }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            //EnableInfoFields(false);
+            //EnableButtons(true);
+
+            //ClearFields();
+        }
+
+        private void ConfirmEstate()
+        {
             EnableInfoFields(false);
             EnableButtons(true);
 
@@ -623,45 +668,65 @@ namespace RealEstateAgent
             ReadSpecificInfo();
             ReadPaymentSpecificInfo();
 
-            if (inputOk)
+            var confirmResult = MessageBox.Show("Confirm?", "Confirm ", MessageBoxButtons.OKCancel);
+            if (confirmResult == DialogResult.OK)
             {
-                //AddEstateToRegister();
-                if(confirmType.Equals("Add"))
+                
+
+                if (inputOk)
+                {
+                    //AddEstateToRegister();
                     estateManager.Add(estate);
-                else if (confirmType.Equals("Change"))
+
                     lstbxRegister.Items.Clear();
-                //lstbxRegister.Items.AddRange(lstEstates.ToArray());
-                lstbxRegister.Items.AddRange(estateManager.ToStringArray());
-                lstbxRegister.SelectedItem = estate;
+                    //lstbxRegister.Items.AddRange(lstEstates.ToArray());
+                    lstbxRegister.Items.AddRange(estateManager.ToStringArray());
+                    lstbxRegister.SelectedItem = estate;
+                }
+                else
+                {
+                    MessageBox.Show("Fill all info.");
+                }
             }
             else
             {
-                MessageBox.Show("Fill all info.");
+                EnableInfoFields(false);
+                EnableButtons(true);
+                ClearFields();
             }
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
-            EnableInfoFields(false);
-            EnableButtons(true);
+            estate = null;
+
+            lstbxRegister.SelectedIndex = -1; //Deselect from register.
 
             ClearFields();
+            //ReadEstateTypeAndAdd();
+            //EstateType enumEstateType = (EstateType)bxEstateType.SelectedItem;
+            //estate = CreateEstateDynamic(enumEstateType);
+            //SetEstateSpecificComponents(enumEstateType);
+            //estate.EstateID = estateIDCounter + 1;
+
+            lblShowEstateID.Text = estate.EstateID.ToString();
+
+            EnableInfoFields(true);
+            EnableButtons(false);
+
+            testValues();
+
+
+
+            lstbxRegister.SelectedIndex = -1;
         }
 
         private void btnChange_Click(object sender, EventArgs e)
         {
             int selIndex = lstbxRegister.SelectedIndex;
-            if (selIndex > -1)
-            {
-                estateManager.ChangeAt(estate, selIndex);
-                ClearFields();
-                if (lstbxRegister.Items.Count > 0)
-                {
-                    lstbxRegister.SelectedIndex = 0;
-                    EnableInfoFields(true);
-                    EnableButtons(false);
-                }
-            }
+
+            estate = (IEstate)lstbxRegister.SelectedItem;
+
             //if (lstbxRegister.Items.Count > 0)
             //{
             //    EnableInfoFields(true);
@@ -713,14 +778,19 @@ namespace RealEstateAgent
 
         private void bxEstateType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (bxEstateType.SelectedIndex > -1)
-            {
-                btnAdd.Enabled = true;
-            }
-            else
-            {
-                btnAdd.Enabled = false;
-            }
+            //if (bxEstateType.SelectedIndex > -1)
+            //{
+            //    btnAdd.Enabled = true;
+            //}
+            //else
+            //{
+            //    btnAdd.Enabled = false;
+            //}
+        }
+        private void bxEstateType_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            EstateType enumEstateType = (EstateType)bxEstateType.SelectedItem;
+            SetEstateSpecificComponentsDynamically(enumEstateType);
         }
 
         private void bxPaymentMethod_SelectionChangeCommitted(object sender, EventArgs e)
