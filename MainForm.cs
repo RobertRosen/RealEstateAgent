@@ -604,7 +604,7 @@ namespace RealEstateAgent
                     if (lstbxRegister.Items.Count > 0)
                     {
                         EnableInfoFields(false);
-                        EnableButtons(true);
+                        EnableButtons(true);              
                     }
                 }
                 else // If no estate is selected in register.
@@ -614,21 +614,14 @@ namespace RealEstateAgent
                     tempEstate.EstateID = estateIDCounter; //TODO: id counter...
                     ReadAndValidateInfo();
                     estateManager.Add(tempEstate);
-
-                   // selIndex = lstbxRegister.Items.Count -1;
-                   // lstbxRegister.SetSelected(lstbxRegister.Items.Count - 1, true);
-                   
-
+                    selIndex = lstbxRegister.Items.Count;
                 }
 
                 // Update items visible in register and select added/changed estate.
                 lstbxRegister.Items.Clear();
                 lstbxRegister.Items.AddRange(estateManager.ToStringArray());
-
-                //THIS lade jag till
-                lstbxRegister.SetSelected(lstbxRegister.Items.Count - 1, true);
-
-                // lstbxRegister.SelectedIndex = selIndex;
+          
+                lstbxRegister.SetSelected(selIndex, true);
             }
             else // Return to editing current estate.
             {
