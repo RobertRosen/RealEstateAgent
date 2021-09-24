@@ -117,6 +117,8 @@ namespace RealEstateAgent
             this.mnuFileImportXML = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuFileExportXML = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuFileExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblSearchEstateType = new System.Windows.Forms.Label();
+            this.bxSearchEstateType = new System.Windows.Forms.ComboBox();
             this.pnlRegister.SuspendLayout();
             this.panel2.SuspendLayout();
             this.pnlInfo.SuspendLayout();
@@ -149,6 +151,8 @@ namespace RealEstateAgent
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.bxSearchEstateType);
+            this.panel2.Controls.Add(this.lblSearchEstateType);
             this.panel2.Controls.Add(this.lblSearch);
             this.panel2.Location = new System.Drawing.Point(13, 528);
             this.panel2.Name = "panel2";
@@ -1005,26 +1009,26 @@ namespace RealEstateAgent
             // mnuFileNew
             // 
             this.mnuFileNew.Name = "mnuFileNew";
-            this.mnuFileNew.Size = new System.Drawing.Size(141, 26);
+            this.mnuFileNew.Size = new System.Drawing.Size(224, 26);
             this.mnuFileNew.Text = "New";
             this.mnuFileNew.Click += new System.EventHandler(this.mnuFileNew_Click);
             // 
             // mnuFileOpen
             // 
             this.mnuFileOpen.Name = "mnuFileOpen";
-            this.mnuFileOpen.Size = new System.Drawing.Size(141, 26);
+            this.mnuFileOpen.Size = new System.Drawing.Size(224, 26);
             this.mnuFileOpen.Text = "Open";
             // 
             // mnuFileSave
             // 
             this.mnuFileSave.Name = "mnuFileSave";
-            this.mnuFileSave.Size = new System.Drawing.Size(141, 26);
+            this.mnuFileSave.Size = new System.Drawing.Size(224, 26);
             this.mnuFileSave.Text = "Save";
             // 
             // mnuFileSaveAs
             // 
             this.mnuFileSaveAs.Name = "mnuFileSaveAs";
-            this.mnuFileSaveAs.Size = new System.Drawing.Size(141, 26);
+            this.mnuFileSaveAs.Size = new System.Drawing.Size(224, 26);
             this.mnuFileSaveAs.Text = "Save as";
             // 
             // mnuFileXML
@@ -1033,7 +1037,7 @@ namespace RealEstateAgent
             this.mnuFileImportXML,
             this.mnuFileExportXML});
             this.mnuFileXML.Name = "mnuFileXML";
-            this.mnuFileXML.Size = new System.Drawing.Size(141, 26);
+            this.mnuFileXML.Size = new System.Drawing.Size(224, 26);
             this.mnuFileXML.Text = "XML";
             // 
             // mnuFileImportXML
@@ -1051,8 +1055,26 @@ namespace RealEstateAgent
             // mnuFileExit
             // 
             this.mnuFileExit.Name = "mnuFileExit";
-            this.mnuFileExit.Size = new System.Drawing.Size(141, 26);
+            this.mnuFileExit.Size = new System.Drawing.Size(224, 26);
             this.mnuFileExit.Text = "Exit";
+            // 
+            // lblSearchEstateType
+            // 
+            this.lblSearchEstateType.AutoSize = true;
+            this.lblSearchEstateType.Location = new System.Drawing.Point(17, 55);
+            this.lblSearchEstateType.Name = "lblSearchEstateType";
+            this.lblSearchEstateType.Size = new System.Drawing.Size(80, 16);
+            this.lblSearchEstateType.TabIndex = 1;
+            this.lblSearchEstateType.Text = "Estate Type";
+            // 
+            // bxSearchEstateType
+            // 
+            this.bxSearchEstateType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.bxSearchEstateType.FormattingEnabled = true;
+            this.bxSearchEstateType.Location = new System.Drawing.Point(143, 55);
+            this.bxSearchEstateType.Name = "bxSearchEstateType";
+            this.bxSearchEstateType.Size = new System.Drawing.Size(151, 24);
+            this.bxSearchEstateType.TabIndex = 2;
             // 
             // MainForm
             // 
@@ -1184,6 +1206,8 @@ namespace RealEstateAgent
         private System.Windows.Forms.ToolStripMenuItem mnuFileImportXML;
         private System.Windows.Forms.ToolStripMenuItem mnuFileExportXML;
         private System.Windows.Forms.ToolStripMenuItem mnuFileExit;
+        private System.Windows.Forms.ComboBox bxSearchEstateType;
+        private System.Windows.Forms.Label lblSearchEstateType;
     }
 }
 

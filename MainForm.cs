@@ -150,28 +150,17 @@ namespace RealEstateAgent
         private bool ReadPaymentInfo()
         {
             bool inputOk;
-
-            if (bxPaymentMethod.SelectedIndex > -1)
+            if (bxPaymentMethod.SelectedIndex > -1 && int.TryParse(txtAmount.Text, out int amount))
             {
                 PaymentMethods enumPayment = (PaymentMethods)bxPaymentMethod.SelectedItem;
                 CreatePaymentDynamic(enumPayment);
-
-                if (int.TryParse(txtAmount.Text, out int amount))
-                {
-                    tempEstate.Payment.Amount = amount;
-
-                    inputOk = true;
-                }
-                else
-                {
-                    inputOk = false;
-                }
+                tempEstate.Payment.Amount = amount;
+                inputOk = true;
             }
             else
             {
                 inputOk = false;
             }
-
             return inputOk;
         }
 
@@ -277,20 +266,16 @@ namespace RealEstateAgent
             txtSellerLName.Enabled = enabled;
             txtSellerStreet.Enabled = enabled;
             txtSellerZip.Enabled = enabled;
-
             bxEstateType.Enabled = enabled;
             bxBuyerCountry.Enabled = enabled;
             bxEstateCountry.Enabled = enabled;
             bxLegalForm.Enabled = enabled;
             bxPaymentMethod.Enabled = enabled;
             bxSellerCountry.Enabled = enabled;
-
             btnBrowseImg.Enabled = enabled;
-
             txtSpecific1.Enabled = enabled;
             txtSpecific2.Enabled = enabled;
             txtSpecific3.Enabled = enabled;
-
             lstbxRegister.Enabled = !enabled;
         }
 
@@ -298,7 +283,6 @@ namespace RealEstateAgent
         {
             btnConfirm.Enabled = !enabled;
             btnCancel.Enabled = !enabled;
-
             btnAdd.Enabled = enabled;
             btnChange.Enabled = enabled;
             btnDelete.Enabled = enabled;
@@ -604,12 +588,12 @@ namespace RealEstateAgent
 
                     // Update estate.
                     tempEstate.EstateID = estateIDToKeep;
-                    estateManager.ChangeAt(tempEstate, selIndex); 
-                   
+                    estateManager.ChangeAt(tempEstate, selIndex);
+
                     if (lstbxRegister.Items.Count > 0)
                     {
                         EnableInfoFields(false);
-                        EnableButtons(true);              
+                        EnableButtons(true);
                     }
                 }
                 else // If no estate is selected in register.
@@ -643,13 +627,11 @@ namespace RealEstateAgent
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            // tempEstate = null; // Make room for a new estate.
             lstbxRegister.SelectedIndex = -1; //Deselect all from register.
             ClearFields();
 
             EnableInfoFields(true);
             EnableButtons(false);
-
             testValues();
         }
 
@@ -679,11 +661,12 @@ namespace RealEstateAgent
                     if (lstbxRegister.Items.Count > 0)
                         lstbxRegister.SelectedIndex = 0;
                 }
-            } else
+            }
+            else
             {
                 // Return to editing current estate.
             }
-        }   
+        }
 
         private void btnBrowseImg_Click(object sender, EventArgs e)
         {
@@ -739,6 +722,7 @@ namespace RealEstateAgent
             txtAmount.Text = "2000000";
             txtPaySpecific1.Text = "100";
             txtPaySpecific2.Text = "200";
+
 
             txtSpecific1.Text = "100";
             txtSpecific2.Text = "200";
