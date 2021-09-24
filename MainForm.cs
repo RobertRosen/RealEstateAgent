@@ -615,13 +615,20 @@ namespace RealEstateAgent
                     ReadAndValidateInfo();
                     estateManager.Add(tempEstate);
 
-                    selIndex = lstbxRegister.Items.Count -1;
+                   // selIndex = lstbxRegister.Items.Count -1;
+                   // lstbxRegister.SetSelected(lstbxRegister.Items.Count - 1, true);
+                   
+
                 }
 
                 // Update items visible in register and select added/changed estate.
                 lstbxRegister.Items.Clear();
                 lstbxRegister.Items.AddRange(estateManager.ToStringArray());
-                lstbxRegister.SelectedIndex = selIndex;
+
+                //THIS lade jag till
+                lstbxRegister.SetSelected(lstbxRegister.Items.Count - 1, true);
+
+                // lstbxRegister.SelectedIndex = selIndex;
             }
             else // Return to editing current estate.
             {
