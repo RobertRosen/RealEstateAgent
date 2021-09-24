@@ -234,7 +234,6 @@ namespace RealEstateAgent
             this.bxEstateType.Name = "bxEstateType";
             this.bxEstateType.Size = new System.Drawing.Size(203, 24);
             this.bxEstateType.TabIndex = 1;
-            this.bxEstateType.SelectedIndexChanged += new System.EventHandler(this.bxEstateType_SelectedIndexChanged);
             this.bxEstateType.SelectionChangeCommitted += new System.EventHandler(this.bxEstateType_SelectionChangeCommitted);
             // 
             // btnCancel

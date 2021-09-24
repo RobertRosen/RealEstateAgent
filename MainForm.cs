@@ -17,7 +17,7 @@ namespace RealEstateAgent
     public partial class MainForm : Form
     {
         //private List<IEstate> lstEstates = new List<IEstate>();
-        private IEstate estate = null;
+        private IEstate tempEstate = null;
         private int estateIDCounter = 0;
 
         private EstateManager estateManager;
@@ -47,54 +47,26 @@ namespace RealEstateAgent
             EnableInfoFields(false);
         }
 
-        //private IEstate AddEstateToRegister()
-        //{
-        //    if (estate != null)
-        //    {
-        //        for (int i = 0; i < lstEstates.Count; i++)
-        //        {
-        //            if (lstEstates[i].EstateID == estate.EstateID)
-        //            {
-        //                lstEstates[i] = estate;
-        //                return estate;
-        //            }
-        //        }
-        //        lstEstates.Add(estate);
-        //        estateIDCounter++;
-        //    }
-        //    return estate;
-        //}
-
         public IEstate CreateEstateDynamic(EstateType estateType) => estateType switch
         {
-            EstateType.Rental => estate = new Rental(),
-            EstateType.School => estate = new School(),
-            EstateType.Store => estate = new Store(),
-            EstateType.Tenement => estate = new Tenement(),
-            EstateType.Townhouse => estate = new Townhouse(),
-            EstateType.University => estate = new University(),
-            EstateType.Villa => estate = new Villa(),
-            EstateType.Warehouse => estate = new Warehouse(),
+            EstateType.Rental => tempEstate = new Rental(),
+            EstateType.School => tempEstate = new School(),
+            EstateType.Store => tempEstate = new Store(),
+            EstateType.Tenement => tempEstate = new Tenement(),
+            EstateType.Townhouse => tempEstate = new Townhouse(),
+            EstateType.University => tempEstate = new University(),
+            EstateType.Villa => tempEstate = new Villa(),
+            EstateType.Warehouse => tempEstate = new Warehouse(),
             _ => throw new ArgumentException(message: "Invalid enum value", paramName: nameof(estateType))
         };
 
         public Payment CreatePaymentDynamic(PaymentMethods paymentMethod) => paymentMethod switch
         {
-            PaymentMethods.Bank => estate.Payment = new Bank(),
-            PaymentMethods.PayPal => estate.Payment = new PayPal(),
-            PaymentMethods.Western_Union => estate.Payment = new WesternUnion(),
+            PaymentMethods.Bank => tempEstate.Payment = new Bank(),
+            PaymentMethods.PayPal => tempEstate.Payment = new PayPal(),
+            PaymentMethods.Western_Union => tempEstate.Payment = new WesternUnion(),
             _ => throw new ArgumentException(message: "Invalid enum value", paramName: nameof(paymentMethod))
         };
-
-        //private void ReadEstateTypeAndAdd()
-        //{
-        //    EstateType enumEstateType = (EstateType)bxEstateType.SelectedItem;
-        //    estate = CreateEstateDynamic(enumEstateType);
-        //    SetEstateSpecificComponents(enumEstateType);
-        //    //estate.EstateID = estateIDCounter + 1;
-
-        //    lblShowEstateID.Text = estate.EstateID.ToString();
-        //}
 
         private bool ReadEstateInfo()
         {
@@ -115,8 +87,8 @@ namespace RealEstateAgent
                 address.Street = strStreet;
                 address.ZipCode = strZipCode;
 
-                estate.LegalForm = legalForm;
-                estate.Address = address;
+                tempEstate.LegalForm = legalForm;
+                tempEstate.Address = address;
 
                 inputOk = true;
             }
@@ -129,7 +101,7 @@ namespace RealEstateAgent
 
         private void ReadImageInfo()
         {
-            estate.Image = pctbxEstateImage.Image;
+            tempEstate.Image = pctbxEstateImage.Image;
         }
 
         private void ReadSellerInfo()
@@ -147,10 +119,10 @@ namespace RealEstateAgent
             address.Street = strStreet;
             address.ZipCode = strZipCode;
 
-            estate.Seller = new Seller();
-            ((Seller)estate.Seller).FirstName = strFName;
-            ((Seller)estate.Seller).LastName = strLName;
-            ((Seller)estate.Seller).Address = address;
+            tempEstate.Seller = new Seller();
+            ((Seller)tempEstate.Seller).FirstName = strFName;
+            ((Seller)tempEstate.Seller).LastName = strLName;
+            ((Seller)tempEstate.Seller).Address = address;
         }
 
         private void ReadBuyerInfo()
@@ -168,10 +140,10 @@ namespace RealEstateAgent
             address.Street = strStreet;
             address.ZipCode = strZipCode;
 
-            estate.Buyer = new Buyer();
-            ((Buyer)estate.Buyer).FirstName = strFName;
-            ((Buyer)estate.Buyer).LastName = strLName;
-            ((Buyer)estate.Buyer).Address = address;
+            tempEstate.Buyer = new Buyer();
+            ((Buyer)tempEstate.Buyer).FirstName = strFName;
+            ((Buyer)tempEstate.Buyer).LastName = strLName;
+            ((Buyer)tempEstate.Buyer).Address = address;
         }
 
         private bool ReadPaymentInfo()
@@ -185,7 +157,7 @@ namespace RealEstateAgent
 
                 if (int.TryParse(txtAmount.Text, out int amount))
                 {
-                    estate.Payment.Amount = amount;
+                    tempEstate.Payment.Amount = amount;
 
                     inputOk = true;
                 }
@@ -210,50 +182,50 @@ namespace RealEstateAgent
 
             bool inputOk;
 
-            if (estate.GetType() == typeof(Rental))
+            if (tempEstate.GetType() == typeof(Rental))
             {
-                ((Rental)estate).SquareMeter = Convert.ToInt32(str1);
-                ((Rental)estate).Floor = Convert.ToInt32(str2);
-                ((Rental)estate).ContractMonths = Convert.ToInt32(str3);
+                ((Rental)tempEstate).SquareMeter = Convert.ToInt32(str1);
+                ((Rental)tempEstate).Floor = Convert.ToInt32(str2);
+                ((Rental)tempEstate).ContractMonths = Convert.ToInt32(str3);
             }
-            else if (estate.GetType() == typeof(School))
+            else if (tempEstate.GetType() == typeof(School))
             {
-                ((School)estate).NumberOfCafeterias = Convert.ToInt32(str1);
-                ((School)estate).NumberOfClassrooms = Convert.ToInt32(str2);
-                ((School)estate).SuitableLevel = str3;
+                ((School)tempEstate).NumberOfCafeterias = Convert.ToInt32(str1);
+                ((School)tempEstate).NumberOfClassrooms = Convert.ToInt32(str2);
+                ((School)tempEstate).SuitableLevel = str3;
             }
-            else if (estate.GetType() == typeof(Store))
+            else if (tempEstate.GetType() == typeof(Store))
             {
-                ((Store)estate).StorageSquareMeters = Convert.ToInt32(str1);
-                ((Store)estate).SuitableBusiness = str2;
+                ((Store)tempEstate).StorageSquareMeters = Convert.ToInt32(str1);
+                ((Store)tempEstate).SuitableBusiness = str2;
             }
-            else if (estate.GetType() == typeof(Tenement))
+            else if (tempEstate.GetType() == typeof(Tenement))
             {
-                ((Tenement)estate).SquareMeter = Convert.ToInt32(str1);
-                ((Tenement)estate).Floor = Convert.ToInt32(str2);
-                ((Tenement)estate).TenantOwnersAssociationName = str3;
+                ((Tenement)tempEstate).SquareMeter = Convert.ToInt32(str1);
+                ((Tenement)tempEstate).Floor = Convert.ToInt32(str2);
+                ((Tenement)tempEstate).TenantOwnersAssociationName = str3;
             }
-            else if (estate.GetType() == typeof(Townhouse))
+            else if (tempEstate.GetType() == typeof(Townhouse))
             {
-                ((Townhouse)estate).SquareMeter = Convert.ToInt32(str1);
-                ((Townhouse)estate).GardenSquareMeters = Convert.ToInt32(str2);
-                ((Townhouse)estate).NumberOfConnectedVillas = Convert.ToInt32(str3);
+                ((Townhouse)tempEstate).SquareMeter = Convert.ToInt32(str1);
+                ((Townhouse)tempEstate).GardenSquareMeters = Convert.ToInt32(str2);
+                ((Townhouse)tempEstate).NumberOfConnectedVillas = Convert.ToInt32(str3);
             }
-            else if (estate.GetType() == typeof(University))
+            else if (tempEstate.GetType() == typeof(University))
             {
-                ((University)estate).NumberOfCafeterias = Convert.ToInt32(str1);
-                ((University)estate).NumberOfClassrooms = Convert.ToInt32(str2);
-                ((University)estate).NumberOfLectureHalls = Convert.ToInt32(str3);
+                ((University)tempEstate).NumberOfCafeterias = Convert.ToInt32(str1);
+                ((University)tempEstate).NumberOfClassrooms = Convert.ToInt32(str2);
+                ((University)tempEstate).NumberOfLectureHalls = Convert.ToInt32(str3);
             }
-            else if (estate.GetType() == typeof(Villa))
+            else if (tempEstate.GetType() == typeof(Villa))
             {
-                ((Villa)estate).SquareMeter = Convert.ToInt32(str1);
-                ((Villa)estate).GardenSquareMeters = Convert.ToInt32(str2);
+                ((Villa)tempEstate).SquareMeter = Convert.ToInt32(str1);
+                ((Villa)tempEstate).GardenSquareMeters = Convert.ToInt32(str2);
             }
-            else if (estate.GetType() == typeof(Warehouse))
+            else if (tempEstate.GetType() == typeof(Warehouse))
             {
-                ((Warehouse)estate).StorageSquareMeters = Convert.ToInt32(str1);
-                ((Warehouse)estate).NumberOfLoadingDocks = Convert.ToInt32(str2);
+                ((Warehouse)tempEstate).StorageSquareMeters = Convert.ToInt32(str1);
+                ((Warehouse)tempEstate).NumberOfLoadingDocks = Convert.ToInt32(str2);
             }
             else
             {
@@ -266,19 +238,19 @@ namespace RealEstateAgent
             string str1 = txtPaySpecific1.Text;
             string str2 = txtPaySpecific2.Text;
 
-            if (estate.Payment.GetType() == typeof(Bank))
+            if (tempEstate.Payment.GetType() == typeof(Bank))
             {
-                ((Bank)estate.Payment).Accountnumber = str1;
-                ((Bank)estate.Payment).Name = str2;
+                ((Bank)tempEstate.Payment).Accountnumber = str1;
+                ((Bank)tempEstate.Payment).Name = str2;
             }
-            else if (estate.Payment.GetType() == typeof(WesternUnion))
+            else if (tempEstate.Payment.GetType() == typeof(WesternUnion))
             {
-                ((WesternUnion)estate.Payment).Email = str1;
-                ((WesternUnion)estate.Payment).Name = str2;
+                ((WesternUnion)tempEstate.Payment).Email = str1;
+                ((WesternUnion)tempEstate.Payment).Name = str2;
             }
-            else if (estate.Payment.GetType() == typeof(PayPal))
+            else if (tempEstate.Payment.GetType() == typeof(PayPal))
             {
-                ((PayPal)estate.Payment).Email = str1;
+                ((PayPal)tempEstate.Payment).Email = str1;
             }
             else
             {
@@ -335,6 +307,7 @@ namespace RealEstateAgent
         {
             lblShowEstateID.ResetText();
 
+            bxEstateType.SelectedIndex = -1;
             bxEstateCountry.SelectedIndex = -1;
             bxSellerCountry.SelectedIndex = -1;
             bxBuyerCountry.SelectedIndex = -1;
@@ -373,27 +346,27 @@ namespace RealEstateAgent
         ///Summary
         private void SetEstateCommonInfo()
         {
-            lblShowEstateID.Text = estate.EstateID.ToString();
-            bxLegalForm.SelectedItem = estate.LegalForm;
-            txtEstateCity.Text = estate.Address.City;
-            bxEstateCountry.SelectedItem = estate.Address.Country;
-            txtEstateStreet.Text = estate.Address.Street;
-            txtEstateZip.Text = estate.Address.ZipCode;
-            bxPaymentMethod.SelectedItem = estate.Payment.Method;
-            txtAmount.Text = estate.Payment.Amount.ToString();
-            txtSellerFName.Text = estate.Seller.FirstName;
-            txtSellerLName.Text = estate.Seller.LastName;
-            txtSellerCity.Text = estate.Seller.Address.City;
-            bxSellerCountry.SelectedItem = estate.Seller.Address.Country;
-            txtSellerStreet.Text = estate.Seller.Address.Street;
-            txtSellerZip.Text = estate.Seller.Address.ZipCode;
-            txtBuyerFName.Text = estate.Buyer.FirstName;
-            txtBuyerLName.Text = estate.Buyer.LastName;
-            txtBuyerCity.Text = estate.Buyer.Address.City;
-            bxBuyerCountry.SelectedItem = estate.Buyer.Address.Country;
-            txtBuyerStreet.Text = estate.Buyer.Address.Street;
-            txtBuyerZip.Text = estate.Buyer.Address.ZipCode;
-            pctbxEstateImage.Image = estate.Image;
+            lblShowEstateID.Text = tempEstate.EstateID.ToString();
+            bxLegalForm.SelectedItem = tempEstate.LegalForm;
+            txtEstateCity.Text = tempEstate.Address.City;
+            bxEstateCountry.SelectedItem = tempEstate.Address.Country;
+            txtEstateStreet.Text = tempEstate.Address.Street;
+            txtEstateZip.Text = tempEstate.Address.ZipCode;
+            bxPaymentMethod.SelectedItem = tempEstate.Payment.Method;
+            txtAmount.Text = tempEstate.Payment.Amount.ToString();
+            txtSellerFName.Text = tempEstate.Seller.FirstName;
+            txtSellerLName.Text = tempEstate.Seller.LastName;
+            txtSellerCity.Text = tempEstate.Seller.Address.City;
+            bxSellerCountry.SelectedItem = tempEstate.Seller.Address.Country;
+            txtSellerStreet.Text = tempEstate.Seller.Address.Street;
+            txtSellerZip.Text = tempEstate.Seller.Address.ZipCode;
+            txtBuyerFName.Text = tempEstate.Buyer.FirstName;
+            txtBuyerLName.Text = tempEstate.Buyer.LastName;
+            txtBuyerCity.Text = tempEstate.Buyer.Address.City;
+            bxBuyerCountry.SelectedItem = tempEstate.Buyer.Address.Country;
+            txtBuyerStreet.Text = tempEstate.Buyer.Address.Street;
+            txtBuyerZip.Text = tempEstate.Buyer.Address.ZipCode;
+            pctbxEstateImage.Image = tempEstate.Image;
         }
 
         private void SetEstateSpecificLabels(string lbl1, string lbl2, string lbl3)
@@ -464,67 +437,67 @@ namespace RealEstateAgent
 
         private void SetEstateSpecificInfo()
         {
-            if (estate.GetType() == typeof(Rental))
+            if (tempEstate.GetType() == typeof(Rental))
             {
                 SetEstateSpecificComponentsDynamically(EstateType.Rental);
-                txtSpecific1.Text = ((Rental)estate).SquareMeter.ToString();
-                txtSpecific2.Text = ((Rental)estate).Floor.ToString();
-                txtSpecific3.Text = ((Rental)estate).ContractMonths.ToString();
+                txtSpecific1.Text = ((Rental)tempEstate).SquareMeter.ToString();
+                txtSpecific2.Text = ((Rental)tempEstate).Floor.ToString();
+                txtSpecific3.Text = ((Rental)tempEstate).ContractMonths.ToString();
                 bxEstateType.SelectedItem = EstateType.Rental;
             }
-            else if (estate.GetType() == typeof(School))
+            else if (tempEstate.GetType() == typeof(School))
             {
                 SetEstateSpecificComponentsDynamically(EstateType.School);
-                txtSpecific1.Text = ((School)estate).NumberOfCafeterias.ToString();
-                txtSpecific2.Text = ((School)estate).NumberOfClassrooms.ToString();
-                txtSpecific3.Text = ((School)estate).SuitableLevel.ToString();
+                txtSpecific1.Text = ((School)tempEstate).NumberOfCafeterias.ToString();
+                txtSpecific2.Text = ((School)tempEstate).NumberOfClassrooms.ToString();
+                txtSpecific3.Text = ((School)tempEstate).SuitableLevel.ToString();
                 bxEstateType.SelectedItem = EstateType.School;
             }
-            else if (estate.GetType() == typeof(Store))
+            else if (tempEstate.GetType() == typeof(Store))
             {
                 SetEstateSpecificComponentsDynamically(EstateType.Store);
-                txtSpecific1.Text = ((Store)estate).StorageSquareMeters.ToString();
-                txtSpecific2.Text = ((Store)estate).SuitableBusiness.ToString();
+                txtSpecific1.Text = ((Store)tempEstate).StorageSquareMeters.ToString();
+                txtSpecific2.Text = ((Store)tempEstate).SuitableBusiness.ToString();
                 txtSpecific3.Text = "";
                 bxEstateType.SelectedItem = EstateType.Store;
             }
-            else if (estate.GetType() == typeof(Tenement))
+            else if (tempEstate.GetType() == typeof(Tenement))
             {
                 SetEstateSpecificComponentsDynamically(EstateType.Tenement);
-                txtSpecific1.Text = ((Tenement)estate).SquareMeter.ToString();
-                txtSpecific2.Text = ((Tenement)estate).Floor.ToString();
-                txtSpecific3.Text = ((Tenement)estate).TenantOwnersAssociationName.ToString();
+                txtSpecific1.Text = ((Tenement)tempEstate).SquareMeter.ToString();
+                txtSpecific2.Text = ((Tenement)tempEstate).Floor.ToString();
+                txtSpecific3.Text = ((Tenement)tempEstate).TenantOwnersAssociationName.ToString();
                 bxEstateType.SelectedItem = EstateType.Tenement;
             }
-            else if (estate.GetType() == typeof(Townhouse))
+            else if (tempEstate.GetType() == typeof(Townhouse))
             {
                 SetEstateSpecificComponentsDynamically(EstateType.Townhouse);
-                txtSpecific1.Text = ((Townhouse)estate).SquareMeter.ToString();
-                txtSpecific2.Text = ((Townhouse)estate).GardenSquareMeters.ToString();
-                txtSpecific3.Text = ((Townhouse)estate).NumberOfConnectedVillas.ToString();
+                txtSpecific1.Text = ((Townhouse)tempEstate).SquareMeter.ToString();
+                txtSpecific2.Text = ((Townhouse)tempEstate).GardenSquareMeters.ToString();
+                txtSpecific3.Text = ((Townhouse)tempEstate).NumberOfConnectedVillas.ToString();
                 bxEstateType.SelectedItem = EstateType.Townhouse;
             }
-            else if (estate.GetType() == typeof(University))
+            else if (tempEstate.GetType() == typeof(University))
             {
                 SetEstateSpecificComponentsDynamically(EstateType.University);
-                txtSpecific1.Text = ((University)estate).NumberOfCafeterias.ToString();
-                txtSpecific2.Text = ((University)estate).NumberOfClassrooms.ToString();
-                txtSpecific3.Text = ((University)estate).NumberOfLectureHalls.ToString();
+                txtSpecific1.Text = ((University)tempEstate).NumberOfCafeterias.ToString();
+                txtSpecific2.Text = ((University)tempEstate).NumberOfClassrooms.ToString();
+                txtSpecific3.Text = ((University)tempEstate).NumberOfLectureHalls.ToString();
                 bxEstateType.SelectedItem = EstateType.University;
             }
-            else if (estate.GetType() == typeof(Villa))
+            else if (tempEstate.GetType() == typeof(Villa))
             {
                 SetEstateSpecificComponentsDynamically(EstateType.Villa);
-                txtSpecific1.Text = ((Villa)estate).SquareMeter.ToString();
-                txtSpecific2.Text = ((Villa)estate).GardenSquareMeters.ToString();
+                txtSpecific1.Text = ((Villa)tempEstate).SquareMeter.ToString();
+                txtSpecific2.Text = ((Villa)tempEstate).GardenSquareMeters.ToString();
                 txtSpecific3.Text = "";
                 bxEstateType.SelectedItem = EstateType.Villa;
             }
-            else if (estate.GetType() == typeof(Warehouse))
+            else if (tempEstate.GetType() == typeof(Warehouse))
             {
                 SetEstateSpecificComponentsDynamically(EstateType.Warehouse);
-                txtSpecific1.Text = ((Warehouse)estate).StorageSquareMeters.ToString();
-                txtSpecific2.Text = ((Warehouse)estate).NumberOfLoadingDocks.ToString();
+                txtSpecific1.Text = ((Warehouse)tempEstate).StorageSquareMeters.ToString();
+                txtSpecific2.Text = ((Warehouse)tempEstate).NumberOfLoadingDocks.ToString();
                 txtSpecific3.Text = "";
                 bxEstateType.SelectedItem = EstateType.Warehouse;
             }
@@ -568,24 +541,24 @@ namespace RealEstateAgent
 
         private void SetPaymentSpecificInfo()
         {
-            if (estate.Payment.GetType() == typeof(Bank))
+            if (tempEstate.Payment.GetType() == typeof(Bank))
             {
                 SetPaymentSpecificComponents(PaymentMethods.Bank);
-                txtPaySpecific1.Text = ((Bank)estate.Payment).Accountnumber;
-                txtPaySpecific2.Text = ((Bank)estate.Payment).Name;
+                txtPaySpecific1.Text = ((Bank)tempEstate.Payment).Accountnumber;
+                txtPaySpecific2.Text = ((Bank)tempEstate.Payment).Name;
                 bxPaymentMethod.SelectedItem = PaymentMethods.Bank;
             }
-            else if (estate.Payment.GetType() == typeof(WesternUnion))
+            else if (tempEstate.Payment.GetType() == typeof(WesternUnion))
             {
                 SetPaymentSpecificComponents(PaymentMethods.Western_Union);
-                txtPaySpecific1.Text = ((WesternUnion)estate.Payment).Email;
-                txtPaySpecific2.Text = ((WesternUnion)estate.Payment).Name;
+                txtPaySpecific1.Text = ((WesternUnion)tempEstate.Payment).Email;
+                txtPaySpecific2.Text = ((WesternUnion)tempEstate.Payment).Name;
                 bxPaymentMethod.SelectedItem = PaymentMethods.Western_Union;
             }
-            else if (estate.Payment.GetType() == typeof(PayPal))
+            else if (tempEstate.Payment.GetType() == typeof(PayPal))
             {
                 SetPaymentSpecificComponents(PaymentMethods.PayPal);
-                txtPaySpecific1.Text = ((PayPal)estate.Payment).Email;
+                txtPaySpecific1.Text = ((PayPal)tempEstate.Payment).Email;
                 txtPaySpecific2.Text = "";
                 bxPaymentMethod.SelectedItem = PaymentMethods.PayPal;
             }
@@ -593,6 +566,20 @@ namespace RealEstateAgent
             {
                 //Handle this...
             }
+        }
+
+        // TODO: Do validation of input!
+        // Read and validate user input.
+        private void ReadAndValidateInfo()
+        {
+            bool inputOk;
+            inputOk = ReadEstateInfo();
+            ReadBuyerInfo();
+            ReadSellerInfo();
+            inputOk = ReadPaymentInfo();
+            ReadImageInfo();
+            ReadSpecificInfo();
+            ReadPaymentSpecificInfo();
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
@@ -608,45 +595,38 @@ namespace RealEstateAgent
             DialogResult confirmResult = MessageBox.Show("Are you sure?", "Confirm dialog", MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
             {
-                if (selIndex > -1) // Change an existing estate, if any is selected from register.
+                if (selIndex > -1) // If any is selected from register.
                 {
-                    estateManager.ChangeAt(estate, selIndex);
-                    ClearFields();
+                    // Update estate.
+                    ReadAndValidateInfo();
+                    estateManager.ChangeAt(tempEstate, selIndex); 
+                    
                     if (lstbxRegister.Items.Count > 0)
                     {
-                        lstbxRegister.SelectedIndex = 0;
-                        EnableInfoFields(true);
-                        EnableButtons(false);
+                        EnableInfoFields(false);
+                        EnableButtons(true);
                     }
                 }
-                else // Add a new estate, if no estate is selected in register.
+                else // If no estate is selected in register.
                 {
-                    estate = CreateEstateDynamic(enumEstateType);
-                    estate.EstateID = estateIDCounter;
-                    //lblShowEstateID.Text = estate.EstateID.ToString();
-                    // Read and controll if user input is valid.
-                    // TODO: Do controlls of input!
-                    bool inputOk;
-                    inputOk = ReadEstateInfo();
-                    ReadBuyerInfo();
-                    ReadSellerInfo();
-                    inputOk = ReadPaymentInfo();
-                    ReadImageInfo();
-                    ReadSpecificInfo();
-                    ReadPaymentSpecificInfo();
+                    // Add new estate.
+                    tempEstate = CreateEstateDynamic(enumEstateType);
+                    tempEstate.EstateID = estateIDCounter; //TODO: id counter...
+                    ReadAndValidateInfo();
+                    estateManager.Add(tempEstate);
 
-                    estateManager.Add(estate);
+                    selIndex = lstbxRegister.Items.Count -1;
                 }
 
                 // Update items visible in register and select added/changed estate.
                 lstbxRegister.Items.Clear();
                 lstbxRegister.Items.AddRange(estateManager.ToStringArray());
-                //lstbxRegister.Items.AddRange(estateManager.List.ToArray());
-                lstbxRegister.SelectedItem = estate;
+                lstbxRegister.SelectedIndex = selIndex;
             }
-            else
+            else // Return to editing current estate.
             {
-                // Return to editing current estate.
+                EnableInfoFields(true);
+                EnableButtons(false);
             }
         }
 
@@ -660,14 +640,9 @@ namespace RealEstateAgent
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            estate = null;
-
-            lstbxRegister.SelectedIndex = -1; //Deselect from register.
-
+            tempEstate = null; // Make room for a new estate.
+            lstbxRegister.SelectedIndex = -1; //Deselect all from register.
             ClearFields();
-
-            //TODO: Fix id counter
-            //estate.EstateID = estateIDCounter + 1;
 
             EnableInfoFields(true);
             EnableButtons(false);
@@ -678,14 +653,13 @@ namespace RealEstateAgent
         private void btnChange_Click(object sender, EventArgs e)
         {
             int selIndex = lstbxRegister.SelectedIndex;
+            tempEstate = estateManager.GetAt(selIndex); // Get an estate to modify.
 
-            estate = (IEstate)lstbxRegister.SelectedItem;
-
-            //if (lstbxRegister.Items.Count > 0)
-            //{
-            //    EnableInfoFields(true);
-            //    EnableButtons(false);
-            //}
+            if (lstbxRegister.Items.Count > 0)
+            {
+                EnableInfoFields(true);
+                EnableButtons(false);
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -694,7 +668,6 @@ namespace RealEstateAgent
             if (selIndex > -1)
             {
                 lstbxRegister.Items.RemoveAt(selIndex);
-                //lstEstates.RemoveAt(selIndex);
                 estateManager.DeleteAt(selIndex);
                 ClearFields();
                 if (lstbxRegister.Items.Count > 0)
@@ -721,26 +694,15 @@ namespace RealEstateAgent
         private void lstbxRegister_SelectedIndexChanged(object sender, EventArgs e)
         {
             int selIndex = lstbxRegister.SelectedIndex;
+            tempEstate = estateManager.GetAt(selIndex);
             if (selIndex > -1)
             {
-                estate = (IEstate)lstbxRegister.SelectedItem;
                 SetEstateCommonInfo();
                 SetEstateSpecificInfo();
                 SetPaymentSpecificInfo();
             }
         }
 
-        private void bxEstateType_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //if (bxEstateType.SelectedIndex > -1)
-            //{
-            //    btnAdd.Enabled = true;
-            //}
-            //else
-            //{
-            //    btnAdd.Enabled = false;
-            //}
-        }
         private void bxEstateType_SelectionChangeCommitted(object sender, EventArgs e)
         {
             EstateType enumEstateType = (EstateType)bxEstateType.SelectedItem;
@@ -752,6 +714,26 @@ namespace RealEstateAgent
             PaymentMethods enumPayment = (PaymentMethods)bxPaymentMethod.SelectedItem;
             SetPaymentSpecificComponents(enumPayment);
         }
+
+        //TODO: Fix id counter
+        //estate.EstateID = estateIDCounter + 1;
+        //private IEstate AddEstateToRegister()
+        //{
+        //    if (estate != null)
+        //    {
+        //        for (int i = 0; i < lstEstates.Count; i++)
+        //        {
+        //            if (lstEstates[i].EstateID == estate.EstateID)
+        //            {
+        //                lstEstates[i] = estate;
+        //                return estate;
+        //            }
+        //        }
+        //        lstEstates.Add(estate);
+        //        estateIDCounter++;
+        //    }
+        //    return estate;
+        //}
 
         private void testValues()
         {
