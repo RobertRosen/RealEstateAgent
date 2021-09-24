@@ -16,17 +16,14 @@ namespace RealEstateAgent
 {
     public partial class MainForm : Form
     {
-        //private List<IEstate> lstEstates = new List<IEstate>();
-        private IEstate tempEstate = null;
-        private int estateIDCounter = 0;
-
         private EstateManager estateManager;
+        private IEstate tempEstate; //A temorary estate object to pass to the estate manager.
 
         public MainForm()
         {
             InitializeComponent();
-            InitializeGUI();
             estateManager = new EstateManager();
+            InitializeGUI();
         }
 
         private void InitializeGUI()
@@ -46,8 +43,9 @@ namespace RealEstateAgent
             lstbxRegister.Items.Clear();
             ClearFields();
             EnableInfoFields(false);
+
             tempEstate = null;
-            estateIDCounter = 0;
+            estateManager.EstateIDCounter = 0;
         }
 
         public IEstate CreateEstateDynamic(EstateType estateType) => estateType switch
@@ -619,7 +617,7 @@ namespace RealEstateAgent
                     // Add new estate.
                     tempEstate = CreateEstateDynamic(enumEstateType);
                     ReadAndValidateInfo();
-                    tempEstate.EstateID = estateIDCounter;
+                    tempEstate.EstateID = estateManager.EstateIDCounter;
                     estateManager.Add(tempEstate);
                     selIndex = lstbxRegister.Items.Count;
                 }
@@ -729,7 +727,7 @@ namespace RealEstateAgent
 
         private void testValues()
         {
-            lblShowEstateID.Text = (++estateIDCounter).ToString();
+            lblShowEstateID.Text = (estateManager.incrementEstateIDCounter()).ToString();
 
             bxEstateType.SelectedItem = EstateType.School;
             bxEstateCountry.SelectedItem = Countries.Sverige;
@@ -771,7 +769,6 @@ namespace RealEstateAgent
             {
                 estateManager.DeleteAll();
                 InitializeGUI();
-
             }
             else
             {

@@ -23,11 +23,6 @@ namespace RealEstateAgent
             get { return count; }
         }
 
-        public List<T> List
-        {
-            get { return list; }
-        }
-
         /// <summary>
         /// Add a new object to the list.
         /// </summary>

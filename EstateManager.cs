@@ -8,7 +8,21 @@ namespace RealEstateAgent
 {
     class EstateManager : ListManager<IEstate>
     {
-        // No code necessary.
-        // ListManagers methods are directly used.
+        private int estateIDCounter;
+
+        public int EstateIDCounter 
+        {
+            get { return estateIDCounter; }
+            set { estateIDCounter = value; }
+        }
+
+        /// <summary>
+        /// Add one to estate counter and return the new value of the counter.
+        /// </summary>
+        /// <returns>estate id counter</returns>
+        public int incrementEstateIDCounter()
+        {
+            return ++estateIDCounter;
+        }
     }
 }
