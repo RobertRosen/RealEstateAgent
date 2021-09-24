@@ -43,8 +43,11 @@ namespace RealEstateAgent
             bxLegalForm.SelectedIndex = -1;
             bxPaymentMethod.SelectedIndex = -1;
             bxEstateType.SelectedIndex = -1;
-
+            lstbxRegister.Items.Clear();
+            ClearFields();
             EnableInfoFields(false);
+            tempEstate = null;
+            estateIDCounter = 0;
         }
 
         public IEstate CreateEstateDynamic(EstateType estateType) => estateType switch
@@ -758,6 +761,22 @@ namespace RealEstateAgent
             txtBuyerCity.Text = "Malmö";
             txtBuyerStreet.Text = "Trelleborgsgatan 8a";
             txtBuyerZip.Text = "21435";
+        }
+
+        private void mnuFileNew_Click(object sender, EventArgs e)
+        {
+            DialogResult confirmResult = MessageBox.Show("Restart without saving?", "Confirm dialog", MessageBoxButtons.YesNo);
+
+            if (confirmResult == DialogResult.Yes)
+            {
+                estateManager.DeleteAll();
+                InitializeGUI();
+
+            }
+            else
+            {
+                //Nothing
+            }
         }
     }
 }
