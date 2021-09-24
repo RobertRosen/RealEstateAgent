@@ -593,14 +593,19 @@ namespace RealEstateAgent
             EnableButtons(true);
 
             DialogResult confirmResult = MessageBox.Show("Are you sure?", "Confirm dialog", MessageBoxButtons.YesNo);
+
             if (confirmResult == DialogResult.Yes)
             {
                 if (selIndex > -1) // If any is selected from register.
                 {
-                    // Update estate.
+                    int estateIDToKeep = tempEstate.EstateID;
+                    tempEstate = CreateEstateDynamic(enumEstateType);
                     ReadAndValidateInfo();
+
+                    // Update estate.
+                    tempEstate.EstateID = estateIDToKeep;
                     estateManager.ChangeAt(tempEstate, selIndex); 
-                    
+                   
                     if (lstbxRegister.Items.Count > 0)
                     {
                         EnableInfoFields(false);
@@ -611,16 +616,14 @@ namespace RealEstateAgent
                 {
                     // Add new estate.
                     tempEstate = CreateEstateDynamic(enumEstateType);
-                    tempEstate.EstateID = estateIDCounter; //TODO: id counter...
                     ReadAndValidateInfo();
+                    tempEstate.EstateID = estateIDCounter; //TODO: id counter...
                     estateManager.Add(tempEstate);
                     selIndex = lstbxRegister.Items.Count;
                 }
-
                 // Update items visible in register and select added/changed estate.
                 lstbxRegister.Items.Clear();
                 lstbxRegister.Items.AddRange(estateManager.ToStringArray());
-          
                 lstbxRegister.SetSelected(selIndex, true);
             }
             else // Return to editing current estate.
@@ -640,7 +643,7 @@ namespace RealEstateAgent
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            tempEstate = null; // Make room for a new estate.
+            // tempEstate = null; // Make room for a new estate.
             lstbxRegister.SelectedIndex = -1; //Deselect all from register.
             ClearFields();
 
