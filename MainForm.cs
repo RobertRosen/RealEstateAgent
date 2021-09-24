@@ -667,16 +667,23 @@ namespace RealEstateAgent
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            DialogResult confirmResult = MessageBox.Show("Are you sure you want to delete?", "Confirm dialog", MessageBoxButtons.YesNo);
             int selIndex = lstbxRegister.SelectedIndex;
-            if (selIndex > -1)
+            if (confirmResult == DialogResult.Yes)
             {
-                lstbxRegister.Items.RemoveAt(selIndex);
-                estateManager.DeleteAt(selIndex);
-                ClearFields();
-                if (lstbxRegister.Items.Count > 0)
-                    lstbxRegister.SelectedIndex = 0;
+                if (selIndex > -1)
+                {
+                    lstbxRegister.Items.RemoveAt(selIndex);
+                    estateManager.DeleteAt(selIndex);
+                    ClearFields();
+                    if (lstbxRegister.Items.Count > 0)
+                        lstbxRegister.SelectedIndex = 0;
+                }
+            } else
+            {
+                // Return to editing current estate.
             }
-        }
+        }   
 
         private void btnBrowseImg_Click(object sender, EventArgs e)
         {
@@ -740,7 +747,7 @@ namespace RealEstateAgent
 
         private void testValues()
         {
-            lblShowEstateID.Text = (estateIDCounter++).ToString();
+            lblShowEstateID.Text = (++estateIDCounter).ToString();
 
             bxEstateType.SelectedItem = EstateType.School;
             bxEstateCountry.SelectedItem = Countries.Sverige;
