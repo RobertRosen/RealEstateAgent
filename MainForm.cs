@@ -591,7 +591,6 @@ namespace RealEstateAgent
             SetEstateSpecificComponentsDynamically(enumEstateType);
             EnableInfoFields(false);
             EnableButtons(true);
-
             DialogResult confirmResult = MessageBox.Show("Are you sure?", "Confirm dialog", MessageBoxButtons.YesNo);
 
             if (confirmResult == DialogResult.Yes)
@@ -617,7 +616,7 @@ namespace RealEstateAgent
                     // Add new estate.
                     tempEstate = CreateEstateDynamic(enumEstateType);
                     ReadAndValidateInfo();
-                    tempEstate.EstateID = estateIDCounter; //TODO: id counter...
+                    tempEstate.EstateID = estateIDCounter;
                     estateManager.Add(tempEstate);
                     selIndex = lstbxRegister.Items.Count;
                 }
@@ -724,26 +723,6 @@ namespace RealEstateAgent
             PaymentMethods enumPayment = (PaymentMethods)bxPaymentMethod.SelectedItem;
             SetPaymentSpecificComponents(enumPayment);
         }
-
-        //TODO: Fix id counter
-        //estate.EstateID = estateIDCounter + 1;
-        //private IEstate AddEstateToRegister()
-        //{
-        //    if (estate != null)
-        //    {
-        //        for (int i = 0; i < lstEstates.Count; i++)
-        //        {
-        //            if (lstEstates[i].EstateID == estate.EstateID)
-        //            {
-        //                lstEstates[i] = estate;
-        //                return estate;
-        //            }
-        //        }
-        //        lstEstates.Add(estate);
-        //        estateIDCounter++;
-        //    }
-        //    return estate;
-        //}
 
         private void testValues()
         {
