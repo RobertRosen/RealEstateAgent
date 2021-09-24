@@ -30,12 +30,14 @@ namespace RealEstateAgent
         private void InitializeComponent()
         {
             this.pnlRegister = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lblSearch = new System.Windows.Forms.Label();
             this.lstbxRegister = new System.Windows.Forms.ListBox();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.lblRegister = new System.Windows.Forms.Label();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnChange = new System.Windows.Forms.Button();
             this.lblEstateType = new System.Windows.Forms.Label();
-            this.btnAdd = new System.Windows.Forms.Button();
             this.bxEstateType = new System.Windows.Forms.ComboBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnConfirm = new System.Windows.Forms.Button();
@@ -105,9 +107,8 @@ namespace RealEstateAgent
             this.txtEstateCity = new System.Windows.Forms.TextBox();
             this.lblShowEstateID = new System.Windows.Forms.Label();
             this.lblEstate = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.lblSearch = new System.Windows.Forms.Label();
             this.pnlRegister.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.pnlInfo.SuspendLayout();
             this.pnlSpecifics.SuspendLayout();
             this.pnlPayment.SuspendLayout();
@@ -116,7 +117,6 @@ namespace RealEstateAgent
             this.pnlSeller.SuspendLayout();
             this.pnlBuyer.SuspendLayout();
             this.pnlEstateInfo.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlRegister
@@ -135,6 +135,24 @@ namespace RealEstateAgent
             this.pnlRegister.Size = new System.Drawing.Size(530, 761);
             this.pnlRegister.TabIndex = 0;
             // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.lblSearch);
+            this.panel2.Location = new System.Drawing.Point(13, 559);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(503, 147);
+            this.panel2.TabIndex = 10;
+            // 
+            // lblSearch
+            // 
+            this.lblSearch.AutoSize = true;
+            this.lblSearch.Location = new System.Drawing.Point(3, 4);
+            this.lblSearch.Name = "lblSearch";
+            this.lblSearch.Size = new System.Drawing.Size(50, 16);
+            this.lblSearch.TabIndex = 0;
+            this.lblSearch.Text = "Search";
+            // 
             // lstbxRegister
             // 
             this.lstbxRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -146,6 +164,18 @@ namespace RealEstateAgent
             this.lstbxRegister.Size = new System.Drawing.Size(505, 484);
             this.lstbxRegister.TabIndex = 9;
             this.lstbxRegister.SelectedIndexChanged += new System.EventHandler(this.lstbxRegister_SelectedIndexChanged);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnAdd.Location = new System.Drawing.Point(417, 714);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(100, 36);
+            this.btnAdd.TabIndex = 7;
+            this.btnAdd.Text = "Add New";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // lblRegister
             // 
@@ -193,19 +223,6 @@ namespace RealEstateAgent
             this.lblEstateType.Size = new System.Drawing.Size(74, 16);
             this.lblEstateType.TabIndex = 0;
             this.lblEstateType.Text = "Estate type";
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Enabled = false;
-            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnAdd.Location = new System.Drawing.Point(417, 714);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(100, 36);
-            this.btnAdd.TabIndex = 7;
-            this.btnAdd.Text = "Add New";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // bxEstateType
             // 
@@ -950,24 +967,6 @@ namespace RealEstateAgent
             this.lblEstate.TabIndex = 0;
             this.lblEstate.Text = "Estate";
             // 
-            // panel2
-            // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.lblSearch);
-            this.panel2.Location = new System.Drawing.Point(13, 559);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(503, 147);
-            this.panel2.TabIndex = 10;
-            // 
-            // lblSearch
-            // 
-            this.lblSearch.AutoSize = true;
-            this.lblSearch.Location = new System.Drawing.Point(3, 4);
-            this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(50, 16);
-            this.lblSearch.TabIndex = 0;
-            this.lblSearch.Text = "Search";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
@@ -983,6 +982,8 @@ namespace RealEstateAgent
             this.Text = "Real Estate Agent";
             this.pnlRegister.ResumeLayout(false);
             this.pnlRegister.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.pnlInfo.ResumeLayout(false);
             this.pnlInfo.PerformLayout();
             this.pnlSpecifics.ResumeLayout(false);
@@ -998,8 +999,6 @@ namespace RealEstateAgent
             this.pnlBuyer.PerformLayout();
             this.pnlEstateInfo.ResumeLayout(false);
             this.pnlEstateInfo.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }

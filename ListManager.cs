@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace RealEstateAgent
 {
@@ -20,6 +21,11 @@ namespace RealEstateAgent
         public int Count
         {
             get { return count; }
+        }
+
+        public List<T> List
+        {
+            get { return list; }
         }
 
         /// <summary>
@@ -158,11 +164,13 @@ namespace RealEstateAgent
         /// <returns></returns>
         public string[] ToStringArray()
         {
-            string[] stringArray = null;
+            string[] stringArray = new string[list.Count];
 
             for(int i = 0; i < list.Count; i++)
             {
-                stringArray[i] = list.ElementAt(i).ToString();
+                string strAti = list[i].ToString();
+                Debug.WriteLine(strAti);
+                stringArray[i] = strAti;
             }
 
             return stringArray;

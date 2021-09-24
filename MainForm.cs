@@ -18,7 +18,7 @@ namespace RealEstateAgent
     {
         //private List<IEstate> lstEstates = new List<IEstate>();
         private IEstate estate = null;
-        //private int estateIDCounter = 0;
+        private int estateIDCounter = 0;
 
         private EstateManager estateManager;
 
@@ -42,7 +42,7 @@ namespace RealEstateAgent
             bxBuyerCountry.SelectedIndex = -1;
             bxLegalForm.SelectedIndex = -1;
             bxPaymentMethod.SelectedIndex = -1;
-            bxEstateType.SelectedIndex = 0;
+            bxEstateType.SelectedIndex = -1;
 
             EnableInfoFields(false);
         }
@@ -305,7 +305,7 @@ namespace RealEstateAgent
             txtSellerStreet.Enabled = enabled;
             txtSellerZip.Enabled = enabled;
 
-            bxEstateType.Enabled = !enabled;
+            bxEstateType.Enabled = enabled;
             bxBuyerCountry.Enabled = enabled;
             bxEstateCountry.Enabled = enabled;
             bxLegalForm.Enabled = enabled;
@@ -622,7 +622,8 @@ namespace RealEstateAgent
                 else // Add a new estate, if no estate is selected in register.
                 {
                     estate = CreateEstateDynamic(enumEstateType);
-                    lblShowEstateID.Text = estate.EstateID.ToString();
+                    estate.EstateID = estateIDCounter;
+                    //lblShowEstateID.Text = estate.EstateID.ToString();
                     // Read and controll if user input is valid.
                     // TODO: Do controlls of input!
                     bool inputOk;
@@ -640,6 +641,7 @@ namespace RealEstateAgent
                 // Update items visible in register and select added/changed estate.
                 lstbxRegister.Items.Clear();
                 lstbxRegister.Items.AddRange(estateManager.ToStringArray());
+                //lstbxRegister.Items.AddRange(estateManager.List.ToArray());
                 lstbxRegister.SelectedItem = estate;
             }
             else
@@ -664,8 +666,6 @@ namespace RealEstateAgent
 
             ClearFields();
 
-            EstateType enumEstateType = (EstateType)bxEstateType.SelectedItem;
-
             //TODO: Fix id counter
             //estate.EstateID = estateIDCounter + 1;
 
@@ -673,10 +673,6 @@ namespace RealEstateAgent
             EnableButtons(false);
 
             testValues();
-
-
-
-            lstbxRegister.SelectedIndex = -1;
         }
 
         private void btnChange_Click(object sender, EventArgs e)
@@ -759,6 +755,9 @@ namespace RealEstateAgent
 
         private void testValues()
         {
+            lblShowEstateID.Text = (estateIDCounter++).ToString();
+
+            bxEstateType.SelectedItem = EstateType.School;
             bxEstateCountry.SelectedItem = Countries.Sverige;
             bxSellerCountry.SelectedItem = Countries.Sverige;
             bxBuyerCountry.SelectedItem = Countries.Sverige;
