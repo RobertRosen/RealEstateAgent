@@ -5,10 +5,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Drawing;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace RealEstateAgent
 {
-    public interface IEstate
+    public interface IEstate : ISerializable
     {
         int EstateID { get; set; }
         Address Address { get; set; }
