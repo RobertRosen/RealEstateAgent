@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace RealEstateAgent
 {
@@ -48,35 +50,39 @@ namespace RealEstateAgent
 
         public bool BinaryDeSerialize(string fileName)
         {
-            bool success;
+            bool success = false;
 
-            if (fileName == null)
+            if (fileName != null)
             {
-                success = true;
+                using (Stream stream = File.Open(fileName, FileMode.Open))
+                {
+                    BinaryFormatter binaryFormatter = new BinaryFormatter();
+                    list.Clear();
+#pragma warning disable SYSLIB0011 // Type or member is obsolete
+                    list = (List<T>)binaryFormatter.Deserialize(stream);
+#pragma warning restore SYSLIB0011 // Type or member is obsolete
+                    success = true;
+                }
             }
-            else
-            {
-                success = false;
-            }
-
             return success;
         }
 
         public bool BinarySerialize(string fileName)
         {
-            bool success;
+            bool success = false;
 
-            if(fileName != null)
+            if (fileName != null)
             {
-                success = true;
+                using (Stream stream = File.Open(fileName, FileMode.Create))
+                {
+                    BinaryFormatter binaryFormatter = new BinaryFormatter();
+#pragma warning disable SYSLIB0011 // Type or member is obsolete
+                    binaryFormatter.Serialize(stream, list);
+#pragma warning restore SYSLIB0011 // Type or member is obsolete
+                    success = true;
+                }
             }
-            else
-            {
-                success = false;
-            }
-
             return success;
-
         }
 
         /// <summary>
@@ -87,18 +93,13 @@ namespace RealEstateAgent
         /// <returns></returns>
         public bool ChangeAt(T aType, int anIndex)
         {
-            bool success;
+            bool success = false;
 
             if (aType != null && anIndex > -1)
             {
                 list[anIndex] = aType;
                 success = true;
             }
-            else
-            {
-                success = false;
-            }
-
             return success;
         }
 
@@ -109,15 +110,11 @@ namespace RealEstateAgent
         /// <returns>True if successful, false otherwise.</returns>
         public bool CheckIndex(int index)
         {
-            bool indexOk;
+            bool indexOk = false;
 
             if (index >= 0 && index < Count)
             {
                 indexOk = true;
-            }
-            else
-            {
-                indexOk = false;
             }
 
             return indexOk;
@@ -184,7 +181,7 @@ namespace RealEstateAgent
         {
             string[] stringArray = new string[list.Count];
 
-            for(int i = 0; i < list.Count; i++)
+            for (int i = 0; i < list.Count; i++)
             {
                 string strAti = list[i].ToString();
                 stringArray[i] = strAti;

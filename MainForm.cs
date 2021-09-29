@@ -21,6 +21,9 @@ namespace RealEstateAgent
         private EstateManager estateManager;
         private IEstate tempEstate; //A temorary estate object to pass to the estate manager.
         private string imageFilePath;
+        private string imageFilePathRobert = "C:\\Users\\rober\\source\\repos\\RealEstateAgent\\Images\\noImage.jpg";
+        private string imageFilePathJoakim = "C:\\Users\\Thell\\Source\\Repos\\RobertRosen\\RealEstateAgent\\Images\\noImage.jpg";
+
 
         public MainForm()
         {
@@ -50,7 +53,7 @@ namespace RealEstateAgent
             tempEstate = null;
             estateManager.EstateIDCounter = 0;
             //TODO: dynamic filepath for portability..
-            imageFilePath = "C:\\Users\\rober\\source\\repos\\RealEstateAgent\\Images\\noImage.jpg";
+            imageFilePath = imageFilePathRobert;
         }
 
         public IEstate CreateEstateDynamic(EstateType estateType) => estateType switch
@@ -579,7 +582,7 @@ namespace RealEstateAgent
             EstateType enumEstateType = (EstateType)bxEstateType.SelectedItem;
             int selIndex = lstbxRegister.SelectedIndex;
 
-            // Update GUI. 
+            // Update GUI.
             SetEstateSpecificComponentsDynamically(enumEstateType);
             EnableInfoFields(false);
             EnableButtons(true);
@@ -616,7 +619,7 @@ namespace RealEstateAgent
                 lstbxRegister.Items.Clear();
                 lstbxRegister.Items.AddRange(estateManager.ToStringArray());
                 lstbxRegister.SetSelected(selIndex, true);
-                imageFilePath = "C:\\Users\\rober\\source\\repos\\RealEstateAgent\\Images\\noImage.jpg";
+                imageFilePath = imageFilePathRobert;
             }
             else // Return to editing current estate.
             {
@@ -699,7 +702,6 @@ namespace RealEstateAgent
             tempEstate = estateManager.GetAt(selIndex);
             if (selIndex > -1)
             {
-                Debug.WriteLine("IMAGEPATH: " + tempEstate.ImagePath);
                 SetEstateCommonInfo();
                 SetEstateSpecificInfo();
                 SetPaymentSpecificInfo();
@@ -773,21 +775,35 @@ namespace RealEstateAgent
 
         private void mnuFileOpen_Click(object sender, EventArgs e)
         {
+            //Ask user to save current data method?x
             OpenFileDialog openFile = new OpenFileDialog();
             openFile.ShowDialog();
+            estateManager.BinaryDeSerialize(openFile.FileName);
+            lstbxRegister.Items.Clear();
+            lstbxRegister.Items.AddRange(estateManager.ToStringArray());
+
+
         }
 
-        private void mnuFileSave_Click(object sender, EventArgs e)
+       private void mnuFileSave_Click(object sender, EventArgs e)
         {
             //Om inget har sparats tidigare kör mnuFIlesaveAs metoden.
-            OpenFileDialog openFile = new OpenFileDialog();
-            openFile.ShowDialog();
+         //   if(filename == string.Empty)
+           // {
+             //   mnuFileSaveAs_Click(sender, e);
+           // }
+           // else
+            //{
+              //  SaveToFile
+           // }
         }
 
         private void mnuFileSaveAs_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFile = new SaveFileDialog();
             saveFile.ShowDialog();
+            string saveFilePath = saveFile.FileName + ".bin";
+            estateManager.BinarySerialize(saveFilePath);
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -809,7 +825,7 @@ namespace RealEstateAgent
             {
                 MessageBox.Show("No search results!");
             }
-            
+
         }
 
         private void btnClearSearchResults_Click(object sender, EventArgs e)
