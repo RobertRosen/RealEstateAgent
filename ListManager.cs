@@ -187,7 +187,6 @@ namespace RealEstateAgent
             for(int i = 0; i < list.Count; i++)
             {
                 string strAti = list[i].ToString();
-                Debug.WriteLine(strAti);
                 stringArray[i] = strAti;
             }
 

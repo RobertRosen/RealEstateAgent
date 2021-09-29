@@ -50,7 +50,7 @@ namespace RealEstateAgent
             tempEstate = null;
             estateManager.EstateIDCounter = 0;
             //TODO: dynamic filepath for portability..
-            imageFilePath = "C:\\Users\\Thell\\Source\\Repos\\RobertRosen\\RealEstateAgent\\Images\\noImage.jpg";
+            imageFilePath = "C:\\Users\\rober\\source\\repos\\RealEstateAgent\\Images\\noImage.jpg";
         }
 
         public IEstate CreateEstateDynamic(EstateType estateType) => estateType switch
@@ -616,7 +616,7 @@ namespace RealEstateAgent
                 lstbxRegister.Items.Clear();
                 lstbxRegister.Items.AddRange(estateManager.ToStringArray());
                 lstbxRegister.SetSelected(selIndex, true);
-                imageFilePath = "C:\\Users\\Thell\\Source\\Repos\\RobertRosen\\RealEstateAgent\\Images\\noImage.jpg";
+                imageFilePath = "C:\\Users\\rober\\source\\repos\\RealEstateAgent\\Images\\noImage.jpg";
             }
             else // Return to editing current estate.
             {
@@ -788,6 +788,33 @@ namespace RealEstateAgent
         {
             SaveFileDialog saveFile = new SaveFileDialog();
             saveFile.ShowDialog();
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string searchCity = txtSearchCity.Text;
+            string[] searchResults = estateManager.SearchEstate(searchCity);
+            lstbxSearchResults.Items.Clear();
+
+            if (searchResults != null)
+            {
+                foreach (string est in searchResults)
+                {
+                    Debug.WriteLine(est);
+                }
+
+                lstbxSearchResults.Items.AddRange(searchResults);
+            }
+            else
+            {
+                MessageBox.Show("No search results!");
+            }
+            
+        }
+
+        private void btnClearSearchResults_Click(object sender, EventArgs e)
+        {
+            lstbxSearchResults.Items.Clear();
         }
     }
 }
