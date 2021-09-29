@@ -699,7 +699,6 @@ namespace RealEstateAgent
             tempEstate = estateManager.GetAt(selIndex);
             if (selIndex > -1)
             {
-                Debug.WriteLine("IMAGEPATH: " + tempEstate.ImagePath);
                 SetEstateCommonInfo();
                 SetEstateSpecificInfo();
                 SetPaymentSpecificInfo();
@@ -780,14 +779,16 @@ namespace RealEstateAgent
         private void mnuFileSave_Click(object sender, EventArgs e)
         {
             //Om inget har sparats tidigare kör mnuFIlesaveAs metoden.
-            OpenFileDialog openFile = new OpenFileDialog();
-            openFile.ShowDialog();
+            
         }
 
         private void mnuFileSaveAs_Click(object sender, EventArgs e)
         {
+
             SaveFileDialog saveFile = new SaveFileDialog();
             saveFile.ShowDialog();
+            string saveFilePath = saveFile.FileName;
+            BinarySerialize.WriteToBinaryFile<Estate>(saveFilePath,);
         }
     }
 }
