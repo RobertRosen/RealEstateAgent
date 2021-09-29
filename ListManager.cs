@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace RealEstateAgent
 {
@@ -50,8 +52,9 @@ namespace RealEstateAgent
         {
             bool success;
 
-            if (fileName == null)
+            if (fileName != null)
             {
+                ReadFromBinaryFile<T>(fileName);
                 success = true;
             }
             else
@@ -66,8 +69,12 @@ namespace RealEstateAgent
         {
             bool success;
 
-            if(fileName != null)
+            if (fileName != null)
             {
+                for (int i = 0; i < list.Count; i++)
+                {
+                    WriteToBinaryFile<T>(fileName, list[i]);
+                }
                 success = true;
             }
             else
@@ -184,10 +191,9 @@ namespace RealEstateAgent
         {
             string[] stringArray = new string[list.Count];
 
-            for(int i = 0; i < list.Count; i++)
+            for (int i = 0; i < list.Count; i++)
             {
                 string strAti = list[i].ToString();
-                Debug.WriteLine(strAti);
                 stringArray[i] = strAti;
             }
 
@@ -210,5 +216,34 @@ namespace RealEstateAgent
         {
             throw new NotImplementedException();
         }
+
+        public static void WriteToBinaryFile<T>(string filePath, T objectToWrite, bool append = false)
+        {
+            using (Stream stream = File.Open(filePath, append ? FileMode.Append : FileMode.Create))
+            {
+                BinaryFormatter binaryFormatter = new BinaryFormatter();
+#pragma warning disable SYSLIB0011 // Type or member is obsolete
+                binaryFormatter.Serialize(stream, objectToWrite);
+#pragma warning restore SYSLIB0011 // Type or member is obsolete
+            }
+        }
+
+        /// <summary>
+        /// Reads an object instance from a binary file.
+        /// </summary>
+        /// <typeparam name="T">The type of object to read from the XML.</typeparam>
+        /// <param name="filePath">The file path to read the object instance from.</param>
+        /// <returns>Returns a new instance of the object read from the binary file.</returns>
+        public static T ReadFromBinaryFile<T>(string filePath)
+        {
+            using (Stream stream = File.Open(filePath, FileMode.Open))
+            {
+                BinaryFormatter binaryFormatter = new BinaryFormatter();
+#pragma warning disable SYSLIB0011 // Type or member is obsolete
+                return (T)binaryFormatter.Deserialize(stream);
+#pragma warning restore SYSLIB0011 // Type or member is obsolete
+            }
+        }
+
     }
 }

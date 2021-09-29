@@ -772,23 +772,35 @@ namespace RealEstateAgent
 
         private void mnuFileOpen_Click(object sender, EventArgs e)
         {
+            //Ask user to save current data method?x
             OpenFileDialog openFile = new OpenFileDialog();
             openFile.ShowDialog();
+            estateManager.BinaryDeSerialize(openFile.FileName);
+            lstbxRegister.Items.Clear();
+            lstbxRegister.Items.AddRange(estateManager.ToStringArray());
+
+
         }
 
-        private void mnuFileSave_Click(object sender, EventArgs e)
+       private void mnuFileSave_Click(object sender, EventArgs e)
         {
             //Om inget har sparats tidigare kör mnuFIlesaveAs metoden.
-            
+         //   if(filename == string.Empty)
+           // {
+             //   mnuFileSaveAs_Click(sender, e);
+           // } 
+           // else
+            //{
+              //  SaveToFile
+           // }
         }
-
+   
         private void mnuFileSaveAs_Click(object sender, EventArgs e)
         {
-
             SaveFileDialog saveFile = new SaveFileDialog();
             saveFile.ShowDialog();
-            string saveFilePath = saveFile.FileName;
-            BinarySerialize.WriteToBinaryFile<Estate>(saveFilePath,);
+            string saveFilePath = saveFile.FileName + ".bin";
+            estateManager.BinarySerialize(saveFilePath);
         }
     }
 }
