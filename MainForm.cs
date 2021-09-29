@@ -21,6 +21,9 @@ namespace RealEstateAgent
         private EstateManager estateManager;
         private IEstate tempEstate; //A temorary estate object to pass to the estate manager.
         private string imageFilePath;
+        private string imageFilePathRobert = "C:\\Users\\rober\\source\\repos\\RealEstateAgent\\Images\\noImage.jpg";
+        private string imageFilePathJoakim = "C:\\Users\\Thell\\Source\\Repos\\RobertRosen\\RealEstateAgent\\Images\\noImage.jpg";
+
 
         public MainForm()
         {
@@ -50,7 +53,7 @@ namespace RealEstateAgent
             tempEstate = null;
             estateManager.EstateIDCounter = 0;
             //TODO: dynamic filepath for portability..
-            imageFilePath = "C:\\Users\\Thell\\Source\\Repos\\RobertRosen\\RealEstateAgent\\Images\\noImage.jpg";
+            imageFilePath = imageFilePathRobert;
         }
 
         public IEstate CreateEstateDynamic(EstateType estateType) => estateType switch
@@ -616,7 +619,7 @@ namespace RealEstateAgent
                 lstbxRegister.Items.Clear();
                 lstbxRegister.Items.AddRange(estateManager.ToStringArray());
                 lstbxRegister.SetSelected(selIndex, true);
-                imageFilePath = "C:\\Users\\Thell\\Source\\Repos\\RobertRosen\\RealEstateAgent\\Images\\noImage.jpg";
+                imageFilePath = imageFilePathRobert;
             }
             else // Return to editing current estate.
             {

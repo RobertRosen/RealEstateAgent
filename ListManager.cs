@@ -50,40 +50,39 @@ namespace RealEstateAgent
 
         public bool BinaryDeSerialize(string fileName)
         {
-            bool success;
+            bool success = false;
 
             if (fileName != null)
             {
-                ReadFromBinaryFile<T>(fileName);
-                success = true;
+                using (Stream stream = File.Open(fileName, FileMode.Open))
+                {
+                    BinaryFormatter binaryFormatter = new BinaryFormatter();
+                    list.Clear();
+#pragma warning disable SYSLIB0011 // Type or member is obsolete
+                    list = (List<T>)binaryFormatter.Deserialize(stream);
+#pragma warning restore SYSLIB0011 // Type or member is obsolete
+                    success = true;
+                }
             }
-            else
-            {
-                success = false;
-            }
-
             return success;
         }
 
         public bool BinarySerialize(string fileName)
         {
-            bool success;
+            bool success = false;
 
             if (fileName != null)
             {
-                for (int i = 0; i < list.Count; i++)
+                using (Stream stream = File.Open(fileName, FileMode.Create))
                 {
-                    WriteToBinaryFile<T>(fileName, list[i]);
+                    BinaryFormatter binaryFormatter = new BinaryFormatter();
+#pragma warning disable SYSLIB0011 // Type or member is obsolete
+                    binaryFormatter.Serialize(stream, list);
+#pragma warning restore SYSLIB0011 // Type or member is obsolete
+                    success = true;
                 }
-                success = true;
             }
-            else
-            {
-                success = false;
-            }
-
             return success;
-
         }
 
         /// <summary>
@@ -94,18 +93,13 @@ namespace RealEstateAgent
         /// <returns></returns>
         public bool ChangeAt(T aType, int anIndex)
         {
-            bool success;
+            bool success = false;
 
             if (aType != null && anIndex > -1)
             {
                 list[anIndex] = aType;
                 success = true;
             }
-            else
-            {
-                success = false;
-            }
-
             return success;
         }
 
@@ -116,15 +110,11 @@ namespace RealEstateAgent
         /// <returns>True if successful, false otherwise.</returns>
         public bool CheckIndex(int index)
         {
-            bool indexOk;
+            bool indexOk = false;
 
             if (index >= 0 && index < Count)
             {
                 indexOk = true;
-            }
-            else
-            {
-                indexOk = false;
             }
 
             return indexOk;
@@ -216,34 +206,5 @@ namespace RealEstateAgent
         {
             throw new NotImplementedException();
         }
-
-        public static void WriteToBinaryFile<T>(string filePath, T objectToWrite, bool append = false)
-        {
-            using (Stream stream = File.Open(filePath, append ? FileMode.Append : FileMode.Create))
-            {
-                BinaryFormatter binaryFormatter = new BinaryFormatter();
-#pragma warning disable SYSLIB0011 // Type or member is obsolete
-                binaryFormatter.Serialize(stream, objectToWrite);
-#pragma warning restore SYSLIB0011 // Type or member is obsolete
-            }
-        }
-
-        /// <summary>
-        /// Reads an object instance from a binary file.
-        /// </summary>
-        /// <typeparam name="T">The type of object to read from the XML.</typeparam>
-        /// <param name="filePath">The file path to read the object instance from.</param>
-        /// <returns>Returns a new instance of the object read from the binary file.</returns>
-        public static T ReadFromBinaryFile<T>(string filePath)
-        {
-            using (Stream stream = File.Open(filePath, FileMode.Open))
-            {
-                BinaryFormatter binaryFormatter = new BinaryFormatter();
-#pragma warning disable SYSLIB0011 // Type or member is obsolete
-                return (T)binaryFormatter.Deserialize(stream);
-#pragma warning restore SYSLIB0011 // Type or member is obsolete
-            }
-        }
-
     }
 }
