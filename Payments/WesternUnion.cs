@@ -7,6 +7,7 @@ using System.Text;
 
 namespace RealEstateAgent
 {
+    [Serializable]
     public class WesternUnion : Payment
     {
         private String name;

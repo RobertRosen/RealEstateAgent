@@ -5,6 +5,7 @@ using System.Text;
 
 namespace RealEstateAgent
 {
+    [Serializable]
     public class Rental : Apartment
     {
         private int contractMonths;

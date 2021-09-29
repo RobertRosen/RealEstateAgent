@@ -3,69 +3,48 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 namespace RealEstateAgent
 {
-    // KOPIERAD FRÅN FARIDS KODEXEMPEL SERIALIZATION!!!
     class BinarySerialize
     {
-        
-        public static byte[] Serialize(object obj)
+        /// <summary>
+        /// Writes the given object instance to a binary file.
+        /// <para>Object type (and all child types) must be decorated with the [Serializable] attribute.</para>
+        /// <para>To prevent a variable from being serialized, decorate it with the [NonSerialized] attribute; cannot be applied to properties.</para>
+        /// </summary>
+        /// <typeparam name="T">The type of object being written to the XML file.</typeparam>
+        /// <param name="filePath">The file path to write the object instance to.</param>
+        /// <param name="objectToWrite">The object instance to write to the XML file.</param>
+        /// <param name="append">If false the file will be overwritten if it already exists. If true the contents will be appended to the file.</param>
+        public static void WriteToBinaryFile<T>(string filePath, T objectToWrite, bool append = false)
         {
-            byte[] serializedObject = null;
-            MemoryStream memStream = null;
-
-            try
+            using (Stream stream = File.Open(filePath, append ? FileMode.Append : FileMode.Create))
             {
-                memStream = new MemoryStream();
-                BinaryFormatter binFormatter = new BinaryFormatter();
-
-                binFormatter.Serialize(memStream, obj);
-                memStream.Seek(0, 0);			    //set position at 0,0
-                serializedObject = memStream.ToArray();
+                BinaryFormatter binaryFormatter = new BinaryFormatter();
+#pragma warning disable SYSLIB0011 // Type or member is obsolete
+                binaryFormatter.Serialize(stream, objectToWrite);
+#pragma warning restore SYSLIB0011 // Type or member is obsolete
             }
-            finally
-            {
-                if (memStream != null)
-                    memStream.Close();
-            }
-
-            return serializedObject;    // return the array.
         }
 
         /// <summary>
-        /// Deserialize any type of array object.  The type (T) is defined when
-        /// calling this function.
+        /// Reads an object instance from a binary file.
         /// </summary>
-        /// <typeparam name="T">Any array type</typeparam>
-        /// <param name="serializedObject">Array object containing data.</param>
-        /// <returns>The array object containing the data read from the serializedObject.</returns>
-        /// <remarks>Object must not have changed its structure since it was serilized calling
-        /// the above method.</remarks>
-        public static T Deserialize<T>(byte[] serializedObject)
+        /// <typeparam name="T">The type of object to read from the XML.</typeparam>
+        /// <param name="filePath">The file path to read the object instance from.</param>
+        /// <returns>Returns a new instance of the object read from the binary file.</returns>
+        public static T ReadFromBinaryFile<T>(string filePath)
         {
-            object obj = null;    //object to return
-            MemoryStream memStream = null;
-
-            try
+            using (Stream stream = File.Open(filePath, FileMode.Open))
             {
-                memStream = new MemoryStream();
-                memStream.Write(serializedObject, 0, serializedObject.Length);
-                memStream.Seek(0, 0);  //set position at 0,0
-
-                BinaryFormatter binFormatter = new BinaryFormatter();
-                obj = binFormatter.Deserialize(memStream);
+                BinaryFormatter binaryFormatter = new BinaryFormatter();
+#pragma warning disable SYSLIB0011 // Type or member is obsolete
+                return (T)binaryFormatter.Deserialize(stream);
+#pragma warning restore SYSLIB0011 // Type or member is obsolete
             }
-            catch //no parameter - catch avoids exception throwing but no action is taken here 
-            {
-            }
-            finally
-            {
-                if (memStream != null)
-                    memStream.Close();
-            }
-
-            return (T)obj;		// convert obj to correct type!
         }
     }
 }

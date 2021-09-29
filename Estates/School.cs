@@ -7,6 +7,7 @@ using System.Text;
 
 namespace RealEstateAgent
 {
+    [Serializable]
     public class School : Institutional
     {
         private string suitableLevel;

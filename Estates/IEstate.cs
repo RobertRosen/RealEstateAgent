@@ -10,7 +10,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace RealEstateAgent
 {
-    public interface IEstate : ISerializable
+    public interface IEstate
     {
         int EstateID { get; set; }
         Address Address { get; set; }
@@ -18,6 +18,6 @@ namespace RealEstateAgent
         Person Seller { get; set; }
         Payment Payment { get; set; }
         LegalForm LegalForm { get; set; }
-        Image Image { get; set; }
+        string ImagePath { get; set; }
     }
 }

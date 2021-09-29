@@ -9,7 +9,7 @@ using System.Runtime.Serialization;
 
 namespace RealEstateAgent
 {
-    [Serializable()]
+    [Serializable]
     public abstract class Estate : IEstate
     {
         private int estateID;
@@ -18,7 +18,7 @@ namespace RealEstateAgent
         private Person seller;
         private Payment payment;
         private LegalForm legalForm;
-        private Image image;
+        private string imagePath;
 
         /// <summary>
         /// Properties.
@@ -63,10 +63,10 @@ namespace RealEstateAgent
             set { legalForm = value; }
         }
 
-        public Image Image
+        public string ImagePath
         {
-            get { return image; }
-            set { image = value; }
+            get { return imagePath; }
+            set { imagePath = value; }
         }
 
         /// <summary>
@@ -75,29 +75,6 @@ namespace RealEstateAgent
         /// <param name="paymentMethod"></param>
         /// <returns>true if payment method is accepted.</returns>
         public abstract bool acceptPayment(PaymentMethods paymentMethod);
-
-        public void GetObjectData(SerializationInfo info, StreamingContext context)
-        {
-            info.AddValue("EstateID", estateID);
-            info.AddValue("Address", address);
-            info.AddValue("Buyer", buyer);
-            info.AddValue("Seller", seller);
-            info.AddValue("Payment", payment);
-            info.AddValue("LegalForm", legalForm);
-            info.AddValue("Image", image);
-        }
-
-        public Estate(SerializationInfo info, StreamingContext context)
-        {
-            estateID = (int)info.GetValue("EstateID", typeof(int));
-            address = (Address)info.GetValue("EstateID", typeof(Address));
-            buyer = (Buyer)info.GetValue("EstateID", typeof(Buyer));
-            seller = (Seller)info.GetValue("EstateID", typeof(Seller));
-            payment = (Payment)info.GetValue("EstateID", typeof(Payment));
-            legalForm = (LegalForm)info.GetValue("EstateID", typeof(LegalForm));
-            image = (Image)info.GetValue("EstateID", typeof(Image));
-           
-        }
 
         public override string ToString()
         {

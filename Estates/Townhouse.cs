@@ -7,6 +7,7 @@ using System.Text;
 
 namespace RealEstateAgent
 {
+    [Serializable]
     public class Townhouse : Villa
     {
         private int numberOfConnectedVillas;

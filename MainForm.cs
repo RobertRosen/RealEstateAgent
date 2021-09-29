@@ -20,6 +20,7 @@ namespace RealEstateAgent
     {
         private EstateManager estateManager;
         private IEstate tempEstate; //A temorary estate object to pass to the estate manager.
+        private string imageFilePath;
 
         public MainForm()
         {
@@ -48,6 +49,8 @@ namespace RealEstateAgent
 
             tempEstate = null;
             estateManager.EstateIDCounter = 0;
+            //TODO: dynamic filepath for portability..
+            imageFilePath = "C:\\Users\\Thell\\Source\\Repos\\RobertRosen\\RealEstateAgent\\Images\\noImage.jpg";
         }
 
         public IEstate CreateEstateDynamic(EstateType estateType) => estateType switch
@@ -104,7 +107,9 @@ namespace RealEstateAgent
 
         private void ReadImageInfo()
         {
-            tempEstate.Image = pctbxEstateImage.Image;
+            Debug.WriteLine("Imagepath första test: " + imageFilePath);
+            tempEstate.ImagePath = imageFilePath;
+
         }
 
         private void ReadSellerInfo()
@@ -353,7 +358,7 @@ namespace RealEstateAgent
             bxBuyerCountry.SelectedItem = tempEstate.Buyer.Address.Country;
             txtBuyerStreet.Text = tempEstate.Buyer.Address.Street;
             txtBuyerZip.Text = tempEstate.Buyer.Address.ZipCode;
-            pctbxEstateImage.Image = tempEstate.Image;
+            pctbxEstateImage.Image = new Bitmap(tempEstate.ImagePath);
         }
 
         private void SetEstateSpecificLabels(string lbl1, string lbl2, string lbl3)
@@ -611,6 +616,7 @@ namespace RealEstateAgent
                 lstbxRegister.Items.Clear();
                 lstbxRegister.Items.AddRange(estateManager.ToStringArray());
                 lstbxRegister.SetSelected(selIndex, true);
+                imageFilePath = "C:\\Users\\Thell\\Source\\Repos\\RobertRosen\\RealEstateAgent\\Images\\noImage.jpg";
             }
             else // Return to editing current estate.
             {
@@ -677,7 +683,8 @@ namespace RealEstateAgent
             Bitmap bitmap = null;
             try
             {
-                bitmap = new Bitmap(openFile.FileName);
+                imageFilePath = openFile.FileName;
+                bitmap = new Bitmap(imageFilePath);
             }
             catch (Exception ex)
             {
@@ -692,6 +699,7 @@ namespace RealEstateAgent
             tempEstate = estateManager.GetAt(selIndex);
             if (selIndex > -1)
             {
+                Debug.WriteLine("IMAGEPATH: " + tempEstate.ImagePath);
                 SetEstateCommonInfo();
                 SetEstateSpecificInfo();
                 SetPaymentSpecificInfo();
@@ -745,6 +753,7 @@ namespace RealEstateAgent
             txtBuyerCity.Text = "Malmö";
             txtBuyerStreet.Text = "Trelleborgsgatan 8a";
             txtBuyerZip.Text = "21435";
+            pctbxEstateImage.Image = new Bitmap (imageFilePath);
         }
 
         private void mnuFileNew_Click(object sender, EventArgs e)
@@ -760,6 +769,25 @@ namespace RealEstateAgent
             {
                 //Nothing
             }
+        }
+
+        private void mnuFileOpen_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.ShowDialog();
+        }
+
+        private void mnuFileSave_Click(object sender, EventArgs e)
+        {
+            //Om inget har sparats tidigare kör mnuFIlesaveAs metoden.
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.ShowDialog();
+        }
+
+        private void mnuFileSaveAs_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFile = new SaveFileDialog();
+            saveFile.ShowDialog();
         }
     }
 }

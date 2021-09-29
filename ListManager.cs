@@ -48,12 +48,35 @@ namespace RealEstateAgent
 
         public bool BinaryDeSerialize(string fileName)
         {
-            throw new NotImplementedException();
+            bool success;
+
+            if (fileName == null)
+            {
+                success = true;
+            }
+            else
+            {
+                success = false;
+            }
+
+            return success;
         }
 
         public bool BinarySerialize(string fileName)
         {
-            throw new NotImplementedException();
+            bool success;
+
+            if(fileName != null)
+            {
+                success = true;
+            }
+            else
+            {
+                success = false;
+            }
+
+            return success;
+
         }
 
         /// <summary>

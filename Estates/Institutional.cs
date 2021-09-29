@@ -7,6 +7,7 @@ using System.Text;
 
 namespace RealEstateAgent
 {
+    [Serializable]
     public abstract class Institutional : Estate
     {
         private int numberOfCafeterias;
