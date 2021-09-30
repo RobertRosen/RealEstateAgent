@@ -31,6 +31,7 @@ namespace RealEstateAgent
         {
             this.pnlRegister = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnClearSearchResults = new System.Windows.Forms.Button();
             this.lblSearchResults = new System.Windows.Forms.Label();
             this.lstbxSearchResults = new System.Windows.Forms.ListBox();
             this.btnSearch = new System.Windows.Forms.Button();
@@ -122,7 +123,6 @@ namespace RealEstateAgent
             this.mnuFileImportXML = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuFileExportXML = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuFileExit = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnClearSearchResults = new System.Windows.Forms.Button();
             this.pnlRegister.SuspendLayout();
             this.panel2.SuspendLayout();
             this.pnlInfo.SuspendLayout();
@@ -166,6 +166,16 @@ namespace RealEstateAgent
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(503, 320);
             this.panel2.TabIndex = 10;
+            // 
+            // btnClearSearchResults
+            // 
+            this.btnClearSearchResults.Location = new System.Drawing.Point(200, 255);
+            this.btnClearSearchResults.Name = "btnClearSearchResults";
+            this.btnClearSearchResults.Size = new System.Drawing.Size(94, 29);
+            this.btnClearSearchResults.TabIndex = 6;
+            this.btnClearSearchResults.Text = "Clear";
+            this.btnClearSearchResults.UseVisualStyleBackColor = true;
+            this.btnClearSearchResults.Click += new System.EventHandler(this.btnClearSearchResults_Click);
             // 
             // lblSearchResults
             // 
@@ -1061,28 +1071,28 @@ namespace RealEstateAgent
             // mnuFileNew
             // 
             this.mnuFileNew.Name = "mnuFileNew";
-            this.mnuFileNew.Size = new System.Drawing.Size(141, 26);
+            this.mnuFileNew.Size = new System.Drawing.Size(224, 26);
             this.mnuFileNew.Text = "New";
             this.mnuFileNew.Click += new System.EventHandler(this.mnuFileNew_Click);
             // 
             // mnuFileOpen
             // 
             this.mnuFileOpen.Name = "mnuFileOpen";
-            this.mnuFileOpen.Size = new System.Drawing.Size(141, 26);
+            this.mnuFileOpen.Size = new System.Drawing.Size(224, 26);
             this.mnuFileOpen.Text = "Open";
             this.mnuFileOpen.Click += new System.EventHandler(this.mnuFileOpen_Click);
             // 
             // mnuFileSave
             // 
             this.mnuFileSave.Name = "mnuFileSave";
-            this.mnuFileSave.Size = new System.Drawing.Size(141, 26);
+            this.mnuFileSave.Size = new System.Drawing.Size(224, 26);
             this.mnuFileSave.Text = "Save";
             this.mnuFileSave.Click += new System.EventHandler(this.mnuFileSave_Click);
             // 
             // mnuFileSaveAs
             // 
             this.mnuFileSaveAs.Name = "mnuFileSaveAs";
-            this.mnuFileSaveAs.Size = new System.Drawing.Size(141, 26);
+            this.mnuFileSaveAs.Size = new System.Drawing.Size(224, 26);
             this.mnuFileSaveAs.Text = "Save as";
             this.mnuFileSaveAs.Click += new System.EventHandler(this.mnuFileSaveAs_Click);
             // 
@@ -1092,7 +1102,7 @@ namespace RealEstateAgent
             this.mnuFileImportXML,
             this.mnuFileExportXML});
             this.mnuFileXML.Name = "mnuFileXML";
-            this.mnuFileXML.Size = new System.Drawing.Size(141, 26);
+            this.mnuFileXML.Size = new System.Drawing.Size(224, 26);
             this.mnuFileXML.Text = "XML";
             // 
             // mnuFileImportXML
@@ -1106,22 +1116,13 @@ namespace RealEstateAgent
             this.mnuFileExportXML.Name = "mnuFileExportXML";
             this.mnuFileExportXML.Size = new System.Drawing.Size(231, 26);
             this.mnuFileExportXML.Text = "Export to XML file";
+            this.mnuFileExportXML.Click += new System.EventHandler(this.mnuFileExportXML_Click);
             // 
             // mnuFileExit
             // 
             this.mnuFileExit.Name = "mnuFileExit";
-            this.mnuFileExit.Size = new System.Drawing.Size(141, 26);
+            this.mnuFileExit.Size = new System.Drawing.Size(224, 26);
             this.mnuFileExit.Text = "Exit";
-            // 
-            // btnClearSearchResults
-            // 
-            this.btnClearSearchResults.Location = new System.Drawing.Point(200, 255);
-            this.btnClearSearchResults.Name = "btnClearSearchResults";
-            this.btnClearSearchResults.Size = new System.Drawing.Size(94, 29);
-            this.btnClearSearchResults.TabIndex = 6;
-            this.btnClearSearchResults.Text = "Clear";
-            this.btnClearSearchResults.UseVisualStyleBackColor = true;
-            this.btnClearSearchResults.Click += new System.EventHandler(this.btnClearSearchResults_Click);
             // 
             // MainForm
             // 

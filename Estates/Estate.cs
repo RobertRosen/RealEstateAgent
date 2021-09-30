@@ -6,6 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 using System.Runtime.Serialization;
+using System.Xml.Schema;
+using System.Xml.Serialization;
+using System.Xml;
 
 namespace RealEstateAgent
 {
@@ -26,10 +29,10 @@ namespace RealEstateAgent
         public int EstateID
         {
             get { return estateID; }
-            set 
-            { 
-                if(value > 0)
-                    estateID = value; 
+            set
+            {
+                if (value > 0)
+                    estateID = value;
             }
         }
 
@@ -44,7 +47,7 @@ namespace RealEstateAgent
             get { return buyer; }
             set { buyer = value; }
         }
-        
+
         public Person Seller
         {
             get { return seller; }

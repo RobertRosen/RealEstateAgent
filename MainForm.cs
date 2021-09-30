@@ -781,8 +781,6 @@ namespace RealEstateAgent
             estateManager.BinaryDeSerialize(openFile.FileName);
             lstbxRegister.Items.Clear();
             lstbxRegister.Items.AddRange(estateManager.ToStringArray());
-
-
         }
 
        private void mnuFileSave_Click(object sender, EventArgs e)
@@ -831,6 +829,14 @@ namespace RealEstateAgent
         private void btnClearSearchResults_Click(object sender, EventArgs e)
         {
             lstbxSearchResults.Items.Clear();
+        }
+
+        private void mnuFileExportXML_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFile = new SaveFileDialog();
+            saveFile.ShowDialog();
+            string saveFilePath = saveFile.FileName + ".xml";
+            estateManager.XMLSerialize(saveFilePath);
         }
     }
 }
