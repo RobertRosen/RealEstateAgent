@@ -182,17 +182,16 @@ namespace RealEstateAgent
             this.lblSearchResults.AutoSize = true;
             this.lblSearchResults.Location = new System.Drawing.Point(17, 89);
             this.lblSearchResults.Name = "lblSearchResults";
-            this.lblSearchResults.Size = new System.Drawing.Size(98, 16);
+            this.lblSearchResults.Size = new System.Drawing.Size(79, 13);
             this.lblSearchResults.TabIndex = 5;
             this.lblSearchResults.Text = "Search Results";
             // 
             // lstbxSearchResults
             // 
             this.lstbxSearchResults.FormattingEnabled = true;
-            this.lstbxSearchResults.ItemHeight = 16;
             this.lstbxSearchResults.Location = new System.Drawing.Point(17, 117);
             this.lstbxSearchResults.Name = "lstbxSearchResults";
-            this.lstbxSearchResults.Size = new System.Drawing.Size(470, 132);
+            this.lstbxSearchResults.Size = new System.Drawing.Size(470, 121);
             this.lstbxSearchResults.TabIndex = 4;
             // 
             // btnSearch
@@ -209,7 +208,7 @@ namespace RealEstateAgent
             // 
             this.txtSearchCity.Location = new System.Drawing.Point(84, 52);
             this.txtSearchCity.Name = "txtSearchCity";
-            this.txtSearchCity.Size = new System.Drawing.Size(269, 22);
+            this.txtSearchCity.Size = new System.Drawing.Size(269, 19);
             this.txtSearchCity.TabIndex = 2;
             // 
             // lblSearchCity
@@ -217,7 +216,7 @@ namespace RealEstateAgent
             this.lblSearchCity.AutoSize = true;
             this.lblSearchCity.Location = new System.Drawing.Point(17, 55);
             this.lblSearchCity.Name = "lblSearchCity";
-            this.lblSearchCity.Size = new System.Drawing.Size(29, 16);
+            this.lblSearchCity.Size = new System.Drawing.Size(24, 13);
             this.lblSearchCity.TabIndex = 1;
             this.lblSearchCity.Text = "City";
             // 
@@ -226,7 +225,7 @@ namespace RealEstateAgent
             this.lblSearch.AutoSize = true;
             this.lblSearch.Location = new System.Drawing.Point(17, 17);
             this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(63, 16);
+            this.lblSearch.Size = new System.Drawing.Size(51, 13);
             this.lblSearch.TabIndex = 0;
             this.lblSearch.Text = "SEARCH";
             // 
@@ -235,10 +234,9 @@ namespace RealEstateAgent
             this.lstbxRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lstbxRegister.FormattingEnabled = true;
             this.lstbxRegister.HorizontalScrollbar = true;
-            this.lstbxRegister.ItemHeight = 16;
             this.lstbxRegister.Location = new System.Drawing.Point(13, 47);
             this.lstbxRegister.Name = "lstbxRegister";
-            this.lstbxRegister.Size = new System.Drawing.Size(505, 276);
+            this.lstbxRegister.Size = new System.Drawing.Size(505, 264);
             this.lstbxRegister.TabIndex = 9;
             this.lstbxRegister.SelectedIndexChanged += new System.EventHandler(this.lstbxRegister_SelectedIndexChanged);
             // 
@@ -260,7 +258,7 @@ namespace RealEstateAgent
             this.lblRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblRegister.Location = new System.Drawing.Point(13, 18);
             this.lblRegister.Name = "lblRegister";
-            this.lblRegister.Size = new System.Drawing.Size(76, 16);
+            this.lblRegister.Size = new System.Drawing.Size(62, 13);
             this.lblRegister.TabIndex = 6;
             this.lblRegister.Text = "REGISTER";
             // 
@@ -297,7 +295,7 @@ namespace RealEstateAgent
             this.lblEstateType.Location = new System.Drawing.Point(12, 72);
             this.lblEstateType.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEstateType.Name = "lblEstateType";
-            this.lblEstateType.Size = new System.Drawing.Size(74, 16);
+            this.lblEstateType.Size = new System.Drawing.Size(60, 13);
             this.lblEstateType.TabIndex = 0;
             this.lblEstateType.Text = "Estate type";
             // 
@@ -309,7 +307,7 @@ namespace RealEstateAgent
             this.bxEstateType.Location = new System.Drawing.Point(134, 69);
             this.bxEstateType.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.bxEstateType.Name = "bxEstateType";
-            this.bxEstateType.Size = new System.Drawing.Size(203, 24);
+            this.bxEstateType.Size = new System.Drawing.Size(203, 21);
             this.bxEstateType.TabIndex = 1;
             this.bxEstateType.SelectionChangeCommitted += new System.EventHandler(this.bxEstateType_SelectionChangeCommitted);
             // 
@@ -376,7 +374,7 @@ namespace RealEstateAgent
             this.txtSpecific1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtSpecific1.Location = new System.Drawing.Point(135, 44);
             this.txtSpecific1.Name = "txtSpecific1";
-            this.txtSpecific1.Size = new System.Drawing.Size(202, 22);
+            this.txtSpecific1.Size = new System.Drawing.Size(202, 19);
             this.txtSpecific1.TabIndex = 28;
             // 
             // txtSpecific3
@@ -384,7 +382,7 @@ namespace RealEstateAgent
             this.txtSpecific3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtSpecific3.Location = new System.Drawing.Point(135, 120);
             this.txtSpecific3.Name = "txtSpecific3";
-            this.txtSpecific3.Size = new System.Drawing.Size(202, 22);
+            this.txtSpecific3.Size = new System.Drawing.Size(202, 19);
             this.txtSpecific3.TabIndex = 27;
             // 
             // lblSpecific3
@@ -401,7 +399,7 @@ namespace RealEstateAgent
             this.txtSpecific2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtSpecific2.Location = new System.Drawing.Point(135, 82);
             this.txtSpecific2.Name = "txtSpecific2";
-            this.txtSpecific2.Size = new System.Drawing.Size(202, 22);
+            this.txtSpecific2.Size = new System.Drawing.Size(202, 19);
             this.txtSpecific2.TabIndex = 25;
             // 
             // lblSpecific2
@@ -427,7 +425,7 @@ namespace RealEstateAgent
             this.lblSpecifics.AutoSize = true;
             this.lblSpecifics.Location = new System.Drawing.Point(15, 8);
             this.lblSpecifics.Name = "lblSpecifics";
-            this.lblSpecifics.Size = new System.Drawing.Size(42, 16);
+            this.lblSpecifics.Size = new System.Drawing.Size(36, 13);
             this.lblSpecifics.TabIndex = 0;
             this.lblSpecifics.Text = "Other ";
             // 
@@ -454,7 +452,7 @@ namespace RealEstateAgent
             this.lblPaySpecific2.AutoSize = true;
             this.lblPaySpecific2.Location = new System.Drawing.Point(13, 131);
             this.lblPaySpecific2.Name = "lblPaySpecific2";
-            this.lblPaySpecific2.Size = new System.Drawing.Size(100, 16);
+            this.lblPaySpecific2.Size = new System.Drawing.Size(79, 13);
             this.lblPaySpecific2.TabIndex = 23;
             this.lblPaySpecific2.Text = "lblPaySpecific2";
             // 
@@ -462,7 +460,7 @@ namespace RealEstateAgent
             // 
             this.txtPaySpecific2.Location = new System.Drawing.Point(134, 131);
             this.txtPaySpecific2.Name = "txtPaySpecific2";
-            this.txtPaySpecific2.Size = new System.Drawing.Size(202, 22);
+            this.txtPaySpecific2.Size = new System.Drawing.Size(202, 19);
             this.txtPaySpecific2.TabIndex = 22;
             // 
             // txtPaySpecific1
@@ -470,7 +468,7 @@ namespace RealEstateAgent
             this.txtPaySpecific1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtPaySpecific1.Location = new System.Drawing.Point(134, 102);
             this.txtPaySpecific1.Name = "txtPaySpecific1";
-            this.txtPaySpecific1.Size = new System.Drawing.Size(202, 22);
+            this.txtPaySpecific1.Size = new System.Drawing.Size(202, 19);
             this.txtPaySpecific1.TabIndex = 21;
             // 
             // lblPaySpecific1
@@ -479,7 +477,7 @@ namespace RealEstateAgent
             this.lblPaySpecific1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblPaySpecific1.Location = new System.Drawing.Point(13, 102);
             this.lblPaySpecific1.Name = "lblPaySpecific1";
-            this.lblPaySpecific1.Size = new System.Drawing.Size(100, 16);
+            this.lblPaySpecific1.Size = new System.Drawing.Size(79, 13);
             this.lblPaySpecific1.TabIndex = 20;
             this.lblPaySpecific1.Text = "lblPaySpecific1";
             // 
@@ -488,7 +486,7 @@ namespace RealEstateAgent
             this.txtAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtAmount.Location = new System.Drawing.Point(134, 74);
             this.txtAmount.Name = "txtAmount";
-            this.txtAmount.Size = new System.Drawing.Size(202, 22);
+            this.txtAmount.Size = new System.Drawing.Size(202, 19);
             this.txtAmount.TabIndex = 19;
             // 
             // lblAmount
@@ -497,7 +495,7 @@ namespace RealEstateAgent
             this.lblAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblAmount.Location = new System.Drawing.Point(13, 74);
             this.lblAmount.Name = "lblAmount";
-            this.lblAmount.Size = new System.Drawing.Size(52, 16);
+            this.lblAmount.Size = new System.Drawing.Size(43, 13);
             this.lblAmount.TabIndex = 18;
             this.lblAmount.Text = "Amount";
             // 
@@ -508,7 +506,7 @@ namespace RealEstateAgent
             this.bxPaymentMethod.FormattingEnabled = true;
             this.bxPaymentMethod.Location = new System.Drawing.Point(134, 44);
             this.bxPaymentMethod.Name = "bxPaymentMethod";
-            this.bxPaymentMethod.Size = new System.Drawing.Size(201, 24);
+            this.bxPaymentMethod.Size = new System.Drawing.Size(201, 21);
             this.bxPaymentMethod.TabIndex = 17;
             this.bxPaymentMethod.SelectionChangeCommitted += new System.EventHandler(this.bxPaymentMethod_SelectionChangeCommitted);
             // 
@@ -518,7 +516,7 @@ namespace RealEstateAgent
             this.lblPaymentMethod.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblPaymentMethod.Location = new System.Drawing.Point(13, 44);
             this.lblPaymentMethod.Name = "lblPaymentMethod";
-            this.lblPaymentMethod.Size = new System.Drawing.Size(52, 16);
+            this.lblPaymentMethod.Size = new System.Drawing.Size(43, 13);
             this.lblPaymentMethod.TabIndex = 13;
             this.lblPaymentMethod.Text = "Method";
             // 
@@ -529,7 +527,7 @@ namespace RealEstateAgent
             this.lblPayment.Location = new System.Drawing.Point(11, 10);
             this.lblPayment.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPayment.Name = "lblPayment";
-            this.lblPayment.Size = new System.Drawing.Size(60, 16);
+            this.lblPayment.Size = new System.Drawing.Size(48, 13);
             this.lblPayment.TabIndex = 9;
             this.lblPayment.Text = "Payment";
             // 
@@ -539,7 +537,7 @@ namespace RealEstateAgent
             this.lblInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblInfo.Location = new System.Drawing.Point(18, 18);
             this.lblInfo.Name = "lblInfo";
-            this.lblInfo.Size = new System.Drawing.Size(100, 16);
+            this.lblInfo.Size = new System.Drawing.Size(82, 13);
             this.lblInfo.TabIndex = 11;
             this.lblInfo.Text = "INFORMATION";
             // 
@@ -583,7 +581,7 @@ namespace RealEstateAgent
             this.lblImage.Location = new System.Drawing.Point(16, 9);
             this.lblImage.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblImage.Name = "lblImage";
-            this.lblImage.Size = new System.Drawing.Size(45, 16);
+            this.lblImage.Size = new System.Drawing.Size(36, 13);
             this.lblImage.TabIndex = 3;
             this.lblImage.Text = "Image";
             // 
@@ -617,7 +615,7 @@ namespace RealEstateAgent
             this.bxSellerCountry.FormattingEnabled = true;
             this.bxSellerCountry.Location = new System.Drawing.Point(131, 128);
             this.bxSellerCountry.Name = "bxSellerCountry";
-            this.bxSellerCountry.Size = new System.Drawing.Size(204, 24);
+            this.bxSellerCountry.Size = new System.Drawing.Size(204, 21);
             this.bxSellerCountry.TabIndex = 26;
             // 
             // txtSellerFName
@@ -625,7 +623,7 @@ namespace RealEstateAgent
             this.txtSellerFName.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtSellerFName.Location = new System.Drawing.Point(132, 44);
             this.txtSellerFName.Name = "txtSellerFName";
-            this.txtSellerFName.Size = new System.Drawing.Size(203, 22);
+            this.txtSellerFName.Size = new System.Drawing.Size(203, 19);
             this.txtSellerFName.TabIndex = 25;
             // 
             // lblSellerFName
@@ -635,7 +633,7 @@ namespace RealEstateAgent
             this.lblSellerFName.Location = new System.Drawing.Point(11, 44);
             this.lblSellerFName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSellerFName.Name = "lblSellerFName";
-            this.lblSellerFName.Size = new System.Drawing.Size(72, 16);
+            this.lblSellerFName.Size = new System.Drawing.Size(57, 13);
             this.lblSellerFName.TabIndex = 24;
             this.lblSellerFName.Text = "First Name";
             // 
@@ -644,7 +642,7 @@ namespace RealEstateAgent
             this.txtSellerLName.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtSellerLName.Location = new System.Drawing.Point(132, 72);
             this.txtSellerLName.Name = "txtSellerLName";
-            this.txtSellerLName.Size = new System.Drawing.Size(203, 22);
+            this.txtSellerLName.Size = new System.Drawing.Size(203, 19);
             this.txtSellerLName.TabIndex = 23;
             // 
             // txtSellerZip
@@ -652,7 +650,7 @@ namespace RealEstateAgent
             this.txtSellerZip.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtSellerZip.Location = new System.Drawing.Point(132, 186);
             this.txtSellerZip.Name = "txtSellerZip";
-            this.txtSellerZip.Size = new System.Drawing.Size(203, 22);
+            this.txtSellerZip.Size = new System.Drawing.Size(203, 19);
             this.txtSellerZip.TabIndex = 22;
             // 
             // txtSellerStreet
@@ -660,7 +658,7 @@ namespace RealEstateAgent
             this.txtSellerStreet.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtSellerStreet.Location = new System.Drawing.Point(131, 158);
             this.txtSellerStreet.Name = "txtSellerStreet";
-            this.txtSellerStreet.Size = new System.Drawing.Size(203, 22);
+            this.txtSellerStreet.Size = new System.Drawing.Size(203, 19);
             this.txtSellerStreet.TabIndex = 21;
             // 
             // txtSellerCity
@@ -668,7 +666,7 @@ namespace RealEstateAgent
             this.txtSellerCity.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtSellerCity.Location = new System.Drawing.Point(132, 100);
             this.txtSellerCity.Name = "txtSellerCity";
-            this.txtSellerCity.Size = new System.Drawing.Size(203, 22);
+            this.txtSellerCity.Size = new System.Drawing.Size(203, 19);
             this.txtSellerCity.TabIndex = 19;
             // 
             // lblSeller
@@ -678,7 +676,7 @@ namespace RealEstateAgent
             this.lblSeller.Location = new System.Drawing.Point(11, 12);
             this.lblSeller.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSeller.Name = "lblSeller";
-            this.lblSeller.Size = new System.Drawing.Size(42, 16);
+            this.lblSeller.Size = new System.Drawing.Size(33, 13);
             this.lblSeller.TabIndex = 6;
             this.lblSeller.Text = "Seller";
             // 
@@ -689,7 +687,7 @@ namespace RealEstateAgent
             this.lblSellerLName.Location = new System.Drawing.Point(11, 72);
             this.lblSellerLName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSellerLName.Name = "lblSellerLName";
-            this.lblSellerLName.Size = new System.Drawing.Size(72, 16);
+            this.lblSellerLName.Size = new System.Drawing.Size(58, 13);
             this.lblSellerLName.TabIndex = 0;
             this.lblSellerLName.Text = "Last Name";
             // 
@@ -700,7 +698,7 @@ namespace RealEstateAgent
             this.lblSellerZip.Location = new System.Drawing.Point(14, 186);
             this.lblSellerZip.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSellerZip.Name = "lblSellerZip";
-            this.lblSellerZip.Size = new System.Drawing.Size(62, 16);
+            this.lblSellerZip.Size = new System.Drawing.Size(50, 13);
             this.lblSellerZip.TabIndex = 5;
             this.lblSellerZip.Text = "Zip Code";
             // 
@@ -711,7 +709,7 @@ namespace RealEstateAgent
             this.lblSellerCity.Location = new System.Drawing.Point(11, 100);
             this.lblSellerCity.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSellerCity.Name = "lblSellerCity";
-            this.lblSellerCity.Size = new System.Drawing.Size(29, 16);
+            this.lblSellerCity.Size = new System.Drawing.Size(24, 13);
             this.lblSellerCity.TabIndex = 1;
             this.lblSellerCity.Text = "City";
             // 
@@ -722,7 +720,7 @@ namespace RealEstateAgent
             this.lblSellerStreet.Location = new System.Drawing.Point(11, 158);
             this.lblSellerStreet.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSellerStreet.Name = "lblSellerStreet";
-            this.lblSellerStreet.Size = new System.Drawing.Size(42, 16);
+            this.lblSellerStreet.Size = new System.Drawing.Size(35, 13);
             this.lblSellerStreet.TabIndex = 4;
             this.lblSellerStreet.Text = "Street";
             // 
@@ -733,7 +731,7 @@ namespace RealEstateAgent
             this.lblSellerCountry.Location = new System.Drawing.Point(11, 128);
             this.lblSellerCountry.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSellerCountry.Name = "lblSellerCountry";
-            this.lblSellerCountry.Size = new System.Drawing.Size(52, 16);
+            this.lblSellerCountry.Size = new System.Drawing.Size(43, 13);
             this.lblSellerCountry.TabIndex = 2;
             this.lblSellerCountry.Text = "Country";
             // 
@@ -767,7 +765,7 @@ namespace RealEstateAgent
             this.bxBuyerCountry.FormattingEnabled = true;
             this.bxBuyerCountry.Location = new System.Drawing.Point(134, 134);
             this.bxBuyerCountry.Name = "bxBuyerCountry";
-            this.bxBuyerCountry.Size = new System.Drawing.Size(202, 24);
+            this.bxBuyerCountry.Size = new System.Drawing.Size(202, 21);
             this.bxBuyerCountry.TabIndex = 28;
             // 
             // txtBuyerFName
@@ -775,7 +773,7 @@ namespace RealEstateAgent
             this.txtBuyerFName.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtBuyerFName.Location = new System.Drawing.Point(134, 50);
             this.txtBuyerFName.Name = "txtBuyerFName";
-            this.txtBuyerFName.Size = new System.Drawing.Size(202, 22);
+            this.txtBuyerFName.Size = new System.Drawing.Size(202, 19);
             this.txtBuyerFName.TabIndex = 27;
             // 
             // lblBuyerFName
@@ -785,7 +783,7 @@ namespace RealEstateAgent
             this.lblBuyerFName.Location = new System.Drawing.Point(15, 50);
             this.lblBuyerFName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblBuyerFName.Name = "lblBuyerFName";
-            this.lblBuyerFName.Size = new System.Drawing.Size(72, 16);
+            this.lblBuyerFName.Size = new System.Drawing.Size(57, 13);
             this.lblBuyerFName.TabIndex = 26;
             this.lblBuyerFName.Text = "First Name";
             // 
@@ -794,7 +792,7 @@ namespace RealEstateAgent
             this.txtBuyerLName.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtBuyerLName.Location = new System.Drawing.Point(134, 78);
             this.txtBuyerLName.Name = "txtBuyerLName";
-            this.txtBuyerLName.Size = new System.Drawing.Size(202, 22);
+            this.txtBuyerLName.Size = new System.Drawing.Size(202, 19);
             this.txtBuyerLName.TabIndex = 18;
             // 
             // txtBuyerZip
@@ -802,7 +800,7 @@ namespace RealEstateAgent
             this.txtBuyerZip.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtBuyerZip.Location = new System.Drawing.Point(134, 192);
             this.txtBuyerZip.Name = "txtBuyerZip";
-            this.txtBuyerZip.Size = new System.Drawing.Size(202, 22);
+            this.txtBuyerZip.Size = new System.Drawing.Size(202, 19);
             this.txtBuyerZip.TabIndex = 17;
             // 
             // txtBuyerStreet
@@ -810,7 +808,7 @@ namespace RealEstateAgent
             this.txtBuyerStreet.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtBuyerStreet.Location = new System.Drawing.Point(134, 164);
             this.txtBuyerStreet.Name = "txtBuyerStreet";
-            this.txtBuyerStreet.Size = new System.Drawing.Size(202, 22);
+            this.txtBuyerStreet.Size = new System.Drawing.Size(202, 19);
             this.txtBuyerStreet.TabIndex = 16;
             // 
             // txtBuyerCity
@@ -818,7 +816,7 @@ namespace RealEstateAgent
             this.txtBuyerCity.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtBuyerCity.Location = new System.Drawing.Point(134, 106);
             this.txtBuyerCity.Name = "txtBuyerCity";
-            this.txtBuyerCity.Size = new System.Drawing.Size(202, 22);
+            this.txtBuyerCity.Size = new System.Drawing.Size(202, 19);
             this.txtBuyerCity.TabIndex = 14;
             // 
             // lblBuyer
@@ -828,7 +826,7 @@ namespace RealEstateAgent
             this.lblBuyer.Location = new System.Drawing.Point(16, 12);
             this.lblBuyer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblBuyer.Name = "lblBuyer";
-            this.lblBuyer.Size = new System.Drawing.Size(42, 16);
+            this.lblBuyer.Size = new System.Drawing.Size(34, 13);
             this.lblBuyer.TabIndex = 6;
             this.lblBuyer.Text = "Buyer";
             // 
@@ -839,7 +837,7 @@ namespace RealEstateAgent
             this.lblBuyerLName.Location = new System.Drawing.Point(15, 78);
             this.lblBuyerLName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblBuyerLName.Name = "lblBuyerLName";
-            this.lblBuyerLName.Size = new System.Drawing.Size(72, 16);
+            this.lblBuyerLName.Size = new System.Drawing.Size(58, 13);
             this.lblBuyerLName.TabIndex = 0;
             this.lblBuyerLName.Text = "Last Name";
             // 
@@ -850,7 +848,7 @@ namespace RealEstateAgent
             this.lblBuyerZip.Location = new System.Drawing.Point(15, 192);
             this.lblBuyerZip.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblBuyerZip.Name = "lblBuyerZip";
-            this.lblBuyerZip.Size = new System.Drawing.Size(62, 16);
+            this.lblBuyerZip.Size = new System.Drawing.Size(50, 13);
             this.lblBuyerZip.TabIndex = 5;
             this.lblBuyerZip.Text = "Zip Code";
             // 
@@ -861,7 +859,7 @@ namespace RealEstateAgent
             this.lblBuyerCity.Location = new System.Drawing.Point(15, 106);
             this.lblBuyerCity.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblBuyerCity.Name = "lblBuyerCity";
-            this.lblBuyerCity.Size = new System.Drawing.Size(29, 16);
+            this.lblBuyerCity.Size = new System.Drawing.Size(24, 13);
             this.lblBuyerCity.TabIndex = 1;
             this.lblBuyerCity.Text = "City";
             // 
@@ -872,7 +870,7 @@ namespace RealEstateAgent
             this.lblBuyerStreet.Location = new System.Drawing.Point(15, 164);
             this.lblBuyerStreet.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblBuyerStreet.Name = "lblBuyerStreet";
-            this.lblBuyerStreet.Size = new System.Drawing.Size(42, 16);
+            this.lblBuyerStreet.Size = new System.Drawing.Size(35, 13);
             this.lblBuyerStreet.TabIndex = 4;
             this.lblBuyerStreet.Text = "Street";
             // 
@@ -883,7 +881,7 @@ namespace RealEstateAgent
             this.lblBuyerCountry.Location = new System.Drawing.Point(15, 134);
             this.lblBuyerCountry.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblBuyerCountry.Name = "lblBuyerCountry";
-            this.lblBuyerCountry.Size = new System.Drawing.Size(52, 16);
+            this.lblBuyerCountry.Size = new System.Drawing.Size(43, 13);
             this.lblBuyerCountry.TabIndex = 2;
             this.lblBuyerCountry.Text = "Country";
             // 
@@ -919,7 +917,7 @@ namespace RealEstateAgent
             this.bxLegalForm.FormattingEnabled = true;
             this.bxLegalForm.Location = new System.Drawing.Point(134, 101);
             this.bxLegalForm.Name = "bxLegalForm";
-            this.bxLegalForm.Size = new System.Drawing.Size(203, 24);
+            this.bxLegalForm.Size = new System.Drawing.Size(203, 21);
             this.bxLegalForm.TabIndex = 16;
             // 
             // lblLegalForm
@@ -928,7 +926,7 @@ namespace RealEstateAgent
             this.lblLegalForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblLegalForm.Location = new System.Drawing.Point(12, 101);
             this.lblLegalForm.Name = "lblLegalForm";
-            this.lblLegalForm.Size = new System.Drawing.Size(75, 16);
+            this.lblLegalForm.Size = new System.Drawing.Size(59, 13);
             this.lblLegalForm.TabIndex = 15;
             this.lblLegalForm.Text = "Legal Form";
             // 
@@ -939,7 +937,7 @@ namespace RealEstateAgent
             this.bxEstateCountry.FormattingEnabled = true;
             this.bxEstateCountry.Location = new System.Drawing.Point(136, 159);
             this.bxEstateCountry.Name = "bxEstateCountry";
-            this.bxEstateCountry.Size = new System.Drawing.Size(203, 24);
+            this.bxEstateCountry.Size = new System.Drawing.Size(203, 21);
             this.bxEstateCountry.TabIndex = 14;
             // 
             // lblEstateZip
@@ -949,7 +947,7 @@ namespace RealEstateAgent
             this.lblEstateZip.Location = new System.Drawing.Point(14, 217);
             this.lblEstateZip.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEstateZip.Name = "lblEstateZip";
-            this.lblEstateZip.Size = new System.Drawing.Size(62, 16);
+            this.lblEstateZip.Size = new System.Drawing.Size(50, 13);
             this.lblEstateZip.TabIndex = 5;
             this.lblEstateZip.Text = "Zip Code";
             // 
@@ -960,7 +958,7 @@ namespace RealEstateAgent
             this.lblEstateStreet.Location = new System.Drawing.Point(13, 189);
             this.lblEstateStreet.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEstateStreet.Name = "lblEstateStreet";
-            this.lblEstateStreet.Size = new System.Drawing.Size(42, 16);
+            this.lblEstateStreet.Size = new System.Drawing.Size(35, 13);
             this.lblEstateStreet.TabIndex = 4;
             this.lblEstateStreet.Text = "Street";
             // 
@@ -971,7 +969,7 @@ namespace RealEstateAgent
             this.lblEstateCountry.Location = new System.Drawing.Point(12, 159);
             this.lblEstateCountry.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEstateCountry.Name = "lblEstateCountry";
-            this.lblEstateCountry.Size = new System.Drawing.Size(52, 16);
+            this.lblEstateCountry.Size = new System.Drawing.Size(43, 13);
             this.lblEstateCountry.TabIndex = 2;
             this.lblEstateCountry.Text = "Country";
             // 
@@ -980,7 +978,7 @@ namespace RealEstateAgent
             this.txtEstateZip.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtEstateZip.Location = new System.Drawing.Point(137, 217);
             this.txtEstateZip.Name = "txtEstateZip";
-            this.txtEstateZip.Size = new System.Drawing.Size(202, 22);
+            this.txtEstateZip.Size = new System.Drawing.Size(202, 19);
             this.txtEstateZip.TabIndex = 13;
             // 
             // txtEstateStreet
@@ -988,7 +986,7 @@ namespace RealEstateAgent
             this.txtEstateStreet.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtEstateStreet.Location = new System.Drawing.Point(136, 189);
             this.txtEstateStreet.Name = "txtEstateStreet";
-            this.txtEstateStreet.Size = new System.Drawing.Size(202, 22);
+            this.txtEstateStreet.Size = new System.Drawing.Size(202, 19);
             this.txtEstateStreet.TabIndex = 12;
             // 
             // lblID
@@ -998,7 +996,7 @@ namespace RealEstateAgent
             this.lblID.Location = new System.Drawing.Point(13, 41);
             this.lblID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(20, 16);
+            this.lblID.Size = new System.Drawing.Size(18, 13);
             this.lblID.TabIndex = 1;
             this.lblID.Text = "ID";
             // 
@@ -1009,7 +1007,7 @@ namespace RealEstateAgent
             this.lblEstateCity.Location = new System.Drawing.Point(13, 131);
             this.lblEstateCity.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEstateCity.Name = "lblEstateCity";
-            this.lblEstateCity.Size = new System.Drawing.Size(29, 16);
+            this.lblEstateCity.Size = new System.Drawing.Size(24, 13);
             this.lblEstateCity.TabIndex = 1;
             this.lblEstateCity.Text = "City";
             // 
@@ -1018,7 +1016,7 @@ namespace RealEstateAgent
             this.txtEstateCity.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtEstateCity.Location = new System.Drawing.Point(135, 131);
             this.txtEstateCity.Name = "txtEstateCity";
-            this.txtEstateCity.Size = new System.Drawing.Size(202, 22);
+            this.txtEstateCity.Size = new System.Drawing.Size(202, 19);
             this.txtEstateCity.TabIndex = 10;
             // 
             // lblShowEstateID
@@ -1039,7 +1037,7 @@ namespace RealEstateAgent
             this.lblEstate.Location = new System.Drawing.Point(11, 9);
             this.lblEstate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEstate.Name = "lblEstate";
-            this.lblEstate.Size = new System.Drawing.Size(45, 16);
+            this.lblEstate.Size = new System.Drawing.Size(37, 13);
             this.lblEstate.TabIndex = 0;
             this.lblEstate.Text = "Estate";
             // 
@@ -1050,7 +1048,7 @@ namespace RealEstateAgent
             this.mnuFile});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1296, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1296, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -1065,34 +1063,34 @@ namespace RealEstateAgent
             this.mnuFileXML,
             this.mnuFileExit});
             this.mnuFile.Name = "mnuFile";
-            this.mnuFile.Size = new System.Drawing.Size(46, 24);
+            this.mnuFile.Size = new System.Drawing.Size(37, 20);
             this.mnuFile.Text = "File";
             // 
             // mnuFileNew
             // 
             this.mnuFileNew.Name = "mnuFileNew";
-            this.mnuFileNew.Size = new System.Drawing.Size(224, 26);
+            this.mnuFileNew.Size = new System.Drawing.Size(180, 22);
             this.mnuFileNew.Text = "New";
             this.mnuFileNew.Click += new System.EventHandler(this.mnuFileNew_Click);
             // 
             // mnuFileOpen
             // 
             this.mnuFileOpen.Name = "mnuFileOpen";
-            this.mnuFileOpen.Size = new System.Drawing.Size(224, 26);
+            this.mnuFileOpen.Size = new System.Drawing.Size(180, 22);
             this.mnuFileOpen.Text = "Open";
             this.mnuFileOpen.Click += new System.EventHandler(this.mnuFileOpen_Click);
             // 
             // mnuFileSave
             // 
             this.mnuFileSave.Name = "mnuFileSave";
-            this.mnuFileSave.Size = new System.Drawing.Size(224, 26);
+            this.mnuFileSave.Size = new System.Drawing.Size(180, 22);
             this.mnuFileSave.Text = "Save";
             this.mnuFileSave.Click += new System.EventHandler(this.mnuFileSave_Click);
             // 
             // mnuFileSaveAs
             // 
             this.mnuFileSaveAs.Name = "mnuFileSaveAs";
-            this.mnuFileSaveAs.Size = new System.Drawing.Size(224, 26);
+            this.mnuFileSaveAs.Size = new System.Drawing.Size(180, 22);
             this.mnuFileSaveAs.Text = "Save as";
             this.mnuFileSaveAs.Click += new System.EventHandler(this.mnuFileSaveAs_Click);
             // 
@@ -1102,31 +1100,32 @@ namespace RealEstateAgent
             this.mnuFileImportXML,
             this.mnuFileExportXML});
             this.mnuFileXML.Name = "mnuFileXML";
-            this.mnuFileXML.Size = new System.Drawing.Size(224, 26);
+            this.mnuFileXML.Size = new System.Drawing.Size(180, 22);
             this.mnuFileXML.Text = "XML";
             // 
             // mnuFileImportXML
             // 
             this.mnuFileImportXML.Name = "mnuFileImportXML";
-            this.mnuFileImportXML.Size = new System.Drawing.Size(231, 26);
+            this.mnuFileImportXML.Size = new System.Drawing.Size(185, 22);
             this.mnuFileImportXML.Text = "Import from XML file";
             // 
             // mnuFileExportXML
             // 
             this.mnuFileExportXML.Name = "mnuFileExportXML";
-            this.mnuFileExportXML.Size = new System.Drawing.Size(231, 26);
+            this.mnuFileExportXML.Size = new System.Drawing.Size(185, 22);
             this.mnuFileExportXML.Text = "Export to XML file";
             this.mnuFileExportXML.Click += new System.EventHandler(this.mnuFileExportXML_Click);
             // 
             // mnuFileExit
             // 
             this.mnuFileExit.Name = "mnuFileExit";
-            this.mnuFileExit.Size = new System.Drawing.Size(224, 26);
+            this.mnuFileExit.Size = new System.Drawing.Size(180, 22);
             this.mnuFileExit.Text = "Exit";
+            this.mnuFileExit.Click += new System.EventHandler(this.mnuFileExit_Click);
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1296, 785);
             this.Controls.Add(this.pnlInfo);

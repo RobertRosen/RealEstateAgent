@@ -23,6 +23,7 @@ namespace RealEstateAgent
         private string imageFilePath;
         private string imageFilePathRobert = "C:\\Users\\rober\\source\\repos\\RealEstateAgent\\Images\\noImage.jpg";
         private string imageFilePathJoakim = "C:\\Users\\Thell\\Source\\Repos\\RobertRosen\\RealEstateAgent\\Images\\noImage.jpg";
+        private string saveFilePath = "";
 
 
         public MainForm()
@@ -53,7 +54,7 @@ namespace RealEstateAgent
             tempEstate = null;
             estateManager.EstateIDCounter = 0;
             //TODO: dynamic filepath for portability..
-            imageFilePath = imageFilePathRobert;
+            imageFilePath = imageFilePathJoakim;
         }
 
         public IEstate CreateEstateDynamic(EstateType estateType) => estateType switch
@@ -361,7 +362,7 @@ namespace RealEstateAgent
             bxBuyerCountry.SelectedItem = tempEstate.Buyer.Address.Country;
             txtBuyerStreet.Text = tempEstate.Buyer.Address.Street;
             txtBuyerZip.Text = tempEstate.Buyer.Address.ZipCode;
-            pctbxEstateImage.Image = new Bitmap(tempEstate.ImagePath);
+            pctbxEstateImage.Image = new Bitmap(imageFilePathJoakim);
         }
 
         private void SetEstateSpecificLabels(string lbl1, string lbl2, string lbl3)
@@ -755,7 +756,7 @@ namespace RealEstateAgent
             txtBuyerCity.Text = "Malmö";
             txtBuyerStreet.Text = "Trelleborgsgatan 8a";
             txtBuyerZip.Text = "21435";
-            pctbxEstateImage.Image = new Bitmap (imageFilePath);
+            pctbxEstateImage.Image = new Bitmap (imageFilePathJoakim);
         }
 
         private void mnuFileNew_Click(object sender, EventArgs e)
@@ -766,6 +767,7 @@ namespace RealEstateAgent
             {
                 estateManager.DeleteAll();
                 InitializeGUI();
+                saveFilePath = "";
             }
             else
             {
@@ -775,32 +777,37 @@ namespace RealEstateAgent
 
         private void mnuFileOpen_Click(object sender, EventArgs e)
         {
-            //Ask user to save current data method?x
+            //Ask user to save current data method?
             OpenFileDialog openFile = new OpenFileDialog();
             openFile.ShowDialog();
             estateManager.BinaryDeSerialize(openFile.FileName);
+            saveFilePath = openFile.FileName;
             lstbxRegister.Items.Clear();
             lstbxRegister.Items.AddRange(estateManager.ToStringArray());
         }
 
        private void mnuFileSave_Click(object sender, EventArgs e)
         {
-            //Om inget har sparats tidigare kör mnuFIlesaveAs metoden.
-         //   if(filename == string.Empty)
-           // {
-             //   mnuFileSaveAs_Click(sender, e);
-           // }
-           // else
-            //{
-              //  SaveToFile
-           // }
+            if(saveFilePath == "")
+            {
+               mnuFileSaveAs_Click(sender, e);
+            }
+            else
+            {
+                SaveToFile(saveFilePath);
+            }
+        }
+
+        private void SaveToFile(string fileName)
+        {
+            estateManager.BinarySerialize(fileName);
         }
 
         private void mnuFileSaveAs_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFile = new SaveFileDialog();
             saveFile.ShowDialog();
-            string saveFilePath = saveFile.FileName + ".bin";
+            saveFilePath = saveFile.FileName + ".bin";
             estateManager.BinarySerialize(saveFilePath);
         }
 
@@ -837,6 +844,20 @@ namespace RealEstateAgent
             saveFile.ShowDialog();
             string saveFilePath = saveFile.FileName + ".xml";
             estateManager.XMLSerialize(saveFilePath);
+        }
+
+        private void mnuFileExit_Click(object sender, EventArgs e)
+        {
+            DialogResult confirmResult = MessageBox.Show("Do you want to exit without saving?", "Confirm dialog", MessageBoxButtons.YesNo);
+
+            if (confirmResult == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+            else
+            {
+                
+            }
         }
     }
 }
