@@ -13,6 +13,21 @@ using System.Xml;
 namespace RealEstateAgent
 {
     [Serializable]
+    [XmlInclude(typeof(Apartment))]
+    [XmlInclude(typeof(Store))]
+    [XmlInclude(typeof(School))]
+    [XmlInclude(typeof(Tenement))]
+    [XmlInclude(typeof(Townhouse))]
+    [XmlInclude(typeof(University))]
+    [XmlInclude(typeof(Villa))]
+    [XmlInclude(typeof(Warehouse))]
+
+    [XmlInclude(typeof(PayPal))]
+    [XmlInclude(typeof(Bank))]
+    [XmlInclude(typeof(WesternUnion))]
+
+    [XmlInclude(typeof(Buyer))]
+    [XmlInclude(typeof(Seller))]
     public abstract class Estate : IEstate
     {
         private int estateID;
@@ -84,7 +99,7 @@ namespace RealEstateAgent
             return String.Format("{0} - {1} - {2} - {3} - {4} - {5} - {6}",
                 estateID,               // 0
                 this.GetType().Name,    // 1
-                address,                // 2
+                address.City,           // 2
                 buyer.LastName,         // 3
                 seller.LastName,        // 4
                 payment.Method,         // 5

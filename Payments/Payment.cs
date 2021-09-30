@@ -8,6 +8,7 @@ using System.Text;
 namespace RealEstateAgent
 {
     [Serializable]
+   
     public class Payment
     {
         private PaymentMethods method;
