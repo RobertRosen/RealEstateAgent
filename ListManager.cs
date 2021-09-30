@@ -230,7 +230,7 @@ namespace RealEstateAgent
                 TextWriter writer = null;
                 try
                 {
-                    XmlSerializer serializer = new XmlSerializer(T.GetType());
+                    XmlSerializer serializer = new XmlSerializer(typeof(T));
                     writer = new StreamWriter(fileName);
                     serializer.Serialize(writer, list);
                 }
