@@ -21,8 +21,6 @@ namespace RealEstateAgent
         private EstateManager estateManager;
         private IEstate tempEstate; //A temorary estate object to pass to the estate manager.
         private string imageFilePath;
-        private string imageFilePathRobert = "C:\\Users\\rober\\source\\repos\\RealEstateAgent\\Images\\noImage.jpg";
-        private string imageFilePathJoakim = "C:\\Users\\Thell\\Source\\Repos\\RobertRosen\\RealEstateAgent\\Images\\noImage.jpg";
         private string saveFilePath = "";
         #endregion
 
@@ -56,8 +54,11 @@ namespace RealEstateAgent
 
             tempEstate = null;
             estateManager.EstateIDCounter = 0;
-            //TODO: dynamic filepath for portability..
-            imageFilePath = imageFilePathRobert;
+
+            string defaultImageFileName = "noImage.jpg";
+            string projectPathLocal = new DirectoryInfo(Environment.CurrentDirectory).Parent.Parent.Parent.FullName;
+            string fullImagePath = Path.Combine(projectPathLocal, @"Images\", defaultImageFileName);
+            imageFilePath = fullImagePath;
         }
         #endregion
 
@@ -368,8 +369,6 @@ namespace RealEstateAgent
             txtSpecific1.Clear();
             txtSpecific2.Clear();
             txtSpecific3.Clear();
-
-            imageFilePath = imageFilePathRobert;
         }
 
         ///Summary
@@ -895,7 +894,7 @@ namespace RealEstateAgent
             txtBuyerCity.Text = "Malmö";
             txtBuyerStreet.Text = "Trelleborgsgatan 8a";
             txtBuyerZip.Text = "21435";
-            pctbxEstateImage.Image = new Bitmap(imageFilePathRobert);
+            pctbxEstateImage.Image = new Bitmap(imageFilePath);
         }
         #endregion
     }
