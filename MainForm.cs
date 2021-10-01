@@ -57,7 +57,7 @@ namespace RealEstateAgent
             tempEstate = null;
             estateManager.EstateIDCounter = 0;
             //TODO: dynamic filepath for portability..
-            imageFilePath = imageFilePathRobert;
+            imageFilePath = imageFilePathJoakim;
         }
         #endregion
 
@@ -369,7 +369,7 @@ namespace RealEstateAgent
             txtSpecific2.Clear();
             txtSpecific3.Clear();
 
-            imageFilePath = imageFilePathRobert;
+            imageFilePath = imageFilePathJoakim;
         }
 
         ///Summary
@@ -795,10 +795,20 @@ namespace RealEstateAgent
             //Ask user to save current data method?
             OpenFileDialog openFile = new OpenFileDialog();
             openFile.ShowDialog();
-            estateManager.BinaryDeSerialize(openFile.FileName);
-            //saveFilePath = openFile.FileName;
-            lstbxRegister.Items.Clear();
-            lstbxRegister.Items.AddRange(estateManager.ToStringArray());
+            string filepath = openFile.FileName;
+            string extension = Path.GetExtension(filepath);
+
+            if (extension == ".bin")
+            {
+                estateManager.BinaryDeSerialize(openFile.FileName);
+                
+               // estateManager.EstateIDCounter += estateManager.Count;
+                lstbxRegister.Items.Clear();
+                lstbxRegister.Items.AddRange(estateManager.ToStringArray());
+                estateManager.EstateIDCounter += lstbxRegister.Items.Count;
+            } 
+            saveFilePath = filepath;
+           
         }
 
        private void mnuFileSave_Click(object sender, EventArgs e)
@@ -854,7 +864,7 @@ namespace RealEstateAgent
             }
             else
             {
-                
+                mnuFileSaveAs_Click(sender, e);
             }
         }
         #endregion
@@ -895,7 +905,7 @@ namespace RealEstateAgent
             txtBuyerCity.Text = "Malmö";
             txtBuyerStreet.Text = "Trelleborgsgatan 8a";
             txtBuyerZip.Text = "21435";
-            pctbxEstateImage.Image = new Bitmap(imageFilePathRobert);
+            pctbxEstateImage.Image = new Bitmap(imageFilePathJoakim);
         }
         #endregion
     }

@@ -68,6 +68,7 @@ namespace RealEstateAgent
 #pragma warning disable SYSLIB0011 // Type or member is obsolete
                     list = (List<T>)binaryFormatter.Deserialize(stream);
 #pragma warning restore SYSLIB0011 // Type or member is obsolete
+                    
                     success = true;
                 }
             }
