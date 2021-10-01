@@ -1,5 +1,4 @@
 ﻿// Joakim Tell & Robert Rosencrantz
-
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,21 +17,25 @@ namespace RealEstateAgent
 {
     public partial class MainForm : Form
     {
+        #region Variables
         private EstateManager estateManager;
         private IEstate tempEstate; //A temorary estate object to pass to the estate manager.
         private string imageFilePath;
         private string imageFilePathRobert = "C:\\Users\\rober\\source\\repos\\RealEstateAgent\\Images\\noImage.jpg";
         private string imageFilePathJoakim = "C:\\Users\\Thell\\Source\\Repos\\RobertRosen\\RealEstateAgent\\Images\\noImage.jpg";
         private string saveFilePath = "";
+        #endregion
 
-
+        #region Constructors
         public MainForm()
         {
             InitializeComponent();
             estateManager = new EstateManager();
             InitializeGUI();
         }
+        #endregion
 
+        #region Initialization
         private void InitializeGUI()
         {
             bxEstateCountry.DataSource = Enum.GetValues(typeof(Countries));
@@ -56,7 +59,9 @@ namespace RealEstateAgent
             //TODO: dynamic filepath for portability..
             imageFilePath = imageFilePathRobert;
         }
+        #endregion
 
+        #region Instantiate entities
         public IEstate CreateEstateDynamic(EstateType estateType) => estateType switch
         {
             EstateType.Rental => tempEstate = new Rental(),
@@ -70,6 +75,7 @@ namespace RealEstateAgent
             _ => throw new ArgumentException(message: "Invalid enum value", paramName: nameof(estateType))
         };
 
+
         public Payment CreatePaymentDynamic(PaymentMethods paymentMethod) => paymentMethod switch
         {
             PaymentMethods.Bank => tempEstate.Payment = new Bank(),
@@ -77,6 +83,29 @@ namespace RealEstateAgent
             PaymentMethods.Western_Union => tempEstate.Payment = new WesternUnion(),
             _ => throw new ArgumentException(message: "Invalid enum value", paramName: nameof(paymentMethod))
         };
+
+        public Person CreatePersonDynamic(Persons person) => person switch
+        {
+            Persons.Buyer => tempEstate.Buyer = new Buyer(),
+            Persons.Seller => tempEstate.Seller = new Seller(),
+            _ => throw new ArgumentException(message: "Invalid enum value", paramName: nameof(person))
+        };
+        #endregion
+
+        #region Read general info
+        // TODO: Do validation of input!
+        // Read and validate user input.
+        private void ReadAndValidateInfo()
+        {
+            bool inputOk;
+            inputOk = ReadEstateInfo();
+            ReadBuyerInfo();
+            ReadSellerInfo();
+            inputOk = ReadPaymentInfo();
+            ReadImageInfo();
+            ReadSpecificInfo();
+            ReadPaymentSpecificInfo();
+        }
 
         private bool ReadEstateInfo()
         {
@@ -129,7 +158,7 @@ namespace RealEstateAgent
             address.Street = strStreet;
             address.ZipCode = strZipCode;
 
-            tempEstate.Seller = new Seller();
+            tempEstate.Seller = CreatePersonDynamic(Persons.Seller);
             ((Seller)tempEstate.Seller).FirstName = strFName;
             ((Seller)tempEstate.Seller).LastName = strLName;
             ((Seller)tempEstate.Seller).Address = address;
@@ -150,7 +179,7 @@ namespace RealEstateAgent
             address.Street = strStreet;
             address.ZipCode = strZipCode;
 
-            tempEstate.Buyer = new Buyer();
+            tempEstate.Buyer = CreatePersonDynamic(Persons.Buyer);
             ((Buyer)tempEstate.Buyer).FirstName = strFName;
             ((Buyer)tempEstate.Buyer).LastName = strLName;
             ((Buyer)tempEstate.Buyer).Address = address;
@@ -172,7 +201,9 @@ namespace RealEstateAgent
             }
             return inputOk;
         }
+        #endregion
 
+        #region Read specific info
         private void ReadSpecificInfo()
         {
             string str1 = txtSpecific1.Text;
@@ -256,7 +287,9 @@ namespace RealEstateAgent
                 //Handle this...
             }
         }
+        #endregion
 
+        #region Update GUI components
         private void EnableInfoFields(bool enabled)
         {
             txtAmount.Enabled = enabled;
@@ -296,7 +329,9 @@ namespace RealEstateAgent
             btnChange.Enabled = enabled;
             btnDelete.Enabled = enabled;
         }
+        #endregion
 
+        #region Update GUI fields
         private void ClearFields()
         {
             lblShowEstateID.ResetText();
@@ -563,21 +598,9 @@ namespace RealEstateAgent
                 //Handle this...
             }
         }
+        #endregion
 
-        // TODO: Do validation of input!
-        // Read and validate user input.
-        private void ReadAndValidateInfo()
-        {
-            bool inputOk;
-            inputOk = ReadEstateInfo();
-            ReadBuyerInfo();
-            ReadSellerInfo();
-            inputOk = ReadPaymentInfo();
-            ReadImageInfo();
-            ReadSpecificInfo();
-            ReadPaymentSpecificInfo();
-        }
-
+        #region Button clicks
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             EstateType enumEstateType = (EstateType)bxEstateType.SelectedItem;
@@ -696,6 +719,35 @@ namespace RealEstateAgent
             pctbxEstateImage.Image = bitmap;
         }
 
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string searchCity = txtSearchCity.Text;
+            string[] searchResults = estateManager.SearchEstate(searchCity);
+            lstbxSearchResults.Items.Clear();
+
+            if (searchResults != null)
+            {
+                foreach (string est in searchResults)
+                {
+                    Debug.WriteLine(est);
+                }
+
+                lstbxSearchResults.Items.AddRange(searchResults);
+            }
+            else
+            {
+                MessageBox.Show("No search results!");
+            }
+
+        }
+
+        private void btnClearSearchResults_Click(object sender, EventArgs e)
+        {
+            lstbxSearchResults.Items.Clear();
+        }
+        #endregion
+
+        #region Selection changes
         private void lstbxRegister_SelectedIndexChanged(object sender, EventArgs e)
         {
             int selIndex = lstbxRegister.SelectedIndex;
@@ -719,45 +771,9 @@ namespace RealEstateAgent
             PaymentMethods enumPayment = (PaymentMethods)bxPaymentMethod.SelectedItem;
             SetPaymentSpecificComponents(enumPayment);
         }
+        #endregion
 
-        private void testValues()
-        {
-            lblShowEstateID.Text = (estateManager.incrementEstateIDCounter()).ToString();
-
-            bxEstateType.SelectedItem = EstateType.School;
-            bxEstateCountry.SelectedItem = Countries.Sverige;
-            bxSellerCountry.SelectedItem = Countries.Sverige;
-            bxBuyerCountry.SelectedItem = Countries.Sverige;
-            bxLegalForm.SelectedItem = LegalForm.Ownership;
-            bxPaymentMethod.SelectedIndex = 0;
-
-            txtAmount.Text = "2000000";
-            txtPaySpecific1.Text = "100";
-            txtPaySpecific2.Text = "200";
-
-
-            txtSpecific1.Text = "100";
-            txtSpecific2.Text = "200";
-            txtSpecific3.Text = "300";
-
-            txtEstateCity.Text = "Malmö";
-            txtEstateStreet.Text = "Trelleborgsgatan 10a";
-            txtEstateZip.Text = "21435";
-
-            txtSellerFName.Text = "Joakim";
-            txtSellerLName.Text = "Tell";
-            txtSellerCity.Text = "Skurup";
-            txtSellerStreet.Text = "Hylteskogsvägen 1";
-            txtSellerZip.Text = "25034";
-
-            txtBuyerFName.Text = "Robert";
-            txtBuyerLName.Text = "Rosencrantz";
-            txtBuyerCity.Text = "Malmö";
-            txtBuyerStreet.Text = "Trelleborgsgatan 8a";
-            txtBuyerZip.Text = "21435";
-            pctbxEstateImage.Image = new Bitmap (imageFilePathRobert);
-        }
-
+        #region Menu clicks
         private void mnuFileNew_Click(object sender, EventArgs e)
         {
             DialogResult confirmResult = MessageBox.Show("Restart without saving?", "Confirm dialog", MessageBoxButtons.YesNo);
@@ -810,39 +826,22 @@ namespace RealEstateAgent
             estateManager.BinarySerialize(saveFilePath);
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            string searchCity = txtSearchCity.Text;
-            string[] searchResults = estateManager.SearchEstate(searchCity);
-            lstbxSearchResults.Items.Clear();
-
-            if (searchResults != null)
-            {
-                foreach (string est in searchResults)
-                {
-                    Debug.WriteLine(est);
-                }
-
-                lstbxSearchResults.Items.AddRange(searchResults);
-            }
-            else
-            {
-                MessageBox.Show("No search results!");
-            }
-
-        }
-
-        private void btnClearSearchResults_Click(object sender, EventArgs e)
-        {
-            lstbxSearchResults.Items.Clear();
-        }
-
         private void mnuFileExportXML_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFile = new SaveFileDialog();
             saveFile.ShowDialog();
             string saveFilePath = saveFile.FileName + ".xml";
             estateManager.XMLSerialize(saveFilePath);
+        }
+
+        private void mnuFileImportXML_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.ShowDialog();
+            estateManager.ReadEstateListFromXmlFile(openFile.FileName);
+            lstbxRegister.Items.Clear();
+            lstbxRegister.Items.AddRange(estateManager.ToStringArray());
+            EnableButtons(true);
         }
 
         private void mnuFileExit_Click(object sender, EventArgs e)
@@ -858,15 +857,46 @@ namespace RealEstateAgent
                 
             }
         }
+        #endregion
 
-        private void mnuFileImportXML_Click(object sender, EventArgs e)
+        #region TEST VALUES
+        private void testValues()
         {
-            OpenFileDialog openFile = new OpenFileDialog();
-            openFile.ShowDialog();
-            estateManager.ReadEstateListFromXmlFile(openFile.FileName);
-            lstbxRegister.Items.Clear();
-            lstbxRegister.Items.AddRange(estateManager.ToStringArray());
-            EnableButtons(true);
+            lblShowEstateID.Text = (estateManager.incrementEstateIDCounter()).ToString();
+
+            bxEstateType.SelectedItem = EstateType.School;
+            bxEstateCountry.SelectedItem = Countries.Sverige;
+            bxSellerCountry.SelectedItem = Countries.Sverige;
+            bxBuyerCountry.SelectedItem = Countries.Sverige;
+            bxLegalForm.SelectedItem = LegalForm.Ownership;
+            bxPaymentMethod.SelectedIndex = 0;
+
+            txtAmount.Text = "2000000";
+            txtPaySpecific1.Text = "100";
+            txtPaySpecific2.Text = "200";
+
+
+            txtSpecific1.Text = "100";
+            txtSpecific2.Text = "200";
+            txtSpecific3.Text = "300";
+
+            txtEstateCity.Text = "Malmö";
+            txtEstateStreet.Text = "Trelleborgsgatan 10a";
+            txtEstateZip.Text = "21435";
+
+            txtSellerFName.Text = "Joakim";
+            txtSellerLName.Text = "Tell";
+            txtSellerCity.Text = "Skurup";
+            txtSellerStreet.Text = "Hylteskogsvägen 1";
+            txtSellerZip.Text = "25034";
+
+            txtBuyerFName.Text = "Robert";
+            txtBuyerLName.Text = "Rosencrantz";
+            txtBuyerCity.Text = "Malmö";
+            txtBuyerStreet.Text = "Trelleborgsgatan 8a";
+            txtBuyerZip.Text = "21435";
+            pctbxEstateImage.Image = new Bitmap(imageFilePathRobert);
         }
+        #endregion
     }
 }

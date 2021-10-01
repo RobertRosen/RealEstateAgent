@@ -169,7 +169,7 @@ namespace RealEstateAgent
             // 
             // btnClearSearchResults
             // 
-            this.btnClearSearchResults.Location = new System.Drawing.Point(200, 255);
+            this.btnClearSearchResults.Location = new System.Drawing.Point(393, 86);
             this.btnClearSearchResults.Name = "btnClearSearchResults";
             this.btnClearSearchResults.Size = new System.Drawing.Size(94, 29);
             this.btnClearSearchResults.TabIndex = 6;
@@ -180,7 +180,7 @@ namespace RealEstateAgent
             // lblSearchResults
             // 
             this.lblSearchResults.AutoSize = true;
-            this.lblSearchResults.Location = new System.Drawing.Point(17, 89);
+            this.lblSearchResults.Location = new System.Drawing.Point(17, 114);
             this.lblSearchResults.Name = "lblSearchResults";
             this.lblSearchResults.Size = new System.Drawing.Size(98, 16);
             this.lblSearchResults.TabIndex = 5;
@@ -190,9 +190,9 @@ namespace RealEstateAgent
             // 
             this.lstbxSearchResults.FormattingEnabled = true;
             this.lstbxSearchResults.ItemHeight = 16;
-            this.lstbxSearchResults.Location = new System.Drawing.Point(17, 117);
+            this.lstbxSearchResults.Location = new System.Drawing.Point(17, 133);
             this.lstbxSearchResults.Name = "lstbxSearchResults";
-            this.lstbxSearchResults.Size = new System.Drawing.Size(470, 116);
+            this.lstbxSearchResults.Size = new System.Drawing.Size(470, 164);
             this.lstbxSearchResults.TabIndex = 4;
             // 
             // btnSearch
@@ -238,14 +238,14 @@ namespace RealEstateAgent
             this.lstbxRegister.ItemHeight = 16;
             this.lstbxRegister.Location = new System.Drawing.Point(13, 47);
             this.lstbxRegister.Name = "lstbxRegister";
-            this.lstbxRegister.Size = new System.Drawing.Size(505, 260);
+            this.lstbxRegister.Size = new System.Drawing.Size(505, 292);
             this.lstbxRegister.TabIndex = 9;
             this.lstbxRegister.SelectedIndexChanged += new System.EventHandler(this.lstbxRegister_SelectedIndexChanged);
             // 
             // btnAdd
             // 
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnAdd.Location = new System.Drawing.Point(418, 329);
+            this.btnAdd.Location = new System.Drawing.Point(231, 349);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(100, 36);
@@ -268,7 +268,7 @@ namespace RealEstateAgent
             // 
             this.btnDelete.Enabled = false;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnDelete.Location = new System.Drawing.Point(123, 329);
+            this.btnDelete.Location = new System.Drawing.Point(123, 349);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(100, 36);
@@ -281,7 +281,7 @@ namespace RealEstateAgent
             // 
             this.btnChange.Enabled = false;
             this.btnChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnChange.Location = new System.Drawing.Point(15, 329);
+            this.btnChange.Location = new System.Drawing.Point(15, 349);
             this.btnChange.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnChange.Name = "btnChange";
             this.btnChange.Size = new System.Drawing.Size(100, 36);
@@ -1071,28 +1071,28 @@ namespace RealEstateAgent
             // mnuFileNew
             // 
             this.mnuFileNew.Name = "mnuFileNew";
-            this.mnuFileNew.Size = new System.Drawing.Size(224, 26);
+            this.mnuFileNew.Size = new System.Drawing.Size(141, 26);
             this.mnuFileNew.Text = "New";
             this.mnuFileNew.Click += new System.EventHandler(this.mnuFileNew_Click);
             // 
             // mnuFileOpen
             // 
             this.mnuFileOpen.Name = "mnuFileOpen";
-            this.mnuFileOpen.Size = new System.Drawing.Size(224, 26);
+            this.mnuFileOpen.Size = new System.Drawing.Size(141, 26);
             this.mnuFileOpen.Text = "Open";
             this.mnuFileOpen.Click += new System.EventHandler(this.mnuFileOpen_Click);
             // 
             // mnuFileSave
             // 
             this.mnuFileSave.Name = "mnuFileSave";
-            this.mnuFileSave.Size = new System.Drawing.Size(224, 26);
+            this.mnuFileSave.Size = new System.Drawing.Size(141, 26);
             this.mnuFileSave.Text = "Save";
             this.mnuFileSave.Click += new System.EventHandler(this.mnuFileSave_Click);
             // 
             // mnuFileSaveAs
             // 
             this.mnuFileSaveAs.Name = "mnuFileSaveAs";
-            this.mnuFileSaveAs.Size = new System.Drawing.Size(224, 26);
+            this.mnuFileSaveAs.Size = new System.Drawing.Size(141, 26);
             this.mnuFileSaveAs.Text = "Save as";
             this.mnuFileSaveAs.Click += new System.EventHandler(this.mnuFileSaveAs_Click);
             // 
@@ -1102,7 +1102,7 @@ namespace RealEstateAgent
             this.mnuFileImportXML,
             this.mnuFileExportXML});
             this.mnuFileXML.Name = "mnuFileXML";
-            this.mnuFileXML.Size = new System.Drawing.Size(224, 26);
+            this.mnuFileXML.Size = new System.Drawing.Size(141, 26);
             this.mnuFileXML.Text = "XML";
             // 
             // mnuFileImportXML
@@ -1122,7 +1122,7 @@ namespace RealEstateAgent
             // mnuFileExit
             // 
             this.mnuFileExit.Name = "mnuFileExit";
-            this.mnuFileExit.Size = new System.Drawing.Size(224, 26);
+            this.mnuFileExit.Size = new System.Drawing.Size(141, 26);
             this.mnuFileExit.Text = "Exit";
             this.mnuFileExit.Click += new System.EventHandler(this.mnuFileExit_Click);
             // 
