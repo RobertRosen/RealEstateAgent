@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfEstate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Estate xsi:type="Townhouse">
+    <EstateID>1</EstateID>
+    <Address>
+      <Street>Trelleborgsgatan 10a</Street>
+      <ZipCode>21435</ZipCode>
+      <City>Mm</City>
+      <Country>Sverige</Country>
+    </Address>
+    <Buyer xsi:type="Buyer">
+      <FirstName>Robert</FirstName>
+      <LastName>Rosencrantz</LastName>
+      <Address>
+        <Street>Trelleborgsgatan 8a</Street>
+        <ZipCode>21435</ZipCode>
+        <City>Malmö</City>
+        <Country>Sverige</Country>
+      </Address>
+    </Buyer>
+    <Seller xsi:type="Seller">
+      <FirstName>Joakim</FirstName>
+      <LastName>Tell</LastName>
+      <Address>
+        <Street>Hylteskogsvägen 1</Street>
+        <ZipCode>25034</ZipCode>
+        <City>Skurup</City>
+        <Country>Sverige</Country>
+      </Address>
+    </Seller>
+    <Payment xsi:type="Bank">
+      <Amount>2000000</Amount>
+      <Method>Bank</Method>
+      <Name>200</Name>
+      <Accountnumber>100</Accountnumber>
+    </Payment>
+    <LegalForm>Ownership</LegalForm>
+    <ImagePath>C:\Users\rober\source\repos\RealEstateAgent\Images\Townhouse.jpg</ImagePath>
+    <SquareMeter>100</SquareMeter>
+    <GardenSquareMeters>200</GardenSquareMeters>
+    <NumberOfConnectedVillas>3</NumberOfConnectedVillas>
+  </Estate>
+  <Estate xsi:type="University">
+    <EstateID>2</EstateID>
+    <Address>
+      <Street>Trelleborgsgatan 10a</Street>
+      <ZipCode>21435</ZipCode>
+      <City>Malmö</City>
+      <Country>Sverige</Country>
+    </Address>
+    <Buyer xsi:type="Buyer">
+      <FirstName>Robert</FirstName>
+      <LastName>Rosencrantz</LastName>
+      <Address>
+        <Street>Trelleborgsgatan 8a</Street>
+        <ZipCode>21435</ZipCode>
+        <City>Malmö</City>
+        <Country>Sverige</Country>
+      </Address>
+    </Buyer>
+    <Seller xsi:type="Seller">
+      <FirstName>Joakim</FirstName>
+      <LastName>Tell</LastName>
+      <Address>
+        <Street>Hylteskogsvägen 1</Street>
+        <ZipCode>25034</ZipCode>
+        <City>Skurup</City>
+        <Country>Sverige</Country>
+      </Address>
+    </Seller>
+    <Payment xsi:type="Bank">
+      <Amount>2000000</Amount>
+      <Method>Bank</Method>
+      <Name>200</Name>
+      <Accountnumber>100</Accountnumber>
+    </Payment>
+    <LegalForm>Ownership</LegalForm>
+    <ImagePath>C:\Users\rober\source\repos\RealEstateAgent\Images\School.jpg</ImagePath>
+    <NumberOfCafeterias>100</NumberOfCafeterias>
+    <NumberOfClassrooms>200</NumberOfClassrooms>
+    <NumberOfLectureHalls>300</NumberOfLectureHalls>
+  </Estate>
+</ArrayOfEstate>

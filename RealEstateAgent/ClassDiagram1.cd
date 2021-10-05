@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="RealEstateAgent.Apartment" Collapsed="true">
+    <Position X="9.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAAAAIAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Estates\Apartment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RealEstateAgent.Villa" Collapsed="true">
+    <Position X="12.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Estates\Villa.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RealEstateAgent.Store" Collapsed="true">
+    <Position X="5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Estates\Store.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RealEstateAgent.Warehouse" Collapsed="true">
+    <Position X="7" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Estates\Warehouse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RealEstateAgent.Estate" Collapsed="true">
+    <Position X="6" Y="2.5" Width="1.5" />
+    <AssociationLine Name="buyer" Type="RealEstateAgent.Person" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="6.188" Y="3.062" />
+        <Point X="6.188" Y="3.375" />
+        <Point X="3.25" Y="3.375" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="seller" Type="RealEstateAgent.Person" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="6.5" Y="3.062" />
+        <Point X="6.5" Y="3.688" />
+        <Point X="3.25" Y="3.688" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAIIAAAAAQAABAEAIAQQACAEAIAABACAAAABAAACCA=</HashCode>
+      <FileName>Estates\Estate.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="address" />
+      <Field Name="buyer" />
+      <Field Name="seller" />
+      <Field Name="payment" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.627" />
+  </Class>
+  <Class Name="RealEstateAgent.Commercial" Collapsed="true">
+    <Position X="6" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Estates\Commercial.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RealEstateAgent.Residental" Collapsed="true">
+    <Position X="10.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAABAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Estates\Residental.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RealEstateAgent.Institutional" Collapsed="true">
+    <Position X="1.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAICAQAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Estates\Institutional.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RealEstateAgent.Townhouse" Collapsed="true">
+    <Position X="12.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Estates\Townhouse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RealEstateAgent.School" Collapsed="true">
+    <Position X="0.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Estates\School.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RealEstateAgent.University" Collapsed="true">
+    <Position X="2.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>Estates\University.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RealEstateAgent.Address" Collapsed="true">
+    <Position X="2.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAMAAAACAAAAAIAAgADAAIAAAAAAAA=</HashCode>
+      <FileName>Address.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RealEstateAgent.Person" Collapsed="true">
+    <Position X="1.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAABAAAAEAAAAAAAAAAIAAAACAAAACAAAAAg=</HashCode>
+      <FileName>Persons\Person.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="address" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="RealEstateAgent.Buyer" Collapsed="true">
+    <Position X="0.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Persons\Buyer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RealEstateAgent.Seller" Collapsed="true">
+    <Position X="2.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Persons\Seller.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RealEstateAgent.Payment" Collapsed="true">
+    <Position X="9.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAEAAAAACAEAAAgAACAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Payments\Payment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RealEstateAgent.Bank" Collapsed="true">
+    <Position X="7.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAEAAAACAQAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Payments\Bank.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RealEstateAgent.WesternUnion" Collapsed="true">
+    <Position X="9.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAkAAAAAAQAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Payments\WesternUnion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RealEstateAgent.PayPal" Collapsed="true">
+    <Position X="11" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Payments\PayPal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RealEstateAgent.Rental" Collapsed="true">
+    <Position X="8.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Estates\Rental.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RealEstateAgent.Tenement" Collapsed="true">
+    <Position X="10.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Estates\Tenement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RealEstateAgent.ListManager&lt;T&gt;" Collapsed="true">
+    <Position X="11.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAIACgAAABACAAAgBAAAEAQIAAIAAAAAAAAAQAAAAIA=</HashCode>
+      <FileName>ListManager.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="RealEstateAgent.EstateManager" Collapsed="true">
+    <Position X="9.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EstateManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="RealEstateAgent.IEstate" Collapsed="true">
+    <Position X="6" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAAAIAQAAAAAAAAABACAAAABAAACAA=</HashCode>
+      <FileName>Estates\IEstate.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="RealEstateAgent.IListManager&lt;T&gt;">
+    <Position X="13.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAIACAAAABACAAAgAAAAEAQIAAIAAAAAAAAAQAAAAIA=</HashCode>
+      <FileName>IListManager.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
