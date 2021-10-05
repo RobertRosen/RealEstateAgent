@@ -1,0 +1,11 @@
+C:\Users\rober\source\repos\UtilitiesLib\bin\Debug\net5.0\UtilitiesLib.deps.json
+C:\Users\rober\source\repos\UtilitiesLib\bin\Debug\net5.0\UtilitiesLib.dll
+C:\Users\rober\source\repos\UtilitiesLib\bin\Debug\net5.0\ref\UtilitiesLib.dll
+C:\Users\rober\source\repos\UtilitiesLib\bin\Debug\net5.0\UtilitiesLib.pdb
+C:\Users\rober\source\repos\UtilitiesLib\obj\Debug\net5.0\UtilitiesLib.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rober\source\repos\UtilitiesLib\obj\Debug\net5.0\UtilitiesLib.AssemblyInfoInputs.cache
+C:\Users\rober\source\repos\UtilitiesLib\obj\Debug\net5.0\UtilitiesLib.AssemblyInfo.cs
+C:\Users\rober\source\repos\UtilitiesLib\obj\Debug\net5.0\UtilitiesLib.csproj.CoreCompileInputs.cache
+C:\Users\rober\source\repos\UtilitiesLib\obj\Debug\net5.0\UtilitiesLib.dll
+C:\Users\rober\source\repos\UtilitiesLib\obj\Debug\net5.0\ref\UtilitiesLib.dll
+C:\Users\rober\source\repos\UtilitiesLib\obj\Debug\net5.0\UtilitiesLib.pdb

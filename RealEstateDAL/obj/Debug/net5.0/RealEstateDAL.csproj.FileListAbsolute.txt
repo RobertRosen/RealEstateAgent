@@ -1,0 +1,11 @@
+C:\Users\rober\source\repos\RealEstateDAL\obj\Debug\net5.0\RealEstateDAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rober\source\repos\RealEstateDAL\obj\Debug\net5.0\RealEstateDAL.AssemblyInfoInputs.cache
+C:\Users\rober\source\repos\RealEstateDAL\obj\Debug\net5.0\RealEstateDAL.AssemblyInfo.cs
+C:\Users\rober\source\repos\RealEstateDAL\obj\Debug\net5.0\RealEstateDAL.csproj.CoreCompileInputs.cache
+C:\Users\rober\source\repos\RealEstateDAL\bin\Debug\net5.0\RealEstateDAL.deps.json
+C:\Users\rober\source\repos\RealEstateDAL\bin\Debug\net5.0\RealEstateDAL.dll
+C:\Users\rober\source\repos\RealEstateDAL\bin\Debug\net5.0\ref\RealEstateDAL.dll
+C:\Users\rober\source\repos\RealEstateDAL\bin\Debug\net5.0\RealEstateDAL.pdb
+C:\Users\rober\source\repos\RealEstateDAL\obj\Debug\net5.0\RealEstateDAL.dll
+C:\Users\rober\source\repos\RealEstateDAL\obj\Debug\net5.0\ref\RealEstateDAL.dll
+C:\Users\rober\source\repos\RealEstateDAL\obj\Debug\net5.0\RealEstateDAL.pdb
