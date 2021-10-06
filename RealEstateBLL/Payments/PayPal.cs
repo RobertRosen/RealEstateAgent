@@ -12,6 +12,10 @@ namespace RealEstateBLL
     {
         private String email;
 
+        public PayPal(double amount) : base(amount)
+        {
+        }
+
         ///Property
         public String Email
         {

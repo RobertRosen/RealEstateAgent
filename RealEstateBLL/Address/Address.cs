@@ -15,6 +15,14 @@ namespace RealEstateBLL
         private String city;
         private Countries country;
 
+        public Address(string street, string zipCode, string city, Countries country)
+        {
+            this.street = street;
+            this.zipCode = zipCode;
+            this.city = city;
+            this.country = country;
+        }
+
         ///Properties
         public String Street
         {

@@ -63,151 +63,116 @@ namespace RealEstateApp
         }
         #endregion
 
-        //TODO: Move region to dll
-        #region Instantiate entities
-        public IEstate CreateEstateDynamic(EstateType estateType) => estateType switch
-        {
-            EstateType.Rental => tempEstate = new Rental(),
-            EstateType.School => tempEstate = new School(),
-            EstateType.Store => tempEstate = new Store(),
-            EstateType.Tenement => tempEstate = new Tenement(),
-            EstateType.Townhouse => tempEstate = new Townhouse(),
-            EstateType.University => tempEstate = new University(),
-            EstateType.Villa => tempEstate = new Villa(),
-            EstateType.Warehouse => tempEstate = new Warehouse(),
-            _ => throw new ArgumentException(message: "Invalid enum value", paramName: nameof(estateType))
-        };
-
-
-        public Payment CreatePaymentDynamic(PaymentMethods paymentMethod) => paymentMethod switch
-        {
-            PaymentMethods.Bank => tempEstate.Payment = new Bank(),
-            PaymentMethods.PayPal => tempEstate.Payment = new PayPal(),
-            PaymentMethods.Western_Union => tempEstate.Payment = new WesternUnion(),
-            _ => throw new ArgumentException(message: "Invalid enum value", paramName: nameof(paymentMethod))
-        };
-
-        public Person CreatePersonDynamic(Persons person) => person switch
-        {
-            Persons.Buyer => tempEstate.Buyer = new Buyer(),
-            Persons.Seller => tempEstate.Seller = new Seller(),
-            _ => throw new ArgumentException(message: "Invalid enum value", paramName: nameof(person))
-        };
-        #endregion
-
         #region Read general info
         // TODO: Do validation of input!
         // Read and validate user input.
         private void ReadAndValidateInfo()
         {
-            bool inputOk;
-            inputOk = ReadEstateInfo();
-            ReadBuyerInfo();
-            ReadSellerInfo();
-            inputOk = ReadPaymentInfo();
-            ReadImageInfo();
-            ReadSpecificInfo();
+            tempEstate.LegalForm = ReadLegalFormInfo();
+            tempEstate.Address = ReadEstateAddressInfo();
+            tempEstate.Buyer = ReadPersonInfo(PersonTypes.Buyer);
+            tempEstate.Seller = ReadPersonInfo(PersonTypes.Seller);
+            tempEstate.Payment = ReadPaymentInfo();
+            tempEstate.ImagePath = ReadImageInfo();
+
+            // TODO: Clean up these:
+            ReadEstateSpecificInfo();
             ReadPaymentSpecificInfo();
         }
 
-        private bool ReadEstateInfo()
+        private LegalForm ReadLegalFormInfo()
         {
-            bool inputOk;
-
-            if (bxLegalForm.SelectedIndex > -1 && bxLegalForm.SelectedIndex > -1)
-            {
-                LegalForm legalForm = (LegalForm)bxLegalForm.SelectedItem;
-                Countries enumCountry = (Countries)bxEstateCountry.SelectedItem;
-
-                String strCity = txtEstateCity.Text;
-                String strStreet = txtEstateStreet.Text;
-                String strZipCode = txtEstateZip.Text;
-
-                Address address = new Address();
-                address.Country = enumCountry;
-                address.City = strCity;
-                address.Street = strStreet;
-                address.ZipCode = strZipCode;
-
-                tempEstate.LegalForm = legalForm;
-                tempEstate.Address = address;
-
-                inputOk = true;
-            }
-            else
-            {
-                inputOk = false;
-            }
-            return inputOk;
+            return (LegalForm)bxLegalForm.SelectedItem;
         }
 
-        private void ReadImageInfo()
+        private Address ReadEstateAddressInfo()
         {
-            tempEstate.ImagePath = imageFilePath;
+            return ReadAddressInfo(AddressTypes.Estate);
         }
 
-        private void ReadSellerInfo()
+        private string ReadImageInfo()
         {
-            Countries enumCountry = (Countries)bxSellerCountry.SelectedItem;
-            String strFName = txtSellerFName.Text;
-            String strLName = txtSellerLName.Text;
-            String strCity = txtSellerCity.Text;
-            String strStreet = txtSellerStreet.Text;
-            String strZipCode = txtSellerZip.Text;
-
-            Address address = new Address();
-            address.Country = enumCountry;
-            address.City = strCity;
-            address.Street = strStreet;
-            address.ZipCode = strZipCode;
-
-            tempEstate.Seller = CreatePersonDynamic(Persons.Seller);
-            ((Seller)tempEstate.Seller).FirstName = strFName;
-            ((Seller)tempEstate.Seller).LastName = strLName;
-            ((Seller)tempEstate.Seller).Address = address;
+            return imageFilePath;
         }
 
-        private void ReadBuyerInfo()
+        private Person ReadPersonInfo(PersonTypes personType)
         {
-            Countries enumCountry = (Countries)bxBuyerCountry.SelectedItem;
-            String strFName = txtBuyerFName.Text;
-            String strLName = txtBuyerLName.Text;
-            String strCity = txtBuyerCity.Text;
-            String strStreet = txtBuyerStreet.Text;
-            String strZipCode = txtBuyerZip.Text;
+            String fName = "";
+            String lName = "";
+            Address address = null;
 
-            Address address = new Address();
-            address.Country = enumCountry;
-            address.City = strCity;
-            address.Street = strStreet;
-            address.ZipCode = strZipCode;
-
-            tempEstate.Buyer = CreatePersonDynamic(Persons.Buyer);
-            ((Buyer)tempEstate.Buyer).FirstName = strFName;
-            ((Buyer)tempEstate.Buyer).LastName = strLName;
-            ((Buyer)tempEstate.Buyer).Address = address;
-        }
-
-        private bool ReadPaymentInfo()
-        {
-            bool inputOk;
-            if (bxPaymentMethod.SelectedIndex > -1 && int.TryParse(txtAmount.Text, out int amount))
+            switch (personType)
             {
-                PaymentMethods enumPayment = (PaymentMethods)bxPaymentMethod.SelectedItem;
-                CreatePaymentDynamic(enumPayment);
-                tempEstate.Payment.Amount = amount;
-                inputOk = true;
+                case PersonTypes.Seller:
+                    {
+                        fName = txtSellerFName.Text;
+                        lName = txtSellerLName.Text;
+                        address = ReadAddressInfo(AddressTypes.Seller);
+                    }
+                    break;
+                case PersonTypes.Buyer:
+                    {
+                        fName = txtBuyerFName.Text;
+                        lName = txtBuyerLName.Text;
+                        address = ReadAddressInfo(AddressTypes.Buyer);
+                    }
+                    break;
+                default:
+                    break;
             }
-            else
+            return new DynamicPerson().CreatePersonDynamic(personType, fName, lName, address);
+        }
+
+        private Address ReadAddressInfo(AddressTypes addressType)
+        {
+            String street = "";
+            String zipCode = "";
+            String city = "";
+            Countries country = default;
+
+            switch (addressType)
             {
-                inputOk = false;
+                case AddressTypes.Estate:
+                    {
+                        street = txtEstateStreet.Text;
+                        zipCode = txtEstateZip.Text;
+                        city = txtEstateCity.Text;
+                        country = (Countries)bxEstateCountry.SelectedItem;
+                    }
+                    break;
+                case AddressTypes.Seller:
+                    {
+                        street = txtSellerStreet.Text;
+                        zipCode = txtSellerZip.Text;
+                        city = txtSellerCity.Text;
+                        country = (Countries)bxSellerCountry.SelectedItem;
+                    }
+                    break;
+                case AddressTypes.Buyer:
+                    {
+                        city = txtBuyerCity.Text;
+                        street = txtBuyerStreet.Text;
+                        zipCode = txtBuyerZip.Text;
+                        country = (Countries)bxBuyerCountry.SelectedItem;
+                    }
+                    break;
+                default:
+                    break;
             }
-            return inputOk;
+            return new Address(street, city, zipCode, country);
+        }
+
+        private Payment ReadPaymentInfo()
+        {
+            int amount = int.Parse(txtAmount.Text);
+            PaymentMethods enumPayment = (PaymentMethods)bxPaymentMethod.SelectedItem;
+
+            return new DynamicPayment().CreatePaymentDynamic(enumPayment, amount);
         }
         #endregion
 
         #region Read specific info
-        private void ReadSpecificInfo()
+        private void ReadEstateSpecificInfo()
         {
             string str1 = txtSpecific1.Text;
             string str2 = txtSpecific2.Text;
@@ -610,6 +575,7 @@ namespace RealEstateApp
         {
             EstateType enumEstateType = (EstateType)bxEstateType.SelectedItem;
             int selIndex = lstbxRegister.SelectedIndex;
+            DynamicEstate dynamicEstate = new DynamicEstate();
 
             // Update GUI.
             SetEstateSpecificComponentsDynamically(enumEstateType);
@@ -622,7 +588,7 @@ namespace RealEstateApp
                 if (selIndex > -1) // If any is selected from register.
                 {
                     int estateIDToKeep = tempEstate.EstateID;
-                    tempEstate = CreateEstateDynamic(enumEstateType);
+                    tempEstate = dynamicEstate.CreateEstateDynamic(enumEstateType);
                     ReadAndValidateInfo();
 
                     // Update estate.
@@ -638,7 +604,7 @@ namespace RealEstateApp
                 else // If no estate is selected in register.
                 {
                     // Add new estate.
-                    tempEstate = CreateEstateDynamic(enumEstateType);
+                    tempEstate = dynamicEstate.CreateEstateDynamic(enumEstateType);
                     ReadAndValidateInfo();
                     tempEstate.EstateID = estateManager.EstateIDCounter;
                     estateManager.Add(tempEstate);
@@ -805,7 +771,7 @@ namespace RealEstateApp
 
             if (extension == ".bin")
             {
-                
+
                 estateManager.BinaryDeSerialize(openFile.FileName);
                 estateManager.EstateIDCounter += estateManager.Count;
                 lstbxRegister.Items.Clear();
@@ -816,11 +782,11 @@ namespace RealEstateApp
 
         }
 
-       private void mnuFileSave_Click(object sender, EventArgs e)
+        private void mnuFileSave_Click(object sender, EventArgs e)
         {
-            if(saveFilePath == "")
+            if (saveFilePath == "")
             {
-               mnuFileSaveAs_Click(sender, e);
+                mnuFileSaveAs_Click(sender, e);
             }
             else
             {

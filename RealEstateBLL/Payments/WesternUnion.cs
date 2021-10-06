@@ -13,6 +13,10 @@ namespace RealEstateBLL
         private String name;
         private String email;
 
+        public WesternUnion(double amount) : base(amount)
+        {
+        }
+
         ///Properties
         public String Name
         {

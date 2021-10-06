@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-    public enum Persons
-    {
-        Buyer,
-        Seller
-    }
 
+public enum AddressTypes
+{
+    Estate,
+    Seller,
+    Buyer
+}

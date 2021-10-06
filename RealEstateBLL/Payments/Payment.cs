@@ -15,6 +15,11 @@ namespace RealEstateBLL
         private double amount;
         private String comment;
 
+        public Payment(double amount)
+        {
+            this.amount = amount;
+        }
+
         ///Properties
         public double Amount
         {

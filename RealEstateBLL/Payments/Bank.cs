@@ -13,6 +13,10 @@ namespace RealEstateBLL
         private String name;
         private String accountNumber;
 
+        public Bank(double amount) : base(amount)
+        {
+        }
+
         ///Properties
         public String Name
         {
