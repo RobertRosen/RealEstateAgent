@@ -69,9 +69,10 @@ namespace UtilitiesLib
                 using (Stream stream = File.Open(fileName, FileMode.Open))
                 {
                     BinaryFormatter binaryFormatter = new BinaryFormatter();
-                    list.Clear();
+                    DeleteAll();
 #pragma warning disable SYSLIB0011 // Type or member is obsolete
                     list = (List<T>)binaryFormatter.Deserialize(stream);
+                    count = list.Count;
 #pragma warning restore SYSLIB0011 // Type or member is obsolete
                     success = true;
                 }

@@ -30,6 +30,7 @@ namespace RealEstateApp
         {
             InitializeComponent();
             estateManager = new EstateManager();
+            tempEstate = null;
             InitializeGUI();
         }
         #endregion
@@ -50,16 +51,15 @@ namespace RealEstateApp
             bxPaymentMethod.SelectedIndex = -1;
             bxEstateType.SelectedIndex = -1;
             lstbxRegister.Items.Clear();
+            
             ClearFields();
             EnableInfoFields(false);
+        }
 
-            tempEstate = null;
-            estateManager.EstateIDCounter = 0;
-
-            string defaultImageFileName = "noImage.jpg";
+        private string SetImagePath(string fileName)
+        {
             string projectPathLocal = new DirectoryInfo(Environment.CurrentDirectory).Parent.Parent.Parent.FullName;
-            string fullImagePath = Path.Combine(projectPathLocal, @"Images\", defaultImageFileName);
-            imageFilePath = fullImagePath;
+            return Path.Combine(projectPathLocal, @"Images\", fileName);
         }
         #endregion
 
@@ -150,16 +150,16 @@ namespace RealEstateApp
                     break;
                 case AddressTypes.Buyer:
                     {
-                        city = txtBuyerCity.Text;
                         street = txtBuyerStreet.Text;
                         zipCode = txtBuyerZip.Text;
+                        city = txtBuyerCity.Text;
                         country = (Countries)bxBuyerCountry.SelectedItem;
                     }
                     break;
                 default:
                     break;
             }
-            return new Address(street, city, zipCode, country);
+            return new Address(street, zipCode, city, country);
         }
 
         private Payment ReadPaymentInfo()
@@ -178,56 +178,50 @@ namespace RealEstateApp
             string str2 = txtSpecific2.Text;
             string str3 = txtSpecific3.Text;
 
-            bool inputOk;
-
-            if (tempEstate.GetType() == typeof(Rental))
+            if (tempEstate is Rental)
             {
                 ((Rental)tempEstate).SquareMeter = Convert.ToInt32(str1);
                 ((Rental)tempEstate).Floor = Convert.ToInt32(str2);
                 ((Rental)tempEstate).ContractMonths = Convert.ToInt32(str3);
             }
-            else if (tempEstate.GetType() == typeof(School))
+            else if (tempEstate is School)
             {
                 ((School)tempEstate).NumberOfCafeterias = Convert.ToInt32(str1);
                 ((School)tempEstate).NumberOfClassrooms = Convert.ToInt32(str2);
                 ((School)tempEstate).SuitableLevel = str3;
             }
-            else if (tempEstate.GetType() == typeof(Store))
+            else if (tempEstate is Store)
             {
                 ((Store)tempEstate).StorageSquareMeters = Convert.ToInt32(str1);
                 ((Store)tempEstate).SuitableBusiness = str2;
             }
-            else if (tempEstate.GetType() == typeof(Tenement))
+            else if (tempEstate is Tenement )
             {
                 ((Tenement)tempEstate).SquareMeter = Convert.ToInt32(str1);
                 ((Tenement)tempEstate).Floor = Convert.ToInt32(str2);
                 ((Tenement)tempEstate).TenantOwnersAssociationName = str3;
             }
-            else if (tempEstate.GetType() == typeof(Townhouse))
+            else if (tempEstate is Townhouse)
             {
                 ((Townhouse)tempEstate).SquareMeter = Convert.ToInt32(str1);
                 ((Townhouse)tempEstate).GardenSquareMeters = Convert.ToInt32(str2);
                 ((Townhouse)tempEstate).NumberOfConnectedVillas = Convert.ToInt32(str3);
             }
-            else if (tempEstate.GetType() == typeof(University))
+            else if (tempEstate is University)
             {
                 ((University)tempEstate).NumberOfCafeterias = Convert.ToInt32(str1);
                 ((University)tempEstate).NumberOfClassrooms = Convert.ToInt32(str2);
                 ((University)tempEstate).NumberOfLectureHalls = Convert.ToInt32(str3);
             }
-            else if (tempEstate.GetType() == typeof(Villa))
+            else if (tempEstate is Villa)
             {
                 ((Villa)tempEstate).SquareMeter = Convert.ToInt32(str1);
                 ((Villa)tempEstate).GardenSquareMeters = Convert.ToInt32(str2);
             }
-            else if (tempEstate.GetType() == typeof(Warehouse))
+            else if (tempEstate is Warehouse)
             {
                 ((Warehouse)tempEstate).StorageSquareMeters = Convert.ToInt32(str1);
                 ((Warehouse)tempEstate).NumberOfLoadingDocks = Convert.ToInt32(str2);
-            }
-            else
-            {
-                //Handle this...
             }
         }
 
@@ -236,23 +230,19 @@ namespace RealEstateApp
             string str1 = txtPaySpecific1.Text;
             string str2 = txtPaySpecific2.Text;
 
-            if (tempEstate.Payment.GetType() == typeof(Bank))
+            if (tempEstate.Payment is Bank)
             {
                 ((Bank)tempEstate.Payment).Accountnumber = str1;
                 ((Bank)tempEstate.Payment).Name = str2;
             }
-            else if (tempEstate.Payment.GetType() == typeof(WesternUnion))
+            else if (tempEstate.Payment is WesternUnion)
             {
                 ((WesternUnion)tempEstate.Payment).Email = str1;
                 ((WesternUnion)tempEstate.Payment).Name = str2;
             }
-            else if (tempEstate.Payment.GetType() == typeof(PayPal))
+            else if (tempEstate.Payment is PayPal)
             {
                 ((PayPal)tempEstate.Payment).Email = str1;
-            }
-            else
-            {
-                //Handle this...
             }
         }
         #endregion
@@ -312,10 +302,7 @@ namespace RealEstateApp
             bxPaymentMethod.SelectedIndex = -1;
 
             pctbxEstateImage.Image = null;
-            string defaultImageFileName = "noImage.jpg";
-            string projectPathLocal = new DirectoryInfo(Environment.CurrentDirectory).Parent.Parent.Parent.FullName;
-            string fullImagePath = Path.Combine(projectPathLocal, @"Images\", defaultImageFileName);
-            imageFilePath = fullImagePath;
+            imageFilePath = SetImagePath("noImage.jpg");
 
             txtAmount.Clear();
             txtPaySpecific1.Clear();
@@ -680,7 +667,8 @@ namespace RealEstateApp
             Bitmap bitmap = null;
             try
             {
-                imageFilePath = openFile.FileName;
+                string fileName = openFile.FileName;
+                imageFilePath = SetImagePath(fileName);
                 bitmap = new Bitmap(imageFilePath);
             }
             catch (Exception ex)
@@ -698,18 +686,12 @@ namespace RealEstateApp
 
             if (searchResults != null)
             {
-                foreach (string est in searchResults)
-                {
-                    Debug.WriteLine(est);
-                }
-
                 lstbxSearchResults.Items.AddRange(searchResults);
             }
             else
             {
                 MessageBox.Show("No search results!");
             }
-
         }
 
         private void btnClearSearchResults_Click(object sender, EventArgs e)
@@ -728,6 +710,7 @@ namespace RealEstateApp
                 SetEstateCommonInfo();
                 SetEstateSpecificInfo();
                 SetPaymentSpecificInfo();
+                EnableButtons(true);
             }
         }
 
@@ -755,15 +738,10 @@ namespace RealEstateApp
                 InitializeGUI();
                 saveFilePath = "";
             }
-            else
-            {
-                //Nothing
-            }
         }
 
         private void mnuFileOpen_Click(object sender, EventArgs e)
         {
-            //Ask user to save current data method?
             OpenFileDialog openFile = new OpenFileDialog();
             openFile.ShowDialog();
             string filepath = openFile.FileName;
@@ -771,15 +749,13 @@ namespace RealEstateApp
 
             if (extension == ".bin")
             {
-
                 estateManager.BinaryDeSerialize(openFile.FileName);
                 estateManager.EstateIDCounter += estateManager.Count;
                 lstbxRegister.Items.Clear();
                 lstbxRegister.Items.AddRange(estateManager.ToStringArray());
-                lstbxRegister.SelectedIndex = 0;
+                //lstbxRegister.SelectedIndex = 0;
             }
             saveFilePath = filepath;
-
         }
 
         private void mnuFileSave_Click(object sender, EventArgs e)

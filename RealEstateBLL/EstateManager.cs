@@ -12,7 +12,7 @@ namespace RealEstateBLL
 {
     public class EstateManager : ListManager<IEstate>
     {
-        private int estateIDCounter;
+        private int estateIDCounter = 0;
 
         public int EstateIDCounter 
         {
