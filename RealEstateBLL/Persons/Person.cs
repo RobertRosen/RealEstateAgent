@@ -14,6 +14,10 @@ namespace RealEstateBLL
         private string lastName;
         private Address address;
 
+        public Person()
+        {
+        }
+
         public Person(string firstName, string lastName, Address address)
         {
             this.firstName = firstName;

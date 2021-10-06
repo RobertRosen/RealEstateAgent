@@ -9,6 +9,10 @@ namespace RealEstateBLL
     [Serializable]
     public class Buyer : Person
     {
+        public Buyer()
+        {
+        }
+
         public Buyer(string firstName, string lastName, Address address) : base(firstName, lastName, address)
         {
         }

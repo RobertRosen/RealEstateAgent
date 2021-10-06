@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfEstate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <Estate xsi:type="Townhouse">
+  <Estate xsi:type="School">
     <EstateID>1</EstateID>
     <Address>
       <Street>Trelleborgsgatan 10a</Street>
       <ZipCode>21435</ZipCode>
-      <City>Mm</City>
+      <City>Malmö</City>
       <Country>Sverige</Country>
     </Address>
     <Buyer xsi:type="Buyer">
@@ -35,12 +35,12 @@
       <Accountnumber>100</Accountnumber>
     </Payment>
     <LegalForm>Ownership</LegalForm>
-    <ImagePath>C:\Users\rober\source\repos\RealEstateAgent\Images\Townhouse.jpg</ImagePath>
-    <SquareMeter>100</SquareMeter>
-    <GardenSquareMeters>200</GardenSquareMeters>
-    <NumberOfConnectedVillas>3</NumberOfConnectedVillas>
+    <ImagePath>C:\Users\rober\source\repos\RealEstateSolution\RealEstateAgent\Images\Apartment.jpg</ImagePath>
+    <NumberOfCafeterias>100</NumberOfCafeterias>
+    <NumberOfClassrooms>200</NumberOfClassrooms>
+    <SuitableLevel>300</SuitableLevel>
   </Estate>
-  <Estate xsi:type="University">
+  <Estate xsi:type="School">
     <EstateID>2</EstateID>
     <Address>
       <Street>Trelleborgsgatan 10a</Street>
@@ -75,9 +75,9 @@
       <Accountnumber>100</Accountnumber>
     </Payment>
     <LegalForm>Ownership</LegalForm>
-    <ImagePath>C:\Users\rober\source\repos\RealEstateAgent\Images\School.jpg</ImagePath>
+    <ImagePath>C:\Users\rober\source\repos\RealEstateSolution\RealEstateAgent\Images\Store.jpg</ImagePath>
     <NumberOfCafeterias>100</NumberOfCafeterias>
     <NumberOfClassrooms>200</NumberOfClassrooms>
-    <NumberOfLectureHalls>300</NumberOfLectureHalls>
+    <SuitableLevel>300</SuitableLevel>
   </Estate>
 </ArrayOfEstate>
