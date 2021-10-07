@@ -55,56 +55,6 @@ namespace UtilitiesLib
         }
 
         /// <summary>
-        /// Deserialize an object from a binary file.
-        /// Not safe to use.
-        /// </summary>
-        /// <param name="fileName"></param>
-        /// <returns></returns>
-        public bool BinaryDeSerialize(string fileName)
-        {
-            bool success = false;
-
-            if (fileName != null)
-            {
-                using (Stream stream = File.Open(fileName, FileMode.Open))
-                {
-                    BinaryFormatter binaryFormatter = new BinaryFormatter();
-                    DeleteAll();
-#pragma warning disable SYSLIB0011 // Type or member is obsolete
-                    list = (List<T>)binaryFormatter.Deserialize(stream);
-                    count = list.Count;
-#pragma warning restore SYSLIB0011 // Type or member is obsolete
-                    success = true;
-                }
-            }
-            return success;
-        }
-
-        /// <summary>
-        /// Serialize an object to binary file.
-        /// Not safe to use.
-        /// </summary>
-        /// <param name="fileName"></param>
-        /// <returns></returns>
-        public bool BinarySerialize(string fileName)
-        {
-            bool success = false;
-
-            if (fileName != null)
-            {
-                using (Stream stream = File.Open(fileName, FileMode.Create))
-                {
-                    BinaryFormatter binaryFormatter = new BinaryFormatter();
-#pragma warning disable SYSLIB0011 // Type or member is obsolete
-                    binaryFormatter.Serialize(stream, list);
-#pragma warning restore SYSLIB0011 // Type or member is obsolete
-                    success = true;
-                }
-            }
-            return success;
-        }
-
-        /// <summary>
         /// Replace (change) an object in a position with a new object. 
         /// </summary>
         /// <param name="aType"></param>
@@ -225,6 +175,56 @@ namespace UtilitiesLib
             }
 
             return stringList;
+        }
+
+        /// <summary>
+        /// Deserialize an object from a binary file.
+        /// Not safe to use.
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
+        public bool BinaryDeSerialize(string fileName)
+        {
+            bool success = false;
+
+            if (fileName != null)
+            {
+                using (Stream stream = File.Open(fileName, FileMode.Open))
+                {
+                    BinaryFormatter binaryFormatter = new BinaryFormatter();
+                    DeleteAll();
+#pragma warning disable SYSLIB0011 // Type or member is obsolete
+                    list = (List<T>)binaryFormatter.Deserialize(stream);
+                    count = list.Count;
+#pragma warning restore SYSLIB0011 // Type or member is obsolete
+                    success = true;
+                }
+            }
+            return success;
+        }
+
+        /// <summary>
+        /// Serialize an object to binary file.
+        /// Not safe to use.
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
+        public bool BinarySerialize(string fileName)
+        {
+            bool success = false;
+
+            if (fileName != null)
+            {
+                using (Stream stream = File.Open(fileName, FileMode.Create))
+                {
+                    BinaryFormatter binaryFormatter = new BinaryFormatter();
+#pragma warning disable SYSLIB0011 // Type or member is obsolete
+                    binaryFormatter.Serialize(stream, list);
+#pragma warning restore SYSLIB0011 // Type or member is obsolete
+                    success = true;
+                }
+            }
+            return success;
         }
 
         /// <summary>

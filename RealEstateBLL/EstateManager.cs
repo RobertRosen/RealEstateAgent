@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RealEstateDAL;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -70,14 +71,14 @@ namespace RealEstateBLL
 
         public void WriteEstateListToXmlFile(string fileName)
         {
-            ListManager<Estate> tempEstatesListManager = new ListManager<Estate>();
+            ListManager<Estate> listManager = new ListManager<Estate>();
             foreach (IEstate iest in List)
             {
                 Estate estate = (Estate)iest;
-                tempEstatesListManager.Add(estate);
+                listManager.Add(estate);
             }
 
-            tempEstatesListManager.XMLSerialize(fileName);
+            listManager.XMLSerialize(fileName);
         }
 
         /// <summary>
@@ -87,11 +88,11 @@ namespace RealEstateBLL
         /// <param name="filePath"></param>
         public void ReadEstateListFromXmlFile(string filePath)
         {
-            ListManager<Estate> tempEstatesListManager = new ListManager<Estate>();
-            tempEstatesListManager.XMLDeserialize(filePath);
+            ListManager<Estate> listManager = new ListManager<Estate>();
+            listManager.XMLDeserialize(filePath);
 
             base.DeleteAll();
-            foreach (Estate est in tempEstatesListManager.List)
+            foreach (Estate est in listManager.List)
             {
                 IEstate iestate = (IEstate)est;
                 base.Add(iestate);
