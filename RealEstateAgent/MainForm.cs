@@ -20,7 +20,7 @@ namespace RealEstateApp
     {
         #region Variables
         private EstateManager estateManager;
-        private IEstate tempEstate; //A temorary estate object to pass to the estate manager.
+        private IEstate tempEstate; 
         private string imageFilePath;
         private string saveFilePath = "";
         #endregion
@@ -753,7 +753,7 @@ namespace RealEstateApp
                 estateManager.EstateIDCounter += estateManager.Count;
                 lstbxRegister.Items.Clear();
                 lstbxRegister.Items.AddRange(estateManager.ToStringArray());
-                //lstbxRegister.SelectedIndex = 0;
+                lstbxRegister.SelectedIndex = 0;
             }
             saveFilePath = filepath;
         }
@@ -766,13 +766,8 @@ namespace RealEstateApp
             }
             else
             {
-                SaveToFile(saveFilePath);
+                estateManager.BinarySerialize(saveFilePath);
             }
-        }
-
-        private void SaveToFile(string fileName)
-        {
-            estateManager.BinarySerialize(fileName);
         }
 
         private void mnuFileSaveAs_Click(object sender, EventArgs e)
